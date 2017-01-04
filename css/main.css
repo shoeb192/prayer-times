@@ -48,7 +48,7 @@ body {
 }
 
 .prayer-text{
-    margin-top: 5%;
+    margin-top: 8%;
     font-size: 300%;
 }
 
@@ -61,6 +61,7 @@ body {
 }
 
 .prayer{
+    color: yellowgreen;
     font-size: 800%;
     text-align: center;
     width: 20%;
