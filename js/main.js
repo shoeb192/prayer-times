@@ -192,8 +192,7 @@ var dateTime = {
         var day = this.addZero(this.getCurrentDay());
         var year = this.getCurrentYear();
         var dateText = this.getCurrentDayFrenchText() +
-                ' - ' + day + '/' + this.getCurrentMonth() + '/' + year +
-                ' - ' + this.getCurrentDayArabicText();
+                ' ' + day + '/' + this.getCurrentMonth() + '/' + year
         return dateText;
     },
     getCurrentDayText: function () {

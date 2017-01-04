@@ -4,7 +4,7 @@ body {
     position: relative;
 }
 .main{
-    padding: 20px;
+    padding: 40px 20px ;
 }
 
 .iqama{
@@ -80,16 +80,18 @@ body {
     visibility: hidden;
 }
 
-
-
 .chourouk,.joumouaa {
-    font-size: 250%;
+    font-size: 400%;
     padding-top: 5%;
+    font-weight: bold;
+}
+#chourouk, #joumouaa{
+    color: yellowgreen;
 }
 
 .footer{
     position: fixed;
-    bottom: 0;
+    bottom: 10px;
     right: 0;
     left: 0;
     padding-bottom: 20px;
