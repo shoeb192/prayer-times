@@ -7,13 +7,24 @@ body {
     padding: 20px;
 }
 
-.phone{
+.iqama{
+    background-color: gray;
+    height:100vh;
+}
+
+.iqama .top, .iqama .bottom{
+    font-size: 700%;
+    height: 15%;
+    color: #000;
+    font-weight: bold;
+}
+
+.iqama .image{
     background-image: url(/img/phone.png);
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: contain;
-    background-color: gray;
-    height:100vh;
+    height: 70%;
 }
 
 .title{
