@@ -1,0 +1,74 @@
+body {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    position: relative;
+}
+
+.title{
+    font-size: 200%;
+    color: yellowgreen;
+}
+
+#time{
+    font-size: 900%
+}
+
+#date{
+    font-size: 400%
+}
+
+.prayer-text>div{
+    font-size: 200%;
+    text-align: center;
+    width: 20%;
+    float: left;
+}
+
+.prayer-text{
+    margin-top: 8%;
+    font-size: 200%;
+}
+
+.prayer-time {
+    display: table;
+    height: 150px;
+    width: 100%;
+    border-bottom: 1px #fff solid;
+    border-top: 1px #fff solid;
+}
+
+.prayer{
+    font-size: 600%;
+    text-align: center;
+    width: 20%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.wait{
+    font-size: 200%;
+    text-align: center;
+    width: 20%;
+    float: left;
+}
+
+.flash{
+    visibility: hidden;
+}
+
+
+
+.chourouk,.joumouaa {
+    font-size: 250%;
+    padding-top: 5%;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding-bottom: 20px;
+    font-size: 150%
+}
