@@ -1,53 +1,20 @@
 var prayer = {
     prayersWaitingTimesInMinute: [20, 10, 10, 5, 10],
-    minIchaTime: "19:50",
-    joumouaa: "12:00",
+    minimumIchaTime: "19:50",
+    joumouaaTime: "12:00",
+    prayerTimes: [],
     init: function () {
         this.setTime();
         this.setDate();
+        this.loadPrayerTimes();
         this.setPrayerTimes();
         this.setPrayerWaiting();
-        this.initCronMidNight();
         this.initAdhanFlash();
         this.initIqamaFlash();
-    },
-    getCurrentDayText: function () {
-        var date = new Date();
-        var day = new Array();
-        var dayIndex = date.getDay();
-        day[0] = ["Dimanche", "الأحد"];
-        day[1] = ["Lundi", "الإثنين"];
-        day[2] = ["Mardi", "الثلاثاء"];
-        day[3] = ["Mercredi", "الأربعاء"];
-        day[4] = ["Jeudi", "الخميس"];
-        day[5] = ["Vendredi", "الجمعة"];
-        day[6] = ["Samedi", "السبت"];
-
-        return day[dayIndex];
-    },
-    getCurrentDay: function () {
-        var date = new Date();
-        return date.getDay();
-    },
-    getCurrentMonth: function () {
-        var date = new Date();
-        var month = new Array();
-        month[0] = ["01", "Janvier"];
-        month[1] = ["02", "Février"];
-        month[2] = ["03", "Mars"];
-        month[3] = ["04", "Avril"];
-        month[4] = ["05", "Mai"];
-        month[5] = ["06", "Juin"];
-        month[6] = ["07", "Juillet"];
-        month[7] = ["08", "Aout"];
-        month[8] = ["09", "Septembre"];
-        month[9] = ["10", "Octobre"];
-        month[10] = ["11", "Novembre"];
-        month[11] = ["12", "Décembre"];
-        return month[date.getMonth()];
+        this.initCronMidNight();
     },
     getCsvFile: function () {
-        return this.getCurrentMonth()[0] + ".csv";
+        return dateTime.getCurrentMonth() + ".csv";
     },
     loadPrayerTimes: function () {
         var csvFile = this.getCsvFile();
@@ -61,11 +28,11 @@ var prayer = {
             }
         });
 
-        return prayerTimes;
+        this.prayerTimes = prayerTimes;
     },
-    getCurentPrayerTimes: function () {
-        var prayerTimes = this.loadPrayerTimes();
-        prayerTimes = prayerTimes[this.getCurrentDay()].split(",");
+    getCurrentPrayerTimes: function () {
+        var prayerTimes = this.prayerTimes;
+        prayerTimes = prayerTimes[dateTime.getCurrentDay()].split(",");
         return [prayerTimes[1], prayerTimes[3], prayerTimes[4], prayerTimes[5], this.getIchaTime()];
     },
     getCurrentDateForPrayerTime: function (prayerTime) {
@@ -77,25 +44,23 @@ var prayer = {
         return d;
     },
     getIchaTime: function () {
-        var prayerTimes = this.loadPrayerTimes();
-        prayerTimes = prayerTimes[this.getCurrentDay()].split(",");
+        var prayerTimes = this.prayerTimes[dateTime.getCurrentDay()].split(",");
         var ichaTime = prayerTimes[6];
-        if (ichaTime <= this.minIchaTime)
+        if (ichaTime <= this.minimumIchaTime)
         {
-            ichaTime = this.minIchaTime;
+            ichaTime = this.minimumIchaTime;
         }
         return ichaTime;
     },
-    getChourouKTime: function () {
-        var prayerTimes = this.loadPrayerTimes();
-        prayerTimes = prayerTimes[this.getCurrentDay()].split(",");
+    getChouroukTime: function () {
+        var prayerTimes = this.prayerTimes[dateTime.getCurrentDay()].split(",");
         return prayerTimes[2];
     },
     initCronMidNight: function () {
         // toutes les minutes
         setInterval(function () {
             // à minuit on met à jour les prayerTimess
-            if (prayer.dateTime.getCurrentHour() === "00" && prayer.dateTime.getCurrentMinute() === "00") {
+            if (dateTime.getCurrentHour() === "00" && dateTime.getCurrentMinute() === "00") {
                 prayer.setDate();
                 prayer.setPrayerTimes();
             }
@@ -106,18 +71,19 @@ var prayer = {
      */
     adhanIsFlashing: false,
     initAdhanFlash: function () {
-        var currentTime = prayer.dateTime.getCurrentTime(false);
-        $(".prayer").each(function (i, e) {
-            if ($(e).text() === currentTime && !prayer.adhanIsFlashing) {
+        var currentTime = dateTime.getCurrentTime(false);
+        $.each(prayer.getCurrentPrayerTimes(), function (i, prayerTime) {
+            var prayerElm = $(".prayer:contains(" + currentTime + ")");
+            if (prayerElm.length && !prayer.adhanIsFlashing) {
                 prayer.adhanIsFlashing = true;
                 var adhan = setInterval(function () {
-                    $(e).toggleClass("flash");
+                    prayerElm.toggleClass("flash");
                 }, 1000);
 
                 setTimeout(function () {
                     clearInterval(adhan);
                     prayer.adhanIsFlashing = false;
-                    $(e).removeClass("flash");
+                    prayerElm.removeClass("flash");
                 }, 60000);
             }
         });
@@ -129,7 +95,7 @@ var prayer = {
      */
     iqamaIsFlashing: false,
     initIqamaFlash: function () {
-        $.each(prayer.getCurentPrayerTimes(), function (i, prayerTime) {
+        $.each(prayer.getCurrentPrayerTimes(), function (i, prayerTime) {
             //si date ou chourouk on continue
             var diffTimeInMiniute = Math.floor((new Date() - prayer.getCurrentDateForPrayerTime(prayerTime)) / 60000);
             if (diffTimeInMiniute === prayer.prayersWaitingTimesInMinute[i] && !prayer.iqamaIsFlashing) {
@@ -149,63 +115,19 @@ var prayer = {
         setInterval(this.initIqamaFlash, 1000);
     },
     setTime: function () {
-        $("#time").text(prayer.dateTime.getCurrentTime(true));
+        $("#time").text(dateTime.getCurrentTime(true));
         setInterval(this.setTime, 1000);
     },
     setDate: function () {
-        $("#date").text(this.dateTime.getCurrentDate());
-    },
-    dateTime: {
-        getCurrentHour: function () {
-            var date = new Date();
-            var h = date.getHours();
-            if (h < 10) {
-                h = '0' + h;
-            }
-            return h;
-        },
-        getCurrentMinute: function () {
-            var date = new Date();
-            var m = date.getMinutes();
-            if (m < 10) {
-                m = '0' + m;
-            }
-            return m;
-        },
-        getCurrentTime: function (withSeconds) {
-            var date = new Date();
-            var ss = date.getSeconds();
-            if (ss < 10) {
-                ss = '0' + ss;
-            }
-
-            var time = prayer.dateTime.getCurrentHour() + ":" + prayer.dateTime.getCurrentMinute();
-            if (withSeconds === true) {
-                time += ":" + ss;
-            }
-            return  time;
-        },
-        getCurrentDate: function () {
-            var date = new Date();
-            var dd = date.getDate();
-            var mm = date.getMonth() + 1; //January is 0!
-            var yyyy = date.getFullYear();
-            if (dd < 10) {
-                dd = '0' + dd;
-            }
-            if (mm < 10) {
-                mm = '0' + mm;
-            }
-            return  prayer.getCurrentDayText()[0] + ' - ' + dd + '/' + mm + '/' + yyyy + ' - ' + prayer.getCurrentDayText()[1];
-        }
+        $("#date").text(dateTime.getCurrentDate());
     },
     setPrayerTimes: function () {
-        $("#joumouaa").text(this.joumouaa);
-        $("#sobh").text(this.getCurentPrayerTimes()[0]);
-        $("#chourouk").text(this.getChourouKTime());
-        $("#dohr").text(this.getCurentPrayerTimes()[1]);
-        $("#asr").text(this.getCurentPrayerTimes()[2]);
-        $("#maghrib").text(this.getCurentPrayerTimes()[3]);
+        $("#joumouaa").text(this.joumouaaTime);
+        $("#sobh").text(this.getCurrentPrayerTimes()[0]);
+        $("#chourouk").text(this.getChouroukTime());
+        $("#dohr").text(this.getCurrentPrayerTimes()[1]);
+        $("#asr").text(this.getCurrentPrayerTimes()[2]);
+        $("#maghrib").text(this.getCurrentPrayerTimes()[3]);
         $("#ichaa").text(this.getIchaTime());
     },
     setPrayerWaiting: function () {
@@ -214,6 +136,77 @@ var prayer = {
         $("#asr-waiting").text(this.prayersWaitingTimesInMinute[2] + " min");
         $("#maghrib-waiting").text(this.prayersWaitingTimesInMinute[3] + " min");
         $("#icha-waiting").text(this.prayersWaitingTimesInMinute[4] + " min");
+    }
+};
+
+
+var dateTime = {
+    getCurrentHour: function () {
+        var date = new Date();
+        var h = date.getHours();
+        if (h < 10) {
+            h = '0' + h;
+        }
+        return h;
+    },
+    getCurrentMinute: function () {
+        var date = new Date();
+        var m = date.getMinutes();
+        if (m < 10) {
+            m = '0' + m;
+        }
+        return m;
+    },
+    getCurrentTime: function (withSeconds) {
+        var date = new Date();
+        var ss = date.getSeconds();
+        if (ss < 10) {
+            ss = '0' + ss;
+        }
+
+        var time = this.getCurrentHour() + ":" + this.getCurrentMinute();
+        if (withSeconds === true) {
+            time += ":" + ss;
+        }
+        return  time;
+    },
+    getCurrentMonth: function () {
+        var date = new Date();
+        var month = date.getMonth() + 1;
+        if (month < 10) {
+            month = '0' + month;
+        }
+        return  month;
+    },
+    getCurrentDate: function () {
+        var date = new Date();
+        var dd = date.getDate();
+        var yyyy = date.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        var dateText = this.getCurrentDayText()[0] +
+                ' - ' + dd + '/' + this.getCurrentMonth() + '/' + yyyy +
+                ' - ' + this.getCurrentDayText()[1];
+        return dateText;
+    },
+    getCurrentDayText: function () {
+        var date = new Date();
+        var day = new Array();
+        var dayIndex = date.getDay();
+        day[0] = ["Dimanche", "الأحد"];
+        day[1] = ["Lundi", "الإثنين"];
+        day[2] = ["Mardi", "الثلاثاء"];
+        day[3] = ["Mercredi", "الأربعاء"];
+        day[4] = ["Jeudi", "الخميس"];
+        day[5] = ["Vendredi", "الجمعة"];
+        day[6] = ["Samedi", "السبت"];
+
+        return day[dayIndex];
+    },
+    getCurrentDay: function () {
+        var date = new Date();
+        return date.getDay();
     }
 };
 
