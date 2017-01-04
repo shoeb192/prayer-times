@@ -109,7 +109,7 @@ var prayer = {
                     setTimeout(function () {
                         clearInterval(phoneFlash);
                         $(".main").removeClass("hidden");
-                        $(".phone").addClass("hidden");
+                        $(".iqama").addClass("hidden");
                         prayer.iqamaIsFlashing = false;
                     }, 60000);
                 }
