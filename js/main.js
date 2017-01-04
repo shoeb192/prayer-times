@@ -100,19 +100,32 @@ var prayer = {
             var diffTimeInMiniute = Math.floor((new Date() - prayer.getCurrentDateForPrayerTime(prayerTime)) / 60000);
             if (diffTimeInMiniute === prayer.prayersWaitingTimesInMinute[i] && !prayer.iqamaIsFlashing) {
                 prayer.iqamaIsFlashing = true;
-                var e = $(".wait").eq(i);
+                var waitTimeElm = $(".wait").eq(i);
                 var iqama = setInterval(function () {
-                    e.toggleClass("flash");
+                    waitTimeElm.toggleClass("flash");
                 }, 1000);
 
                 setTimeout(function () {
-                    clearInterval(iqama);
-                    prayer.iqamaIsFlashing = false;
-                    e.removeClass("flash");
-                }, 60000);
+                    waitTimeElm.removeClass("flash");
+
+                    // phone forbidden handle
+                    iqama = setInterval(function () {
+                        prayer.showPhoneForbidden();
+                    }, 1000);
+
+                    setTimeout(function () {
+                        clearInterval(iqama);
+                        prayer.iqamaIsFlashing = false;
+                        $(".main").removeClass("hidden");
+                    }, 30000);
+                }, 30000);
             }
         });
         setInterval(this.initIqamaFlash, 1000);
+    },
+    showPhoneForbidden: function () {
+        $(".main").toggleClass("hidden");
+        $(".phone").toggleClass("hidden");
     },
     setTime: function () {
         $("#time").text(dateTime.getCurrentTime(true));

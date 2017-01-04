@@ -1,8 +1,19 @@
 body {
     background-color: #000;
     color: #fff;
-    padding: 20px;
     position: relative;
+}
+.main{
+    padding: 20px;
+}
+
+.phone{
+    background-image: url(/img/phone.png);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+    background-color: gray;
+    height:100vh;
 }
 
 .title{
