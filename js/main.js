@@ -8,7 +8,7 @@ var prayer = {
         this.setDate();
         this.loadPrayerTimes();
         this.setPrayerTimes();
-        this.setPrayerWaiting();
+        this.setPrayerWaitings();
         this.initAdhanFlash();
         this.initIqamaFlash();
         this.initCronMidNight();
@@ -36,12 +36,12 @@ var prayer = {
         return [prayerTimes[1], prayerTimes[3], prayerTimes[4], prayerTimes[5], this.getIchaTime()];
     },
     getCurrentDateForPrayerTime: function (prayerTime) {
-        var d = new Date();
+        var date = new Date();
         prayerTime = prayerTime.split(':');
-        d.setHours(prayerTime[0]);
-        d.setMinutes(prayerTime[1]);
-        d.setSeconds(0);
-        return d;
+        date.setHours(prayerTime[0]);
+        date.setMinutes(prayerTime[1]);
+        date.setSeconds(0);
+        return date;
     },
     getIchaTime: function () {
         var prayerTimes = this.prayerTimes[dateTime.getCurrentDay()].split(",");
@@ -138,7 +138,7 @@ var prayer = {
         $("#maghrib").text(this.getCurrentPrayerTimes()[3]);
         $("#ichaa").text(this.getIchaTime());
     },
-    setPrayerWaiting: function () {
+    setPrayerWaitings: function () {
         $("#sobh-waiting").text(this.prayersWaitingTimesInMinute[0] + " min");
         $("#dohr-waiting").text(this.prayersWaitingTimesInMinute[1] + " min");
         $("#asr-waiting").text(this.prayersWaitingTimesInMinute[2] + " min");
@@ -147,55 +147,53 @@ var prayer = {
     }
 };
 
-
+/**
+ * dateTime functions
+ */
 var dateTime = {
-    getCurrentHour: function () {
-        var date = new Date();
-        var h = date.getHours();
-        if (h < 10) {
-            h = '0' + h;
+    addZero: function (value) {
+        if (value < 10) {
+            value = '0' + value;
         }
-        return h;
+        return value;
     },
     getCurrentMinute: function () {
         var date = new Date();
-        var m = date.getMinutes();
-        if (m < 10) {
-            m = '0' + m;
-        }
-        return m;
+        return this.addZero(date.getMinutes());
     },
-    getCurrentTime: function (withSeconds) {
+    getCurrentHour: function () {
         var date = new Date();
-        var ss = date.getSeconds();
-        if (ss < 10) {
-            ss = '0' + ss;
-        }
-
-        var time = this.getCurrentHour() + ":" + this.getCurrentMinute();
-        if (withSeconds === true) {
-            time += ":" + ss;
-        }
-        return  time;
+        return this.addZero(date.getHours());
+    },
+    getCurrentDay: function () {
+        var date = new Date();
+        return date.getDate();
     },
     getCurrentMonth: function () {
         var date = new Date();
         var month = date.getMonth() + 1;
-        if (month < 10) {
-            month = '0' + month;
+        return this.addZero(month);
+    },
+    getCurrentYear: function () {
+        var date = new Date();
+        return date.getFullYear();
+    },
+    getCurrentTime: function (withSeconds) {
+        var date = new Date();
+        var second = this.addZero(date.getSeconds());
+
+        var time = this.getCurrentHour() + ":" + this.getCurrentMinute();
+        if (withSeconds === true) {
+            time += ":" + second;
         }
-        return  month;
+        return  time;
     },
     getCurrentDate: function () {
-        var date = new Date();
-        var dd = date.getDate();
-        var yyyy = date.getFullYear();
-        if (dd < 10) {
-            dd = '0' + dd;
-        }
-        var dateText = this.getCurrentDayText()[0] +
-                ' - ' + dd + '/' + this.getCurrentMonth() + '/' + yyyy +
-                ' - ' + this.getCurrentDayText()[1];
+        var day = this.addZero(this.getCurrentDay());
+        var year = this.getCurrentYear();
+        var dateText = this.getCurrentDayFrenchText() +
+                ' - ' + day + '/' + this.getCurrentMonth() + '/' + year +
+                ' - ' + this.getCurrentDayArabicText();
         return dateText;
     },
     getCurrentDayText: function () {
@@ -212,9 +210,11 @@ var dateTime = {
 
         return day[dayIndex];
     },
-    getCurrentDay: function () {
-        var date = new Date();
-        return date.getDay();
+    getCurrentDayArabicText: function () {
+        return this.getCurrentDayText()[1];
+    },
+    getCurrentDayFrenchText: function () {
+        return this.getCurrentDayText()[0];
     }
 };
 
