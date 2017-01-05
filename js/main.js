@@ -96,7 +96,6 @@ var prayer = {
     iqamaIsFlashing: false,
     initIqamaFlash: function () {
         if (!prayer.iqamaIsFlashing) {
-            console.log(prayer.iqamaIsFlashing);
             $.each(prayer.getCurrentPrayerTimes(), function (i, prayerTime) {
                 //si date ou chourouk on continue
                 var diffTimeInMiniute = Math.floor((new Date() - prayer.getCurrentDateForPrayerTime(prayerTime)) / 60000);
