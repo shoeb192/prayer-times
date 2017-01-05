@@ -2,17 +2,18 @@ body {
     background-color: #000;
     color: #fff;
 }
+
 .main{
     height:100vh;
 }
 
 .main .top-content{
-    height:30%;
+    height:45%;
     padding-top: 20px;
 }
 
 .main .prayer-content{
-    height:60%;
+    height:45%;
 }
 
 .main .footer{
@@ -21,48 +22,25 @@ body {
     font-size: 150%
 }
 
-.iqama{
-    background-color: gray;
-    height:100vh;
-}
-
-.iqama .top, .iqama .bottom{
-    font-size: 700%;
-    height: 15%;
-    color: #000;
-    font-weight: bold;
-}
-
-.iqama .image{
-    background-image: url(/img/phone.png);
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-size: contain;
-    height: 70%;
-}
-
 .header{
     font-size: 400%;
     color: yellowgreen;
 }
 
 #time{
-    font-size: 1200%
+    font-size: 1200%;
+    font-weight: bold;
 }
 
 #date{
-    font-size: 400%
+    font-size: 500%
 }
 
 .prayer-text>div{
-    font-size: 200%;
+    font-size: 600%;
     text-align: center;
     width: 20%;
     float: left;
-}
-
-.prayer-text{
-    font-size: 300%;
 }
 
 .prayer-time {
@@ -80,6 +58,8 @@ body {
     width: 20%;
     display: table-cell;
     vertical-align: middle;
+    font-weight: bold;
+    height: 200px;
 }
 
 .wait{
@@ -102,3 +82,22 @@ body {
     color: yellowgreen;
 }
 
+.iqama{
+    background-color: gray;
+    height:100vh;
+}
+
+.iqama .top, .iqama .bottom{
+    font-size: 700%;
+    height: 15%;
+    color: #000;
+    font-weight: bold;
+}
+
+.iqama .image{
+    background-image: url(/img/phone.png);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: contain;
+    height: 70%;
+}
