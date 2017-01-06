@@ -1,7 +1,8 @@
 var prayer = {
-    prayersWaitingTimesInMinute: [20, 10, 10, 5, 10],
+    prayersWaitingTimes: [20, 10, 10, 5, 10],
     minimumIchaTime: "19:50",
     joumouaaTime: "12:00",
+    maximumIchaTimeForZeroWaiting: "22:00",
     months: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
     prayerTimes: [],
     init: function () {
@@ -30,6 +31,13 @@ var prayer = {
             });
         });
         this.prayerTimes = prayerTimes;
+    },
+    getPrayersWaitingTimes: function () {
+        var waitings = this.prayersWaitingTimes;
+        if(this.getIchaTime() > this.maximumIchaTimeForZeroWaiting){
+            waitings[4] = 0;
+        }
+        return waitings;
     },
     getTodayPrayerLine: function () {
         var prayerTimes = this.prayerTimes;
@@ -101,7 +109,7 @@ var prayer = {
             $.each(prayer.getTodayFivePrayerTimes(), function (i, prayerTime) {
                 //si date ou chourouk on continue
                 var diffTimeInMiniute = Math.floor((new Date() - prayer.getCurrentDateForPrayerTime(prayerTime)) / 60000);
-                if (diffTimeInMiniute === prayer.prayersWaitingTimesInMinute[i]) {
+                if (diffTimeInMiniute === prayer.getPrayersWaitingTimes()[i]) {
                     prayer.iqamaIsFlashing = true;
                     var phoneFlash = setInterval(function () {
                         prayer.showPhoneForbidden();
@@ -140,11 +148,11 @@ var prayer = {
         $("#ichaa").text(this.getIchaTime());
     },
     setPrayerWaitings: function () {
-        $("#sobh-waiting").text(this.prayersWaitingTimesInMinute[0] + " min");
-        $("#dohr-waiting").text(this.prayersWaitingTimesInMinute[1] + " min");
-        $("#asr-waiting").text(this.prayersWaitingTimesInMinute[2] + " min");
-        $("#maghrib-waiting").text(this.prayersWaitingTimesInMinute[3] + " min");
-        $("#icha-waiting").text(this.prayersWaitingTimesInMinute[4] + " min");
+        $("#sobh-waiting").text(this.getPrayersWaitingTimes()[0] + " min");
+        $("#dohr-waiting").text(this.getPrayersWaitingTimes()[1] + " min");
+        $("#asr-waiting").text(this.getPrayersWaitingTimes()[2] + " min");
+        $("#maghrib-waiting").text(this.getPrayersWaitingTimes()[3] + " min");
+        $("#icha-waiting").text(this.getPrayersWaitingTimes()[4] + " min");
     }
 };
 
