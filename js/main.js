@@ -1,7 +1,19 @@
 var prayer = {
+    /**
+     * Temps d'attente entre adhan et iqama [sobh, dohr, asr, maghrib, icha]
+     */
     prayersWaitingTimes: [20, 10, 10, 5, 10],
+    /**
+     * Heure de fixation du icha en hiver
+     */
     minimumIchaTime: "19:50",
+    /**
+     * Heure du joumouaa
+     */
     joumouaaTime: "12:00",
+    /**
+     * Heure max à partir de la quelle le on attend plus entre adhan du icha et la iqama
+     */
     maximumIchaTimeForZeroWaiting: "22:00",
     months: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
     prayerTimes: [],
@@ -34,7 +46,7 @@ var prayer = {
     },
     getPrayersWaitingTimes: function () {
         var waitings = this.prayersWaitingTimes;
-        if(this.getIchaTime() > this.maximumIchaTimeForZeroWaiting){
+        if (this.getIchaTime() > this.maximumIchaTimeForZeroWaiting) {
             waitings[4] = 0;
         }
         return waitings;
@@ -73,6 +85,7 @@ var prayer = {
             if (dateTime.getCurrentHour() === "00" && dateTime.getCurrentMinute() === "00") {
                 prayer.setDate();
                 prayer.setPrayerTimes();
+                prayer.setPrayerWaitings();
             }
         }, 1000);
     },
@@ -81,59 +94,60 @@ var prayer = {
      */
     adhanIsFlashing: false,
     initAdhanFlash: function () {
-        if (!prayer.adhanIsFlashing) {
-            var currentTime = dateTime.getCurrentTime(false);
-            var prayerElm = $(".prayer:contains(" + currentTime + ")");
-            if (prayerElm.length) {
-                prayer.adhanIsFlashing = true;
-                var adhanFlash = setInterval(function () {
-                    prayerElm.toggleClass("flash");
-                }, 1000);
+        setInterval(function () {
+            if (!prayer.adhanIsFlashing) {
+                var currentTime = dateTime.getCurrentTime(false);
+                var prayerElm = $(".prayer:contains(" + currentTime + ")");
+                if (prayerElm.length) {
+                    prayer.adhanIsFlashing = true;
+                    var adhanFlashInterval = setInterval(function () {
+                        prayerElm.toggleClass("flash");
+                    }, 1000);
 
-                setTimeout(function () {
-                    clearInterval(adhanFlash);
-                    prayer.adhanIsFlashing = false;
-                    prayerElm.removeClass("flash");
-                }, 60000);
+                    setTimeout(function () {
+                        clearInterval(adhanFlashInterval);
+                        prayer.adhanIsFlashing = false;
+                        prayerElm.removeClass("flash");
+                    }, 60000);
+                }
             }
-        }
-
-        setInterval(this.initAdhanFlash, 1000);
+        }, 1000);
     },
     /**
      * on vérifie toutes les min si l'heure de iqama est arrivée, si oui on fait clignoter les min de la iqama
      */
     iqamaIsFlashing: false,
     initIqamaFlash: function () {
-        if (!prayer.iqamaIsFlashing) {
-            $.each(prayer.getTodayFivePrayerTimes(), function (i, prayerTime) {
-                //si date ou chourouk on continue
-                var diffTimeInMiniute = Math.floor((new Date() - prayer.getCurrentDateForPrayerTime(prayerTime)) / 60000);
-                if (diffTimeInMiniute === prayer.getPrayersWaitingTimes()[i]) {
-                    prayer.iqamaIsFlashing = true;
-                    var phoneFlash = setInterval(function () {
-                        prayer.showPhoneForbidden();
-                    }, 1000);
+        setInterval(function () {
+            if (!prayer.iqamaIsFlashing) {
+                $.each(prayer.getTodayFivePrayerTimes(), function (i, prayerTime) {
+                    //si date ou chourouk on continue
+                    var diffTimeInMiniute = Math.floor((new Date() - prayer.getCurrentDateForPrayerTime(prayerTime)) / 60000);
+                    if (diffTimeInMiniute === prayer.getPrayersWaitingTimes()[i]) {
+                        prayer.iqamaIsFlashing = true;
+                        var iqamaFlashInterval = setInterval(function () {
+                            prayer.showIqama();
+                        }, 1000);
 
-                    setTimeout(function () {
-                        clearInterval(phoneFlash);
-                        $(".main").removeClass("hidden");
-                        $(".iqama").addClass("hidden");
-                        prayer.iqamaIsFlashing = false;
-                    }, 60000);
-                }
-            });
-        }
-
-        setInterval(this.initIqamaFlash, 1000);
+                        setTimeout(function () {
+                            clearInterval(iqamaFlashInterval);
+                            $(".main").removeClass("hidden");
+                            $(".iqama").addClass("hidden");
+                            prayer.iqamaIsFlashing = false;
+                        }, 60000);
+                    }
+                });
+            }
+        }, 1000);
     },
-    showPhoneForbidden: function () {
+    showIqama: function () {
         $(".main").toggleClass("hidden");
         $(".iqama").toggleClass("hidden");
     },
     setTime: function () {
-        $("#time").text(dateTime.getCurrentTime(true));
-        setInterval(this.setTime, 1000);
+        setInterval(function () {
+            $("#time").text(dateTime.getCurrentTime(true));
+        }, 1000);
     },
     setDate: function () {
         $("#date").text(dateTime.getCurrentDate());
