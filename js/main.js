@@ -165,8 +165,8 @@ var prayer = {
  */
 var dateTime = {
     isDstPassing: function () {
-        console.log(this.getCurrentMonth());
-        console.log(this.getCurrentDayOfWeek());
+//        console.log(this.getCurrentMonth());
+//        console.log(this.getCurrentDayOfWeek());
 
         if (this.getCurrentMonth() === "03" && this.getCurrentDayOfWeek() === 0) {
             if ((31 - this.getCurrentDayOfMonth()) < 7){
@@ -250,5 +250,5 @@ var dateTime = {
 
 $(document).ready(function () {
     prayer.init();
-    console.log(dateTime.isDstPassing());
+//    console.log(dateTime.isDstPassing());
 });
