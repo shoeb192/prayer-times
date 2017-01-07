@@ -58,6 +58,10 @@ body {
     height: 200px;
 }
 
+.prayer-hilighted{
+    color: #f0ad4e;
+}
+
 .wait{
     font-size: 300%;
     text-align: center;

@@ -55,6 +55,9 @@ var prayer = {
         var prayerTimes = this.getTodayPrayerLine();
         return [prayerTimes[1], prayerTimes[3], prayerTimes[4], prayerTimes[5], this.getIchaTime()];
     },
+    getTodayPrayerTimeByIndex: function (index) {
+        return this.getTodayFivePrayerTimes()[index];
+    },
     getCurrentDateForPrayerTime: function (prayerTime) {
         var date = new Date();
         prayerTime = prayerTime.split(':');
@@ -116,10 +119,10 @@ var prayer = {
     initIqamaFlash: function () {
         setInterval(function () {
             if (!prayer.iqamaIsFlashing) {
-                $.each(prayer.getTodayFivePrayerTimes(), function (i, prayerTime) {
+                $.each(prayer.getTodayFivePrayerTimes(), function (currentPrayerIndex, prayerTime) {
                     //si date ou chourouk on continue
                     var diffTimeInMiniute = Math.floor((new Date() - prayer.getCurrentDateForPrayerTime(prayerTime)) / 60000);
-                    if (diffTimeInMiniute === prayer.getPrayersWaitingTimes()[i]) {
+                    if (diffTimeInMiniute === prayer.getPrayersWaitingTimes()[currentPrayerIndex]) {
                         prayer.iqamaIsFlashing = true;
                         var iqamaFlashInterval = setInterval(function () {
                             prayer.showIqama();
@@ -130,11 +133,22 @@ var prayer = {
                             $(".main").removeClass("hidden");
                             $(".iqama").addClass("hidden");
                             prayer.iqamaIsFlashing = false;
+                            prayer.setNextPrayerTimeHilight(currentPrayerIndex + 1);
                         }, 60000);
                     }
                 });
             }
         }, 1000);
+    },
+    setNextPrayerTimeHilight: function (nextPrayerTimeIndex) {
+        // si prochaine prière est sobh
+        if (nextPrayerTimeIndex === 5) {
+            nextPrayerTimeIndex = 0;
+        }
+        setTimeout(function () {
+            $(".prayer").removeClass("prayer-hilighted");
+            $(".prayer:contains(" + prayer.getTodayPrayerTimeByIndex(nextPrayerTimeIndex) + ")").addClass("prayer-hilighted");
+        }, 15 * 60000);
     },
     showIqama: function () {
         $(".main").toggleClass("hidden");
@@ -220,7 +234,7 @@ var dateTime = {
         var day = this.addZero(this.getCurrentDay());
         var year = this.getCurrentYear();
         var dateText = this.getCurrentDayFrenchText() +
-                ' ' + day + '/' + this.getCurrentMonth() + '/' + year
+                ' ' + day + '/' + this.getCurrentMonth() + '/' + year;
         return dateText;
     },
     getCurrentDayText: function () {
