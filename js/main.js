@@ -151,6 +151,9 @@ var prayer = {
             }
         }, 1000);
     },
+    /**
+     * 5 min après el iqama on met en surbrillance la prochaine heure de prière
+     */
     setNextPrayerTimeHilight: function (nextPrayerTimeIndex) {
         // si prochaine prière est sobh
         if (nextPrayerTimeIndex === 5) {
@@ -159,7 +162,7 @@ var prayer = {
         setTimeout(function () {
             $(".prayer").removeClass("prayer-hilighted");
             $(".prayer:contains(" + prayer.getTodayPrayerTimeByIndex(nextPrayerTimeIndex) + ")").addClass("prayer-hilighted");
-        }, 15 * 60000);
+        }, 5 * 60000);
     },
     showIqama: function () {
         $(".main").toggleClass("hidden");
