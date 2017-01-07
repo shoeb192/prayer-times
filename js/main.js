@@ -24,7 +24,7 @@ var prayer = {
             async: false,
             data: "text",
             success: function (data) {
-                $("#version").text(data);
+                $("#version").text("v"+data);
             }
         });
     },
