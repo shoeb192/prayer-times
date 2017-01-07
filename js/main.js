@@ -16,6 +16,17 @@ var prayer = {
     loadData: function () {
         this.loadCustomData();
         this.loadPrayerTimes();
+        this.loadVersion();
+    },
+    loadVersion: function () {
+        $.ajax({
+            url: "version",
+            async: false,
+            data: "text",
+            success: function (data) {
+                $("#version").text(data);
+            }
+        });
     },
     loadCustomData: function () {
         $.ajax({

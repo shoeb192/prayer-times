@@ -104,3 +104,9 @@ body {
     background-size: contain;
     height: 70%;
 }
+
+#version{
+    font-size: 150%;
+    margin: 0 10px;
+    color: #adadad
+}
