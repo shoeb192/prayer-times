@@ -16,9 +16,6 @@ body {
     height:45%;
 }
 
-.main .footer{
-    font-size: 200%
-}
 
 .header{
     font-size: 400%;
@@ -29,7 +26,7 @@ body {
     font-size: 1200%;
 }
 
-#date{
+#date, #hijriDate{
     font-size: 500%
 }
 
@@ -79,7 +76,7 @@ body {
 }
 
 #aid{
-   color: red;
+    color: red;
 }
 
 #chourouk, #joumouaa{
@@ -105,8 +102,18 @@ body {
     height: 70%;
 }
 
+.main .footer{
+    font-size: 200%;
+    float: left;
+    width: 95%;
+
+}
+
 #version{
-    font-size: 150%;
-    margin: 0 10px;
-    color: #adadad
+    float: right;
+    font-size: 30px;
+    /*margin: 0 10px;*/
+    color: #adadad;
+    text-align: right;
+    padding-right: 20px;
 }

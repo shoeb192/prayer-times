@@ -24,7 +24,7 @@ var prayer = {
             async: false,
             data: "text",
             success: function (data) {
-                $("#version").text("v"+data);
+                $("#version").text("v" + data);
             }
         });
     },
@@ -176,6 +176,28 @@ var prayer = {
     },
     setDate: function () {
         $("#date").text(dateTime.getCurrentDate());
+        this.setCurrentHijriDate();
+    },
+    setCurrentHijriDate: function () {
+        var hijriDate = "";
+        var day = dateTime.addZero(dateTime.getCurrentDay());
+        var month = dateTime.getCurrentMonth();
+        var year = dateTime.getCurrentYear();
+        $.ajax({
+            url: dateTime.hijriDateApiUrl + day + '-' + month + '-' + year,
+            dataType: "json",
+            success: function (response) {
+                if (response.code === 200) {
+                    data = response.data.hijri;
+                    hijriDate = dateTime.getCurrentDayArabicText()
+                            + ' ' + data.day
+                            + ' ' + data.month.ar
+                            + ' ' + data.year;
+
+                    $("#hijriDate").text(hijriDate);
+                }
+            }
+        });
     },
     setAidPrayerTime: function () {
         $(".chourouk").show();
@@ -208,6 +230,7 @@ var prayer = {
  * dateTime functions
  */
 var dateTime = {
+    hijriDateApiUrl: "http://api.aladhan.com/gToH?date=",
     addZero: function (value) {
         if (value < 10) {
             value = '0' + value;
@@ -238,18 +261,19 @@ var dateTime = {
     getCurrentTime: function (withSeconds) {
         var date = new Date();
         var second = this.addZero(date.getSeconds());
-
-        var time = this.getCurrentHour() + ":" + this.getCurrentMinute();
+        var time = this.getCurrentHour() + ':' + this.getCurrentMinute();
         if (withSeconds === true) {
-            time += ":" + second;
+            time += ':' + second;
         }
         return  time;
     },
     getCurrentDate: function () {
         var day = this.addZero(this.getCurrentDay());
         var year = this.getCurrentYear();
-        var dateText = this.getCurrentDayFrenchText() +
-                ' ' + day + '/' + this.getCurrentMonth() + '/' + year;
+        var dateText = this.getCurrentDayFrenchText() 
+                + ' ' + day 
+                + '/' + this.getCurrentMonth() 
+                + '/' + year;
         return dateText;
     },
     getCurrentDayText: function () {
