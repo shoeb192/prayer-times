@@ -153,6 +153,7 @@ var prayer = {
     },
     /**
      * 5 min après el iqama on met en surbrillance la prochaine heure de prière
+     * @param {int} nextPrayerTimeIndex 
      */
     setNextPrayerTimeHilight: function (nextPrayerTimeIndex) {
         // si prochaine prière est sobh
