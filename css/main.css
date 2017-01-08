@@ -59,7 +59,7 @@ body {
     color: #f0ad4e;
 }
 
-.wait{
+.wait>div{
     font-size: 300%;
     text-align: center;
     width: 20%;

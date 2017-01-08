@@ -304,7 +304,7 @@ var prayer = {
         $("#ichaa").text(this.getIchaTime());
     },
     setPrayerWaitings: function () {
-        $(".wait").each(function (i, e) {
+        $(".wait>div").each(function (i, e) {
             $(e).text(prayer.getPrayersWaitingTimes()[i] + " min");
         });
     },
