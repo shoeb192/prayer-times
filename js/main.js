@@ -2,10 +2,12 @@ var prayer = {
     customData: null,
     months: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
     prayerTimes: [],
+    hijriDateApiUrl: "http://api.aladhan.com/gToH?date=",
     init: function () {
+        this.loadData();
+        this.setCustomContent();
         this.setTime();
         this.setDate();
-        this.loadData();
         this.setPrayerTimes();
         this.setPrayerWaitings();
         this.initAdhanFlash();
@@ -143,9 +145,16 @@ var prayer = {
                             clearInterval(iqamaFlashInterval);
                             $(".main").removeClass("hidden");
                             $(".iqama").addClass("hidden");
-                            prayer.iqamaIsFlashing = false;
-                            prayer.setNextPrayerTimeHilight(currentPrayerIndex + 1);
+                            prayer.setNextPrayerTimeHilight(currentPrayerIndex);
                         }, 60000);
+
+                        /**
+                         * temp pendant lequel on vérifie pas el iqama (en général le temps entre 2 prière)
+                         * minimum 1h entre maghrib et icha
+                         */
+                        setTimeout(function () {
+                            prayer.iqamaIsFlashing = false;
+                        }, 60 * 60000);
                     }
                 });
             }
@@ -153,10 +162,11 @@ var prayer = {
     },
     /**
      * 5 min après el iqama on met en surbrillance la prochaine heure de prière
-     * @param {int} nextPrayerTimeIndex 
+     * @param {int} currentPrayerTimeIndex 
      */
-    setNextPrayerTimeHilight: function (nextPrayerTimeIndex) {
-        // si prochaine prière est sobh
+    setNextPrayerTimeHilight: function (currentPrayerTimeIndex) {
+        nextPrayerTimeIndex = currentPrayerTimeIndex + 1;
+        // si prière en cours est ichaa
         if (nextPrayerTimeIndex === 5) {
             nextPrayerTimeIndex = 0;
         }
@@ -170,6 +180,7 @@ var prayer = {
         $(".iqama").toggleClass("hidden");
     },
     setTime: function () {
+        $("#time").text(dateTime.getCurrentTime(true));
         setInterval(function () {
             $("#time").text(dateTime.getCurrentTime(true));
         }, 1000);
@@ -180,11 +191,11 @@ var prayer = {
     },
     setCurrentHijriDate: function () {
         var hijriDate = "";
-        var day = dateTime.addZero(dateTime.getCurrentDay());
+        var day = dateTime.addZero(dateTime.getCurrentDay() + this.customData.adjustment);
         var month = dateTime.getCurrentMonth();
         var year = dateTime.getCurrentYear();
         $.ajax({
-            url: dateTime.hijriDateApiUrl + day + '-' + month + '-' + year,
+            url: prayer.hijriDateApiUrl + day + '-' + month + '-' + year,
             dataType: "json",
             success: function (response) {
                 if (response.code === 200) {
@@ -223,6 +234,10 @@ var prayer = {
         $("#asr-waiting").text(this.getPrayersWaitingTimes()[2] + " min");
         $("#maghrib-waiting").text(this.getPrayersWaitingTimes()[3] + " min");
         $("#icha-waiting").text(this.getPrayersWaitingTimes()[4] + " min");
+    },
+    setCustomContent: function () {
+        $(".header").text(this.customData.headerText);
+        $(".footer").text(this.customData.footerText);
     }
 };
 
@@ -230,7 +245,6 @@ var prayer = {
  * dateTime functions
  */
 var dateTime = {
-    hijriDateApiUrl: "http://api.aladhan.com/gToH?date=",
     addZero: function (value) {
         if (value < 10) {
             value = '0' + value;
@@ -270,9 +284,9 @@ var dateTime = {
     getCurrentDate: function () {
         var day = this.addZero(this.getCurrentDay());
         var year = this.getCurrentYear();
-        var dateText = this.getCurrentDayFrenchText() 
-                + ' ' + day 
-                + '/' + this.getCurrentMonth() 
+        var dateText = this.getCurrentDayFrenchText()
+                + ' ' + day
+                + '/' + this.getCurrentMonth()
                 + '/' + year;
         return dateText;
     },
