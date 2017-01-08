@@ -139,6 +139,13 @@ var prayer = {
                         clearInterval(adhanFlashInterval);
                         prayer.adhanIsFlashing = false;
                         prayerElm.removeClass("flash");
+                        
+                        if(prayer.customData.enableAdhanDouaa === true){
+                            prayer.adhanDouaa.show();
+                            setTimeout(function () {
+                                prayer.adhanDouaa.hide();
+                            }, 60000);
+                        }
                     }, 60000);
                 }
             }
@@ -204,6 +211,16 @@ var prayer = {
     showIqama: function () {
         $(".main").toggleClass("hidden");
         $(".iqama").toggleClass("hidden");
+    },
+    adhanDouaa: {
+        show: function () {
+            $(".main").addClass("hidden");
+            $(".adhan").removeClass("hidden");
+        },
+        hide: function () {
+            $(".main").removeClass("hidden");
+            $(".adhan").addClass("hidden");
+        }
     },
     setTime: function () {
         $("#time").text(dateTime.getCurrentTime(true));

@@ -5,7 +5,7 @@ body {
     font-size: 12px;
 }
 
-.main{
+.main, .iqama, .adhan{
     height:100vh;
 }
 
@@ -28,7 +28,7 @@ body {
 }
 
 #date, #hijriDate{
-    font-size: 400%
+    font-size: 500%
 }
 
 .prayer-text>div{
@@ -85,7 +85,6 @@ body {
 
 .iqama{
     background-color: gray;
-    height:100vh;
 }
 
 .iqama .top, .iqama .bottom{
@@ -100,6 +99,12 @@ body {
     background-position: 50%;
     background-size: contain;
     height: 70%;
+}
+
+.adhan {
+    background-image: url(/img/douaa-after-athan.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .main .footer{

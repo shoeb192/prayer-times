@@ -4,6 +4,7 @@
     "aidIsEnabled": false,
     "aidTime": "09:00",
     
+    "enableAdhanDouaa": true,
     "minimumIchaTime": "19:50",
     "maximumIchaTimeForNoWaiting": "22:00",
     "headerText": "Mosquée ES-sounna - Houilles",
