@@ -66,7 +66,22 @@ var prayer = {
     },
     getTodayFivePrayerTimes: function () {
         var prayerTimes = this.getTodayPrayerLine();
-        return [prayerTimes[1], prayerTimes[3], prayerTimes[4], prayerTimes[5], this.getIchaTime()];
+        prayerTimes = [prayerTimes[1], prayerTimes[3], prayerTimes[4], prayerTimes[5], prayerTimes[6]];
+        if (dateTime.isDst()) {
+            $.each(prayerTimes, function (i, prayerTime) {
+                prayerTimes[i] = prayer.dstConvertPrayerTime(prayerTime);
+            });
+        }
+        return prayerTimes;
+    },
+    dstConvertPrayerTime: function (prayerTime) {
+        if (dateTime.isDst()) {
+            prayerTime = prayerTime.split(":");
+            var hourPrayerTime = Number(prayerTime[0]) + (dateTime.getCurrentMonth() === "03" ? 1 : -1);
+            var minutePrayerTime = prayerTime[1];
+            prayerTime = dateTime.addZero(hourPrayerTime) + ':' + minutePrayerTime;
+        }
+        return prayerTime;
     },
     getTodayPrayerTimeByIndex: function (index) {
         return this.getTodayFivePrayerTimes()[index];
@@ -80,7 +95,7 @@ var prayer = {
         return date;
     },
     getIchaTime: function () {
-        var ichaTime = this.getTodayPrayerLine()[6];
+        var ichaTime = this.getTodayFivePrayerTimes()[4];
         if (ichaTime <= this.customData.minimumIchaTime)
         {
             ichaTime = this.customData.minimumIchaTime;
@@ -88,7 +103,11 @@ var prayer = {
         return ichaTime;
     },
     getChouroukTime: function () {
-        return this.getTodayPrayerLine()[2];
+        var chouroukTime = this.getTodayPrayerLine()[2];
+        if (dateTime.isDst()) {
+            chouroukTime = prayer.dstConvertPrayerTime(chouroukTime);
+        }
+        return  chouroukTime;
     },
     initCronMidNight: function () {
         // toutes les minutes
@@ -128,32 +147,36 @@ var prayer = {
     /**
      * on vérifie toutes les min si l'heure de iqama est arrivée, si oui on fait clignoter les min de la iqama
      */
-    iqamaIsFlashing: false,
+    waitForNextiqamaFlashing: false,
     initIqamaFlash: function () {
         setInterval(function () {
-            if (!prayer.iqamaIsFlashing) {
-                $.each(prayer.getTodayFivePrayerTimes(), function (currentPrayerIndex, prayerTime) {
+            if (!prayer.waitForNextiqamaFlashing) {
+                $(".prayer").each(function (currentPrayerIndex, prayerTime) {
+                    prayerTime = $(prayerTime).text();
                     //si date ou chourouk on continue
                     var diffTimeInMiniute = Math.floor((new Date() - prayer.getCurrentDateForPrayerTime(prayerTime)) / 60000);
                     if (diffTimeInMiniute === prayer.getPrayersWaitingTimes()[currentPrayerIndex]) {
-                        prayer.iqamaIsFlashing = true;
+                        prayer.waitForNextiqamaFlashing = true;
                         var iqamaFlashInterval = setInterval(function () {
                             prayer.showIqama();
                         }, 1000);
 
+                        /**
+                         * Iqama flash pendant 30 secondes
+                         */
                         setTimeout(function () {
                             clearInterval(iqamaFlashInterval);
                             $(".main").removeClass("hidden");
                             $(".iqama").addClass("hidden");
                             prayer.setNextPrayerTimeHilight(currentPrayerIndex);
-                        }, 60000);
+                        }, 30000);
 
                         /**
                          * temp pendant lequel on vérifie pas el iqama (en général le temps entre 2 prière)
                          * minimum 1h entre maghrib et icha
                          */
                         setTimeout(function () {
-                            prayer.iqamaIsFlashing = false;
+                            prayer.waitForNextiqamaFlashing = false;
                         }, 60 * 60000);
                     }
                 });
@@ -170,10 +193,13 @@ var prayer = {
         if (nextPrayerTimeIndex === 5) {
             nextPrayerTimeIndex = 0;
         }
+        /**
+         * 10 minutes après iqama on met en surbrillance la prochaine prière
+         */
         setTimeout(function () {
             $(".prayer").removeClass("prayer-hilighted");
             $(".prayer:contains(" + prayer.getTodayPrayerTimeByIndex(nextPrayerTimeIndex) + ")").addClass("prayer-hilighted");
-        }, 5 * 60000);
+        }, 10 * 60000);
     },
     showIqama: function () {
         $(".main").toggleClass("hidden");
@@ -191,7 +217,7 @@ var prayer = {
     },
     setCurrentHijriDate: function () {
         var hijriDate = "";
-        var day = dateTime.addZero(dateTime.getCurrentDay() + this.customData.adjustment);
+        var day = dateTime.addZero(dateTime.getCurrentDay() + this.customData.hijriAdjustment);
         var month = dateTime.getCurrentMonth();
         var year = dateTime.getCurrentYear();
         $.ajax({
@@ -221,8 +247,8 @@ var prayer = {
     },
     setPrayerTimes: function () {
         $("#joumouaa").text(this.customData.joumouaaTime);
-        $("#sobh").text(this.getTodayFivePrayerTimes()[0]);
         $("#chourouk").text(this.getChouroukTime());
+        $("#sobh").text(this.getTodayFivePrayerTimes()[0]);
         $("#dohr").text(this.getTodayFivePrayerTimes()[1]);
         $("#asr").text(this.getTodayFivePrayerTimes()[2]);
         $("#maghrib").text(this.getTodayFivePrayerTimes()[3]);
@@ -303,6 +329,24 @@ var dateTime = {
         day[6] = ["Samedi", "السبت"];
 
         return day[dayIndex];
+    },
+    getLastSundayOfMonth: function (month) {
+        var date = new Date();
+        date.setMonth(month);
+        date.setDate(30);
+        date.setDate(date.getDate() - date.getDay());
+        return date.getDate();
+    },
+    isDst: function () {
+        var date = new Date();
+        var currentMonth = date.getMonth();
+        var currentDay = date.getDate();
+        if ($.inArray(currentMonth, [2, 9]) !== -1) {
+            if (currentDay >= this.getLastSundayOfMonth(currentMonth)) {
+                return true;
+            }
+        }
+        return false;
     },
     getCurrentDayArabicText: function () {
         return this.getCurrentDayText()[1];
