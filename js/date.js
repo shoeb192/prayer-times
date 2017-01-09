@@ -1,3 +1,5 @@
+/* global prayer */
+
 /**
  * class handling date and time
  * @type object

@@ -1,3 +1,5 @@
+/* global dateTime */
+
 /**
  * Class handling prayers 
  * @author ibrahim.zehhaf@gmail.com
@@ -16,7 +18,6 @@ var prayer = {
      * init the app
      */
     init: function () {
-        this.setCustomContent();
         this.loadData();
         this.setTime();
         this.setDate();
@@ -26,6 +27,7 @@ var prayer = {
         this.initIqamaFlash();
         this.initCronMidNight();
         this.setAidPrayerTime();
+        this.setCustomContent();
     },
     /**
      * load all data
@@ -171,19 +173,16 @@ var prayer = {
     /**
      * init the cron that change prayer times by day
      * at midnight we change prayer times for the day
-     * we check every second
+     * we check every minute
      */
     initCronMidNight: function () {
         setInterval(function () {
-            /**
-             * @todo do that after icha iqama
-             */
             if (dateTime.getCurrentHour() === "00" && dateTime.getCurrentMinute() === "00") {
                 prayer.setDate();
                 prayer.setPrayerTimes();
                 prayer.setPrayerWaitings();
             }
-        }, 1000);
+        }, 60000);
     },
     /**
      * Check every minute if athan time is ok
