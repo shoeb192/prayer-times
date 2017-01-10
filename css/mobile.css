@@ -1,0 +1,104 @@
+@media (max-width:768px){
+
+    body {
+        background-color: #000;
+        color: #fff;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .main{
+        height:100vh;
+    }
+
+    .header{
+        font-size: 200%;
+        color: yellowgreen;
+        padding: 10px 0;
+    }
+    .time{
+        font-size: 500%;
+    }
+
+    .gregorianDate, .hijriDate{
+        font-size: 200%
+    }
+
+    .top-content{
+        height: 27%;
+
+    }
+
+    .prayer-content{
+        height: 45%;
+
+    }
+
+    .prayer-content>div {
+        height: 60px;
+        line-height: 30px;
+    }
+
+    .prayer-content .text {
+        font-size: 150%;
+        text-align: left;
+    }
+
+    .prayer-content .wait {
+        text-align: right;
+    }
+
+    .prayer-content .prayer {
+        font-size: 300%;
+        color: yellowgreen;
+
+    }
+
+    .chourouk-joumouaa{
+        height: 14%;
+    }
+
+    .chourouk, .joumouaa{
+        font-size: 150%;
+
+    }
+
+    .chourouk-id, .joumouaa-id{
+        color: yellowgreen;
+        font-size: 300%;
+    }
+
+    .footer{
+        padding: 0 10px;
+    }
+
+    .row{
+        margin: 0;
+        padding: 0 10px;
+    }
+
+    .flash{
+        visibility: hidden;
+    }
+
+    .iqama{
+        background-color: gray;
+        height:100vh;
+        padding: 20px;
+    }
+    .iqama .top, .iqama .bottom{
+        font-size: 200%;
+        height: 15%;
+        color: #000;
+    }
+
+    .iqama .image{
+        background-image: url(/img/phone.png);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: contain;
+        height: 70%;
+    }
+
+
+}

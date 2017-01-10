@@ -5,38 +5,37 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/main.css" rel="stylesheet">
+        <!--<link href="css/desktop.css" rel="stylesheet">-->
+        <link href="css/mobile.css" rel="stylesheet">
     </head>
-    <body>
+    <body class="text-center">
 
         <div class="adhan hidden"></div>
-        <div class="iqama hidden">
-            <div class="text-center top">El-iqama</div>
+        <div class=" iqama hidden">
+            <div class="top">El-iqama</div>
             <div class="image"></div>
-            <div class="text-center bottom">الإقامة</div>
+            <div class="bottom">الإقامة</div>
         </div>
 
-        <div class="main">
+        <div class="main hidden-xs">
+            <div class="header">Mosquée ES-sounna - Houilles</div>
             <div class="top-content">
-                <div class="text-center header"></div>
-                <div class="">
-                    <div class="col-lg-3 col-xs-3 text-center aid">
-                        <div>La prière du Aïd aura lieu à</div>
-                        <div id="aid"></div>
-                    </div>
-                    <div class="col-lg-3 col-xs-3 text-center chourouk">
-                        <div>Chourouk</div>
-                        <div id="chourouk"></div>
-                    </div>
-                    <div class="col-lg-6 col-xs-6 text-center">
-                        <div id="time"></div>
-                        <div id="date"></div>
-                        <div id="hijriDate"></div>
-                    </div>
-                    <div class=" col-lg-3 col-xs-3 text-center joumouaa">
-                        <div>Joumouaa</div>
-                        <div id="joumouaa"></div>
-                    </div>
+                <div class="col-lg-3 aid">
+                    <div>La prière du Aïd aura lieu à</div>
+                    <div class="aid"></div>
+                </div>
+                <div class="col-lg-3 chourouk">
+                    <div>Chourouk</div>
+                    <div class="chourouk-id">09:00</div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="time">09:00:00</div>
+                    <div class="gregorianDate">10/10/2017</div>
+                    <div class="hijriDate">الثلاثاء 12 رَبيع الثاني 1438</div>
+                </div>
+                <div class=" col-lg-3 joumouaa">
+                    <div>Joumouaa</div>
+                    <div class="joumouaa-id">09:00</div>
                 </div>
             </div>
 
@@ -50,24 +49,69 @@
                 </div>
 
                 <div class="prayer-time">
-                    <div id="sobh" class="prayer"></div>
-                    <div id="dohr" class="prayer"></div>
-                    <div id="asr" class="prayer"></div>
-                    <div id="maghrib" class="prayer"></div>
-                    <div id="ichaa" class="prayer" ></div>
+                    <div class="sobh">09:00</div>
+                    <div class="dohr">09:00</div>
+                    <div class="asr">09:00</div>
+                    <div class="maghrib">09:00</div>
+                    <div class="ichaa">09:00</div>
                 </div>
 
-                <div class="wait">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                <div class="prayer-wait">
+                    <div>10 min</div>
+                    <div>10 min</div>
+                    <div>10 min</div>
+                    <div>10 min</div>
+                    <div>10 min</div>
                 </div>
             </div>
 
-            <div class="text-center footer"></div>
-            <div id="version"></div>
+            <div class="footer">Association SFI - Tél. 09.50.31.41.77 / 06.61.49.91.70 - RIB : IBAN FR76 3000 3018 6200 0504 6187 693 / BIC SOGEFRPP</div>
+            <div id="version">1.1.2</div>
+        </div>
+
+        <div class="mobile hidden-lg hidden-md hidden-sm">
+
+            <div class="iqama hidden">
+                <div class="top">El-iqama</div>
+                <div class="image"></div>
+                <div class="bottom">الإقامة</div>
+            </div>
+            <div class="main">
+                <div class="header">Mosquée Essounna</div>
+                <div class="top-content">
+                    <div class="time">00:00:00</div>
+                    <div class="gregorianDate">Dimanche 10/01/2017</div>
+                    <div class="hijriDate">الثلاثاء 12 رَبيع الثاني 1438</div>
+                </div>
+
+                <div class="prayer-content">
+                    <div class="row">
+                        <div class="col-xs-3 text">Sobh</div><div class="col-xs-6 prayer sobh">00:00</div> <div class="col-xs-3 wait">10 min</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3 text">Dohr</div><div class="col-xs-6 prayer dohr">00:00</div><div class="col-xs-3 wait">10 min</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3 text">Asr</div><div class="col-xs-6 prayer asr">00:00</div><div class="col-xs-3 wait">10 min</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3 text">Maghrib</div><div class="col-xs-6 prayer maghrib">00:00</div><div class="col-xs-3 wait">10 min</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3 text">Icha</div><div class="col-xs-6 prayer ichaa">00:00</div><div class="col-xs-3 wait">10 min</div>
+                    </div>
+                </div>
+
+                <div class="row chourouk-joumouaa">
+                    <div class="col-xs-6 chourouk">Chourouk</div> <div class="col-xs-6 chourouk">Joumouoaa</div>
+                    <div class="col-xs-6 prayer chourouk-id">00:00</div><div class="col-xs-6 prayer joumouaa-id">00:00</div>
+                </div>
+
+                <div class="footer">
+                    <div>Association SFI - Tél. 09.50.31.41.77 / 06.61.49.91.70 - RIB : IBAN FR76 3000 3018 6200 0504 6187 693 / BIC SOGEFRPP</div>
+                    <div id="version">1.2.1</div>
+                </div>
+            </div>
         </div>
 
         <script src="js/jquery.min.js"></script>

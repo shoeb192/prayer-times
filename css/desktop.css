@@ -9,31 +9,38 @@ body {
     height:100vh;
 }
 
-.main .top-content{
-    height:50%;
-}
-
-.main .prayer-content{
+.top-content{
     height:45%;
 }
 
+.prayer-content{
+    height:40%;
+    font-size: 600%;
+}
 
 .header{
-    font-size: 400%;
+    font-size: 500%;
     color: yellowgreen;
 }
 
-#time{
+.chourouk, .joumouaa{
+    padding-top: 40px;
+    font-size: 500%;
+}
+
+.chourouk-id, .joumouaa-id{
+    color: yellowgreen;
+}
+
+.time{
     font-size: 1200%;
 }
 
-#date, #hijriDate{
+.gregorianDate, .hijriDate{
     font-size: 500%
 }
 
 .prayer-text>div{
-    font-size: 600%;
-    text-align: center;
     width: 20%;
     float: left;
 }
@@ -46,41 +53,27 @@ body {
     border-top: 1px #fff solid;
 }
 
-.prayer{
+/*.prayer-time>div{
     color: yellowgreen;
-    font-size: 800%;
     text-align: center;
     width: 20%;
     display: table-cell;
     vertical-align: middle;
+}*/
+
+.prayer-wait>div{
+    font-size: 40px;
+    text-align: center;
+    width: 20%;
+    float: left;
 }
 
 .prayer-hilighted{
     color: #f0ad4e;
 }
 
-.wait>div{
-    font-size: 300%;
-    text-align: center;
-    width: 20%;
-    float: left;
-}
-
 .flash{
     visibility: hidden;
-}
-
-.chourouk,.joumouaa, .aid {
-    font-size: 500%;
-    padding-top: 5%;
-}
-
-#aid{
-    color: red;
-}
-
-#chourouk, #joumouaa{
-    color: yellowgreen;
 }
 
 .iqama{
@@ -107,17 +100,15 @@ body {
     background-size: contain;
 }
 
-.main .footer{
+.footer{
     font-size: 200%;
     float: left;
     width: 90%;
-
 }
 
 #version{
     float: right;
     font-size: 30px;
-    /*margin: 0 10px;*/
     color: #adadad;
     text-align: right;
     padding-right: 20px;

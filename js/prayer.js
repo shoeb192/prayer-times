@@ -295,16 +295,16 @@ var prayer = {
      * set time every second
      */
     setTime: function () {
-        $("#time").text(dateTime.getCurrentTime(true));
+        $(".time").text(dateTime.getCurrentTime(true));
         setInterval(function () {
-            $("#time").text(dateTime.getCurrentTime(true));
+            $(".time").text(dateTime.getCurrentTime(true));
         }, 1000);
     },
     /**
      * set date
      */
     setDate: function () {
-        $("#date").text(dateTime.getCurrentDate());
+        $(".date").text(dateTime.getCurrentDate());
         this.setCurrentHijriDate();
     },
     /**
@@ -327,7 +327,7 @@ var prayer = {
                             + ' ' + data.month.ar
                             + ' ' + data.year;
 
-                    $("#hijriDate").text(hijriDate);
+                    $(".hijriDate").text(hijriDate);
                 }
             }
         });
@@ -349,7 +349,7 @@ var prayer = {
         $(".chourouk").show();
         $(".aid").hide();
         if (this.customData.aidIsEnabled) {
-            $("#aid").text(this.customData.aidTime);
+            $(".aid-id").text(this.customData.aidTime);
             $(".chourouk").hide();
             $(".aid").show();
         }
@@ -358,19 +358,19 @@ var prayer = {
      * set all prayer times 
      */
     setPrayerTimes: function () {
-        $("#joumouaa").text(this.getJoumouaaTime());
-        $("#chourouk").text(this.getChouroukTime());
-        $("#sobh").text(this.getTodayFivePrayerTimes()[0]);
-        $("#dohr").text(this.getTodayFivePrayerTimes()[1]);
-        $("#asr").text(this.getTodayFivePrayerTimes()[2]);
-        $("#maghrib").text(this.getTodayFivePrayerTimes()[3]);
-        $("#ichaa").text(this.getIchaTime());
+        $(".joumouaa-id").text(this.getJoumouaaTime());
+        $(".chourouk-id").text(this.getChouroukTime());
+        $(".sobh").text(this.getTodayFivePrayerTimes()[0]);
+        $(".dohr").text(this.getTodayFivePrayerTimes()[1]);
+        $(".asr").text(this.getTodayFivePrayerTimes()[2]);
+        $(".maghrib").text(this.getTodayFivePrayerTimes()[3]);
+        $(".ichaa").text(this.getIchaTime());
     },
     /**
      * set wating times
      */
     setPrayerWaitings: function () {
-        $(".wait>div").each(function (i, e) {
+        $(".wait").each(function (i, e) {
             $(e).text(prayer.getPrayersWaitingTimes()[i] + " min");
         });
     },
