@@ -46,7 +46,7 @@ var prayer = {
             async: false,
             data: "text",
             success: function (data) {
-                $("#version").text("v" + data);
+                $(".version").text("v" + data);
             }
         });
     },
@@ -372,7 +372,7 @@ var prayer = {
      */
     setPrayerWaitings: function () {
         $(".wait").each(function (i, e) {
-            $(e).text(prayer.getPrayersWaitingTimes()[i] + " min");
+            $(e).text(prayer.getPrayersWaitingTimes()[i % 5] + " min");
         });
     },
     /**

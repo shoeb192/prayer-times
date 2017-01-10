@@ -110,7 +110,7 @@ body {
     width: 90%;
 }
 
-#version{
+.version{
     float: right;
     font-size: 30px;
     color: #adadad;

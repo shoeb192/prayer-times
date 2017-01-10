@@ -100,5 +100,9 @@
         height: 70%;
     }
 
+    .version{
+        font-size: 10px;
+        color: #adadad;
+    }
 
 }
