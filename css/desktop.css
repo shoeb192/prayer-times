@@ -23,13 +23,16 @@ body {
     color: yellowgreen;
 }
 
-.chourouk, .joumouaa{
+.chourouk, .joumouaa, .aid{
     padding-top: 40px;
     font-size: 500%;
 }
 
 .chourouk-id, .joumouaa-id{
     color: yellowgreen;
+}
+.aid-id {
+    color: red;
 }
 
 .time{
@@ -40,36 +43,37 @@ body {
     font-size: 500%
 }
 
-.prayer-text>div{
+.prayer-text {
+    width: 100%;
+} 
+
+.prayer-text .text, 
+.prayer-time .prayer, 
+.prayer-wait .wait {
     width: 20%;
     float: left;
 }
 
 .prayer-time {
-    display: table;
     height: 150px;
     width: 100%;
+    line-height: 150px;
     border-bottom: 1px #fff solid;
     border-top: 1px #fff solid;
 }
 
-/*.prayer-time>div{
+.prayer-time .prayer{
     color: yellowgreen;
-    text-align: center;
-    width: 20%;
-    display: table-cell;
-    vertical-align: middle;
-}*/
-
-.prayer-wait>div{
-    font-size: 40px;
-    text-align: center;
-    width: 20%;
-    float: left;
+    font-size: 160%;
 }
 
-.prayer-hilighted{
-    color: #f0ad4e;
+.prayer-wait .wait{
+    font-size: 50px;
+    text-align: center;
+}
+
+.prayer-hilighted {
+    color: #f0ad4e  !important;
 }
 
 .flash{

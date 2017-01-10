@@ -216,7 +216,7 @@ var prayer = {
                     if (diffTimeInMiniute === prayer.getPrayersWaitingTimes()[currentPrayerIndex]) {
                         prayer.waitForNextiqamaFlashing = true;
                         // iqama flashing
-                        prayer.flashIqama();
+                        prayer.flashIqama(currentPrayerIndex);
                         // timeout for that we don't check iqama, generaly beetween two prayer (1 hour min)
                         setTimeout(function () {
                             prayer.waitForNextiqamaFlashing = false;
@@ -238,7 +238,7 @@ var prayer = {
         }
         setTimeout(function () {
             $(".prayer").removeClass("prayer-hilighted");
-            $(".prayer:contains(" + prayer.getTodayPrayerTimeByIndex(nextPrayerTimeIndex) + ")").addClass("prayer-hilighted");
+            $(".prayer").eq(nextPrayerTimeIndex).addClass("prayer-hilighted");
         }, 10 * 60000);
     },
     /**
@@ -265,8 +265,9 @@ var prayer = {
     },
     /**
      * flash iqama for 30 sec
+     * @param {integer} currentPrayerIndex 
      */
-    flashIqama: function () {
+    flashIqama: function (currentPrayerIndex) {
         var iqamaFlashInterval = setInterval(function () {
             $(".main").toggleClass("hidden");
             $(".iqama").toggleClass("hidden");
@@ -304,7 +305,7 @@ var prayer = {
      * set date
      */
     setDate: function () {
-        $(".date").text(dateTime.getCurrentDate());
+        $(".gregorianDate").text(dateTime.getCurrentDate());
         this.setCurrentHijriDate();
     },
     /**
