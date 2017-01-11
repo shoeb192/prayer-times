@@ -381,5 +381,6 @@ var prayer = {
     setCustomContent: function () {
         $(".header").text(this.customData.headerText);
         $(".assosciation").text(this.customData.footerText);
+        $(".site>span").text(this.customData.site);
     }
 };

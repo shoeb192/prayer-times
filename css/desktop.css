@@ -94,7 +94,7 @@ body {
     background-image: url(/img/phone.png);
     background-repeat: no-repeat;
     background-position: 50%;
-    background-size: cover;
+    background-size: contain;
     height: 70%;
 }
 
