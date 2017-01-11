@@ -94,25 +94,29 @@ body {
     background-image: url(/img/phone.png);
     background-repeat: no-repeat;
     background-position: 50%;
-    background-size: contain;
+    background-size: cover;
     height: 70%;
 }
 
 .adhan {
     background-image: url(/img/douaa-after-athan.jpg);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 }
 
-.footer{
+.site{
+    font-size: 150%;
+}
+.site>span{
+    color: #1b6d85;
+}
+
+.assosciation{
     font-size: 200%;
-    float: left;
-    width: 90%;
 }
 
 .version{
-    float: right;
-    font-size: 30px;
+    font-size: 20px;
     color: #adadad;
     text-align: right;
     padding-right: 20px;

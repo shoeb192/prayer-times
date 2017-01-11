@@ -17,20 +17,21 @@
         padding: 10px 0;
     }
     .time{
-        font-size: 500%;
+        font-size: 400%;
     }
 
     .gregorianDate, .hijriDate{
-        font-size: 200%
+        font-size: 150%
     }
 
     .top-content{
-        height: 27%;
+        height: 25%;
 
     }
 
     .prayer-content{
         height: 45%;
+        margin-bottom: 20px;
 
     }
 
@@ -49,13 +50,13 @@
     }
 
     .prayer-content .prayer {
-        font-size: 300%;
+        font-size: 250%;
         color: yellowgreen;
 
     }
 
     .chourouk-joumouaa{
-        height: 14%;
+        height: 10%;
     }
 
     .chourouk, .joumouaa{
@@ -65,7 +66,7 @@
 
     .chourouk-id, .joumouaa-id{
         color: yellowgreen;
-        font-size: 300%;
+        font-size: 150%;
     }
 
     .footer{
@@ -100,9 +101,31 @@
         height: 70%;
     }
 
+    .adhan {
+        background-image: url(/img/douaa-after-athan-mobile.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100vh;
+        background-position: 50%;
+    }
+
+
+    .site{
+        font-size: 100%;
+    }
+    .site>span{
+        color: #1b6d85;
+    }
+
+    .assosciation{
+        font-size: 100%;
+    }
+
     .version{
         font-size: 10px;
         color: #adadad;
+        text-align: right;
+        padding: 3px;
     }
 
 }

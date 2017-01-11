@@ -380,6 +380,6 @@ var prayer = {
      */
     setCustomContent: function () {
         $(".header").text(this.customData.headerText);
-        $(".footer").text(this.customData.footerText);
+        $(".assosciation").text(this.customData.footerText);
     }
 };
