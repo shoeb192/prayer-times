@@ -8,7 +8,7 @@ fi
 mkdir -p /tmp/prayer
 scp -r -P 222 admin@izf.synology.me:/volume1/web/prayer/* /tmp/prayer
 
-cd ../../ 
+cd /var/www/prayer
 
 mkdir -p $1
 

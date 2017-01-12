@@ -8,6 +8,6 @@ mkdir -p /tmp/prayer
 git archive $1 | (cd /tmp/prayer && tar xf -)
 cd /tmp/prayer
 echo $1 > version  
-rsync -va --port 222 --delete --force --exclude-from "/home/keleyroot/perso/projects/prayer-times/deploy/exclude" ./ admin@192.168.1.14:/volume1/web/prayer
+rsync -va --port 222 --delete --force --exclude-from "/home/keleyroot/perso/projects/prayer-times/deploy/exclude" ./ admin@izf.synology.me:/volume1/web/prayer
 
 rm -rf /tmp/prayer/*

@@ -203,7 +203,7 @@ var prayer = {
         }, 1000);
     },
     /**
-     * Check every minute if iqama time is ok
+     * Check every second if iqama time is ok
      * if ok we show iqama flashing for 30 sec
      */
     waitForNextiqamaFlashing: false,
@@ -217,7 +217,7 @@ var prayer = {
                         prayer.waitForNextiqamaFlashing = true;
                         // iqama flashing
                         prayer.flashIqama(currentPrayerIndex);
-                        // timeout for that we don't check iqama, generaly beetween two prayer (1 hour min)
+                        // timeout for that we don't check iqama, generaly beetween two prayer (1 hour min between maghrib and ichaa)
                         setTimeout(function () {
                             prayer.waitForNextiqamaFlashing = false;
                         }, 60 * 60000);
