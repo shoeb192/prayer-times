@@ -229,7 +229,7 @@ var prayer = {
             // adding 15 minute
             prayerTimeDate.setMinutes(prayerTimeDate.getMinutes() + 15);
             if (date > prayerTimeDate) {
-                prayer.hilighPrayertByIndex(index);
+                prayer.hilighPrayertByIndex(index + 1);
             }
         });
     },
