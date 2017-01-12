@@ -22,8 +22,8 @@ var prayer = {
         this.setTime();
         this.setDate();
         this.setPrayerTimes();
-        this.setNextPrayerTimeHilight();
         this.setPrayerWaitings();
+        this.initNextPrayerTimeHilight();
         this.initAdhanFlash();
         this.initIqamaFlash();
         this.initCronMidNight();
@@ -218,10 +218,10 @@ var prayer = {
     /**
      * serch and set the next prayer time hilight
      */
-    setNextPrayerTimeHilight: function () {
+    initNextPrayerTimeHilight: function () {
         var date = new Date();
         // sobh is default
-        prayer.setNextPrayerTimeHilight(-1);
+        prayer.hilighPrayertByIndex(0);
         var prayerTimes = this.getTodayFivePrayerTimes().slice(0, 4);
         prayerTimes.push(this.getIchaTime());
         $.each(prayerTimes, function (index, prayerTime) {
@@ -254,7 +254,7 @@ var prayer = {
             nextPrayerTimeIndex = 0;
         }
         setTimeout(function () {
-            this.hilighPrayertByIndex(nextPrayerTimeIndex);
+            prayer.hilighPrayertByIndex(nextPrayerTimeIndex);
         }, 10 * 60000);
     },
     /**
@@ -289,16 +289,12 @@ var prayer = {
             $(".iqama").toggleClass("hidden");
         }, 1000);
 
-        // stop iqama flashing after 30 sec
+        // stop iqama flashing after 60 sec
         setTimeout(function () {
             clearInterval(iqamaFlashInterval);
             prayer.hideIqama();
-            prayer.setNextPrayerTimeHilight(currentPrayerIndex);
-        }, 30000);
-
-        // reinit waitForNextiqamaFlashing to false after 1 min
-        setTimeout(function () {
             prayer.waitForNextiqamaFlashing = false;
+            prayer.setNextPrayerTimeHilight(currentPrayerIndex);
         }, 60000);
     },
     hideIqama: function () {
