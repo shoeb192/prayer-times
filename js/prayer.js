@@ -105,7 +105,7 @@ var prayer = {
      */
     getTodayFivePrayerTimes: function () {
         var prayerTimes = this.getTodayPrayerLine();
-        prayerTimes = [prayerTimes[1], prayerTimes[3], prayerTimes[4], prayerTimes[5], this.getIchaTime()];
+        prayerTimes = [prayerTimes[1], prayerTimes[3], prayerTimes[4], prayerTimes[5], prayerTimes[6]];
         if (dateTime.isLastSundayDst()) {
             $.each(prayerTimes, function (i, prayerTime) {
                 prayerTimes[i] = prayer.dstConvertPrayerTime(prayerTime);
@@ -145,7 +145,7 @@ var prayer = {
      * @returns {String}
      */
     getIchaTime: function () {
-        var ichaTime = this.getTodayPrayerLine()[6];
+        var ichaTime = this.getTodayFivePrayerTimes()[4];
         if (ichaTime <= this.customData.minimumIchaTime)
         {
             ichaTime = this.customData.minimumIchaTime;
@@ -221,13 +221,15 @@ var prayer = {
     setNextPrayerTimeHilight: function () {
         var date = new Date();
         // sobh is default
-        prayer.setNextPrayerTimeHilightByIndex(-1);
-        $.each(this.getTodayFivePrayerTimes(), function (index, prayerTime) {
+        prayer.setNextPrayerTimeHilight(-1);
+        var prayerTimes = this.getTodayFivePrayerTimes().slice(0, 4);
+        prayerTimes.push(this.getIchaTime());
+        $.each(prayerTimes, function (index, prayerTime) {
             prayerTimeDate = prayer.getCurrentDateForPrayerTime(prayerTime);
             // adding 15 minute
             prayerTimeDate.setMinutes(prayerTimeDate.getMinutes() + 15);
             if (date > prayerTimeDate) {
-                prayer.setNextPrayerTimeHilightByIndex(index);
+                prayer.hilighPrayertByIndex(index);
             }
         });
     },
@@ -242,18 +244,15 @@ var prayer = {
         $(".mobile .prayer").eq(prayerIndex).addClass("prayer-hilighted");
     },
     /**
-     * 10 minute after iqama we hilight the next prayer time
+     * 10 minute after current iqama we hilight the next prayer time
      * @param {int} currentPrayerTimeIndex 
      */
-    setNextPrayerTimeHilightByIndex: function (currentPrayerTimeIndex) {
+    setNextPrayerTimeHilight: function (currentPrayerTimeIndex) {
         nextPrayerTimeIndex = currentPrayerTimeIndex + 1;
         // if icha is the current prayer
         if (nextPrayerTimeIndex === 5) {
             nextPrayerTimeIndex = 0;
         }
-        // for init
-        this.hilighPrayertByIndex(nextPrayerTimeIndex);
-        // 10 minute after
         setTimeout(function () {
             this.hilighPrayertByIndex(nextPrayerTimeIndex);
         }, 10 * 60000);
@@ -294,7 +293,7 @@ var prayer = {
         setTimeout(function () {
             clearInterval(iqamaFlashInterval);
             prayer.hideIqama();
-            prayer.setNextPrayerTimeHilightByIndex(currentPrayerIndex);
+            prayer.setNextPrayerTimeHilight(currentPrayerIndex);
         }, 30000);
 
         // reinit waitForNextiqamaFlashing to false after 1 min
