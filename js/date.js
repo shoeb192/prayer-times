@@ -144,7 +144,3 @@ var dateTime = {
         return this.getCurrentDayText()[0];
     }
 };
-
-$(document).ready(function () {
-    prayer.init();
-});
