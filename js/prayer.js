@@ -105,7 +105,7 @@ var prayer = {
      */
     getTodayFivePrayerTimes: function () {
         var prayerTimes = this.getTodayPrayerLine();
-        prayerTimes = [prayerTimes[1], prayerTimes[3], prayerTimes[4], prayerTimes[5], prayerTimes[6]];
+        prayerTimes = [prayerTimes[1], prayerTimes[3], prayerTimes[4], prayerTimes[5], this.getIchaTime()];
         if (dateTime.isLastSundayDst()) {
             $.each(prayerTimes, function (i, prayerTime) {
                 prayerTimes[i] = prayer.dstConvertPrayerTime(prayerTime);
@@ -128,14 +128,6 @@ var prayer = {
         return prayerTime;
     },
     /**
-     * get today prayer time by index
-     * @param {Integer} index
-     * @returns {String}
-     */
-    getTodayPrayerTimeByIndex: function (index) {
-        return this.getTodayFivePrayerTimes()[index];
-    },
-    /**
      * get current date object for given prayer time 
      * @param {String} prayerTime
      * @returns {Date}
@@ -153,7 +145,7 @@ var prayer = {
      * @returns {String}
      */
     getIchaTime: function () {
-        var ichaTime = this.getTodayFivePrayerTimes()[4];
+        var ichaTime = this.getTodayPrayerLine()[6];
         if (ichaTime <= this.customData.minimumIchaTime)
         {
             ichaTime = this.customData.minimumIchaTime;
@@ -228,14 +220,18 @@ var prayer = {
      */
     setNextPrayerTimeHilight: function () {
         var date = new Date();
+        // sobh is default
+        prayer.setNextPrayerTimeHilightByIndex(-1);
         $.each(this.getTodayFivePrayerTimes(), function (index, prayerTime) {
             prayerTimeDate = prayer.getCurrentDateForPrayerTime(prayerTime);
+            // adding 15 minute
+            prayerTimeDate.setMinutes(prayerTimeDate.getMinutes() + 15);
             if (date > prayerTimeDate) {
                 prayer.setNextPrayerTimeHilightByIndex(index);
             }
         });
     },
-    
+
     /**
      * hilight prayer by index
      * @param {integer} prayerIndex
@@ -293,13 +289,18 @@ var prayer = {
             $(".main").toggleClass("hidden");
             $(".iqama").toggleClass("hidden");
         }, 1000);
-        
+
+        // stop iqama flashing after 30 sec
         setTimeout(function () {
             clearInterval(iqamaFlashInterval);
             prayer.hideIqama();
-            prayer.waitForNextiqamaFlashing = false;
             prayer.setNextPrayerTimeHilightByIndex(currentPrayerIndex);
         }, 30000);
+
+        // reinit waitForNextiqamaFlashing to false after 1 min
+        setTimeout(function () {
+            prayer.waitForNextiqamaFlashing = false;
+        }, 60000);
     },
     hideIqama: function () {
         $(".main").removeClass("hidden");
