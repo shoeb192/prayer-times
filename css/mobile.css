@@ -9,6 +9,7 @@
 
     .main{
         height:100vh;
+        position: relative;
     }
 
     .header{
@@ -48,10 +49,13 @@
         text-align: right;
     }
 
-    .prayer-content .prayer {
+    .prayer-content .prayer, .chourouk-id, .joumouaa-id {
         font-size: 250%;
         color: yellowgreen;
+    }
 
+    .prayer-hilighted {
+        color: #f0ad4e  !important;
     }
 
     .chourouk-joumouaa{
@@ -63,13 +67,10 @@
 
     }
 
-    .chourouk-id, .joumouaa-id{
-        color: yellowgreen;
-        font-size: 150%;
-    }
-
     .footer{
         padding: 0 10px;
+        position: absolute;
+        bottom: 0;
     }
 
     .row{
