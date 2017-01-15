@@ -230,7 +230,7 @@ var prayer = {
             prayerTimeDate.setMinutes(prayerTimeDate.getMinutes() + 15);
             if (date > prayerTimeDate) {
                 index++;
-                if(index === 5){
+                if (index === 5) {
                     index = 0;
                 }
                 prayer.hilighPrayertByIndex(index);
@@ -263,25 +263,22 @@ var prayer = {
     },
     /**
      * Flash adhan for 1 minute
-     * @param {object} prayerElm
+     * @param {object} currentPrayerElm
      */
-    flashAdhan: function (prayerElm) {
+    flashAdhan: function (currentPrayerElm) {
         var adhanFlashInterval = setInterval(function () {
-            prayerElm.toggleClass("flash");
+            currentPrayerElm.toggleClass("flash");
         }, 1000);
 
+        // timeout for stopping time flashing
         setTimeout(function () {
             clearInterval(adhanFlashInterval);
             prayer.adhanIsFlashing = false;
-            prayerElm.removeClass("flash");
-
-            if (prayer.customData.enableAdhanDouaa === true) {
-                prayer.adhanDouaa.show();
-                setTimeout(function () {
-                    prayer.adhanDouaa.hide();
-                }, 60000);
-            }
+            currentPrayerElm.removeClass("flash");
+            // timeout for douaa show
+            prayer.adhanDouaa.setTimeout();
         }, 60000);
+
     },
     /**
      * flash iqama for 30 sec
@@ -313,6 +310,16 @@ var prayer = {
         hide: function () {
             $(".main").removeClass("hidden");
             $(".adhan").addClass("hidden");
+        },
+        setTimeout: function () {
+            if (prayer.customData.enableAdhanDouaa === true) {
+                setTimeout(function () {
+                    prayer.adhanDouaa.show();
+                    setTimeout(function () {
+                        prayer.adhanDouaa.hide();
+                    }, 60000);
+                }, 60000);
+            }
         }
     },
     /**
