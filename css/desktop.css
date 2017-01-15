@@ -29,6 +29,7 @@ body {
 
 .chourouk-id, .joumouaa-id{
     color: yellowgreen;
+    font-size: 150%;
 }
 .aid-id {
     color: red;
@@ -64,7 +65,7 @@ body {
 
 .prayer-time .prayer{
     color: yellowgreen;
-    font-size: 800%;
+    font-size: 900%;
 }
 
 .prayer-wait .wait{
