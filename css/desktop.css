@@ -121,10 +121,8 @@ body {
 }
 
 .app-qr-code{
-    height: 90px; 
-    width: 90px;
-    margin-left: 10px;
-    margin-bottom: 10px;
+    height: 70px; 
+    width: 70px;
 }
 
 .version-parent{
