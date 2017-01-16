@@ -249,6 +249,8 @@ var prayer = {
      * @param {integer} currentPrayerIndex 
      */
     flashIqama: function (currentPrayerIndex) {
+        prayer.setNextPrayerTimeHilight(currentPrayerIndex);
+        
         var iqamaFlashInterval = setInterval(function () {
             $(".main").toggleClass("hidden");
             $(".iqama").toggleClass("hidden");
@@ -258,9 +260,8 @@ var prayer = {
         setTimeout(function () {
             clearInterval(iqamaFlashInterval);
             prayer.hideIqama();
-            prayer.setNextPrayerTimeHilight(currentPrayerIndex);
         }, 30 * prayer.oneSecond);
-        
+
         // reset flag iqamaIsFlashing after one minute
         setTimeout(function () {
             prayer.iqamaIsFlashing = false;
