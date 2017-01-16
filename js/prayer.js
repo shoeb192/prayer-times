@@ -39,6 +39,7 @@ var prayer = {
         this.initCronMidNight();
         this.setAidPrayerTime();
         this.setCustomContent();
+        this.hideSpinner();
     },
     /**
      * load all data
@@ -250,7 +251,7 @@ var prayer = {
      */
     flashIqama: function (currentPrayerIndex) {
         prayer.setNextPrayerTimeHilight(currentPrayerIndex);
-        
+
         var iqamaFlashInterval = setInterval(function () {
             $(".main").toggleClass("hidden");
             $(".iqama").toggleClass("hidden");
@@ -427,5 +428,10 @@ var prayer = {
         $(".header").text(this.customData.headerText);
         $(".assosciation").html(this.customData.footerText);
         $(".site>span").text(this.customData.site);
+    },
+    hideSpinner: function () {
+        $(".main").fadeIn(1000, function () {
+            $(".spinner").hide();
+        });
     }
 };
