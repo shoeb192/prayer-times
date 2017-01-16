@@ -10,11 +10,11 @@ body {
 }
 
 .top-content{
-    height:46%;
+    height:45%;
 }
 
 .prayer-content{
-    height:37%;
+    height:35%;
 }
 
 .header{
@@ -117,8 +117,21 @@ body {
 }
 
 .footer{
-    position: relative;
+    height: 100px;
 }
+
+.app-qr-code{
+    height: 90px; 
+    width: 90px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.version-parent{
+    position: relative;
+    height: inherit;
+}
+
 .version{
     font-size: 20px;
     color: #adadad;
