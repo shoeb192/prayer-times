@@ -32,7 +32,7 @@
     .header{
         font-size: 200%;
         color: yellowgreen;
-        margin-top: 10px;
+        margin-top: 20px;
         margin-bottom: 10px;
     }
     .time{
@@ -48,7 +48,7 @@
     }
 
     .prayer-content{
-        margin-bottom: 10px;
+        margin: 40px 0;
     }
 
     .prayer-content>div {
@@ -83,6 +83,8 @@
     }
 
     .footer{
+        position: absolute;
+        bottom: 0;
         padding: 0 10px;
     }
 
