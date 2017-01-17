@@ -32,7 +32,7 @@
     .header{
         font-size: 200%;
         color: yellowgreen;
-        margin-top: 20px;
+        margin-top: 10px;
         margin-bottom: 10px;
     }
     .time{
@@ -44,11 +44,11 @@
     }
 
     .top-content{
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     .prayer-content{
-        margin: 40px 0;
+        margin: 20px 0;
     }
 
     .prayer-content>div {
@@ -75,7 +75,7 @@
     }
 
     .chourouk-joumouaa{
-        margin-bottom: 40px; 
+        margin-bottom: 20px; 
     }
 
     .chourouk, .joumouaa{
