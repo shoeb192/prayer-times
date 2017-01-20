@@ -4,6 +4,7 @@
     "minimumIchaTime": "19:50",
     "maximumIchaTimeForNoWaiting": "22:00",
     
+    "timesPath": "houilles",
     "hijriAdjustment": 0,
     "adhanDouaaEnabled": true,
     "androidAppEnabled": true,

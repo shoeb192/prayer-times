@@ -67,7 +67,7 @@ var prayer = {
      */
     loadCustomData: function () {
         $.ajax({
-            url: "data/custom-data.json",
+            url: "data/conf.json",
             async: false,
             success: function (data) {
                 prayer.customData = data;
@@ -80,7 +80,7 @@ var prayer = {
     loadPrayerTimes: function () {
         var prayerTimes = new Array();
         $.ajax({
-            url: "data/months/" + dateTime.getCurrentMonth() + ".csv",
+            url: "data/times/" + prayer.customData.timesPath + "/" + dateTime.getCurrentMonth() + ".csv",
             async: false,
             success: function (data) {
                 prayerTimes = data.split("\n");
