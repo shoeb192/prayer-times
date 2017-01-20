@@ -94,7 +94,7 @@ var prayer = {
      */
     getPrayersWaitingTimes: function () {
         var waitings = this.customData.prayersWaitingTimes;
-        if (this.customData.maximumIchaTimeForNoWaitingEnabled && this.getIchaTime() > this.customData.maximumIchaTimeForNoWaiting) {
+        if (this.customData.maximumIchaTimeForNoWaiting !== "" && this.getIchaTime() > this.customData.maximumIchaTimeForNoWaiting) {
             waitings[4] = 0;
         }
         return waitings;
@@ -119,6 +119,15 @@ var prayer = {
                 prayerTimes[i] = prayer.dstConvertPrayerTime(prayerTime);
             });
         }
+        return prayerTimes;
+    },
+    /**
+     * array of only five prayer times
+     * @returns {Array}
+     */
+    getTodayFivePrayerTimesWithAdjustedIchaaTime: function () {
+        var prayerTimes = this.getTodayFivePrayerTimes().slice(0, 4);
+        prayerTimes.push(this.getIchaTime());
         return prayerTimes;
     },
     /**
@@ -154,7 +163,7 @@ var prayer = {
      */
     getIchaTime: function () {
         var ichaTime = this.getTodayFivePrayerTimes()[4];
-        if (this.customData.minimumIchaTimeEnabled && ichaTime <= this.customData.minimumIchaTime)
+        if (this.customData.minimumIchaTime !== "" && ichaTime <= this.customData.minimumIchaTime)
         {
             ichaTime = this.customData.minimumIchaTime;
         }
@@ -180,10 +189,10 @@ var prayer = {
         setInterval(function () {
             if (dateTime.getCurrentHour() === "00" && dateTime.getCurrentMinute() === "00") {
                 // load PrayerTimes for the current month every 1 st of month
-                if(dateTime.getCurrentDay() === 1){
+                if (dateTime.getCurrentDay() === 1) {
                     prayer.loadPrayerTimes();
                 }
-                
+
                 prayer.setDate();
                 prayer.setPrayerTimes();
                 prayer.setPrayerWaitings();
@@ -216,8 +225,12 @@ var prayer = {
     initIqamaFlash: function () {
         setInterval(function () {
             if (!prayer.iqamaIsFlashing) {
-                $(".prayer").each(function (currentPrayerIndex, prayerTime) {
-                    prayerTime = $(prayerTime).text();
+                $(prayer.getTodayFivePrayerTimesWithAdjustedIchaaTime()).each(function (currentPrayerIndex, prayerTime) {
+                    // if joumuaa time we don't flash iqama
+                    if (dateTime.getCurrentDayText()[0] === "Vendredi" && currentPrayerIndex === 1) {
+                        return;
+                    }
+
                     var diffTimeInMiniute = Math.floor((new Date() - prayer.getCurrentDateForPrayerTime(prayerTime)) / prayer.oneMinute);
                     if (diffTimeInMiniute === prayer.getPrayersWaitingTimes()[currentPrayerIndex]) {
                         prayer.iqamaIsFlashing = true;
@@ -248,7 +261,7 @@ var prayer = {
 
     },
     /**
-     * flash iqama for 30 sec
+     * flash iqama for 45 sec
      * @param {integer} currentPrayerIndex 
      */
     flashIqama: function (currentPrayerIndex) {
@@ -259,11 +272,11 @@ var prayer = {
             $(".iqama").toggleClass("hidden");
         }, prayer.oneSecond);
 
-        // stop iqama flashing after 30 sec
+        // stop iqama flashing after 45 sec
         setTimeout(function () {
             clearInterval(iqamaFlashInterval);
             prayer.hideIqama();
-        }, 30 * prayer.oneSecond);
+        }, 45 * prayer.oneSecond);
 
         // reset flag iqamaIsFlashing after one minute
         setTimeout(function () {
@@ -336,7 +349,7 @@ var prayer = {
                     setTimeout(function () {
                         prayer.adhanDouaa.hide();
                     }, prayer.oneMinute);
-                }, prayer.oneMinute);
+                }, 30 * prayer.oneSecond);
             }
         }
     },
@@ -397,7 +410,7 @@ var prayer = {
     setAidPrayerTime: function () {
         $(".chourouk").show();
         $(".aid").hide();
-        if (this.customData.aidIsEnabled) {
+        if (this.customData.aidTime !== "") {
             $(".aid-id").text(this.customData.aidTime);
             $(".chourouk").hide();
             $(".aid").show();
@@ -430,6 +443,7 @@ var prayer = {
         $(".header").html(this.customData.headerText);
         $(".site").html(this.customData.site);
         $(".assosciation").html(this.customData.footerText);
+        $(".supportTel").text(this.customData.supportTel);
         if (!this.customData.androidAppEnabled) {
             $(".android-app").addClass("visibilty-hidden");
         }
