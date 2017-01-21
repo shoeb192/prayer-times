@@ -3,7 +3,7 @@
 ## Featurs
 
 * Shows prayer times on LCD screen
-* Shows time, gregorian and hijri date (hijri datee need internet connection) 
+* Shows current time, gregorian and hijri date (hijri date need internet connection) 
 * Prayer time and iqama flashing
 * Shows douaa after athan
 * Shows Aid prayer time
@@ -43,15 +43,15 @@ The config parameters are in data/conf.json, here is an exemple
 * `joumouaaTime` if set, it will be diplayed on screnn otherwhise 12:10 is displayed in winter and 13:10 in summer
 * `aidTime` if set the text and time of aid wil be displayed
 * `minimumIchaTime` that means ichaa time will be fixed at the choosen value if lower then it, leave it empty if you do not need this behaviour
-* `maximumIchaTimeForNoWaiting` if set iqama will flash after adhan awithout waiting
+* `maximumIchaTimeForNoWaiting` if set iqama will flash after adhan without waiting
 * `prayersWaitingTimes` the times in minutes, to wait between athan and iqama [sobh, dohr, asr, maghrib, ichaa]
 * `timesPath` the path to find prayer times files ex : `uoif/paris`, `mosquee-de-paris` ...
 * `hijriAdjustment` to adjust hijri date ex : +1, -1
 * `androidAppEnabled` to enable/disable displaying android app Qr code
-* `headerText` The header text, you can put you mosque or association name for exemple
+* `headerText` The header text, you can put your mosque or association name for exemple
 * `site` The site to view the app in mobile format 
-* `supportTel` The support phone number
+* `supportTel` The support phone number, NOT change it
 * `footerText` Footer text, here you can put some text like adress, account bank number, phone number...
 
 
-NB : After changing the conf file you should refresh page in browser
+> NB : After changing the conf file you should refresh page in browser
