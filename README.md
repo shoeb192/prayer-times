@@ -3,7 +3,7 @@
 ## Featurs
 
 * Shows prayer times on LCD screen
-* Shows time, gregorian and hijri date (hijri datee need internet connection) 
+* Shows current time, gregorian and hijri date (hijri date need internet connection) 
 * Prayer time and iqama flashing
 * Shows douaa after athan
 * Shows Aid prayer time
