@@ -37,10 +37,14 @@ The config file is data/conf.json
 }
 ```
 
-* `joumouaaTime` if this param is set it will be diplayed on screnn otherwhise 12:10 is displayed in winter and 13:10 in summer
+* `joumouaaTime` if set, it will be diplayed on screnn otherwhise 12:10 is displayed in winter and 13:10 in summer
 * `aidTime` if set the text and time of aid wil be displayed
 * `minimumIchaTime` that means ichaa time will be fixed at the choosen value if lower then it, let it empty if you do not want this behaviour
-* `maximumIchaTimeForNoWaiting` if set 
+* `maximumIchaTimeForNoWaiting` if set iqama will flash after adhan awithout waiting
+* `prayersWaitingTimes` the times in minutes, to wait between athan and iqama [sobh, dohr, asr, maghrib, ichaa]
+* `timesPath` the path to find prayer times files ex : `uoif/paris`, `mosquee-de-paris` ...
+* `hijriAdjustment` to adjust hijri date ex : +1, -1
+* `androidAppEnabled` to enable/disable displaying android app Qr code
 
 
-NB : after changing the conf file we should refresh page in browser
+NB : After changing the conf file we should refresh page in browser
