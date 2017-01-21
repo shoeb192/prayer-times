@@ -50,7 +50,7 @@ The config parameters are in data/conf.json, here is an exemple
 * `maximumIchaTimeForNoWaiting` if set iqama will flash after adhan without waiting
 * `prayersWaitingTimes` the times in minutes, to wait between athan and iqama [sobh, dohr, asr, maghrib, ichaa]
 * `timesPath` the path to find prayer times files ex : `uoif/paris`, `mosquee-de-paris` ...
-* `hijriAdjustment` to adjust hijri date ex : +1, -1
+* `hijriAdjustment` to adjust hijri date ex : 1, 2, -1, -2
 * `androidAppEnabled` to enable/disable displaying android app Qr code
 * `headerText` The header text, you can put your mosque or association name for exemple
 * `site` The site to view the app in mobile format 
