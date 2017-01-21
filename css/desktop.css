@@ -5,6 +5,13 @@ body {
     font-size: 12px;
 }
 
+/* Tablette mode paysage */
+@media (max-width:1300px){
+    body {
+        font-size: 9px;
+    }
+}
+
 .main, .iqama, .adhan{
     height:100vh;
 }
