@@ -54,9 +54,8 @@ var prayer = {
      */
     loadVersion: function () {
         $.ajax({
-            url: "version",
+            url: "version?" + (new Date()).getTime(),
             async: false,
-            data: "text",
             success: function (data) {
                 $(".version").text("v" + data);
             }
@@ -67,7 +66,7 @@ var prayer = {
      */
     loadCustomData: function () {
         $.ajax({
-            url: "data/conf.json",
+            url: "data/conf.json?" + (new Date()).getTime(),
             async: false,
             success: function (data) {
                 prayer.customData = data;
@@ -80,7 +79,7 @@ var prayer = {
     loadPrayerTimes: function () {
         var prayerTimes = new Array();
         $.ajax({
-            url: "data/times/" + prayer.customData.timesPath + "/" + dateTime.getCurrentMonth() + ".csv",
+            url: "data/times/" + prayer.customData.timesPath + "/" + dateTime.getCurrentMonth() + ".csv?" + (new Date()).getTime(),
             async: false,
             success: function (data) {
                 prayerTimes = data.split("\n");
