@@ -18,6 +18,10 @@
 
 ![alt tag](http://priere.mosquee-houilles.fr/img/douaa-after-athan.jpg)
 
+## How it works
+
+The software will be installed in a raspberry pi, this small computer will be plugged in LCD screen with hdmi cable. 
+
 ## How to configure
 
 The config parameters are in data/conf.json, here is an exemple
