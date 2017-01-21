@@ -22,7 +22,7 @@
 
 The config parameters are in data/conf.json, here is an exemple
 
-```
+```javascript
 {
     "joumouaaTime": "14:00",
     "aidTime": "09:00",
