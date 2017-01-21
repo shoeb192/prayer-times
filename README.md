@@ -7,6 +7,7 @@
 * Show douaa after athan
 * Show Aid parayer time after configuring it
 
+![alt tag](http://priere.mosquee-houilles.fr/img/screenshot.png)
 
 ## How to configure
 
