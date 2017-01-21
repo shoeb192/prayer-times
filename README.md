@@ -1,6 +1,6 @@
-### Prayer times for mosques ###
+## Prayer times for mosques ###
 
-## Featurs
+# Featurs
 
 * Show prayer times on a big LCD screen
 * Prayer time and iqama flashing
