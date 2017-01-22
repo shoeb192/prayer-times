@@ -373,6 +373,7 @@ var prayer = {
      * this api calculate hijri date from gregorian give date
      */
     setCurrentHijriDate: function () {
+        $(".hijriDate").text("");
         var hijriDate = "";
         var day = dateTime.addZero(dateTime.getCurrentDay() + this.customData.hijriAdjustment);
         var month = dateTime.getCurrentMonth();
