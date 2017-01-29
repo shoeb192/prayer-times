@@ -6,3 +6,6 @@
 .prayer-wait, .prayer-wait-label{
     width: 19.33%; 
 }
+.prayer-wait{
+    display: inline;
+}
