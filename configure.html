@@ -9,7 +9,7 @@
     <body class="">
 
         <div class="main">
-            <h2>Configuration : </h2>
+            <h1 class="text-success">Configuration : </h1>
 
             <p>Survoller les titres des champs avec la souris pour voir plus d'explication</p><br>
 
@@ -22,8 +22,8 @@
                 </div>
 
                 <div class="form-group col-lg-6">
-                    <label for="aidTime" title="Si renseigné l'heure du aid sera affiché à la place du chourouk">
-                        Heure du Aid <span class="glyphicon glyphicon-info-sign"></span>
+                    <label for="aidTime" title="Si renseigné l'heure du aïd sera affichée à la place du chourouk">
+                        Heure du Aïd <span class="glyphicon glyphicon-info-sign"></span>
                     </label>
                     <input type="time" class="form-control" id="aidTime">
                 </div>
@@ -36,14 +36,32 @@
                 </div>
 
                 <div class="form-group col-lg-6">
-                    <label for="maximumIchaTimeForNoWaiting" title="Heure maximale du ichaa à partir de laquelle il y aura plus d'attente entre adhan et iqama">
-                        Heure maximale du ichaa (sans attente pour la iqama) <span class="glyphicon glyphicon-info-sign"></span></label>
+                    <label for="maximumIchaTimeForNoWaiting" title="Heure maximale du ichaa à partir de laquelle il n'y aura pas d'attente entre adhan et iqama">
+                        Heure maximale du ichaa (attente iqama = 0 min) <span class="glyphicon glyphicon-info-sign"></span></label>
                     <input type="time" class="form-control" id="maximumIchaTimeForNoWaiting">
                 </div>
 
                 <div class="form-group col-lg-6">
-                    <label for="hijriAdjustment" title="Ajuster la date hijir">
-                        Ajustement de la date hijir <span class="glyphicon glyphicon-info-sign"></span>
+                    <label>Temps d'attente entre adhan et iqama en minutes</label>
+                    <div class="text-center">
+                        <label for="wait0" class="prayer-wait-label">Sobh</label>
+                        <label for="wait1" class="prayer-wait-label">Dohr</label>
+                        <label for="wait2" class="prayer-wait-label">Asr</label>
+                        <label for="wait3" class="prayer-wait-label">Maghrib</label>
+                        <label for="wait4" class="prayer-wait-label">Ichaa</label>
+                    </div>
+                    <div>
+                        <input id="wait0" type="number" class="prayer-wait">
+                        <input id="wait1" type="number" class="prayer-wait">
+                        <input id="wait2" type="number" class="prayer-wait">
+                        <input id="wait3" type="number" class="prayer-wait">
+                        <input id="wait4" type="number" class="prayer-wait">
+                    </div>
+                </div>
+
+                <div class="form-group col-lg-6">
+                    <label for="hijriAdjustment">
+                        Ajustement de la date de l'hégire
                     </label>
                     <select class="form-control" id="hijriAdjustment">
                         <option value="-2">-2</option>
@@ -55,7 +73,7 @@
                 </div>
 
                 <div class="form-group col-lg-6">
-                    <label for="headerText" title="">Texte de l'entête</label>
+                    <label for="headerText">Texte de l'entête</label>
                     <input type="text" class="form-control" id="headerText">
                 </div>
 
@@ -85,7 +103,7 @@
                     <div id="advanced" class="collapse">
                         <br>
                         <div class="form-group">
-                            <label for="timesPath" title="">Choix des horaires (Ne pas modifer)</label>
+                            <label for="timesPath">Choix des horaires (Ne pas modifer)</label>
                             <input type="text" class="form-control" id="timesPath">
                         </div>
 

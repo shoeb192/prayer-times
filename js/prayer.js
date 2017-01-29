@@ -393,7 +393,7 @@ var prayer = {
     setCurrentHijriDate: function () {
         $(".hijriDate").text("");
         var hijriDate = "";
-        var day = dateTime.addZero(dateTime.getCurrentDay() + this.getConfData().hijriAdjustment);
+        var day = dateTime.addZero(dateTime.getCurrentDay());
         var month = dateTime.getCurrentMonth();
         var year = dateTime.getCurrentYear();
         $.ajax({
@@ -401,9 +401,10 @@ var prayer = {
             dataType: "json",
             success: function (response) {
                 if (response.code === 200) {
-                    data = response.data.hijri;
+                    var data = response.data.hijri;
+                    var hijriDay = dateTime.addZero(parseInt(data.day) + parseInt(prayer.getConfData().hijriAdjustment));
                     hijriDate = dateTime.getCurrentDayArabicText()
-                            + ' ' + data.day
+                            + ' ' + hijriDay
                             + ' ' + data.month.ar
                             + ' ' + data.year;
 

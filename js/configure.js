@@ -8,8 +8,14 @@ $(document).ready(function () {
     var data = JSON.parse(localStorage.getItem("config"));
     var input;
     $.each(data, function (key, value) {
-        input = $("#" + key);
+        if (key === "prayersWaitingTimes") {
+            $(value).each(function (i, val) {
+                $("#wait" + i).val(val);
+            });
+            return;
+        }
 
+        input = $("#" + key);
         if (input.attr("type") === "checkbox") {
             input.prop('checked', value);
         } else {
@@ -26,8 +32,15 @@ $("#configure").submit(function (event) {
     var inputs = $('#configure :input');
     var data = JSON.parse(localStorage.getItem("config"));
     inputs.each(function () {
-        data[this.id] = $(this).attr("type") === "checkbox" ? $(this).is(":checked") : $(this).val();
+        if (data.hasOwnProperty(this.id)) {
+            data[this.id] = $(this).attr("type") === "checkbox" ? $(this).is(":checked") : $(this).val();
+        }
     });
+
+    $(".prayer-wait").each(function (i, elem) {
+        data["prayersWaitingTimes"][i] = $(elem).val();
+    });
+
     localStorage.setItem("config", JSON.stringify(data));
     window.location.href = "index.html";
     event.preventDefault();
