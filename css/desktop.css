@@ -20,6 +20,13 @@ body {
     height:45%;
 }
 
+.settings
+{
+    font-size: 30px;
+    margin-top: 10px; 
+    color: #fff;
+}
+
 .prayer-content{
     height:35%;
 }

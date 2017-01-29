@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Horaires de prière</title>
+        <meta charset="UTF-8" lang="fr">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/configure.css" rel="stylesheet">
+    </head>
+    <body class="">
+
+        <div class="main">
+            <h2>Configuration : </h2>
+
+            <p>Survoller les titres des champs avec la souris pour voir plus d'explication</p><br>
+
+            <form id="configure">
+                <div class="form-group col-lg-6">
+                    <label for="joumouaaTime" title="Si vide 12:10 sera affiché en hiver et 13:10 en été">
+                        Heure du Joumouaa <span class="glyphicon glyphicon-info-sign"></span>
+                    </label>
+                    <input type="text" class="form-control" id="joumouaaTime">
+                </div>
+
+                <div class="form-group col-lg-6">
+                    <label for="aidTime" title="Si renseigné l'heure du aid sera affiché à la place du chourouk">
+                        Heure du Aid <span class="glyphicon glyphicon-info-sign"></span>
+                    </label>
+                    <input type="time" class="form-control" id="aidTime">
+                </div>
+
+                <div class="form-group col-lg-6">
+                    <label for="minimumIchaTime" title="Permet de fixer l'heure du ichaa à une heure minimale">
+                        Heure minimum du ichaa en hiver <span class="glyphicon glyphicon-info-sign"></span>
+                    </label>
+                    <input type="time" class="form-control" id="minimumIchaTime">
+                </div>
+
+                <div class="form-group col-lg-6">
+                    <label for="maximumIchaTimeForNoWaiting" title="Heure maximale du ichaa à partir de laquelle il y aura plus d'attente entre adhan et iqama">
+                        Heure maximale du ichaa (sans attente pour la iqama) <span class="glyphicon glyphicon-info-sign"></span></label>
+                    <input type="time" class="form-control" id="maximumIchaTimeForNoWaiting">
+                </div>
+
+                <div class="form-group col-lg-6">
+                    <label for="hijriAdjustment" title="Ajuster la date hijir">
+                        Ajustement de la date hijir <span class="glyphicon glyphicon-info-sign"></span>
+                    </label>
+                    <select class="form-control" id="hijriAdjustment">
+                        <option value="-2">-2</option>
+                        <option value="-1">-1</option>
+                        <option value="0" selected="selected">&nbsp;0</option>
+                        <option value="1">&nbsp;1</option>
+                        <option value="2">&nbsp;2</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-lg-6">
+                    <label for="headerText" title="">Texte de l'entête</label>
+                    <input type="text" class="form-control" id="headerText">
+                </div>
+
+                <div class="form-group col-lg-6">
+                    <label for="site" title="Lasser vide si pas besoin">
+                        Texte du site internet <span class="glyphicon glyphicon-info-sign"></span>
+                    </label>
+                    <input type="text" class="form-control" id="site">
+                </div>
+
+                <div class="form-group col-lg-6">
+                    <label for="footerText" title="Laisser vide si vous ne souhaitez pas de texte dans le pieds de page">
+                        Texte du pied de page <span class="glyphicon glyphicon-info-sign"></span>
+                    </label>
+                    <input type="text" class="form-control" id="footerText">
+                </div>
+
+                <div class="form-group col-lg-6">
+                    <label title="Si activer un écran affichant le douaa après adhan sera affiché">
+                        <input type="checkbox" id="adhanDouaaEnabled"> Activer l'écran douaa du adhan <span class="glyphicon glyphicon-info-sign"></span>
+                    </label>
+
+                </div>
+
+                <div class="col-lg-12">
+                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#advanced">Paramètres avancés</button>
+                    <div id="advanced" class="collapse">
+                        <br>
+                        <div class="form-group">
+                            <label for="timesPath" title="">Choix des horaires (Ne pas modifer)</label>
+                            <input type="text" class="form-control" id="timesPath">
+                        </div>
+
+                        <div class="form-group">
+                            <label><input type="checkbox" id="androidAppEnabled"> Afficher le Qr code de l'appli mobile (Ne pas modifer)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 text-right">
+                    <br>
+                    <button type="submit" id="submit" class="btn btn-success">Enregistrer</button>
+                    <a href="index.html" class="btn btn-danger">Annuler</a>
+                </div>
+            </form>
+        </div>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/configure.js"></script>
+    </body>
+</html>
