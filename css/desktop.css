@@ -17,7 +17,7 @@ body {
 }
 
 .top-content{
-    height:45%;
+    height:48%;
 }
 
 .settings
@@ -28,7 +28,7 @@ body {
 }
 
 .prayer-content{
-    height:45%;
+    height:42%;
 }
 
 .header{
@@ -114,7 +114,7 @@ body {
 }
 
 .adhan {
-    background-image: url(/img/douaa-after-athan.jpg);
+    background-image: url(/img/douaa-after-athan.svg);
     background-repeat: no-repeat;
     background-size: cover;
 }

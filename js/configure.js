@@ -38,7 +38,7 @@ $("#configure").submit(function (event) {
     });
 
     $(".prayer-wait").each(function (i, elem) {
-        data["prayersWaitingTimes"][i] = $(elem).val();
+        data["prayersWaitingTimes"][i] = parseInt($(elem).val());
     });
 
     localStorage.setItem("config", JSON.stringify(data));
