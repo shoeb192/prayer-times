@@ -231,7 +231,14 @@ var prayer = {
                     }
 
                     var diffTimeInMiniute = Math.floor((new Date() - prayer.getCurrentDateForPrayerTime(prayerTime)) / prayer.oneMinute);
-                    if (diffTimeInMiniute === prayer.getPrayersWaitingTimes()[currentPrayerIndex]) {
+                    var currentPrayerWaitingTime = prayer.getPrayersWaitingTimes()[currentPrayerIndex];
+                    
+                    // if icha time and waiting is equal to 0, flash iqama will be run after 2 mins
+                    if (currentPrayerIndex === 4 && currentPrayerWaitingTime === 0) {
+                        currentPrayerWaitingTime = 2;
+                    }
+                    
+                    if (diffTimeInMiniute === currentPrayerWaitingTime) {
                         prayer.iqamaIsFlashing = true;
                         // iqama flashing
                         prayer.flashIqama(currentPrayerIndex);
@@ -260,7 +267,7 @@ var prayer = {
 
     },
     /**
-     * flash iqama for 45 sec
+     * flash iqama for 30 sec
      * @param {integer} currentPrayerIndex 
      */
     flashIqama: function (currentPrayerIndex) {
@@ -275,7 +282,7 @@ var prayer = {
         setTimeout(function () {
             clearInterval(iqamaFlashInterval);
             prayer.hideIqama();
-        }, 45 * prayer.oneSecond);
+        }, 30 * prayer.oneSecond);
 
         // reset flag iqamaIsFlashing after one minute
         setTimeout(function () {
@@ -341,13 +348,17 @@ var prayer = {
             $(".main").removeClass("hidden");
             $(".adhan").addClass("hidden");
         },
+        /**
+         * show douaa 30 sec after adhan flash 
+         * show douaa for 30 sec
+         */
         setTimeout: function () {
             if (prayer.customData.adhanDouaaEnabled === true) {
                 setTimeout(function () {
                     prayer.adhanDouaa.show();
                     setTimeout(function () {
                         prayer.adhanDouaa.hide();
-                    }, prayer.oneMinute);
+                    }, 30 * prayer.oneSecond);
                 }, 30 * prayer.oneSecond);
             }
         }
