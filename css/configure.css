@@ -9,3 +9,8 @@
 .prayer-wait{
     display: inline;
 }
+
+.glyphicon-asterisk{
+    color: red;
+    font-size: 10px;
+}

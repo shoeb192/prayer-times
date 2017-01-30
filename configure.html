@@ -11,7 +11,8 @@
         <div class="main">
             <div class="col-lg-12">
                 <h1 class="text-success"> <strong>Configuration</strong></h1>
-                <p>Survoller les titres des champs avec la souris pour voir plus d'explication</p><br>
+                <p>Survoller les titres des champs avec la souris pour voir plus d'explication <br/>
+                <span class="glyphicon glyphicon-asterisk"></span> Champs obligatoires</p><br>
             </div>
 
             <form id="configure">
@@ -19,31 +20,31 @@
                     <label for="joumouaaTime" title="Si vide 12:10 sera affiché en hiver et 13:10 en été">
                         Heure du Joumouaa <span class="glyphicon glyphicon-info-sign"></span>
                     </label>
-                    <input type="text" class="form-control" id="joumouaaTime">
+                    <input type="text" class="form-control" id="joumouaaTime" placeholder="ex: 14h / 13h / 13:00">
                 </div>
 
                 <div class="form-group col-lg-6">
                     <label for="aidTime" title="Si renseigné l'heure du aïd sera affichée à la place du chourouk">
                         Heure du Aïd <span class="glyphicon glyphicon-info-sign"></span>
                     </label>
-                    <input type="time" class="form-control" id="aidTime">
+                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 08:00" class="form-control" id="aidTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try{setCustomValidity('')}catch(e){}" >
                 </div>
 
                 <div class="form-group col-lg-6">
                     <label for="minimumIchaTime" title="Permet de fixer l'heure du ichaa à une heure minimale">
                         Heure minimum du ichaa en hiver <span class="glyphicon glyphicon-info-sign"></span>
                     </label>
-                    <input type="time" class="form-control" id="minimumIchaTime">
+                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 19:00" class="form-control" id="minimumIchaTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try{setCustomValidity('')}catch(e){}">
                 </div>
 
                 <div class="form-group col-lg-6">
                     <label for="maximumIchaTimeForNoWaiting" title="Heure maximale du ichaa à partir de laquelle il n'y aura pas d'attente entre adhan et iqama">
                         Heure maximale du ichaa (attente iqama = 0 min) <span class="glyphicon glyphicon-info-sign"></span></label>
-                    <input type="time" class="form-control" id="maximumIchaTimeForNoWaiting">
+                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 22:00" class="form-control" id="maximumIchaTimeForNoWaiting" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try{setCustomValidity('')}catch(e){}">
                 </div>
 
                 <div class="form-group col-lg-6">
-                    <label>Temps d'attente entre adhan et iqama en minutes</label>
+                    <label>Temps d'attente entre adhan et iqama en minutes <span class="glyphicon glyphicon-asterisk"></span></label>
                     <div class="text-center">
                         <label for="wait0" class="prayer-wait-label">Sobh</label>
                         <label for="wait1" class="prayer-wait-label">Dohr</label>
@@ -52,11 +53,11 @@
                         <label for="wait4" class="prayer-wait-label">Ichaa</label>
                     </div>
                     <div>
-                        <input id="wait0" type="number" class="form-control prayer-wait">
-                        <input id="wait1" type="number" class="form-control prayer-wait">
-                        <input id="wait2" type="number" class="form-control prayer-wait">
-                        <input id="wait3" type="number" class="form-control prayer-wait">
-                        <input id="wait4" type="number" class="form-control prayer-wait">
+                        <input id="wait0" type="number" required="" min="0" class="form-control prayer-wait">
+                        <input id="wait1" type="number" required="" min="0" class="form-control prayer-wait">
+                        <input id="wait2" type="number" required="" min="0" class="form-control prayer-wait">
+                        <input id="wait3" type="number" required="" min="0" class="form-control prayer-wait">
+                        <input id="wait4" type="number" required="" min="0" class="form-control prayer-wait">
                     </div>
                 </div>
 
@@ -104,8 +105,8 @@
                     <div id="advanced" class="collapse">
                         <br>
                         <div class="form-group">
-                            <label for="timesPath">Choix des horaires (Ne pas modifer)</label>
-                            <input type="text" class="form-control" id="timesPath">
+                            <label for="timesPath">Choix des horaires (Ne pas modifer) <span class="glyphicon glyphicon-asterisk"></span></label>
+                            <input type="text" class="form-control" id="timesPath" required="" placeholder="ex: houilles, 12-deg/paris">
                         </div>
 
                         <div class="form-group">
