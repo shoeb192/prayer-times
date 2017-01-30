@@ -10,10 +10,6 @@ var prayer = {
     months: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
     prayerTimes: [],
     /**
-     * hijri api url 
-     */
-    hijriDateApiUrl: "http://api.aladhan.com/gToH?date=",
-    /**
      * One minute in milliseconds
      * @type Integer
      */
@@ -387,31 +383,10 @@ var prayer = {
         this.setCurrentHijriDate();
     },
     /**
-     * set the hijri date, it's getting from api http://api.aladhan.com/gToH?date=
-     * this api calculate hijri date from gregorian give date
+     * set hijri date from hijriDate.js
      */
     setCurrentHijriDate: function () {
-        $(".hijriDate").text("");
-        var hijriDate = "";
-        var day = dateTime.addZero(dateTime.getCurrentDay());
-        var month = dateTime.getCurrentMonth();
-        var year = dateTime.getCurrentYear();
-        $.ajax({
-            url: prayer.hijriDateApiUrl + day + '-' + month + '-' + year,
-            dataType: "json",
-            success: function (response) {
-                if (response.code === 200) {
-                    var data = response.data.hijri;
-                    var hijriDay = dateTime.addZero(parseInt(data.day) + parseInt(prayer.getConfData().hijriAdjustment));
-                    hijriDate = dateTime.getCurrentDayArabicText()
-                            + ' ' + hijriDay
-                            + ' ' + data.month.ar
-                            + ' ' + data.year;
-
-                    $(".hijriDate").text(hijriDate);
-                }
-            }
-        });
+         $(".hijriDate").text(writeIslamicDate(prayer.getConfData().hijriAdjustment));
     },
     /**
      * get joumouaa time depending dst
