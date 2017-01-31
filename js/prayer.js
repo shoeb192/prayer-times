@@ -80,9 +80,22 @@ var prayer = {
         }
     },
     /**
-     * load prayer times ["monthe" = ["day"=> "line"] ]
+     * load today prayer times
+     * if calculChoice = defined we load from csv file
+     * else we load from PrayTimes() function
      */
     loadPrayerTimes: function () {
+        if (this.confData.calculChoice === "defined") {
+            this.loadPrayerTimesFromCsv();
+        } else if (this.confData.calculChoice === "custom") {
+            this.loadPrayerTimesFromApi();
+        }
+    },
+
+    /**
+     * @returns {Array}
+     */
+    loadPrayerTimesFromCsv: function () {
         var prayerTimes = new Array();
         $.ajax({
             url: "data/times/" + prayer.confData.timesPath + "/" + dateTime.getCurrentMonth() + ".csv?" + (new Date()).getTime(),
@@ -91,34 +104,31 @@ var prayer = {
                 prayerTimes = data.split("\n");
             }
         });
-        this.prayerTimes = prayerTimes;
+        this.prayerTimes = prayerTimes[dateTime.getCurrentDay()].split(",");
+        this.prayerTimes = this.prayerTimes.slice(1, this.prayerTimes.length)
     },
     /**
-     * get prayer waiting taimes
      * @returns {Array}
      */
-    getPrayersWaitingTimes: function () {
-        var waitings = this.confData.prayersWaitingTimes;
-        if (this.confData.maximumIchaTimeForNoWaiting !== "" && this.getIchaTime() > this.confData.maximumIchaTimeForNoWaiting) {
-            waitings[4] = 0;
+    loadPrayerTimesFromApi: function () {
+        var prayTimes = new PrayTimes(prayer.confData.prayerMethod);
+        if (prayer.confData.fajrDegree !== "") {
+            prayTimes.adjust({"fajr": parseFloat(prayer.confData.fajrDegree)});
         }
-        return waitings;
-    },
-    /**
-     * array of csv line data 
-     * @returns {Array}
-     */
-    getTodayPrayerLine: function () {
-        var prayerTimes = this.prayerTimes;
-        return prayerTimes[dateTime.getCurrentDay()].split(",");
+        if (prayer.confData.ichaaDegree !== "") {
+            prayTimes.adjust({"isha": parseFloat(prayer.confData.ichaaDegree)});
+        }
+        var pt = prayTimes.getTimes(new Date(), [parseFloat(prayer.confData.latitude), parseFloat(prayer.confData.longitude)]);
+
+        this.prayerTimes = [pt.fajr, pt.sunrise, pt.dhuhr, pt.asr, pt.maghrib, pt.isha];
     },
     /**
      * array of only five prayer times
      * @returns {Array}
      */
     getTodayFivePrayerTimes: function () {
-        var prayerTimes = this.getTodayPrayerLine();
-        prayerTimes = [prayerTimes[1], prayerTimes[3], prayerTimes[4], prayerTimes[5], prayerTimes[6]];
+        var prayerTimes = this.prayerTimes;
+        prayerTimes = [prayerTimes[0], prayerTimes[2], prayerTimes[3], prayerTimes[4], prayerTimes[5]];
         if (dateTime.isLastSundayDst()) {
             $.each(prayerTimes, function (i, prayerTime) {
                 prayerTimes[i] = prayer.dstConvertPrayerTime(prayerTime);
@@ -134,6 +144,17 @@ var prayer = {
         var prayerTimes = this.getTodayFivePrayerTimes().slice(0, 4);
         prayerTimes.push(this.getIchaTime());
         return prayerTimes;
+    },
+    /**
+     * get prayer waiting taimes
+     * @returns {Array}
+     */
+    getPrayersWaitingTimes: function () {
+        var waitings = this.confData.prayersWaitingTimes;
+        if (this.confData.maximumIchaTimeForNoWaiting !== "" && this.getIchaTime() > this.confData.maximumIchaTimeForNoWaiting) {
+            waitings[4] = 0;
+        }
+        return waitings;
     },
     /**
      * +1|-1 hour for prayerTime depending DST
@@ -179,7 +200,7 @@ var prayer = {
      * @returns {String}
      */
     getChouroukTime: function () {
-        var chouroukTime = this.getTodayPrayerLine()[2];
+        var chouroukTime = this.prayerTimes[1];
         if (dateTime.isLastSundayDst()) {
             chouroukTime = prayer.dstConvertPrayerTime(chouroukTime);
         }

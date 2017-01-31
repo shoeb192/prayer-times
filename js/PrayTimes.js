@@ -88,6 +88,9 @@ function PrayTimes(method) {
 		ISNA: {
 			name: 'Islamic Society of North America (ISNA)',
 			params: { fajr: 15, isha: 15 } },
+		UOIF: {
+			name: 'UOIF',
+			params: { fajr: 12, isha: 12 } },
 		Egypt: {
 			name: 'Egyptian General Authority of Survey',
 			params: { fajr: 19.5, isha: 17.5 } },
@@ -568,11 +571,3 @@ var DMath = {
 		return (a < 0) ? a+ b : a;
 	}
 }
-
-
-//---------------------- Init Object -----------------------
-
-
-var prayTimes = new PrayTimes();
-
-
