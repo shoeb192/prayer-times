@@ -20,6 +20,11 @@ var prayer = {
      */
     oneSecond: 1000,
     /**
+     * Conf
+     * @type Json
+     */
+    confData: null,
+    /**
      * init the app
      */
     init: function () {
@@ -58,23 +63,21 @@ var prayer = {
     },
     /**
      * load custom data
+     * from localStorage if data already exists, from json file otherwise
      */
     loadConfData: function () {
-        $.ajax({
-            url: "data/conf.json?" + (new Date()).getTime(),
-            async: false,
-            success: function (data) {
-                if (localStorage.getItem("config") === null) {
+        if (localStorage.getItem("config") === null) {
+            $.ajax({
+                url: "data/conf.json?" + (new Date()).getTime(),
+                async: false,
+                success: function (data) {
                     localStorage.setItem("config", JSON.stringify(data));
+                    prayer.confData = data;
                 }
-            }
-        });
-    },
-    /**
-     * get custom data
-     */
-    getConfData: function () {
-        return JSON.parse(localStorage.getItem("config"));
+            });
+        } else {
+            prayer.confData = JSON.parse(localStorage.getItem("config"));
+        }
     },
     /**
      * load prayer times ["monthe" = ["day"=> "line"] ]
@@ -82,7 +85,7 @@ var prayer = {
     loadPrayerTimes: function () {
         var prayerTimes = new Array();
         $.ajax({
-            url: "data/times/" + prayer.getConfData().timesPath + "/" + dateTime.getCurrentMonth() + ".csv?" + (new Date()).getTime(),
+            url: "data/times/" + prayer.confData.timesPath + "/" + dateTime.getCurrentMonth() + ".csv?" + (new Date()).getTime(),
             async: false,
             success: function (data) {
                 prayerTimes = data.split("\n");
@@ -95,8 +98,8 @@ var prayer = {
      * @returns {Array}
      */
     getPrayersWaitingTimes: function () {
-        var waitings = this.getConfData().prayersWaitingTimes;
-        if (this.getConfData().maximumIchaTimeForNoWaiting !== "" && this.getIchaTime() > this.getConfData().maximumIchaTimeForNoWaiting) {
+        var waitings = this.confData.prayersWaitingTimes;
+        if (this.confData.maximumIchaTimeForNoWaiting !== "" && this.getIchaTime() > this.confData.maximumIchaTimeForNoWaiting) {
             waitings[4] = 0;
         }
         return waitings;
@@ -165,9 +168,9 @@ var prayer = {
      */
     getIchaTime: function () {
         var ichaTime = this.getTodayFivePrayerTimes()[4];
-        if (this.getConfData().minimumIchaTime !== "" && ichaTime <= this.getConfData().minimumIchaTime)
+        if (this.confData.minimumIchaTime !== "" && ichaTime <= this.confData.minimumIchaTime)
         {
-            ichaTime = this.getConfData().minimumIchaTime;
+            ichaTime = this.confData.minimumIchaTime;
         }
         return ichaTime;
     },
@@ -356,7 +359,7 @@ var prayer = {
          * show douaa for 30 sec
          */
         setTimeout: function () {
-            if (prayer.getConfData().adhanDouaaEnabled === true) {
+            if (prayer.confData.adhanDouaaEnabled === true) {
                 setTimeout(function () {
                     prayer.adhanDouaa.show();
                     setTimeout(function () {
@@ -386,15 +389,15 @@ var prayer = {
      * set hijri date from hijriDate.js
      */
     setCurrentHijriDate: function () {
-         $(".hijriDate").text(writeIslamicDate(prayer.getConfData().hijriAdjustment));
+        $(".hijriDate").text(writeIslamicDate(prayer.confData.hijriAdjustment));
     },
     /**
      * get joumouaa time depending dst
      * @returns {String}
      */
     getJoumouaaTime: function () {
-        if (this.getConfData().joumouaaTime !== "") {
-            return this.getConfData().joumouaaTime;
+        if (this.confData.joumouaaTime !== "") {
+            return this.confData.joumouaaTime;
         }
         return dateTime.isDst() ? "13:10" : "12:10";
     },
@@ -404,8 +407,8 @@ var prayer = {
     setAidPrayerTime: function () {
         $(".chourouk").show();
         $(".aid").hide();
-        if (this.getConfData().aidTime !== "") {
-            $(".aid-id").text(this.getConfData().aidTime);
+        if (this.confData.aidTime !== "") {
+            $(".aid-id").text(this.confData.aidTime);
             $(".chourouk").hide();
             $(".aid").show();
         }
@@ -434,11 +437,11 @@ var prayer = {
      * set static custom content, header, footer ...
      */
     setCustomContent: function () {
-        $(".header").html(this.getConfData().headerText);
-        $(".site").html(this.getConfData().site);
-        $(".assosciation").html(this.getConfData().footerText);
-        $(".supportTel").text(this.getConfData().supportTel);
-        if (!this.getConfData().androidAppEnabled) {
+        $(".header").html(this.confData.headerText);
+        $(".site").html(this.confData.site);
+        $(".assosciation").html(this.confData.footerText);
+        $(".supportTel").text(this.confData.supportTel);
+        if (!this.confData.androidAppEnabled) {
             $(".android-app").addClass("visibilty-hidden");
         }
     },
