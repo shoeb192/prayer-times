@@ -40,6 +40,7 @@ var prayer = {
         this.setAidPrayerTime();
         this.setCustomContent();
         this.hideSpinner();
+        $('[data-toggle="tooltip"]').tooltip();
     },
     /**
      * load all data
@@ -78,6 +79,17 @@ var prayer = {
         } else {
             prayer.confData = JSON.parse(localStorage.getItem("config"));
         }
+        this.debugConf();
+    },
+    debugConf: function () {
+        var debugData = "<b>calculChoice : </b>" + prayer.confData.calculChoice + "<br>" +
+                "<b>prayerMethod : </b>" + prayer.confData.prayerMethod + "<br>" +
+                "<b>latitude : </b>" + prayer.confData.latitude + "<br>" +
+                "<b>longitude : </b>" + prayer.confData.longitude + "<br>" +
+                "<b>fajrDegree : </b>" + prayer.confData.fajrDegree + "<br>" +
+                "<b>ichaaDegree : </b>" + prayer.confData.ichaaDegree + "<br>";
+
+        $(".conf").attr("title", debugData);
     },
     /**
      * load today prayer times
@@ -91,7 +103,6 @@ var prayer = {
             this.loadPrayerTimesFromApi();
         }
     },
-
     /**
      * @returns {Array}
      */
@@ -119,7 +130,6 @@ var prayer = {
             prayTimes.adjust({"isha": parseFloat(prayer.confData.ichaaDegree)});
         }
         var pt = prayTimes.getTimes(new Date(), [parseFloat(prayer.confData.latitude), parseFloat(prayer.confData.longitude)]);
-
         this.prayerTimes = [pt.fajr, pt.sunrise, pt.dhuhr, pt.asr, pt.maghrib, pt.isha];
     },
     /**
@@ -162,7 +172,7 @@ var prayer = {
      * @returns {Array}
      */
     dstConvertPrayerTime: function (prayerTime) {
-        if (dateTime.isLastSundayDst()) {
+        if (prayer.confData.calculChoice === "defined" && dateTime.isLastSundayDst()) {
             prayerTime = prayerTime.split(":");
             var hourPrayerTime = Number(prayerTime[0]) + (dateTime.getCurrentMonth() === "03" ? 1 : -1);
             var minutePrayerTime = prayerTime[1];
@@ -214,16 +224,11 @@ var prayer = {
     initCronMidNight: function () {
         setInterval(function () {
             if (dateTime.getCurrentHour() === "00" && dateTime.getCurrentMinute() === "00") {
-                // load PrayerTimes for the current month every 1 st of month
-                if (dateTime.getCurrentDay() === 1) {
-                    prayer.loadPrayerTimes();
-                }
-
                 prayer.setDate();
+                prayer.loadPrayerTimes();
                 prayer.setPrayerTimes();
-                prayer.setPrayerWaitings();
             }
-        }, prayer.oneMinute);
+        }, prayer.oneSecond);
     },
     /**
      * Check every minute if athan time is ok
@@ -259,7 +264,6 @@ var prayer = {
 
                     var diffTimeInMiniute = Math.floor((new Date() - prayer.getCurrentDateForPrayerTime(prayerTime)) / prayer.oneMinute);
                     var currentPrayerWaitingTime = prayer.getPrayersWaitingTimes()[currentPrayerIndex];
-
                     // if icha time and waiting is equal to 0, flash iqama will be run after 2 mins
                     if (currentPrayerIndex === 4 && currentPrayerWaitingTime === 0) {
                         currentPrayerWaitingTime = 2;
@@ -282,7 +286,6 @@ var prayer = {
         var adhanFlashInterval = setInterval(function () {
             currentPrayerElm.toggleClass("flash");
         }, prayer.oneSecond);
-
         // timeout for stopping time flashing
         setTimeout(function () {
             clearInterval(adhanFlashInterval);
@@ -291,7 +294,6 @@ var prayer = {
             // timeout for douaa show
             prayer.adhanDouaa.setTimeout();
         }, prayer.oneMinute);
-
     },
     /**
      * flash iqama for 30 sec
@@ -299,18 +301,15 @@ var prayer = {
      */
     flashIqama: function (currentPrayerIndex) {
         prayer.setNextPrayerTimeHilight(currentPrayerIndex);
-
         var iqamaFlashInterval = setInterval(function () {
             $(".main").toggleClass("hidden");
             $(".iqama").toggleClass("hidden");
         }, prayer.oneSecond);
-
         // stop iqama flashing after 45 sec
         setTimeout(function () {
             clearInterval(iqamaFlashInterval);
             prayer.hideIqama();
         }, 30 * prayer.oneSecond);
-
         // reset flag iqamaIsFlashing after one minute
         setTimeout(function () {
             prayer.iqamaIsFlashing = false;
@@ -342,7 +341,6 @@ var prayer = {
             }
         });
     },
-
     /**
      * hilight prayer by index
      * @param {integer} prayerIndex
