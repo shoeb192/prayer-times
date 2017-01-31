@@ -77,7 +77,7 @@ body {
     color: #f0ad4e  !important;
 }
 
-.flash{
+.flash, .visibilty-hidden{
     visibility: hidden;
 }
 

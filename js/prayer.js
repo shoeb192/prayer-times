@@ -79,15 +79,12 @@ var prayer = {
      */
     loadPrayerTimes: function () {
         var prayerTimes = new Array();
-        $.each(this.months, function (i, month) {
-            csvFile = month + ".csv";
-            $.ajax({
-                url: "data/months/" + month + ".csv",
-                async: false,
-                success: function (data) {
-                    prayerTimes[month] = data.split("\n");
-                }
-            });
+        $.ajax({
+            url: "data/months/" + dateTime.getCurrentMonth() + ".csv",
+            async: false,
+            success: function (data) {
+                prayerTimes = data.split("\n");
+            }
         });
         this.prayerTimes = prayerTimes;
     },
@@ -108,7 +105,7 @@ var prayer = {
      */
     getTodayPrayerLine: function () {
         var prayerTimes = this.prayerTimes;
-        return prayerTimes[dateTime.getCurrentMonth()][dateTime.getCurrentDay()].split(",");
+        return prayerTimes[dateTime.getCurrentDay()].split(",");
     },
     /**
      * array of only five prayer times
@@ -157,7 +154,7 @@ var prayer = {
      */
     getIchaTime: function () {
         var ichaTime = this.getTodayFivePrayerTimes()[4];
-        if (this.customData.minimumIchaTimeEnabled &&  ichaTime <= this.customData.minimumIchaTime)
+        if (this.customData.minimumIchaTimeEnabled && ichaTime <= this.customData.minimumIchaTime)
         {
             ichaTime = this.customData.minimumIchaTime;
         }
@@ -182,6 +179,11 @@ var prayer = {
     initCronMidNight: function () {
         setInterval(function () {
             if (dateTime.getCurrentHour() === "00" && dateTime.getCurrentMinute() === "00") {
+                // load PrayerTimes for the current month every 1 st of month
+                if(dateTime.getCurrentDay() === 1){
+                    prayer.loadPrayerTimes();
+                }
+                
                 prayer.setDate();
                 prayer.setPrayerTimes();
                 prayer.setPrayerWaitings();
@@ -328,7 +330,7 @@ var prayer = {
             $(".adhan").addClass("hidden");
         },
         setTimeout: function () {
-            if (prayer.customData.enableAdhanDouaa === true) {
+            if (prayer.customData.adhanDouaaEnabled === true) {
                 setTimeout(function () {
                     prayer.adhanDouaa.show();
                     setTimeout(function () {
@@ -428,6 +430,9 @@ var prayer = {
         $(".header").text(this.customData.headerText);
         $(".assosciation").html(this.customData.footerText);
         $(".site>span").text(this.customData.site);
+        if (!this.customData.androidAppEnabled) {
+            $(".android-app").addClass("visibilty-hidden");
+        }
     },
     hideSpinner: function () {
         $(".main").fadeIn(1000, function () {

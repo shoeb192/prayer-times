@@ -4,11 +4,12 @@
     "aidIsEnabled": false,
     "aidTime": "08:00",
     
-    "enableAdhanDouaa": true,
     "minimumIchaTimeEnabled": true,
     "minimumIchaTime": "19:50",
     "maximumIchaTimeForNoWaitingEnabled": true,
     "maximumIchaTimeForNoWaiting": "22:00",
+    "adhanDouaaEnabled": true,
+    "androidAppEnabled": false,
     "site": "http://priere.mosquee-houilles.fr",
     "headerText": "Mosquée ES-sounna - Houilles",
     "footerText": "Association SFI - Tél. 09.50.31.41.77 / 06.61.49.91.70 <br /> RIB : IBAN FR76 3000 3018 6200 0504 6187 693 / BIC SOGEFRPP",
