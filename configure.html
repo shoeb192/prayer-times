@@ -12,7 +12,7 @@
             <div class="col-lg-12">
                 <h1 class="text-success"> <strong>Configuration</strong></h1>
                 <p>Survoller les titres des champs avec la souris pour voir plus d'explication <br/>
-                <span class="glyphicon glyphicon-asterisk"></span> Champs obligatoires</p><br>
+                    <span class="glyphicon glyphicon-asterisk"></span> Champs obligatoires</p><br>
             </div>
 
             <form id="configure">
@@ -27,20 +27,29 @@
                     <label for="aidTime" title="Si renseigné l'heure du aïd sera affichée à la place du chourouk">
                         Heure du Aïd <span class="glyphicon glyphicon-info-sign"></span>
                     </label>
-                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 08:00" class="form-control" id="aidTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try{setCustomValidity('')}catch(e){}" >
+                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 08:00" class="form-control" id="aidTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                setCustomValidity('')
+                            } catch (e) {
+                            }" >
                 </div>
 
                 <div class="form-group col-lg-6">
                     <label for="minimumIchaTime" title="Permet de fixer l'heure du ichaa à une heure minimale">
                         Heure minimum du ichaa en hiver <span class="glyphicon glyphicon-info-sign"></span>
                     </label>
-                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 19:00" class="form-control" id="minimumIchaTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try{setCustomValidity('')}catch(e){}">
+                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 19:00" class="form-control" id="minimumIchaTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                setCustomValidity('')
+                            } catch (e) {
+                            }">
                 </div>
 
                 <div class="form-group col-lg-6">
                     <label for="maximumIchaTimeForNoWaiting" title="Heure maximale du ichaa à partir de laquelle il n'y aura pas d'attente entre adhan et iqama">
                         Heure maximale du ichaa (attente iqama = 0 min) <span class="glyphicon glyphicon-info-sign"></span></label>
-                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 22:00" class="form-control" id="maximumIchaTimeForNoWaiting" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try{setCustomValidity('')}catch(e){}">
+                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 22:00" class="form-control" id="maximumIchaTimeForNoWaiting" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                setCustomValidity('')
+                            } catch (e) {
+                            }">
                 </div>
 
                 <div class="form-group col-lg-6">
@@ -94,7 +103,7 @@
                 </div>
 
                 <div class="form-group col-lg-6">
-                    <label title="Si activer un écran affichant le douaa après adhan sera affiché">
+                    <label title="Si activé un écran affichant le douaa après adhan sera affiché">
                         <input type="checkbox" id="adhanDouaaEnabled"> Activer l'écran douaa du adhan <span class="glyphicon glyphicon-info-sign"></span>
                     </label>
 
@@ -102,14 +111,63 @@
 
                 <div class="col-lg-12">
                     <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#advanced">Paramètres avancés</button>
-                    <div id="advanced" class="collapse">
+                    <div id="advanced" class="collapse row">
                         <br>
-                        <div class="form-group">
-                            <label for="timesPath">Choix des horaires (Ne pas modifer) <span class="glyphicon glyphicon-asterisk"></span></label>
-                            <input type="text" class="form-control" id="timesPath" required="" placeholder="ex: houilles, 12-deg/paris">
+                        <div class="form-group col-lg-4">
+                            <label for="choiceCalcul">Choix de calcul d'horaire<span class="glyphicon glyphicon-asterisk"></span></label>
+                            <select id="calculChoice" class="form-control">
+                                <option value="custom">Personalisé (réglage manuel)</option>
+                                <option value="defined">Prédifini (fichier CSV)</option>
+                            </select>  
                         </div>
 
-                        <div class="form-group">
+                        <div class="choice-calcul defined" style="display: none">
+                            <div class="form-group col-lg-4">
+                                <label for="timesPath">Chemin vers le fichier CSV<span class="glyphicon glyphicon-asterisk"></span></label>
+                                <input type="text" class="form-control" id="timesPath" required="" placeholder="ex: houilles, 12-deg/paris">
+                            </div>
+                        </div>
+
+                        <div class="choice-calcul custom" style="display: none">
+                            <div class="form-group col-lg-8">
+                                <label for="prayerMethod">Méthode de calcul<span class="glyphicon glyphicon-asterisk"></span></label>
+                                <select id="prayerMethod" class="form-control">
+                                    <option value="MWL">Ligue islamique mondiale (fajr 18°, ichaa 17°)</option>
+                                    <option value="ISNA">Société Islamique d'Amérique du Nord (fajr 15°, ichaa 15°)</option>
+                                    <option value="Egypt">Egyptian General Authority of Survey (fajr 18.5°, ichaa 90 min après maghrib)</option>
+                                    <option value="Makkah">Umm al-Qura University - La Mecque (fajr 18°, ichaa 17°)</option>
+                                    <option value="Karachi">Université des sciences de Karachi (fajr 18°, ichaa 18°)</option>
+                                </select>  
+                            </div>
+
+                            <div class="form-group col-lg-4">
+                                <label for="latitude">
+                                    Latitude
+                                </label>
+                                <input type="text" pattern="[\d|\.]+" class="form-control" id="latitude">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label for="longitude">
+                                    Longitude
+                                </label>
+                                <input type="text" pattern="[\d|\.]+" class="form-control" id="longitude">
+                            </div>
+      
+                            <div class="form-group col-lg-4">
+                                <label for="fajrDegree">
+                                    Degré du fajr
+                                </label>
+                                <input type="number" min="0" class="form-control" id="fajrDegree">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label for="ichaaDegree">
+                                    Degré du ichaa
+                                </label>
+                                <input type="number" min="0" class="form-control" id="ichaaDegree">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-12">
                             <label><input type="checkbox" id="androidAppEnabled"> Afficher le Qr code de l'appli mobile (Ne pas modifer)</label>
                         </div>
                     </div>

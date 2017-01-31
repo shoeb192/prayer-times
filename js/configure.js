@@ -5,9 +5,10 @@
  */
 
 $(document).ready(function () {
-    var data = JSON.parse(localStorage.getItem("config"));
+    var confDataFromLocalStorage = JSON.parse(localStorage.getItem("config"));
+    console.dir(confDataFromLocalStorage);
     var input;
-    $.each(data, function (key, value) {
+    $.each(confDataFromLocalStorage, function (key, value) {
         if (key === "prayersWaitingTimes") {
             $(value).each(function (i, val) {
                 $("#wait" + i).val(val);
@@ -22,6 +23,13 @@ $(document).ready(function () {
             input.val(value);
         }
     });
+    
+    $("." + confDataFromLocalStorage.calculChoice).show();
+    $("#calculChoice").change(function (event) {
+        $(".choice-calcul").hide();
+        $("." + $(this).val()).show();
+    });
+    
 });
 
 /**
