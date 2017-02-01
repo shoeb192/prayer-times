@@ -134,37 +134,37 @@
                                 <select id="prayerMethod" class="form-control">
                                     <option value="ISNA">Société Islamique d'Amérique du Nord (fajr 15°, ichaa 15°)</option>
                                     <option value="UOIF">L'Union des Organisations Islamiques de France (UOIF) (fajr 12°, ichaa 12°)</option>
-                                    <option value="MWL">Ligue islamique mondiale (fajr 18°, ichaa 17°)</option>
-                                    <option value="Egypt">Egyptian General Authority of Survey (fajr 19.5°, ichaa 17.9°)</option>
-                                    <option value="Makkah">Umm al-Qura University - La Mecque (fajr 18°, ichaa 90 min après maghrib)</option>
                                     <option value="Karachi">Université des sciences de Karachi (fajr 18°, ichaa 18°)</option>
+                                    <option value="MWL">Ligue islamique mondiale (fajr 18°, ichaa 17°)</option>
+                                    <option value="Makkah">Umm al-Qura University - La Mecque (fajr 18°, ichaa 90 min après maghrib)</option>
+                                    <option value="Egypt">Egyptian General Authority of Survey (fajr 19.5°, ichaa 17.9°)</option>
                                 </select>  
                             </div>
 
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-3">
                                 <label for="latitude">
                                     Latitude
                                 </label>
-                                <input type="text" pattern="[\d|\.]+" class="form-control" id="latitude">
+                                <input type="text" pattern="[\d|\.]+" class="form-control" id="latitude" required="">
                             </div>
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-3">
                                 <label for="longitude">
                                     Longitude
                                 </label>
-                                <input type="text" pattern="[\d|\.]+" class="form-control" id="longitude">
+                                <input type="text" pattern="[\d|\.]+" class="form-control" id="longitude" required="">
                             </div>
       
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-3">
                                 <label for="fajrDegree">
                                     Degré du fajr
                                 </label>
-                                <input type="number" min="0" class="form-control" id="fajrDegree">
+                                <input type="number" min="0" class="form-control" id="fajrDegree" placeholder="ex: 18">
                             </div>
-                            <div class="form-group col-lg-4">
+                            <div class="form-group col-lg-3">
                                 <label for="ichaaDegree">
                                     Degré du ichaa
                                 </label>
-                                <input type="number" min="0" class="form-control" id="ichaaDegree">
+                                <input type="number" min="0" class="form-control" id="ichaaDegree" placeholder="ex: 15">
                             </div>
                         </div>
 

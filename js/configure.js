@@ -5,6 +5,10 @@
  */
 
 $(document).ready(function () {
+    
+    /**
+     * Init form from localStorage
+     */
     var confDataFromLocalStorage = JSON.parse(localStorage.getItem("config"));
     var input;
     $.each(confDataFromLocalStorage, function (key, value) {
@@ -23,6 +27,9 @@ $(document).ready(function () {
         }
     });
     
+    /**
+     * init calcul choice input
+     */
     $("." + confDataFromLocalStorage.calculChoice).show();
     $("#calculChoice").change(function (event) {
         $(".choice-calcul").hide();

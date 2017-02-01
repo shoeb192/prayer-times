@@ -161,7 +161,7 @@ function PrayTimes(method) {
 		imsak    : '10 min',
 		dhuhr    : '0 min',  
 		asr      : 'Standard',
-		highLats : 'NightMiddle'
+		highLats : 'AngleBased'
 	},
 
 	timeFormat = '24h',

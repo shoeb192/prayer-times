@@ -132,6 +132,7 @@ var prayer = {
         if (prayer.confData.ichaaDegree !== "") {
             prayTimes.adjust({"isha": parseFloat(prayer.confData.ichaaDegree)});
         }
+        
         var pt = prayTimes.getTimes(new Date(), [parseFloat(prayer.confData.latitude), parseFloat(prayer.confData.longitude)]);
         this.prayerTimes = [pt.fajr, pt.sunrise, pt.dhuhr, pt.asr, pt.maghrib, pt.isha];
     },
