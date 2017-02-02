@@ -6,6 +6,7 @@
     "maximumIchaTimeForNoWaiting": "22:00",
     "prayersWaitingTimes": [20, 10, 10, 5, 10],
     "hijriAdjustment": 0,
+    "hijriDateEnabled": true,
     "adhanDouaaEnabled": true,
     "androidAppEnabled": false,
     "calculChoice": "csvFile",

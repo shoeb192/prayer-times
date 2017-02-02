@@ -85,7 +85,7 @@ var prayer = {
         var debugData = "<p><b>Source de calcul : </b>" + prayer.confData.calculChoice + "<br>";
         if (prayer.confData.calculChoice === "csvFile") {
             debugData += "<b>Chemin CSV : </b>" + prayer.confData.csvFilePath + "<br>";
-        } else if(prayer.confData.calculChoice === "custom") {
+        } else if (prayer.confData.calculChoice === "custom") {
             debugData += "<b>Méthode de calcul : </b>" + prayer.confData.prayerMethod + "<br>" +
                     "<b>latitude : </b>" + prayer.confData.latitude + "<br>" +
                     "<b>longitude : </b>" + prayer.confData.longitude + "<br>" +
@@ -132,7 +132,7 @@ var prayer = {
         if (prayer.confData.ichaaDegree !== "") {
             prayTimes.adjust({"isha": parseFloat(prayer.confData.ichaaDegree)});
         }
-        
+
         var pt = prayTimes.getTimes(new Date(), [parseFloat(prayer.confData.latitude), parseFloat(prayer.confData.longitude)]);
         this.prayerTimes = [pt.fajr, pt.sunrise, pt.dhuhr, pt.asr, pt.maghrib, pt.isha];
     },
@@ -412,7 +412,9 @@ var prayer = {
      * set hijri date from hijriDate.js
      */
     setCurrentHijriDate: function () {
-        $(".hijriDate").text(writeIslamicDate(prayer.confData.hijriAdjustment));
+        if (prayer.confData.hijriDateEnabled === true) {
+            $(".hijriDate").text(writeIslamicDate(prayer.confData.hijriAdjustment));
+        }
     },
     /**
      * get joumouaa time depending dst

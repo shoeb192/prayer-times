@@ -258,5 +258,10 @@
         "ar": "د",
         "fr": "min",
         "en": "min"
+    },
+    "enable-hijri-date": {
+        "ar": "",
+        "fr": "Activer la date hégire",
+        "en": ""
     }
 }
