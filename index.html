@@ -27,11 +27,11 @@
 
                 <div class="top-content">
                     <div class="col-lg-3 aid">
-                        <div>Prière du Aïd</div>
+                        <div data-text="aid-prayer"></div>
                         <div class="aid-id"></div>
                     </div>
                     <div class="col-lg-3 chourouk">
-                        <div>Chourouk</div>
+                        <div data-text="chourouk"></div>
                         <div class="chourouk-id"></div>
                     </div>
                     <div class="col-lg-6">
@@ -40,18 +40,18 @@
                         <div class="hijriDate"></div>
                     </div>
                     <div class=" col-lg-3 joumouaa">
-                        <div>Joumouaa</div>
+                        <div data-text="joumouaa"></div>
                         <div class="joumouaa-id"></div>
                     </div>
                 </div>
 
                 <div class="prayer-content">
                     <div class="row prayer-text">
-                        <div class="text">Sobh</div>
-                        <div class="text">Dohr</div>
-                        <div class="text">Asr</div>
-                        <div class="text">Maghrib</div>
-                        <div class="text">Ichaa</div>
+                        <div class="text" data-text="sobh"></div>
+                        <div class="text" data-text="zuhr"></div>
+                        <div class="text" data-text="asr"></div>
+                        <div class="text" data-text="maghrib"></div>
+                        <div class="text" data-text="isha"></div>
                     </div>
 
                     <div class="prayer-time">
@@ -79,7 +79,7 @@
                     <div class="col-lg-10">
                         <div class="site"></div>
                         <div class="assosciation"></div>
-                        <div class="support">Support : Société Binary Consulting - Tél. <span class="supportTel"></span></div>
+                        <div class="support"><span data-text="support"></span> <span class="supportTel"></span></div>
                     </div>
                     <div class="col-lg-1 version-parent">
                         <span class="version"></span>
@@ -92,9 +92,8 @@
             <div class="spinner"></div>
             <div class="adhan hidden"></div>
             <div class="iqama hidden">
-                <div class="top">El-iqama</div>
+                <div class="top" data-text="iqama"></div>
                 <div class="image"></div>
-                <div class="bottom">الإقامة</div>
             </div>
 
             <div class="main" style="display: none">
@@ -140,9 +139,9 @@
         <script src="js/vendor/hijriDate.js"></script>
         <script src="js/vendor/PrayTimes.js?<version>"></script>
         <script src="js/tools.js?<version>"></script>
-        <script src="js/i18n.js?<version>"></script>
         <script src="js/date.js?<version>"></script>
         <script src="js/prayer.js?<version>"></script>
         <script src="js/main.js?<version>"></script>
+        <script src="js/i18n.js?<version>"></script>
     </body>
 </html>

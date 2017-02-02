@@ -42,11 +42,51 @@
     "chourouk": {
         "ar": "الشروق",
         "fr": "chourouk",
-        "en": "churuk"
+        "en": "shuruk"
     },
     "joumouaa": {
         "ar": "الجمعة",
         "fr": "joumouaa",
         "en": "Jumua"
+    },
+    "aid-prayer": {
+        "ar": "صلاة العيد",
+        "fr": "Prière du aid",
+        "en": "aid prayer"
+    },
+    "sobh": {
+        "ar": "الصبح",
+        "fr": "sobh",
+        "en": "sobh"
+    },
+    "zuhr": {
+        "ar": "الظهر",
+        "fr": "dohr",
+        "en": "zuhr"
+    },
+    "asr": {
+        "ar": "العصر",
+        "fr": "asr",
+        "en": "asr"
+    },
+    "maghrib": {
+        "ar": "المغرب",
+        "fr": "maghrib",
+        "en": "maghrib"
+    },
+    "isha": {
+        "ar": "العشاء",
+        "fr": "ichaa",
+        "en": "isha"
+    },
+    "support": {
+        "ar": "toto",
+        "fr": "Support: Société Binary Consulting - Tél.",
+        "en": "Support: Binary consulting company - Phone "
+    },
+    "iqama": {
+        "ar": "الإقامة",
+        "fr": "el-iqama",
+        "en": "the iqama"
     }
 }

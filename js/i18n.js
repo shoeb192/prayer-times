@@ -21,8 +21,8 @@ var i18n = {
      * parse som and translate texts
      */
     parseAndTrans: function () {
-        $("[data-trans]").each(function (i, elem) {
-            $(elem).text($(elem).data("trans").trans(getConfFromLocalStorage().lang));
+        $("[data-text]").each(function (i, elem) {
+            $(elem).text($(elem).data("text").trans(getConfFromLocalStorage().lang));
         });
     }
 };
