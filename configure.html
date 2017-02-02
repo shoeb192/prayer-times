@@ -16,6 +16,17 @@
             </div>
 
             <form id="configure">
+                <div class="row col-lg-12">
+                    <div class="form-group col-lg-3">
+                        <label for="lang" data-trans="lang"></label>
+                        <select id="lang" class="form-control">
+                            <option value="fr">Français</option>
+                            <option value="en">Anglais</option>
+                            <option value="ar">العربية</option>
+                        </select>  
+                    </div>
+                </div>
+
                 <div class="form-group col-lg-6">
                     <label for="joumouaaTime" title="Si vide 12:10 sera affiché en hiver et 13:10 en été">
                         Heure du Joumouaa <span class="glyphicon glyphicon-info-sign"></span>
@@ -153,7 +164,7 @@
                                 </label>
                                 <input type="text" pattern="[\d|\.]+" class="form-control" id="longitude" required="">
                             </div>
-      
+
                             <div class="form-group col-lg-3">
                                 <label for="fajrDegree">
                                     Degré du fajr
@@ -171,6 +182,9 @@
                         <div class="form-group col-lg-12">
                             <label><input type="checkbox" id="androidAppEnabled"> Afficher le Qr code de l'appli mobile (Ne pas modifer)</label>
                         </div>
+                        <div class="col-lg-2">
+                            <button type="button" class="btn btn-danger" id="reset-conf">Reset conf</button>
+                        </div>
                     </div>
                 </div>
 
@@ -184,6 +198,8 @@
 
         <script src="js/vendor/jquery.min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/tools.js?<version>"></script>
         <script src="js/configure.js?<version>"></script>
+        <script src="js/i18n.js?<version>"></script>
     </body>
 </html>

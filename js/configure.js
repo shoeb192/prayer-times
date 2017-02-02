@@ -36,6 +36,11 @@ $(document).ready(function () {
         $("." + $(this).val()).show();
     });
     
+    $("#reset-conf").click(function (event) {
+         localStorage.removeItem("config");
+         window.location.href = "index.html";
+    });
+    
 });
 
 /**

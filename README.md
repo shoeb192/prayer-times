@@ -18,7 +18,7 @@
 
 ![alt tag](http://priere.mosquee-houilles.fr/img/screenshot-3.png)
 
-![alt tag](http://priere.mosquee-houilles.fr/img/douaa-after-athan.jpg)
+![alt tag](http://priere.mosquee-houilles.fr/img/douaa-after-athan.svg)
 
 ## How it works
 
