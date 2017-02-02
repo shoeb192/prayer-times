@@ -20,7 +20,7 @@ var i18n = {
     /**
      * parse som and translate texts
      */
-    parseAndTrans: function () {
+    parseAndTranslate: function () {
         $("[data-text]").each(function (i, elem) {
             $(elem).text($(elem).data("text").trans(getConfFromLocalStorage().lang));
         });
@@ -32,17 +32,26 @@ i18n.loadJson();
 /**
  * translate a string
  * @param {string} key
- * @param {string} lang
+ * @param {boolean} noCapitalize
  * @returns {string} the translated string
  */
-String.prototype.trans = function (lang) {
+String.prototype.trans = function (lang, noCapitalize) {
     try {
-        return i18n.json[this][lang].firstCapitalize();
+        var trans = i18n.json[this][lang];
+        if (trans === "") {
+            trans = this;
+        }
+
+        if (typeof (noCapitalize) === "undefined" || noCapitalize === false) {
+            return trans.firstCapitalize();
+        }
+        
+        return trans;
     } catch (err) {
         return this.firstCapitalize();
     }
 };
 
 $(document).ready(function () {
-    i18n.parseAndTrans();
+    i18n.parseAndTranslate();
 });

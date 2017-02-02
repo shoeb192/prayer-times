@@ -88,5 +88,45 @@
         "ar": "الإقامة",
         "fr": "el-iqama",
         "en": "the iqama"
+    },
+    "configuration": {
+        "ar": "الإقامة",
+        "fr": "configuration",
+        "en": "configuration"
+    },
+    "help": {
+        "ar": "",
+        "fr": "survoller les titres des champs avec la souris pour voir plus d'explication ",
+        "en": "hover over the headings of the fields with the mouse to see more explanation"
+    },
+    "mandatory": {
+        "ar": "",
+        "fr": "champ obligatoire",
+        "en": "mandatory field"
+    },
+    "joumoua-time": {
+        "ar": "",
+        "fr": "heure du Joumouaa",
+        "en": "jumuaa time"
+    },
+    "min-isha": {
+        "ar": "",
+        "fr": "heure minimum du ichaa en hiver",
+        "en": "minimum isha time in winter"
+    },
+    "aid-time": {
+        "ar": "",
+        "fr": "heure du Aïd ",
+        "en": "aid time"
+    },
+    "isha-max-no-wait": {
+        "ar": "",
+        "fr": "heure maximale du ichaa (attente iqama = 0 min)",
+        "en": "maximum isha time for no waiting"
+    },
+    "time-waiting": {
+        "ar": "",
+        "fr": "temps d'attente entre adhan et iqama en minutes ",
+        "en": "waiting times between iqama and athan"
     }
 }

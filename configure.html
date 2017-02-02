@@ -10,34 +10,33 @@
 
         <div class="main">
             <div class="col-lg-12">
-                <h1 class="text-success"> <strong>Configuration</strong></h1>
-                <p>Survoller les titres des champs avec la souris pour voir plus d'explication <br/>
-                    <span class="glyphicon glyphicon-asterisk"></span> Champs obligatoires</p><br>
+                <h1 class="text-success"> <strong data-text="configuration"></strong></h1>
+                <p data-text="help"></p>
+                <span class="glyphicon glyphicon-asterisk"></span><span data-text="mandatory"></span> <br><br>
             </div>
+
 
             <form id="configure">
                 <div class="row col-lg-12">
                     <div class="form-group col-lg-3">
-                        <label for="lang" data-trans="lang"></label>
+                        <label for="lang" data-text="lang"></label>
                         <select id="lang" class="form-control">
                             <option value="fr">Français</option>
-                            <option value="en">Anglais</option>
+                            <option value="en">English</option>
                             <option value="ar">العربية</option>
                         </select>  
                     </div>
                 </div>
 
                 <div class="form-group col-lg-6">
-                    <label for="joumouaaTime" title="Si vide 12:10 sera affiché en hiver et 13:10 en été">
-                        Heure du Joumouaa <span class="glyphicon glyphicon-info-sign"></span>
-                    </label>
+                    <label for="joumouaaTime"  data-text="joumoua-time" title="Si vide 12:10 sera affiché en hiver et 13:10 en été">
+                    </label> <span class="glyphicon glyphicon-info-sign"></span>
                     <input type="text" class="form-control" id="joumouaaTime" placeholder="ex: 14h / 13h / 13:00">
                 </div>
 
                 <div class="form-group col-lg-6">
-                    <label for="aidTime" title="Si renseigné l'heure du aïd sera affichée à la place du chourouk">
-                        Heure du Aïd <span class="glyphicon glyphicon-info-sign"></span>
-                    </label>
+                    <label for="aidTime"  data-text="aid-time" title="Si renseigné l'heure du aïd sera affichée à la place du chourouk">
+                    </label> <span class="glyphicon glyphicon-info-sign"></span>
                     <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 08:00" class="form-control" id="aidTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
                                 setCustomValidity('')
                             } catch (e) {
@@ -45,9 +44,8 @@
                 </div>
 
                 <div class="form-group col-lg-6">
-                    <label for="minimumIchaTime" title="Permet de fixer l'heure du ichaa à une heure minimale">
-                        Heure minimum du ichaa en hiver <span class="glyphicon glyphicon-info-sign"></span>
-                    </label>
+                    <label for="minimumIchaTime" data-text="min-isha" title="Permet de fixer l'heure du ichaa à une heure minimale">
+                    </label> <span class="glyphicon glyphicon-info-sign"></span>
                     <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 19:00" class="form-control" id="minimumIchaTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
                                 setCustomValidity('')
                             } catch (e) {
@@ -55,8 +53,8 @@
                 </div>
 
                 <div class="form-group col-lg-6">
-                    <label for="maximumIchaTimeForNoWaiting" title="Heure maximale du ichaa à partir de laquelle il n'y aura pas d'attente entre adhan et iqama">
-                        Heure maximale du ichaa (attente iqama = 0 min) <span class="glyphicon glyphicon-info-sign"></span></label>
+                    <label for="maximumIchaTimeForNoWaiting" data-text="isha-max-no-wait" title="Heure maximale du ichaa à partir de laquelle il n'y aura pas d'attente entre adhan et iqama">
+                    </label> <span class="glyphicon glyphicon-info-sign"></span>
                     <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 22:00" class="form-control" id="maximumIchaTimeForNoWaiting" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
                                 setCustomValidity('')
                             } catch (e) {
@@ -64,13 +62,13 @@
                 </div>
 
                 <div class="form-group col-lg-6">
-                    <label>Temps d'attente entre adhan et iqama en minutes <span class="glyphicon glyphicon-asterisk"></span></label>
+                    <label data-text="time-waiting"></label> <span class="glyphicon glyphicon-asterisk"></span>
                     <div class="text-center">
-                        <label for="wait0" class="prayer-wait-label">Sobh</label>
-                        <label for="wait1" class="prayer-wait-label">Dohr</label>
-                        <label for="wait2" class="prayer-wait-label">Asr</label>
-                        <label for="wait3" class="prayer-wait-label">Maghrib</label>
-                        <label for="wait4" class="prayer-wait-label">Ichaa</label>
+                        <label for="wait0" class="prayer-wait-label" data-text="sobh"></label>
+                        <label for="wait1" class="prayer-wait-label" data-text="zuhr"></label>
+                        <label for="wait2" class="prayer-wait-label" data-text="asr"></label>
+                        <label for="wait3" class="prayer-wait-label" data-text="maghrib"></label>
+                        <label for="wait4" class="prayer-wait-label" data-text="isha"></label>
                     </div>
                     <div>
                         <input id="wait0" type="number" required="" min="0" class="form-control prayer-wait">
