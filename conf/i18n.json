@@ -128,5 +128,130 @@
         "ar": "",
         "fr": "temps d'attente entre adhan et iqama en minutes ",
         "en": "waiting times between iqama and athan"
+    },
+    "hijri-adjustment": {
+        "ar": "",
+        "fr": "ajustement de la date hégire",
+        "en": "hijri date adjustment"
+    },
+    "header-text": {
+        "ar": "",
+        "fr": " Texte du site internet",
+        "en": ""
+    },
+    "site-text": {
+        "ar": "",
+        "fr": " Texte du site internet",
+        "en": ""
+    },
+    "footer-text": {
+        "ar": "",
+        "fr": "Texte du pied de page",
+        "en": ""
+    },
+    "enable-douaa-screen": {
+        "ar": "",
+        "fr": "Activer l'écran douaa du adhan",
+        "en": ""
+    },
+    "calcul-choice": {
+        "ar": "",
+        "fr": "Choix de calcul d'horaire",
+        "en": ""
+    },
+    "custom": {
+        "ar": "",
+        "fr": "Personalisé (réglage manuel)",
+        "en": ""
+    },
+    "defined": {
+        "ar": "",
+        "fr": "Prédifini (fichier CSV)",
+        "en": ""
+    },
+    "path-to-csv": {
+        "ar": "",
+        "fr": "Chemin vers le fichier CSV",
+        "en": ""
+    },
+    "calcul-method": {
+        "ar": "",
+        "fr": "Méthode de calcul",
+        "en": ""
+    },
+    "ISNA": {
+        "ar": "",
+        "fr": "Société Islamique d'Amérique du Nord (fajr 15°, ichaa 15°)",
+        "en": ""
+    },
+    "UOIF": {
+        "ar": "",
+        "fr": "L'Union des Organisations Islamiques de France (UOIF) (fajr 12°, ichaa 12°)",
+        "en": ""
+    },
+    "Karachi": {
+        "ar": "",
+        "fr": "Université des sciences de Karachi (fajr 18°, ichaa 18°)",
+        "en": ""
+    },
+    "MWL": {
+        "ar": "",
+        "fr": "Ligue islamique mondiale (fajr 18°, ichaa 17°)",
+        "en": ""
+    },
+    "Makkah": {
+        "ar": "",
+        "fr": "Umm al-Qura University - La Mecque (fajr 18°, ichaa 90 min après maghrib)",
+        "en": ""
+    },
+    "Egypt": {
+        "ar": "",
+        "fr": "Egyptian General Authority of Survey (fajr 19.5°, ichaa 17.9°)",
+        "en": ""
+    },
+    "latitude": {
+        "ar": "",
+        "fr": "latitude",
+        "en": "latitude"
+    },
+    "longitude": {
+        "ar": "",
+        "fr": "longitude",
+        "en": "longitude"
+    },
+    "fajrDegree": {
+        "ar": "",
+        "fr": "Degré du fajr",
+        "en": ""
+    },
+    "ichaaDegree": {
+        "ar": "",
+        "fr": "Degré du ichaa",
+        "en": ""
+    },
+    "resetConf": {
+        "ar": "",
+        "fr": "Restorer les paramètres par défaut",
+        "en": "Reset conf"
+    },
+    "app-qr-code-display": {
+        "ar": "",
+        "fr": "Afficher le Qr code de l'appli mobile (Ne pas modifer)",
+        "en": ""
+    },
+    "advanced-param": {
+        "ar": "",
+        "fr": "Paramètres avancés",
+        "en": ""
+    },
+    "save": {
+        "ar": "",
+        "fr": "Enregistrer",
+        "en": ""
+    },
+    "cancel": {
+        "ar": "",
+        "fr": "Annuler",
+        "en": ""
     }
 }

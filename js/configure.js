@@ -4,6 +4,8 @@
  * @type {object}
  */
 
+prayer.loadConfData();
+
 $(document).ready(function () {
     
     /**
@@ -38,7 +40,7 @@ $(document).ready(function () {
     
     $("#reset-conf").click(function (event) {
          localStorage.removeItem("config");
-         window.location.href = "index.html";
+         window.location.reload();
     });
     
 });

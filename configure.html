@@ -80,9 +80,7 @@
                 </div>
 
                 <div class="form-group col-lg-6">
-                    <label for="hijriAdjustment">
-                        Ajustement de la date hégire
-                    </label>
+                    <label for="hijriAdjustment" data-text="hijri-adjustment"></label>
                     <select class="form-control" id="hijriAdjustment">
                         <option value="-2">-2</option>
                         <option value="-1">-1</option>
@@ -93,103 +91,91 @@
                 </div>
 
                 <div class="form-group col-lg-6">
-                    <label for="headerText">Texte de l'entête</label>
+                    <label for="headerText" data-text="header-text">Texte de l'entête</label>
                     <input type="text" class="form-control" id="headerText">
                 </div>
 
                 <div class="form-group col-lg-6">
-                    <label for="site" title="Lasser vide si pas besoin">
-                        Texte du site internet <span class="glyphicon glyphicon-info-sign"></span>
-                    </label>
+                    <label for="site"  data-text="site-text" title="Lasser vide si pas besoin"></label> <span class="glyphicon glyphicon-info-sign"></span>
                     <input type="text" class="form-control" id="site">
                 </div>
 
                 <div class="form-group col-lg-6">
-                    <label for="footerText" title="Laisser vide si vous ne souhaitez pas de texte dans le pieds de page">
-                        Texte du pied de page <span class="glyphicon glyphicon-info-sign"></span>
-                    </label>
+                    <label for="footerText"  data-text="footer-text" title="Laisser vide si vous ne souhaitez pas de texte dans le pieds de page"></label> <span class="glyphicon glyphicon-info-sign"></span>
                     <input type="text" class="form-control" id="footerText">
                 </div>
 
                 <div class="form-group col-lg-6">
                     <label title="Si activé un écran affichant le douaa après adhan sera affiché">
-                        <input type="checkbox" id="adhanDouaaEnabled"> Activer l'écran douaa du adhan <span class="glyphicon glyphicon-info-sign"></span>
+                        <input type="checkbox" id="adhanDouaaEnabled"> <span data-text="enable-douaa-screen"></span> <span class="glyphicon glyphicon-info-sign"></span>
                     </label>
 
                 </div>
 
                 <div class="col-lg-12">
-                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#advanced">Paramètres avancés</button>
+                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#advanced" data-text="advanced-param"></button>
                     <div id="advanced" class="collapse row">
                         <br>
                         <div class="form-group col-lg-4">
-                            <label for="choiceCalcul">Choix de calcul d'horaire<span class="glyphicon glyphicon-asterisk"></span></label>
+                            <label for="choiceCalcul" data-text="calcul-choice"></label> <span class="glyphicon glyphicon-asterisk"></span>
                             <select id="calculChoice" class="form-control">
-                                <option value="custom">Personalisé (réglage manuel)</option>
-                                <option value="csvFile">Prédifini (fichier CSV)</option>
+                                <option value="custom" data-text="custom">Personalisé (réglage manuel)</option>
+                                <option value="csvFile" data-text="defined">Prédifini (fichier CSV)</option>
                             </select>  
                         </div>
 
                         <div class="choice-calcul csvFile" style="display: none">
                             <div class="form-group col-lg-4">
-                                <label for="csvFilePath">Chemin vers le fichier CSV<span class="glyphicon glyphicon-asterisk"></span></label>
+                                <label for="csvFilePath" data-text="path-to-csv"></label> <span class="glyphicon glyphicon-asterisk"></span>
                                 <input type="text" class="form-control" id="csvFilePath" required="" placeholder="ex: houilles, 12-deg/paris">
                             </div>
                         </div>
 
                         <div class="choice-calcul custom" style="display: none">
                             <div class="form-group col-lg-8">
-                                <label for="prayerMethod">Méthode de calcul<span class="glyphicon glyphicon-asterisk"></span></label>
+                                <label for="prayerMethod" data-text="calcul-method"></label> <span class="glyphicon glyphicon-asterisk"></span>
                                 <select id="prayerMethod" class="form-control">
-                                    <option value="ISNA">Société Islamique d'Amérique du Nord (fajr 15°, ichaa 15°)</option>
-                                    <option value="UOIF">L'Union des Organisations Islamiques de France (UOIF) (fajr 12°, ichaa 12°)</option>
-                                    <option value="Karachi">Université des sciences de Karachi (fajr 18°, ichaa 18°)</option>
-                                    <option value="MWL">Ligue islamique mondiale (fajr 18°, ichaa 17°)</option>
-                                    <option value="Makkah">Umm al-Qura University - La Mecque (fajr 18°, ichaa 90 min après maghrib)</option>
-                                    <option value="Egypt">Egyptian General Authority of Survey (fajr 19.5°, ichaa 17.9°)</option>
+                                    <option value="ISNA" data-text="ISNA"></option>
+                                    <option value="UOIF" data-text="UOIF"></option>
+                                    <option value="Karachi" data-text="Karachi"></option>
+                                    <option value="MWL" data-text="MWL"></option>
+                                    <option value="Makkah" data-text="Makkah"></option>
+                                    <option value="Egypt" data-text="Egypt"></option>
                                 </select>  
                             </div>
 
                             <div class="form-group col-lg-3">
-                                <label for="latitude">
-                                    Latitude
-                                </label>
+                                <label for="latitude" data-text="latitude"></label>
                                 <input type="text" pattern="[\d|\.]+" class="form-control" id="latitude" required="">
                             </div>
                             <div class="form-group col-lg-3">
-                                <label for="longitude">
-                                    Longitude
-                                </label>
+                                <label for="longitude" data-text="longitude"></label>
                                 <input type="text" pattern="[\d|\.]+" class="form-control" id="longitude" required="">
                             </div>
 
                             <div class="form-group col-lg-3">
-                                <label for="fajrDegree">
-                                    Degré du fajr
-                                </label>
+                                <label for="fajrDegree" data-text="fajrDegree"></label>
                                 <input type="number" min="0" class="form-control" id="fajrDegree" placeholder="ex: 18">
                             </div>
                             <div class="form-group col-lg-3">
-                                <label for="ichaaDegree">
-                                    Degré du ichaa
-                                </label>
+                                <label for="ichaaDegree" data-text="ichaaDegree"></label>
                                 <input type="number" min="0" class="form-control" id="ichaaDegree" placeholder="ex: 15">
                             </div>
                         </div>
 
                         <div class="form-group col-lg-12">
-                            <label><input type="checkbox" id="androidAppEnabled"> Afficher le Qr code de l'appli mobile (Ne pas modifer)</label>
+                            <label><input type="checkbox" id="androidAppEnabled"> <span data-text="app-qr-code-display"></span></label>
                         </div>
                         <div class="col-lg-2">
-                            <button type="button" class="btn btn-danger" id="reset-conf">Reset conf</button>
+                            <button type="button" class="btn btn-danger" id="reset-conf" data-text="resetConf"></button>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-12 text-right">
                     <br>
-                    <button type="submit" id="submit" class="btn btn-success">Enregistrer</button>
-                    <a href="index.html" class="btn btn-danger">Annuler</a>
+                    <button type="submit" id="submit" class="btn btn-success" data-text="save">Enregistrer</button>
+                    <a href="index.html" class="btn btn-danger" data-text="cancel">Annuler</a>
                 </div>
             </form>
         </div>
@@ -197,6 +183,7 @@
         <script src="js/vendor/jquery.min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/tools.js?<version>"></script>
+        <script src="js/prayer.js?<version>"></script>
         <script src="js/configure.js?<version>"></script>
         <script src="js/i18n.js?<version>"></script>
     </body>
