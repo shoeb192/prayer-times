@@ -68,7 +68,7 @@ var dateTime = {
     getCurrentDate: function () {
         var day = this.addZero(this.getCurrentDay());
         var year = this.getCurrentYear();
-        var dateText = this.getCurrentDayFrenchText()
+        var dateText = this.getCurrentDayText()
                 + ' ' + day
                 + '/' + this.getCurrentMonth()
                 + '/' + year;
@@ -82,15 +82,8 @@ var dateTime = {
         var date = new Date();
         var day = new Array();
         var dayIndex = date.getDay();
-        day[0] = ["Dimanche", "الأحد"];
-        day[1] = ["Lundi", "الإثنين"];
-        day[2] = ["Mardi", "الثلاثاء"];
-        day[3] = ["Mercredi", "الأربعاء"];
-        day[4] = ["Jeudi", "الخميس"];
-        day[5] = ["Vendredi", "الجمعة"];
-        day[6] = ["Samedi", "السبت"];
-
-        return day[dayIndex];
+        days = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"];
+        return days[dayIndex].trans(getConfFromLocalStorage().lang);
     },
     getLastSundayOfMonth: function (month) {
         var date = new Date();
@@ -136,11 +129,5 @@ var dateTime = {
             }
         }
         return false;
-    },
-    getCurrentDayArabicText: function () {
-        return this.getCurrentDayText()[1];
-    },
-    getCurrentDayFrenchText: function () {
-        return this.getCurrentDayText()[0];
     }
 };

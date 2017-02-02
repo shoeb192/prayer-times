@@ -1,12 +1,52 @@
 {
+    "monday": {
+        "ar": "الإثنين",
+        "fr": "lundi",
+        "en": "monday"
+    },
+    "tuesday": {
+        "ar": "الثلاثاء",
+        "fr": "mardi",
+        "en": "tuesday"
+    },
     "wednesday": {
-        "ar" : "الأربعاء",
-        "fr" : "mercredi",
-        "en" : "wednesday"
+        "ar": "الأربعاء",
+        "fr": "mercredi",
+        "en": "wednesday"
+    },
+    "thursday": {
+        "ar": "الخميس",
+        "fr": "jeudi",
+        "en": "thursday"
+    },
+    "friday": {
+        "ar": "الجمعة",
+        "fr": "vendredi",
+        "en": "friday"
+    },
+    "saturday": {
+        "ar": "السبت",
+        "fr": "samedi",
+        "en": "saturday"
+    },
+    "sunday": {
+        "ar": "الأحد",
+        "fr": "dimanche",
+        "en": "sunday"
     },
     "lang": {
-        "ar" : "اللغة",
-        "fr" : "langue",
-        "en" : "language"
+        "ar": "اللغة",
+        "fr": "langue",
+        "en": "language"
+    },
+    "chourouk": {
+        "ar": "الشروق",
+        "fr": "chourouk",
+        "en": "churuk"
+    },
+    "joumouaa": {
+        "ar": "الجمعة",
+        "fr": "joumouaa",
+        "en": "Jumua"
     }
 }

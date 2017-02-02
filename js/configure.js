@@ -9,7 +9,7 @@ $(document).ready(function () {
     /**
      * Init form from localStorage
      */
-    var confDataFromLocalStorage = JSON.parse(localStorage.getItem("config"));
+    var confDataFromLocalStorage = getConfFromLocalStorage();
     var input;
     $.each(confDataFromLocalStorage, function (key, value) {
         if (key === "prayersWaitingTimes") {

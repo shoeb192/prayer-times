@@ -18,28 +18,30 @@ var i18n = {
         });
     },
     /**
-     * translate a string
-     * @param {string} key
-     * @param {string} lang
-     * @returns {string} the translated string
-     */
-    trans: function (key, lang) {
-        if (typeof (i18n.json[key][lang] !== 'undefined')) {
-            return i18n.json[key][lang].firstCapitalize();
-        }
-        return key.firstCapitalize();
-    },
-    /**
      * parse som and translate texts
      */
     parseAndTrans: function () {
         $("[data-trans]").each(function (i, elem) {
-            $(elem).text(i18n.trans($(elem).data("trans"), $("#lang").val()));
+            $(elem).text($(elem).data("trans").trans(getConfFromLocalStorage().lang));
         });
     }
-}
+};
 
 i18n.loadJson();
+
+/**
+ * translate a string
+ * @param {string} key
+ * @param {string} lang
+ * @returns {string} the translated string
+ */
+String.prototype.trans = function (lang) {
+    try {
+        return i18n.json[this][lang].firstCapitalize();
+    } catch (err) {
+        return this.firstCapitalize();
+    }
+};
 
 $(document).ready(function () {
     i18n.parseAndTrans();
