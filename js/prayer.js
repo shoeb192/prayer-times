@@ -455,7 +455,7 @@ var prayer = {
      */
     setPrayerWaitings: function () {
         $(".wait").each(function (i, e) {
-            $(e).text(prayer.getPrayersWaitingTimes()[i % 5] + " " + "min".trans(prayer.confData.lang, true));
+            $(e).text(prayer.getPrayersWaitingTimes()[i % 5] + " min");
         });
     },
     /**
