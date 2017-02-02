@@ -69,7 +69,7 @@ var prayer = {
     loadConfData: function () {
         if (localStorage.getItem("config") === null) {
             $.ajax({
-                url: "data/conf.json?" + (new Date()).getTime(),
+                url: "conf/conf.json?" + (new Date()).getTime(),
                 async: false,
                 success: function (data) {
                     localStorage.setItem("config", JSON.stringify(data));

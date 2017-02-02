@@ -10,7 +10,7 @@ var i18n = {
      */
     loadJson: function () {
         $.ajax({
-            url: "i18n/i18n.json?" + (new Date()).getTime(),
+            url: "conf/i18n.json?" + (new Date()).getTime(),
             async: false,
             success: function (data) {
                 i18n.json = data;
