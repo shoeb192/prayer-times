@@ -18,7 +18,7 @@ var i18n = {
         });
     },
     /**
-     * parse som and translate texts
+     * parse dom and translate texts
      */
     parseAndTranslate: function () {
         $("[data-text]").each(function (i, elem) {
@@ -26,8 +26,6 @@ var i18n = {
         });
     }
 };
-
-i18n.loadJson();
 
 /**
  * translate a string
@@ -52,6 +50,7 @@ String.prototype.trans = function (lang, noCapitalize) {
     }
 };
 
+i18n.loadJson();
 $(document).ready(function () {
     i18n.parseAndTranslate();
 });

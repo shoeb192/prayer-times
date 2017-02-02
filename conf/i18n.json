@@ -80,7 +80,7 @@
         "en": "isha"
     },
     "support": {
-        "ar": "toto",
+        "ar": "",
         "fr": "Support: Société Binary Consulting - Tél.",
         "en": "Support: Binary consulting company - Phone "
     },
@@ -253,5 +253,10 @@
         "ar": "",
         "fr": "Annuler",
         "en": ""
+    },
+    "min": {
+        "ar": "د",
+        "fr": "min",
+        "en": "min"
     }
 }
