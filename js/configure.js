@@ -39,7 +39,7 @@ $(document).ready(function () {
     });
     
     $("#reset-conf").click(function (event) {
-         localStorage.removeItem("config");
+         removeFromLocalStorage();
          window.location.reload();
     });
     

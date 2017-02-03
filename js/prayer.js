@@ -46,9 +46,9 @@ var prayer = {
      * load all data
      */
     loadData: function () {
+        this.loadVersion();
         this.loadConfData();
         this.loadPrayerTimes();
-        this.loadVersion();
     },
     /**
      * load app version
@@ -58,6 +58,12 @@ var prayer = {
             url: "version?" + (new Date()).getTime(),
             async: false,
             success: function (data) {
+                // reset conf if new version
+                if(getVersion() !== data){
+                    removeConfFromLocalStorage();
+                    setVersion(data);
+                }
+                
                 $(".version").text("v" + data);
             }
         });
