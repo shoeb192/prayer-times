@@ -1,19 +1,24 @@
 #!/bin/bash
 
-if [ -z "$1" ]; then
-echo "The version is mandatory";
-exit 1
-fi
-
 mkdir -p /tmp/prayer
+rm -rf /tmp/prayer/*
+
 scp -r -P 222 admin@izf.synology.me:/volume1/web/prayer/* /tmp/prayer
 
-cd /var/www/prayer
+mkdir -p /var/www/prayer 
 
-mkdir -p $1
+cd /tmp/prayer
 
-mv /tmp/prayer/* $1
+version=`cat version`
+
+rm -rf /var/www/prayer/$version
+
+mkdir /var/www/prayer/$version
+
+mv /tmp/prayer/* /var/www/prayer/$version
 
 rm -f current
 
-ln -s $1 current
+cd /var/www/prayer
+
+ln -s $version current
