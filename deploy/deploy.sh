@@ -9,6 +9,9 @@ rm -rf /tmp/prayer/*
 
 git archive $1 | (cd /tmp/prayer && tar xf -)
 cd /tmp/prayer
+
+rm -rf deploy doc README.md
+
 echo $1 > version
 sed -i "s/<version>/$1/g" *.html
-rsync -va --port 222 --delete --force --exclude-from "/home/keleyroot/perso/projects/prayer-times/deploy/exclude" ./ admin@izf.synology.me:/volume1/web/prayer
+rsync -va --port 222 --delete --force ./ admin@izf.synology.me:/volume1/web/prayer
