@@ -72,7 +72,7 @@ body {
 
 .prayer-text {
     width: 100%;
-    font-size: 450%;
+    font-size: 500%;
 } 
 
 .prayer-text .text, 
@@ -96,7 +96,7 @@ body {
 }
 
 .prayer-wait .wait{
-    font-size: 300%;
+    font-size: 350%;
     text-align: center;
 }
 

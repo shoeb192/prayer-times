@@ -7,7 +7,7 @@
 prayer.loadConfData();
 
 $(document).ready(function () {
-    
+
     /**
      * Init form from localStorage
      */
@@ -28,28 +28,32 @@ $(document).ready(function () {
             input.val(value);
         }
     });
-    
+
     /**
      * init calcul choice input
      */
     $("." + confDataFromLocalStorage.calculChoice).show();
-    $("#calculChoice").change(function (event) {
+    $("#calculChoice").bind("change keyup", function (event) {
         $(".choice-calcul").hide();
         $("." + $(this).val()).show();
     });
-    
+
     $("#reset-conf").click(function (event) {
-         removeConfFromLocalStorage();
-         window.location.reload();
+        removeConfFromLocalStorage();
+        window.location.reload();
     });
-    
+
+    $("#lang").bind("change", function (event) {
+        submitConfForm();
+        window.location.reload();
+    });
 });
 
 /**
  * Handling submit configure form
  */
 
-$("#configure").submit(function (event) {
+function submitConfForm() {
     var inputs = $('#configure :input');
     var data = JSON.parse(localStorage.getItem("config"));
     inputs.each(function () {
@@ -63,6 +67,10 @@ $("#configure").submit(function (event) {
     });
 
     localStorage.setItem("config", JSON.stringify(data));
+}
+
+$("#configure").submit(function (event) {
+    submitConfForm();
     window.location.href = "index.html";
     event.preventDefault();
 });
