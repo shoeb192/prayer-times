@@ -502,6 +502,7 @@ var prayer = {
                 $(".prayer-wait").append(waits[i]);
             }
             $("body").css("font-family", "Amiri");
+            $(".prayer-time").css("font-family", "Arial");
         }
     }
 };

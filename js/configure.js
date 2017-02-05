@@ -50,6 +50,7 @@ $(document).ready(function () {
 
     if (prayer.confData.lang === "ar") {
         $("body").css("font-family", "Amiri");
+        $("body").css("font-size", "16px");
     }
 });
 
