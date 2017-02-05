@@ -10,7 +10,7 @@ rm -rf /tmp/prayer/*
 git archive $1 | (cd /tmp/prayer && tar xf -)
 cd /tmp/prayer
 
-rm -rf doc README.md
+rm -rf doc README.md bin/deploy.sh
 
 echo $1 > version
 sed -i "s/<version>/$1/g" *.html
