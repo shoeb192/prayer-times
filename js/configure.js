@@ -47,6 +47,10 @@ $(document).ready(function () {
         submitConfForm();
         window.location.reload();
     });
+
+    if (prayer.confData.lang === "ar") {
+        $("body").css("font-family", "Amiri");
+    }
 });
 
 /**
