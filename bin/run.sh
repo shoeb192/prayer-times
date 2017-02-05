@@ -1,6 +1,6 @@
 #!/bin/bash
 
-firefox localhost  &
-sleep 5
+iceweasel --no-remote localhost &
+sleep 30
 xdotool key F11 
     

@@ -22,6 +22,11 @@
 
 ## How it works
 
+### Requirements
+1. nginx 
+2. iceweasel 
+3. xdotools
+
 The software will be installed in a raspberry pi, this small computer will be plugged in LCD screen with hdmi cable. 
 
 1. Download the source code and put it in your raspberry pi for exemple at /var/www/prayer
