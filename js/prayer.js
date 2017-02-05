@@ -33,6 +33,7 @@ var prayer = {
         this.setDate();
         this.setPrayerTimes();
         this.setPrayerWaitings();
+        this.changePrayerOrder();
         this.initNextPrayerTimeHilight();
         this.initAdhanFlash();
         this.initIqamaFlash();
@@ -59,11 +60,11 @@ var prayer = {
             async: false,
             success: function (data) {
                 // reset conf if new version
-                if(getVersion() !== data){
+                if (getVersion() !== data) {
                     removeConfFromLocalStorage();
                     setVersion(data);
                 }
-                
+
                 $(".version").text("v" + data);
             }
         });
@@ -461,7 +462,7 @@ var prayer = {
      */
     setPrayerWaitings: function () {
         $(".wait").each(function (i, e) {
-            $(e).text(prayer.getPrayersWaitingTimes()[i % 5] + " min");
+            $(e).text(prayer.getPrayersWaitingTimes()[i % 5] + " " + "min".trans(prayer.confData.lang, true));
         });
     },
     /**
@@ -480,5 +481,24 @@ var prayer = {
         $(".main").fadeIn(1000, function () {
             $(".spinner").hide();
         });
+    },
+    /**
+     * Change prayer order for arabic
+     */
+    changePrayerOrder: function () {
+        if (prayer.confData.lang === "ar") {
+            var texts = $(".prayer-text").find("div");
+            var times = $(".prayer-time").find("div");
+            var waits = $(".prayer-wait").find("div");
+            $(".prayer-text").find("dev").remove();
+            $(".prayer-time").find("dev").remove();
+            $(".prayer-wait").find("dev").remove();
+            for (var i = 4; i >= 0; i--) {
+                $(".prayer-text").append(texts[i]);
+                $(".prayer-time").append(times[i]);
+                $(".prayer-wait").append(waits[i]);
+            }
+            $("body").css("font-family", "Amiri");
+        }
     }
 };
