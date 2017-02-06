@@ -20,7 +20,7 @@
 
 ![alt tag](http://priere.mosquee-houilles.fr/img/configure.png)
 
-![alt tag](http://priere.mosquee-houilles.fr/img/iqama-3.png)
+![alt tag](http://priere.mosquee-houilles.fr/img/iqama.png)
 
 ![alt tag](http://priere.mosquee-houilles.fr/img/douaa-after-athan.svg)
 
