@@ -12,16 +12,22 @@
 * Configuration interface
 * Choose between custom prayer calcul methode and defined csv file
 
+### English screen
 ![alt tag](http://priere.mosquee-houilles.fr/img/EN-screen.png)
 
+### French screen
 ![alt tag](http://priere.mosquee-houilles.fr/img/FR-screen.png)
 
+### Arabic screen
 ![alt tag](http://priere.mosquee-houilles.fr/img/AR-screen.png)
 
+### Configuration screen
 ![alt tag](http://priere.mosquee-houilles.fr/img/configure.png)
 
+### Iqama screen
 ![alt tag](http://priere.mosquee-houilles.fr/img/iqama.png)
 
+### Duaa after athan screen
 ![alt tag](http://priere.mosquee-houilles.fr/img/douaa-after-athan.svg)
 
 ## How it works
