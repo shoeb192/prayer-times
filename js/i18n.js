@@ -1,3 +1,5 @@
+/* global getConfFromLocalStorage */
+
 /**
  * @author ibrahim.zehhaf.pro@gmail.com
  * Handel internationalisation
@@ -29,7 +31,7 @@ var i18n = {
 
 /**
  * translate a string
- * @param {string} key
+ * @param {string} lang
  * @param {boolean} noCapitalize
  * @returns {string} the translated string
  */

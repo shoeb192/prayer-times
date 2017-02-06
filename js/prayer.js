@@ -124,7 +124,7 @@ var prayer = {
             success: function (data) {
                 times = data.split("\n");
                 times = times[dateTime.getCurrentDay()].split(",");
-                prayer.times = times.slice(1, times.length)
+                prayer.times = times.slice(1, times.length);
             }
         });
     },
@@ -167,7 +167,7 @@ var prayer = {
         return times;
     },
     getTimeByIndex: function (index) {
-        return this.getTimesWithAdjustedIchaa()[index]
+        return this.getTimesWithAdjustedIchaa()[index];
     },
     /**
      * get prayer waiting taimes
@@ -506,3 +506,5 @@ var prayer = {
         }
     }
 };
+
+prayer.init();

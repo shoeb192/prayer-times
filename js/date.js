@@ -1,4 +1,4 @@
-/* global prayer */
+/* global prayer, getConfFromLocalStorage */
 
 /**
  * class handling date and time
@@ -68,7 +68,7 @@ var dateTime = {
     getCurrentDate: function () {
         var day = this.addZero(this.getCurrentDay());
         var year = this.getCurrentYear();
-        var dateText = this.getCurrentDayText()
+        var dateText = (getConfFromLocalStorage().lang === "ar" ? "" : this.getCurrentDayText())
                 + ' ' + day
                 + '/' + this.getCurrentMonth()
                 + '/' + year;
