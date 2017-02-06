@@ -45,5 +45,5 @@
 ### Install on Raspberry PI
 1. Download the source code and put it in your Raspberry pi for exemple at /home/pi/prayer
 2. Modify the root directory in /etc/nginx/sites-enabled/default, find this line `root /var/www/html;` and replace `/var/www/html` by `/home/pi/prayer`
-3. Add this line `@sh /home/pi/prayer/bin/run.sh` at the bottom of autostart file `/home/pi/.config/lxsession/LXDE-pi/autostart`, this let app running automatically after boot
+3. Add this line `@sh /home/pi/prayer/bin/run.sh` at the bottom of autostart file `/home/pi/.config/lxsession/LXDE-pi/autostart`, this lets app running automatically after boot
 4. Plug the Rasberry pi on LCD screen with hdmi cable and enjoy.
