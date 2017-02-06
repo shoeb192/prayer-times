@@ -12,16 +12,22 @@
 * Configuration interface
 * Choose between custom prayer calcul methode and defined csv file
 
+### English screen
 ![alt tag](http://priere.mosquee-houilles.fr/img/EN-screen.png)
 
+### French screen
 ![alt tag](http://priere.mosquee-houilles.fr/img/FR-screen.png)
 
+### Arabic screen
 ![alt tag](http://priere.mosquee-houilles.fr/img/AR-screen.png)
 
+### Configuration screen
 ![alt tag](http://priere.mosquee-houilles.fr/img/configure.png)
 
+### Iqama screen
 ![alt tag](http://priere.mosquee-houilles.fr/img/iqama.png)
 
+### Duaa after athan screen
 ![alt tag](http://priere.mosquee-houilles.fr/img/douaa-after-athan.svg)
 
 ## How it works
@@ -39,5 +45,5 @@
 ### Install on Raspberry PI
 1. Download the source code and put it in your Raspberry pi for exemple at /home/pi/prayer
 2. Modify the root directory in /etc/nginx/sites-enabled/default, find this line `root /var/www/html;` and replace `/var/www/html` by `/home/pi/prayer`
-3. Add this line `@sh /home/pi/prayer/bin/run.sh` at the bottom of autostart `/home/pi/.config/lxsession/LXDE-pi/autostart`, this let app running automatically after boot
+3. Add this line `@sh /home/pi/prayer/bin/run.sh` at the bottom of autostart file `/home/pi/.config/lxsession/LXDE-pi/autostart`, this let app running automatically after boot
 4. Plug the Rasberry pi on LCD screen with hdmi cable and enjoy.
