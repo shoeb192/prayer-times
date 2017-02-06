@@ -3,35 +3,41 @@
 ## Featurs
 
 * Shows prayer times on LCD screen
-* Shows current time, gregorian and hijri date (hijri date need internet connection) 
+* Shows current time, gregorian and hijri date
 * Prayer time and iqama flashing
 * Shows douaa after athan
 * Shows Aid prayer time
 * DST Handling for all prayer times
 * No human adjustment all is automatic
+* Configuration interface
+* Choose between custom prayer calcul methode and defined csv file
 
-![alt tag](http://priere.mosquee-houilles.fr/img/screenshot-1.png)
+![alt tag](http://priere.mosquee-houilles.fr/img/EN-screen.png)
 
-![alt tag](http://priere.mosquee-houilles.fr/img/screenshot-2.jpg)
+![alt tag](http://priere.mosquee-houilles.fr/img/FR-screen.png)
+
+![alt tag](http://priere.mosquee-houilles.fr/img/AR-screen.png)
 
 ![alt tag](http://priere.mosquee-houilles.fr/img/configure.png)
 
-![alt tag](http://priere.mosquee-houilles.fr/img/screenshot-3.png)
+![alt tag](http://priere.mosquee-houilles.fr/img/iqama-3.png)
 
 ![alt tag](http://priere.mosquee-houilles.fr/img/douaa-after-athan.svg)
 
 ## How it works
 
 ### Requirements
-1. nginx 
-2. iceweasel 
-3. xdotools
+1. nginx  
+`sudo apt-get install nginx`
 
-The software will be installed in a raspberry pi, this small computer will be plugged in LCD screen with hdmi cable. 
+2. iceweasel (Firefox on linux)  
+`sudo apt-get install iceweasel`
 
-1. Download the source code and put it in your raspberry pi for exemple at /var/www/prayer
-2. After installing nginx on your rasbperry pi create a vhost for the site or modify the root directory of the main nginx config
-3. Modify your conf.json
-4. Run firefox (iceweesle on raspberry pi)
-5. Go to your server-name or localhost depends on what you have configure in 2 nd step
-6. Clic F11 button and enjoy
+3. xdotool  
+`sudo apt-get install xdotool`
+
+### Install on Raspberry PI
+1. Download the source code and put it in your Raspberry pi for exemple at /home/pi/prayer
+2. Modify the root directory in /etc/nginx/sites-enabled/default, find this line `root /var/www/html;` and replace `/var/www/html` by `/home/pi/prayer`
+3. Add this line `@sh /home/pi/prayer/bin/run.sh` at the bottom of autostart `/home/pi/.config/lxsession/LXDE-pi/autostart`, this let app running automatically after boot
+4. Plug the Rasberry pi on LCD screen with hdmi cable and enjoy.
