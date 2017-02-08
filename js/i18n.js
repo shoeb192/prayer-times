@@ -45,7 +45,7 @@ String.prototype.trans = function (lang, noCapitalize) {
         if (typeof (noCapitalize) === "undefined" || noCapitalize === false) {
             return trans.firstCapitalize();
         }
-        
+
         return trans;
     } catch (err) {
         return this.firstCapitalize();
@@ -53,6 +53,4 @@ String.prototype.trans = function (lang, noCapitalize) {
 };
 
 i18n.loadJson();
-$(document).ready(function () {
-    i18n.parseAndTranslate();
-});
+i18n.parseAndTranslate();
