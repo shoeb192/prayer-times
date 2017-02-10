@@ -254,15 +254,18 @@ var prayer = {
         setInterval(function () {
             if (!prayer.adhanIsFlashing) {
                 var currentTime = dateTime.getCurrentTime(false);
-                var prayerElm = $(".prayer:contains(" + currentTime + ")");
-                if (prayerElm.length) {
-                    currentPrayerIndex = prayer.getPrayerIndexByTime(currentTime);
-                    // if joumouaa time we don't flash adhan
-                    if (!prayer.isJoumouaa(currentPrayerIndex)) {
-                        prayer.adhanIsFlashing = true;
-                        prayer.flashAdhan(prayerElm);
+                $(prayer.getTimesWithAdjustedIchaa()).each(function (currentPrayerIndex, time) {
+                    if (time === dateTime.getCurrentTime()) {
+                        var prayerElm = $(".prayer:contains(" + currentTime + ")");
+                        if (prayerElm.length) {
+                            // if joumouaa time we don't flash adhan
+                            if (!prayer.isJoumouaa(currentPrayerIndex)) {
+                                prayer.adhanIsFlashing = true;
+                                prayer.flashAdhan(prayerElm);
+                            }
+                        }
                     }
-                }
+                });
             }
         }, prayer.oneSecond);
     },
