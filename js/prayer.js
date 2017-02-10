@@ -256,8 +256,12 @@ var prayer = {
                 var currentTime = dateTime.getCurrentTime(false);
                 var prayerElm = $(".prayer:contains(" + currentTime + ")");
                 if (prayerElm.length) {
-                    prayer.adhanIsFlashing = true;
-                    prayer.flashAdhan(prayerElm);
+                    currentPrayerIndex = prayer.getPrayerIndexByTime(currentTime);
+                    // if joumouaa time we don't flash adhan
+                    if (!prayer.isJoumouaa(currentPrayerIndex)) {
+                        prayer.adhanIsFlashing = true;
+                        prayer.flashAdhan(prayerElm);
+                    }
                 }
             }
         }, prayer.oneSecond);
@@ -272,7 +276,7 @@ var prayer = {
             if (!prayer.iqamaIsFlashing) {
                 $(prayer.getTimesWithAdjustedIchaa()).each(function (currentPrayerIndex, time) {
                     // if joumuaa time we don't flash iqama
-                    if (dateTime.getCurrentDayText()[0] === "friday" && currentPrayerIndex === 1) {
+                    if (prayer.isJoumouaa(currentPrayerIndex)) {
                         return;
                     }
 
@@ -435,6 +439,29 @@ var prayer = {
             return this.confData.joumouaaTime;
         }
         return dateTime.isDst() ? "13:10" : "12:10";
+    },
+    /**
+     * if current time is joumouaa
+     * @param {int} currentPrayerIndex 
+     * @returns {boolean}
+     */
+    isJoumouaa: function (currentPrayerIndex) {
+        var date = new Date();
+        return date.getDay() === 5 && currentPrayerIndex === 1;
+    },
+    /**
+     * if current time is joumouaa
+     * @param {int} currentPrayerIndex 
+     * @returns {boolean}
+     */
+    getPrayerIndexByTime: function (time) {
+        var index = null;
+        $.each(prayer.getTimesWithAdjustedIchaa(), function (i, t) {
+            if (t === time) {
+                index = i;
+            }
+        });
+        return  index;
     },
     /**
      * show aid time if enabled
