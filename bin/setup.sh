@@ -24,9 +24,5 @@ echo "hdmi_group=1" >> /bin/config.txt
 echo "hdmi_mode=16" >> /bin/config.txt
 
 # disable screensaver
-echo "@xset s noblank" >> /etc/xdg/lxsession/LXDE/autostart
-echo "@xset s off" >> /etc/xdg/lxsession/LXDE/autostart
-echo "@xset -dpms" >> /etc/xdg/lxsession/LXDE/autostart
-
 echo "xserver-command=X -s 0 -dpms" >> /etc/lightdm/lightdm.conf
 
