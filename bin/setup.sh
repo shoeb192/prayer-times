@@ -19,9 +19,9 @@ echo "@sh /home/pi/prayer/current/bin/run.sh" >> /home/pi/.config/lxsession/LXDE
 chmod -R 777 /home/pi/prayer
 
 # fix resolution
-echo "disable_overscan=1" >> /bin/config.txt
-echo "hdmi_group=1" >> /bin/config.txt
-echo "hdmi_mode=16" >> /bin/config.txt
+echo "disable_overscan=1" >> /boot/config.txt
+echo "hdmi_group=1" >> /boot/config.txt
+echo "hdmi_mode=16" >> /boot/config.txt
 
 # disable screensaver
 echo "xserver-command=X -s 0 -dpms" >> /etc/lightdm/lightdm.conf
