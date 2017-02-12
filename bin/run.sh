@@ -1,6 +1,6 @@
 #!/bin/bash
 
-iceweasel --no-remote localhost &
-sleep 30
+iceweasel localhost &
+sleep 20
 xdotool key F11 
     
