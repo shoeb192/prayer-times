@@ -1,7 +1,6 @@
 #!/bin/bash
 
 iceweasel localhost &
-sleep 20
+sleep 30
 xdotool key F11
-unclutter
     

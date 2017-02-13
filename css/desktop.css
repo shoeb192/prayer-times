@@ -19,7 +19,7 @@ body {
 }
 
 .top-content{
-    height:48%;
+    height:52%;
 }
 
 .settings
@@ -30,7 +30,7 @@ body {
 }
 
 .prayer-content{
-    height:40%;
+    height:36%;
 }
 
 .header{
@@ -52,7 +52,7 @@ body {
 }
 
 .time{
-    font-size: 1200%;
+    font-size: 1300%;
 }
 
 .gregorianDate, .hijriDate{
