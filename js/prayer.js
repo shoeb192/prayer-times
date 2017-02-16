@@ -41,7 +41,6 @@ var prayer = {
         this.setAidTime();
         this.setCustomContent();
         this.hideSpinner();
-        $('[data-toggle="tooltip"]').tooltip();
     },
     /**
      * load all data
@@ -86,20 +85,6 @@ var prayer = {
         } else {
             prayer.confData = JSON.parse(localStorage.getItem("config"));
         }
-        this.debugConf();
-    },
-    debugConf: function () {
-        var debugData = "<p><b>Source de calcul : </b>" + prayer.confData.calculChoice + "<br>";
-        if (prayer.confData.calculChoice === "csvFile") {
-            debugData += "<b>Chemin CSV : </b>" + prayer.confData.csvFilePath + "<br>";
-        } else if (prayer.confData.calculChoice === "custom") {
-            debugData += "<b>Méthode de calcul : </b>" + prayer.confData.prayerMethod + "<br>" +
-                    "<b>latitude : </b>" + prayer.confData.latitude + "<br>" +
-                    "<b>longitude : </b>" + prayer.confData.longitude + "<br>" +
-                    "<b>Degré du fajr : </b>" + prayer.confData.fajrDegree + "<br>" +
-                    "<b>Degré du ichaa : </b>" + prayer.confData.ichaaDegree + "<br></p>";
-        }
-        $(".header").attr("title", debugData);
     },
     /**
      * load today prayer times
@@ -453,9 +438,8 @@ var prayer = {
         return date.getDay() === 5 && currentPrayerIndex === 1;
     },
     /**
-     * if current time is joumouaa
-     * @param {int} currentPrayerIndex 
-     * @returns {boolean}
+     * @param {string} time 
+     * @returns {integer}
      */
     getPrayerIndexByTime: function (time) {
         var index = null;

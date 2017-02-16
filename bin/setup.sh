@@ -6,6 +6,7 @@ nginx \
 xdotool \
 iceweasel \
 unclutter \
+vim \
 && apt-get autoremove -y && apt-get clean
 
 # change default nginx conf
