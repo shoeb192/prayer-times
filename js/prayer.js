@@ -352,6 +352,12 @@ var prayer = {
     hilighByIndex: function (prayerIndex) {
         var time = this.getTimeByIndex(prayerIndex);
         $(".prayer").removeClass("prayer-hilighted");
+        
+        // if joumouaa we hilight joumouaa time
+        if (prayer.isJoumouaa(prayerIndex)) {
+            $(".joumouaa-id").addClass("prayer-hilighted");
+        }
+
         $(".desktop .prayer:contains(" + time + ")").addClass("prayer-hilighted");
         $(".mobile .prayer:contains(" + time + ")").addClass("prayer-hilighted");
     },
