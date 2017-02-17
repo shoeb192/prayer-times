@@ -319,7 +319,7 @@ var prayer = {
             setTimeout(function () {
                 clearInterval(iqamaFlashInterval);
                 prayer.hideIqama();
-            }, 30 * prayer.oneSecond);
+            }, 3 * prayer.oneSecond);
         }
         // reset flag iqamaIsFlashing after one minute
         setTimeout(function () {
@@ -373,12 +373,17 @@ var prayer = {
     hilighByIndex: function (prayerIndex) {
         var time = this.getTimeByIndex(prayerIndex);
         $(".prayer").removeClass("prayer-hilighted");
+        $(".prayer-text .text").removeClass("text-hilighted");
+        $(".prayer-wait .wait").removeClass("text-hilighted");
 
         // if joumouaa we hilight joumouaa time
         if (prayer.isJoumouaa(prayerIndex)) {
             $(".joumouaa-id").addClass("prayer-hilighted");
+            return;
         }
 
+        $(".prayer-text .text").eq(prayerIndex).addClass("text-hilighted");
+        $(".prayer-wait .wait").eq(prayerIndex).addClass("text-hilighted");
         $(".desktop .prayer:contains(" + time + ")").addClass("prayer-hilighted");
         $(".mobile .prayer:contains(" + time + ")").addClass("prayer-hilighted");
     },
@@ -394,7 +399,7 @@ var prayer = {
         }
         setTimeout(function () {
             prayer.hilighByIndex(nextTimeIndex);
-        }, 10 * prayer.oneMinute);
+        }, 5 * prayer.oneSecond);
     },
     adhanDouaa: {
         show: function () {
