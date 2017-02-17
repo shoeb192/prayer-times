@@ -263,11 +263,6 @@ var prayer = {
         setInterval(function () {
             if (!prayer.iqamaIsFlashing) {
                 $(prayer.getTimesWithAdjustedIchaa()).each(function (currentPrayerIndex, time) {
-                    // if joumuaa time we don't flash iqama
-                    if (prayer.isJoumouaa(currentPrayerIndex)) {
-                        return;
-                    }
-
                     var diffTimeInMiniute = Math.floor((new Date() - prayer.getCurrentDateForPrayerTime(time)) / prayer.oneMinute);
                     var currentPrayerWaitingTime = prayer.getWaitingTimes()[currentPrayerIndex];
                     // if icha time and waiting is equal to 0, flash iqama will be run after 2 mins
@@ -307,15 +302,19 @@ var prayer = {
      */
     flashIqama: function (currentPrayerIndex) {
         prayer.setNextTimeHilight(currentPrayerIndex);
-        var iqamaFlashInterval = setInterval(function () {
-            $(".main").toggleClass("hidden");
-            $(".iqama").toggleClass("hidden");
-        }, prayer.oneSecond);
-        // stop iqama flashing after 45 sec
-        setTimeout(function () {
-            clearInterval(iqamaFlashInterval);
-            prayer.hideIqama();
-        }, 30 * prayer.oneSecond);
+
+        // if joumuaa time we don't flash iqama
+        if (!prayer.isJoumouaa(currentPrayerIndex)) {
+            var iqamaFlashInterval = setInterval(function () {
+                $(".main").toggleClass("hidden");
+                $(".iqama").toggleClass("hidden");
+            }, prayer.oneSecond);
+            // stop iqama flashing after 45 sec
+            setTimeout(function () {
+                clearInterval(iqamaFlashInterval);
+                prayer.hideIqama();
+            }, 30 * prayer.oneSecond);
+        }
         // reset flag iqamaIsFlashing after one minute
         setTimeout(function () {
             prayer.iqamaIsFlashing = false;
