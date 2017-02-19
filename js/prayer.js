@@ -319,7 +319,7 @@ var prayer = {
             setTimeout(function () {
                 clearInterval(iqamaFlashInterval);
                 prayer.hideIqama();
-            }, 3 * prayer.oneSecond);
+            }, 30 * prayer.oneSecond);
         }
         // reset flag iqamaIsFlashing after one minute
         setTimeout(function () {
@@ -399,7 +399,7 @@ var prayer = {
         }
         setTimeout(function () {
             prayer.hilighByIndex(nextTimeIndex);
-        }, 5 * prayer.oneSecond);
+        }, 10 * prayer.oneMinute);
     },
     adhanDouaa: {
         show: function () {
