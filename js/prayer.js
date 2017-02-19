@@ -155,7 +155,13 @@ var prayer = {
         return this.getTimesWithAdjustedIchaa()[index];
     },
     getWaitingByIndex: function (index) {
-        return this.getWaitingTimes()[index];
+        var waiting = this.getWaitingTimes()[index];
+        // if ichaa and waiting fixed to 0 we adjust wating to 2 min for adhan and douaa
+        if(index === 4 && waiting === 0)
+        {
+            waiting = 2;
+        }
+        return waiting;
     },
     /**
      * get prayer waiting taimes
@@ -421,7 +427,7 @@ var prayer = {
                     setTimeout(function () {
                         prayer.adhanDouaa.hide();
                     }, 30 * prayer.oneSecond);
-                }, prayer.oneMinute);
+                }, 30 * prayer.oneSecond);
             }
         }
     },
