@@ -154,6 +154,9 @@ var prayer = {
     getTimeByIndex: function (index) {
         return this.getTimesWithAdjustedIchaa()[index];
     },
+    getWaitingByIndex: function (index) {
+        return this.getWaitingTimes()[index];
+    },
     /**
      * get prayer waiting taimes
      * @returns {Array}
@@ -246,7 +249,7 @@ var prayer = {
                             // if joumouaa time we don't flash adhan
                             if (!prayer.isJoumouaa(currentPrayerIndex)) {
                                 prayer.adhanIsFlashing = true;
-                                prayer.flashAdhan(prayerElm);
+                                prayer.flashAdhan(prayerElm, currentPrayerIndex);
                             }
                         }
                     }
@@ -282,8 +285,9 @@ var prayer = {
     /**
      * Flash adhan for 1 minute
      * @param {object} currentPrayerElm
+     * @param {integer} currentPrayerIndex
      */
-    flashAdhan: function (currentPrayerElm) {
+    flashAdhan: function (currentPrayerElm, currentPrayerIndex) {
         var adhanFlashInterval = setInterval(function () {
             currentPrayerElm.toggleClass("flash");
         }, prayer.oneSecond);
@@ -292,6 +296,8 @@ var prayer = {
             clearInterval(adhanFlashInterval);
             prayer.adhanIsFlashing = false;
             currentPrayerElm.removeClass("flash");
+            // iqama countdown
+            prayer.iqamaCountdown(currentPrayerIndex);
             // timeout for douaa show
             prayer.adhanDouaa.setTimeout();
         }, prayer.oneMinute);
@@ -319,6 +325,21 @@ var prayer = {
         setTimeout(function () {
             prayer.iqamaIsFlashing = false;
         }, prayer.oneMinute);
+    },
+    /**
+     * Set iqama countdonwn
+     * @param {integer} currentPrayerIndex
+     */
+    iqamaCountdown: function (currentPrayerIndex) {
+        var time = prayer.getTimeByIndex(currentPrayerIndex);
+        var prayerTimeDate = prayer.getCurrentDateForPrayerTime(time);
+        var prayerTimePlusWaiting = prayerTimeDate.setMinutes(prayerTimeDate.getMinutes() + prayer.getWaitingByIndex(currentPrayerIndex));
+        var currentElem = $(".prayer-time .prayer").eq(currentPrayerIndex);
+        $(currentElem).countdown(prayerTimePlusWaiting, function (event) {
+            $(this).text(event.strftime('%M:%S'));
+        }).on('finish.countdown', function () {
+            $(currentElem).text(time);
+        });
     },
     hideIqama: function () {
         $(".main").removeClass("hidden");
@@ -352,7 +373,7 @@ var prayer = {
     hilighByIndex: function (prayerIndex) {
         var time = this.getTimeByIndex(prayerIndex);
         $(".prayer").removeClass("prayer-hilighted");
-        
+
         // if joumouaa we hilight joumouaa time
         if (prayer.isJoumouaa(prayerIndex)) {
             $(".joumouaa-id").addClass("prayer-hilighted");
