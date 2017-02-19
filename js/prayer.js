@@ -411,7 +411,7 @@ var prayer = {
             $(".adhan").addClass("hidden");
         },
         /**
-         * show douaa 30 sec after adhan flash 
+         * show douaa 1 minute after adhan flash 
          * show douaa for 30 sec
          */
         setTimeout: function () {
@@ -421,7 +421,7 @@ var prayer = {
                     setTimeout(function () {
                         prayer.adhanDouaa.hide();
                     }, 30 * prayer.oneSecond);
-                }, 30 * prayer.oneSecond);
+                }, prayer.oneMinute);
             }
         }
     },
