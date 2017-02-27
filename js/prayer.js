@@ -107,7 +107,7 @@ var prayer = {
             url: "data/csv/" + prayer.confData.csvFilePath + "/" + dateTime.getCurrentMonth() + ".csv?" + (new Date()).getTime(),
             async: false,
             success: function (data) {
-                times = data.split("\n");
+                times = data.split(/\r|\n/);
                 times = times[dateTime.getCurrentDay()].split(",");
                 prayer.times = times.slice(1, times.length);
             }

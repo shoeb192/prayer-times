@@ -80,7 +80,6 @@ var dateTime = {
      */
     getCurrentDayText: function () {
         var date = new Date();
-        var day = new Array();
         var dayIndex = date.getDay();
         days = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"];
         return days[dayIndex].trans(getConfFromLocalStorage().lang);
