@@ -38,7 +38,7 @@ body {
 }
 
 .top-content{
-    height:48%;
+    height:50%;
 }
 
 .settings
@@ -49,7 +49,7 @@ body {
 }
 
 .prayer-content{
-    height:40%;
+    height:38%;
 }
 
 .header{
@@ -71,11 +71,11 @@ body {
 }
 
 .time{
-    font-size: 1400%;
+    font-size: 1250%;
 }
 
 .gregorianDate, .hijriDate{
-    font-size: 500%;
+    font-size: 450%;
 }
 
 .hijriDate{
@@ -83,7 +83,7 @@ body {
 }
 
 .prayer-text {
-    font-size: 600%;
+    font-size: 550%;
     border-top: 1px #fff solid;
 } 
 
@@ -101,11 +101,11 @@ body {
 
 .prayer-time .prayer{
     color: yellowgreen;
-    font-size: 830%;
+    font-size: 780%;
 }
 
 .prayer-wait .wait{
-    font-size: 550%;
+    font-size: 500%;
     border-bottom: 1px #fff solid;
 }
 
