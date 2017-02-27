@@ -1,17 +1,17 @@
 @import "fonts.css";
 
 body{
-    margin: 30px 0;
+    margin: 10px 0;
 }
 
 .main {
     width: 80%;
     margin: auto;
 }
-.prayer-wait, .prayer-wait-label{
+.prayer-wait, .prayer-wait-label, .prayer-adjust , .prayer-adjust-label{
     width: 19.68%; 
 }
-.prayer-wait{
+.prayer-wait, .prayer-adjust {
     display: inline;
 }
 

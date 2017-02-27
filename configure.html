@@ -146,11 +146,11 @@
 
                             <div class="form-group col-lg-3">
                                 <label for="latitude" data-text="latitude"></label>
-                                <input type="text" pattern="[\d|\.]+" class="form-control" id="latitude" required="">
+                                <input type="text" pattern="[\d|\.]*" class="form-control" id="latitude">
                             </div>
                             <div class="form-group col-lg-3">
                                 <label for="longitude" data-text="longitude"></label>
-                                <input type="text" pattern="[\d|\.]+" class="form-control" id="longitude" required="">
+                                <input type="text" pattern="[\d|\.]*" class="form-control" id="longitude">
                             </div>
 
                             <div class="form-group col-lg-3">
@@ -161,7 +161,28 @@
                                 <label for="ichaaDegree" data-text="ichaaDegree"></label>
                                 <input type="number" min="0" class="form-control" id="ichaaDegree" placeholder="ex: 15">
                             </div>
+                            
+                            <div class="form-group col-lg-12">
+                                <div class="text-center">
+                                    <label data-text="times-adjustment"></label>
+                                </div>
+                                <div class="text-center">
+                                    <label for="sobhAdjust" class="prayer-adjust-label" data-text="sobh"></label>
+                                    <label for="dohrAdjust" class="prayer-adjust-label" data-text="zuhr"></label>
+                                    <label for="asrAdjust" class="prayer-adjust-label" data-text="asr"></label>
+                                    <label for="maghribAdjust" class="prayer-adjust-label" data-text="maghrib"></label>
+                                    <label for="ishaAdjust" class="prayer-adjust-label" data-text="isha"></label>
+                                </div>
+                                <div>
+                                    <input id="sobhAdjust" type="number" required="" class="form-control prayer-adjust">
+                                    <input id="dohrAdjust" type="number" required="" class="form-control prayer-adjust">
+                                    <input id="asrAdjust" type="number" required="" class="form-control prayer-adjust">
+                                    <input id="maghribAdjust" type="number" required="" class="form-control prayer-adjust">
+                                    <input id="ishaAdjust" type="number" required="" class="form-control prayer-adjust">
+                                </div>
+                            </div>
                         </div>
+
 
                         <div class="row col-lg-12">
                             <div class="form-group col-lg-4">

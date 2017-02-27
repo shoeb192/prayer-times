@@ -125,6 +125,15 @@ var prayer = {
             prayTimes.adjust({"isha": parseFloat(prayer.confData.ichaaDegree)});
         }
 
+        // times adjustment
+        prayTimes.tune({
+            fajr: prayer.confData.sobhAdjust,
+            dhuhr: prayer.confData.dohrAdjust,
+            asr: prayer.confData.asrAdjust,
+            maghrib: prayer.confData.maghribAdjust,
+            isha: prayer.confData.ishaAdjust
+        });
+        
         var pt = prayTimes.getTimes(new Date(), [parseFloat(prayer.confData.latitude), parseFloat(prayer.confData.longitude)]);
         this.times = [pt.fajr, pt.sunrise, pt.dhuhr, pt.asr, pt.maghrib, pt.isha];
     },

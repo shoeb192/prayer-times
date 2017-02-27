@@ -263,5 +263,10 @@
         "ar": "عرض التاريخ الهجري",
         "fr": "Activer la date hégire",
         "en": "Enable hijri date"
+    },
+    "times-adjustment": {
+        "ar": "تعديل الأوقات",
+        "fr": "Ajustement des horaires",
+        "en": "Times adjustment"
     }
 }
