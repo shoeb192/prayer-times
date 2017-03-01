@@ -133,7 +133,7 @@ var prayer = {
             maghrib: prayer.confData.maghribAdjust,
             isha: prayer.confData.ishaAdjust
         });
-        
+
         var pt = prayTimes.getTimes(new Date(), [parseFloat(prayer.confData.latitude), parseFloat(prayer.confData.longitude)]);
         this.times = [pt.fajr, pt.sunrise, pt.dhuhr, pt.asr, pt.maghrib, pt.isha];
     },
@@ -166,7 +166,7 @@ var prayer = {
     getWaitingByIndex: function (index) {
         var waiting = this.getWaitingTimes()[index];
         // if ichaa and waiting fixed to 0 we adjust wating to 3 min for adhan and douaa
-        if(index === 4 && waiting === 0)
+        if (index === 4 && waiting === 0)
         {
             waiting = 3;
         }
@@ -240,7 +240,8 @@ var prayer = {
      */
     initCronMidNight: function () {
         setInterval(function () {
-            if (dateTime.getCurrentHour() === "00" && dateTime.getCurrentMinute() === "00") {
+            var date = new Date();
+            if (date.getHours() === 0 && date.getMinutes() === 0) {
                 prayer.setDate();
                 prayer.loadTimes();
                 prayer.setTimes();
@@ -282,7 +283,7 @@ var prayer = {
             if (!prayer.iqamaIsFlashing) {
                 $(prayer.getTimesWithAdjustedIchaa()).each(function (currentPrayerIndex, time) {
                     var diffTimeInMiniute = Math.floor((new Date() - prayer.getCurrentDateForPrayerTime(time)) / prayer.oneMinute);
-                    var currentPrayerWaitingTime =  prayer.getWaitingByIndex(currentPrayerIndex);
+                    var currentPrayerWaitingTime = prayer.getWaitingByIndex(currentPrayerIndex);
                     if (diffTimeInMiniute === currentPrayerWaitingTime) {
                         prayer.iqamaIsFlashing = true;
                         // iqama flashing
