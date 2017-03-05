@@ -151,8 +151,28 @@
     },
     "enable-douaa-screen": {
         "ar": "عرض  شاشة الدعاء بعد الأذان",
-        "fr": "Activer l'écran douaa du adhan",
-        "en": "enable douaa after athan screen"
+        "fr": "Afficher douaa après adhan",
+        "en": "enable douaa after athan"
+    },
+    "enable-douaa-after-prayer": {
+        "ar": "عرض  شاشة الدعاء بعد الصلاة",
+        "fr": "Afficher douaa après la prière",
+        "en": ""
+    },
+    "enable-douaa-screen": {
+        "ar": "وقت عرض  شاشة الدعاء بعد الأذان",
+        "fr": "Afficher douaa après adhan",
+        "en": ""
+    },
+    "iqama-display-time": {
+        "ar": "وقت عرض  شاشة الإقامة",
+        "fr": "Temps du signal de la iqama (sec)",
+        "en": ""
+    },
+    "adhan-douaa-display-time": {
+        "ar": "عرض  شاشة الدعاء بعد الأذان",
+        "fr": "Temps d'affichage du douaa après adhan (sec)",
+        "en": ""
     },
     "calcul-choice": {
         "ar": "اختيار مصدر الحساب",

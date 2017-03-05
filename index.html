@@ -5,12 +5,19 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/slick.css" rel="stylesheet">
+        <link href="css/slick-theme.css" rel="stylesheet">
+        <link href="css/douaa-caroussel.css" rel="stylesheet">
         <link media="screen and (min-width: 992px)" href="css/desktop.css?<version>" rel="stylesheet">
         <link media="screen and (max-width: 992px)" href="css/mobile.css?<version>" rel="stylesheet">
     </head>
     <body class="text-center">
         <div class="desktop hidden-xs hidden-sm">
             <div class="spinner"></div>
+            
+            <!-- Douaa after prayer slider -->
+            <div class="douaa-after-prayer hidden"></div>
+            
             <div class="adhan hidden"></div>
             <div class=" iqama hidden">
                 <div class="top" data-text="iqama">El-iqama</div>
@@ -36,8 +43,8 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="time"></div>
-                        <div class="gregorianDate"></div>
                         <div class="hijriDate"></div>
+                        <div class="gregorianDate"></div>
                     </div>
                     <div class=" col-lg-3 joumouaa">
                         <div data-text="joumouaa"></div>
@@ -137,11 +144,13 @@
         <script src="js/vendor/jquery.min.js"></script>
         <script src="js/vendor/jquery.countdown.min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/vendor/slick.min.js"></script>
         <script src="js/vendor/hijriDate.js"></script>
         <script src="js/vendor/PrayTimes.js?<version>"></script>
         <script src="js/tools.js?<version>"></script>
         <script src="js/date.js?<version>"></script>
         <script src="js/i18n.js?<version>"></script>
         <script src="js/prayer.js?<version>"></script>
+        <script src="js/main.js?<version>"></script>
     </body>
 </html>

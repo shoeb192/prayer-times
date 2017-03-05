@@ -330,7 +330,7 @@ var prayer = {
             setTimeout(function () {
                 clearInterval(iqamaFlashInterval);
                 prayer.hideIqama();
-            }, 30 * prayer.oneSecond);
+            }, prayer.confData.iqamaDisplayTime * prayer.oneSecond);
         }
         // reset flag iqamaIsFlashing after one minute
         setTimeout(function () {
@@ -411,7 +411,21 @@ var prayer = {
         }
         setTimeout(function () {
             prayer.hilighByIndex(nextTimeIndex);
+            prayer.showDouaasAfterPrayer();
         }, 10 * prayer.oneMinute);
+    },
+    /**
+     * If enabled show douaa after prayer for 5 minutes
+     */
+    showDouaasAfterPrayer: function () {
+        if (prayer.confData.douaaAfterPrayerEnabled === true){
+            $(".douaa-after-prayer").removeClass("hidden");
+            $(".main").addClass("hidden");
+            setTimeout(function () {
+                $(".douaa-after-prayer").addClass("hidden");
+                $(".main").removeClass("hidden");
+            }, 5 * prayer.oneMinute);
+        }
     },
     adhanDouaa: {
         show: function () {
@@ -427,12 +441,12 @@ var prayer = {
          * show douaa for 30 sec
          */
         setTimeout: function () {
-            if (prayer.confData.adhanDouaaEnabled === true) {
+            if (prayer.confData.douaaAfterAdhanEnabled === true) {
                 setTimeout(function () {
                     prayer.adhanDouaa.show();
                     setTimeout(function () {
                         prayer.adhanDouaa.hide();
-                    }, 30 * prayer.oneSecond);
+                    }, prayer.confData.iqamaDisplayTime * prayer.oneSecond);
                 }, 150 * prayer.oneSecond);
             }
         }
@@ -563,5 +577,3 @@ var prayer = {
         }
     }
 };
-
-prayer.init();

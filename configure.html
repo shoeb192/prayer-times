@@ -183,18 +183,30 @@
                             </div>
                         </div>
 
-
+                        <div class="row col-lg-12">
+                            <div class="form-group col-lg-4">
+                                <label for="iqamaDisplayTime" data-text="iqama-display-time"></label> <span class="glyphicon glyphicon-asterisk"></span>
+                                <input type="number" min="30" class="form-control" id="iqamaDisplayTime" placeholder="ex: 30">
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label for="adhanDouaaDisplayTime" data-text="adhan-douaa-display-time"></label> <span class="glyphicon glyphicon-asterisk"></span>
+                                <input type="number" min="30" class="form-control" id="adhanDouaaDisplayTime" placeholder="ex: 30">
+                            </div>
+                        </div>
                         <div class="row col-lg-12">
                             <div class="form-group col-lg-4">
                                 <label title="Si activé un écran affichant le douaa après adhan sera affiché">
-                                    <input type="checkbox" id="adhanDouaaEnabled"> <span data-text="enable-douaa-screen"></span> <span class="glyphicon glyphicon-info-sign"></span>
+                                    <input type="checkbox" id="douaaAfterAdhanEnabled"> <span data-text="enable-douaa-screen"></span> <span class="glyphicon glyphicon-info-sign"></span>
                                 </label>
                             </div>
-
+                            <div class="form-group col-lg-4">
+                                <label><input type="checkbox" id="douaaAfterPrayerEnabled"> <span data-text="enable-douaa-after-prayer"></span></label>
+                            </div>
                             <div class="form-group col-lg-4">
                                 <label><input type="checkbox" id="androidAppEnabled"> <span data-text="app-qr-code-display"></span></label>
                             </div>
                         </div>
+                        
                         <div class="col-lg-2">
                             <button type="button" class="btn btn-danger" id="reset-conf" data-text="resetConf"></button>
                         </div>
