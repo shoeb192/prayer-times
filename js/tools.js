@@ -1,7 +1,10 @@
+/* ##### string ##### */
 String.prototype.firstCapitalize = function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
+
+/* ##### time ##### */
 Date.prototype.stdTimezoneOffset = function() {
     var jan = new Date(this.getFullYear(), 0, 1);
     var jul = new Date(this.getFullYear(), 6, 1);
@@ -12,6 +15,7 @@ Date.prototype.dst = function() {
     return this.getTimezoneOffset() < this.stdTimezoneOffset();
 }
 
+/* ##### conf ##### */
 function getConfFromLocalStorage() {
     return JSON.parse(localStorage.getItem("config"));
 }
@@ -20,6 +24,7 @@ function removeConfFromLocalStorage() {
     return localStorage.removeItem("config");
 }
 
+/* ##### version ##### */
 function getVersion() {
    return localStorage.getItem("version");
 }
@@ -27,3 +32,15 @@ function getVersion() {
 function setVersion(version) {
    return localStorage.setItem("version", version);
 }
+
+/* ##### slider ##### */
+function moveLeft() {
+    var screenWidth = $(window).width() - 20;
+    $('#slider ul').animate({
+        left: +screenWidth
+    }, 2000, function () {
+        $('#slider ul li:last-child').prependTo('#slider ul');
+        $('#slider ul').css('left', '');
+    });
+}
+

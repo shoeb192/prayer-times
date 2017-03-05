@@ -40,6 +40,7 @@ var prayer = {
         this.initCronMidNight();
         this.setAidTime();
         this.setCustomContent();
+        this.initDouaaAfterPrayerSlider();
         this.hideSpinner();
     },
     /**
@@ -418,12 +419,20 @@ var prayer = {
      * If enabled show douaa after prayer for 5 minutes
      */
     showDouaasAfterPrayer: function () {
-        if (prayer.confData.douaaAfterPrayerEnabled === true){
-            $(".douaa-after-prayer").removeClass("hidden");
-            $(".main").addClass("hidden");
+        if (prayer.confData.douaaAfterPrayerEnabled === true) {
+            $(".main").fadeOut(2000, function () {
+                $(".douaa-after-prayer").fadeIn(300);
+            });
+
+            var douaaInterval = setInterval(function () {
+                moveLeft();
+            }, 15000);
+
             setTimeout(function () {
-                $(".douaa-after-prayer").addClass("hidden");
-                $(".main").removeClass("hidden");
+                $(".douaa-after-prayer").fadeOut(2000, function () {
+                    $(".main").fadeIn(300);
+                });
+                clearInterval(douaaInterval);
             }, 5 * prayer.oneMinute);
         }
     },
@@ -438,7 +447,7 @@ var prayer = {
         },
         /**
          * show douaa 2.5 minutes after adhan flash 
-         * show douaa for 30 sec
+         * show douaa for configured time
          */
         setTimeout: function () {
             if (prayer.confData.douaaAfterAdhanEnabled === true) {
@@ -446,7 +455,7 @@ var prayer = {
                     prayer.adhanDouaa.show();
                     setTimeout(function () {
                         prayer.adhanDouaa.hide();
-                    }, prayer.confData.iqamaDisplayTime * prayer.oneSecond);
+                    }, prayer.confData.adhanDouaaDisplayTime * prayer.oneSecond);
                 }, 150 * prayer.oneSecond);
             }
         }
@@ -575,5 +584,24 @@ var prayer = {
             $("body").css("font-family", "Amiri");
             $(".prayer-time").css("font-family", "Arial");
         }
+    },
+    /**
+     *  init douaa after prayer slider
+     */
+    initDouaaAfterPrayerSlider: function () {
+        $('.douaa-after-prayer').load('douaa-slider.html', function () {
+            var screenWidth = $(window).width() - 20;
+            var screenHight = $(window).height() - $('.douaa-after-prayer .title').height() - 30;
+            $('#slider ul li').width(screenWidth);
+            $('#slider ul li').height(screenHight);
+            var slideCount = $('#slider ul li').length;
+            var sliderUlWidth = slideCount * screenWidth;
+            $('#slider').css({width: screenWidth, height: screenHight});
+            $('#slider ul').css({width: sliderUlWidth, marginLeft: -screenWidth});
+            $('#slider ul li:last-child').prependTo('#slider ul');
+            $('.douaa-after-prayer').fadeOut();
+        });
     }
 };
+
+prayer.init();
