@@ -32,15 +32,3 @@ function getVersion() {
 function setVersion(version) {
    return localStorage.setItem("version", version);
 }
-
-/* ##### slider ##### */
-function moveLeft() {
-    var screenWidth = $(window).width() - 20;
-    $('#slider ul').animate({
-        left: +screenWidth
-    }, 2000, function () {
-        $('#slider ul li:last-child').prependTo('#slider ul');
-        $('#slider ul').css('left', '');
-    });
-}
-
