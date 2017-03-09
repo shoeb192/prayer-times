@@ -5,11 +5,11 @@
 .douaa-after-prayer .title{
     font-size: 800%;   
     color: yellowgreen;
-    padding-top: 10px;
 }
 
 .douaa-after-prayer .ar{
     text-align: right;
+    line-height: 200%;
 }
 
 .douaa-after-prayer .fr{
@@ -20,13 +20,13 @@
 .douaa-after-prayer #slider {
   position: relative;
   overflow: hidden;
-  margin: 20px auto 0 auto;
+  margin: 5px auto 0 auto;
   border-radius: 4px;
 }
 
 .douaa-after-prayer #slider ul {
   position: relative;
-  margin: 0;
+  margin: auto;
   padding: 0;
   list-style: none;
 }
@@ -35,7 +35,6 @@
   position: relative;
   display: block;
   float: left;
-  margin: 0;
-  padding-top: 50px;
-  text-align: center;
+  margin: auto;
+  padding-top: 20px;
 }

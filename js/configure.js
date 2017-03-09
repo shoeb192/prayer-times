@@ -4,6 +4,7 @@
  * @type {object}
  */
 
+prayer.loadVersion();
 prayer.loadConfData();
 
 

@@ -33,7 +33,7 @@ var prayer = {
         this.setDate();
         this.setTimes();
         this.setWaitings();
-        this.changePrayerOrder();
+//        this.changePrayerOrder();
         this.initNextTimeHilight();
         this.initAdhanFlash();
         this.initIqamaFlash();
@@ -62,6 +62,7 @@ var prayer = {
                 if (getVersion() !== data) {
                     removeConfFromLocalStorage();
                     setVersion(data);
+                    window.location.reload(true);
                 }
 
                 $(".version").text("v" + data);
@@ -566,14 +567,14 @@ var prayer = {
 };
 
 var douaaAfterPrayerSlider = {
-    timeForShowOneDouaa : 5000,
+    oneDouaaShowingTime: 30000,
     /**
      *  init douaa after prayer slider
      */
     init: function () {
         $('.douaa-after-prayer').load('douaa-slider.html', function () {
-            var screenWidth = $(window).width() - 20;
-            var screenHight = $(window).height() - $('.douaa-after-prayer .title').height() - 30;
+            var screenWidth = $(window).width() ;
+            var screenHight = $(window).height() - 10;
             $('#slider ul li').width(screenWidth);
             $('#slider ul li').height(screenHight);
             var slideCount = $('#slider ul li').length;
@@ -581,7 +582,7 @@ var douaaAfterPrayerSlider = {
             $('#slider').css({width: screenWidth, height: screenHight});
             $('#slider ul').css({width: sliderUlWidth, marginLeft: -screenWidth});
             $('#slider ul li:last-child').prependTo('#slider ul');
-            $('.douaa-after-prayer').fadeOut(0);
+            $('.douaa-after-prayer').fadeOut(1);
         });
     },
     /**
@@ -594,8 +595,8 @@ var douaaAfterPrayerSlider = {
             });
 
             var douaaInterval = setInterval(function () {
-                douaaAfterPrayerSlider.moveLeft();
-            }, this.timeForShowOneDouaa);
+                douaaAfterPrayerSlider.moveRight();
+            }, this.oneDouaaShowingTime);
 
             setTimeout(function () {
                 $(".douaa-after-prayer").fadeOut(2000, function () {
@@ -610,14 +611,23 @@ var douaaAfterPrayerSlider = {
      * @returns {Number}
      */
     getTimeForShow: function () {
-        return $('#slider ul li').length * this.timeForShowOneDouaa;
+        return ($('#slider ul li').length * this.oneDouaaShowingTime * 2) - 1000;
     },
     moveLeft: function () {
-        var screenWidth = $(window).width() - 20;
+        var screenWidth = $(window).width();
         $('#slider ul').animate({
             left: +screenWidth
         }, 2000, function () {
             $('#slider ul li:last-child').prependTo('#slider ul');
+            $('#slider ul').css('left', '');
+        });
+    },
+    moveRight: function () {
+        var screenWidth = $(window).width();
+        $('#slider ul').animate({
+            left: -screenWidth
+        }, 1000, function () {
+            $('#slider ul li:first-child').appendTo('#slider ul');
             $('#slider ul').css('left', '');
         });
     }
