@@ -17,6 +17,8 @@
 
 ![alt tag](http://izf.synology.me/photo/webapi/thumb.php?api=SYNO.PhotoStation.Thumb&method=get&version=1&size=large&id=photo_c3896372616e20686f72616972657320707269c3a87265_494d475f32303137303330345f3132313932362e6a7067&rotate_version=0&thumb_sig=2f766f6c756d65312f70686f746f2fc3896372616e20686f72616972657320707269c3a872652f494d475f32303137303330345f3132313932362e6a7067&mtime=1488645849&SynoToken=qod69jke6bcs3f2rgigkigjd62)
 
+![alt tag](http://izf.synology.me/photo/webapi/thumb.php?api=SYNO.PhotoStation.Thumb&method=get&version=1&size=large&id=photo_c3896372616e20686f72616972657320707269c3a87265_494d475f32303137303232355f3131333133352e6a7067&rotate_version=0&thumb_sig=2f766f6c756d65312f70686f746f2fc3896372616e20686f72616972657320707269c3a872652f494d475f32303137303232355f3131333133352e6a7067&mtime=1488645827&SynoToken=qod69jke6bcs3f2rgigkigjd62)
+
 ### French screen
 ![alt tag](http://izf.synology.me/photo/webapi/thumb.php?api=SYNO.PhotoStation.Thumb&method=get&version=1&size=large&id=photo_c3896372616e20686f72616972657320707269c3a87265_6672656e63682e706e67&rotate_version=0&mtime=1488661668&SynoToken=qod69jke6bcs3f2rgigkigjd62)
 
