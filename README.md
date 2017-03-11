@@ -21,9 +21,6 @@
 ### Arabic screen
 ![alt tag](http://izf.synology.me/photo/webapi/thumb.php?api=SYNO.PhotoStation.Thumb&method=get&version=1&size=large&id=photo_c3896372616e20686f72616972657320707269c3a87265_6172616269632e706e67&rotate_version=0&mtime=1489238780&SynoToken=qod69jke6bcs3f2rgigkigjd62)
 
-### Configuration screen
-![alt tag](http://izf.synology.me/photo/webapi/thumb.php?api=SYNO.PhotoStation.Thumb&method=get&version=1&size=large&id=photo_c3896372616e20686f72616972657320707269c3a87265_636f6e6669677572652e706e67&rotate_version=0&thumb_sig=2f766f6c756d65312f70686f746f2fc3896372616e20686f72616972657320707269c3a872652f636f6e6669677572652e706e67&mtime=1488661663&SynoToken=qod69jke6bcs3f2rgigkigjd62)
-
 ### Iqama screen
 ![alt tag](http://priere.mosquee-houilles.fr/img/iqama.png)
 
@@ -32,6 +29,9 @@
 
 ### Duaa after prayer screen
 ![alt tag](http://izf.synology.me/photo/webapi/thumb.php?api=SYNO.PhotoStation.Thumb&method=get&version=1&size=large&id=photo_c3896372616e20686f72616972657320707269c3a87265_646f7561612d61667465722d7072617965722e706e67&rotate_version=0&thumb_sig=2f766f6c756d65312f70686f746f2fc3896372616e20686f72616972657320707269c3a872652f646f7561612d61667465722d7072617965722e706e67&mtime=1489237730&SynoToken=qod69jke6bcs3f2rgigkigjd62)
+
+### Configuration screen
+![alt tag](http://izf.synology.me/photo/webapi/thumb.php?api=SYNO.PhotoStation.Thumb&method=get&version=1&size=large&id=photo_c3896372616e20686f72616972657320707269c3a87265_636f6e6669677572652e706e67&rotate_version=0&thumb_sig=2f766f6c756d65312f70686f746f2fc3896372616e20686f72616972657320707269c3a872652f636f6e6669677572652e706e67&mtime=1488661663&SynoToken=qod69jke6bcs3f2rgigkigjd62)
 
 ## How it works
 
