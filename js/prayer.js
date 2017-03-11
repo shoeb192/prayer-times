@@ -574,12 +574,10 @@ var douaaAfterPrayerSlider = {
     init: function () {
         $('.douaa-after-prayer').load('douaa-slider.html', function () {
             var screenWidth = $(window).width() ;
-            var screenHight = $(window).height() - 10;
             $('#slider ul li').width(screenWidth);
-            $('#slider ul li').height(screenHight);
             var slideCount = $('#slider ul li').length;
             var sliderUlWidth = slideCount * screenWidth;
-            $('#slider').css({width: screenWidth, height: screenHight});
+            $('#slider').css({width: screenWidth});
             $('#slider ul').css({width: sliderUlWidth, marginLeft: -screenWidth});
             $('#slider ul li:last-child').prependTo('#slider ul');
             $('.douaa-after-prayer').fadeOut(1);
