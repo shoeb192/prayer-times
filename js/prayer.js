@@ -413,7 +413,7 @@ var prayer = {
         setTimeout(function () {
             prayer.hilighByIndex(nextTimeIndex);
             douaaAfterPrayerSlider.show();
-        }, 10 * prayer.oneMinute);
+        }, 12 * prayer.oneMinute);
     },
     adhanDouaa: {
         show: function () {
@@ -567,7 +567,7 @@ var prayer = {
 };
 
 var douaaAfterPrayerSlider = {
-    oneDouaaShowingTime: 30000,
+    oneDouaaShowingTime: 20000,
     /**
      *  init douaa after prayer slider
      */
@@ -609,7 +609,7 @@ var douaaAfterPrayerSlider = {
      * @returns {Number}
      */
     getTimeForShow: function () {
-        return ($('#slider ul li').length * this.oneDouaaShowingTime * 2) - 1000;
+        return ($('#slider ul li').length * this.oneDouaaShowingTime) - 1000;
     },
     moveLeft: function () {
         var screenWidth = $(window).width();
