@@ -33,7 +33,7 @@ var prayer = {
         this.setDate();
         this.setTimes();
         this.setWaitings();
-//        this.changePrayerOrder();
+        this.changePrayerOrder();
         this.initNextTimeHilight();
         this.initAdhanFlash();
         this.initIqamaFlash();
@@ -549,17 +549,17 @@ var prayer = {
      */
     changePrayerOrder: function () {
         if (prayer.confData.lang === "ar") {
-            var texts = $(".prayer-text").find("div");
-            var times = $(".prayer-time").find("div");
-            var waits = $(".prayer-wait").find("div");
-            $(".prayer-text").find("dev").remove();
-            $(".prayer-time").find("dev").remove();
-            $(".prayer-wait").find("dev").remove();
-            for (var i = 4; i >= 0; i--) {
-                $(".prayer-text").append(texts[i]);
-                $(".prayer-time").append(times[i]);
-                $(".prayer-wait").append(waits[i]);
-            }
+//            var texts = $(".prayer-text").find("div");
+//            var times = $(".prayer-time").find("div");
+//            var waits = $(".prayer-wait").find("div");
+//            $(".prayer-text").find("dev").remove();
+//            $(".prayer-time").find("dev").remove();
+//            $(".prayer-wait").find("dev").remove();
+//            for (var i = 4; i >= 0; i--) {
+//                $(".prayer-text").append(texts[i]);
+//                $(".prayer-time").append(times[i]);
+//                $(".prayer-wait").append(waits[i]);
+//            }
             $("body").css("font-family", "Amiri");
             $(".prayer-time").css("font-family", "Arial");
         }
