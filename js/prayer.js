@@ -8,6 +8,15 @@
 
 var prayer = {
     months: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
+    /**
+     * Time to wait before showing douaa after prayer
+     * @type Array
+     */
+    douaaAfterPrayerWait: [12, 9, 9, 9, 10],
+    /**
+     * prayer times
+     * @type Array
+     */
     times: [],
     /**
      * One minute in milliseconds
@@ -413,7 +422,7 @@ var prayer = {
         setTimeout(function () {
             prayer.hilighByIndex(nextTimeIndex);
             douaaAfterPrayerSlider.show();
-        }, 10 * prayer.oneMinute);
+        }, prayer.douaaAfterPrayerWait[currentTimeIndex] * prayer.oneMinute);
     },
     adhanDouaa: {
         show: function () {
@@ -569,11 +578,16 @@ var prayer = {
 var douaaAfterPrayerSlider = {
     oneDouaaShowingTime: 30000,
     /**
+     * it saves html (ul,li)
+     * @type String
+     */
+    sliderHtmlContent: '',
+    /**
      *  init douaa after prayer slider
      */
     init: function () {
         $('.douaa-after-prayer').load('douaa-slider.html', function () {
-            var screenWidth = $(window).width() ;
+            var screenWidth = $(window).width();
             $('#slider ul li').width(screenWidth);
             var slideCount = $('#slider ul li').length;
             var sliderUlWidth = slideCount * screenWidth;
@@ -581,6 +595,9 @@ var douaaAfterPrayerSlider = {
             $('#slider ul').css({width: sliderUlWidth, marginLeft: -screenWidth});
             $('#slider ul li:last-child').prependTo('#slider ul');
             $('.douaa-after-prayer').fadeOut(1);
+
+            //save html slider
+            douaaAfterPrayerSlider.sliderHtmlContent = $('#slider').html();
         });
     },
     /**
@@ -601,6 +618,7 @@ var douaaAfterPrayerSlider = {
                     $(".main").fadeIn(1000);
                 });
                 clearInterval(douaaInterval);
+                $('#slider').html(douaaAfterPrayerSlider.sliderHtmlContent);
             }, this.getTimeForShow());
         }
     },
@@ -610,15 +628,6 @@ var douaaAfterPrayerSlider = {
      */
     getTimeForShow: function () {
         return ($('#slider ul li').length * this.oneDouaaShowingTime * 2) - 1000;
-    },
-    moveLeft: function () {
-        var screenWidth = $(window).width();
-        $('#slider ul').animate({
-            left: +screenWidth
-        }, 2000, function () {
-            $('#slider ul li:last-child').prependTo('#slider ul');
-            $('#slider ul').css('left', '');
-        });
     },
     moveRight: function () {
         var screenWidth = $(window).width();
