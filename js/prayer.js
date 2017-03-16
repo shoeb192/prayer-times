@@ -9,7 +9,7 @@
 var prayer = {
     months: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
     /**
-     * Time to wait before showing douaa after prayer
+     * Time to wait before showing douaa after prayer (in minutes)
      * @type Array
      */
     douaaAfterPrayerWait: [12, 9, 9, 9, 10],
