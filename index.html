@@ -20,10 +20,10 @@
             </div>
 
             <!-- Douaa after prayer slider -->
-            <div class="douaa-after-prayer"></div>
+            <div class="douaa-after-prayer display-none"></div>
 
             <!-- Adhan screen -->
-            <div class="adhan" style="display: none">
+            <div class="adhan display-none">
                 <div class="ar">
                     <div class="title">دعاء ما بعد الأذان</div>
                     اللّهُـمَّ رَبَّ هَذِهِ الدّعْـوَةِ التّـامَّة وَالصّلاةِ القَـائِمَة آتِ محَـمَّداً الوَسيـلةَ وَالْفَضـيلَة وَابْعَـثْه مَقـامـاً مَحـموداً الَّذي وَعَـدْتَه 
@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <div class="douaa-between-adhan-iqama" style="display: none">
+            <div class="douaa-between-adhan-iqama display-none">
                 <div class="ar">
                     <div class="title">الدعاء لا يرد بين الأذان والإقامة</div>
                     عَنْ أَنَسِ بْنِ مَالِكٍ قَالَ: قَالَ رَسُولُ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ: الدُّعَاءُ لَا يُرَدُّ بَيْنَ الْأَذَانِ وَالْإِقَامَةِ
@@ -49,7 +49,7 @@
             </div>
 
             <!-- main screen -->
-            <div class="main" style="display: none">
+            <div class="main display-none">
                 <div class="header col-lg-offset-1 col-lg-10"></div> 
                 <div class="col-lg-1 text-right" >
                     <a href="configure.html">
@@ -58,27 +58,26 @@
                 </div>
 
                 <div class="top-content">
-                    <div class="adhan hidden">
-                        <span class="fr">Al'Adhân</span>  
-                        <!--<span class="ar">الأذان</span>-->
+                    <div class="adhan-flash hidden">
+                        <span data-text="adhan"></span>
                     </div>
                     <div class="content">
                         <div class="col-lg-3 aid">
                             <div data-text="aid-prayer"></div>
-                            <div class="aid-id"></div>
+                            <div class="aid-id fr"></div>
                         </div>
                         <div class="col-lg-3 chourouk">
                             <div data-text="chourouk"></div>
-                            <div class="chourouk-id"></div>
+                            <div class="chourouk-id fr"></div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="time"></div>
+                            <div class="time fr"></div>
                             <div class="hijriDate"></div>
-                            <div class="gregorianDate"></div>
+                            <div class="gregorianDate fr"></div>
                         </div>
                         <div class=" col-lg-3 joumouaa">
                             <div data-text="joumouaa"></div>
-                            <div class="prayer joumouaa-id"></div>
+                            <div class="prayer joumouaa-id fr"></div>
                         </div>
                     </div>
                 </div>
@@ -92,7 +91,7 @@
                         <div class="text" data-text="isha"></div>
                     </div>
 
-                    <div class="prayer-time">
+                    <div class="prayer-time fr">
                         <div class="sobh prayer"></div>
                         <div class="dohr prayer"></div>
                         <div class="asr prayer"></div>
@@ -120,7 +119,7 @@
                         <div class="support"><span data-text="support"></span> <span class="supportTel"></span></div>
                     </div>
                     <div class="col-lg-1 version-parent">
-                        <span class="version"></span>
+                        <span class="version fr"></span>
                     </div>
                 </div>
             </div>
@@ -129,7 +128,7 @@
         <div class="mobile hidden-lg hidden-md">
             <div class="spinner"></div>
 
-            <div class="main" style="display: none">
+            <div class="main display-none">
                 <div class="header"></div>
                 <div class="top-content">
                     <div class="time"></div>

@@ -288,5 +288,10 @@
         "ar": "تعديل الأوقات",
         "fr": "Ajustement des horaires",
         "en": "Times adjustment"
+    },
+    "adhan": {
+        "ar": "الأذان",
+        "fr": "Al'Adhân",
+        "en": "Azan"
     }
 }

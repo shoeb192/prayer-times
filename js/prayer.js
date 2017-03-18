@@ -42,7 +42,7 @@ var prayer = {
         this.setDate();
         this.setTimes();
         this.setWaitings();
-        this.changePrayerOrder();
+        this.translateToArabic();
         this.initNextTimeHilight();
         this.initAdhanFlash();
         this.initIqamaFlash();
@@ -276,7 +276,7 @@ var prayer = {
                             // if joumouaa time we don't flash adhan
                             if (!prayer.isJoumouaa(currentPrayerIndex)) {
                                 prayer.adhanIsFlashing = true;
-                                prayer.flashAdhan(prayerElm, currentPrayerIndex);
+                                prayer.flashAdhan(currentPrayerIndex);
                             }
                         }
                     }
@@ -306,27 +306,25 @@ var prayer = {
     },
     /**
      * Flash adhan for 1 minute
-     * @param {object} currentPrayerElm
      * @param {Number} currentPrayerIndex
      */
-    flashAdhan: function (currentPrayerElm, currentPrayerIndex) {
+    flashAdhan: function (currentPrayerIndex) {
         // iqama countdown
         prayer.iqamaCountdown(currentPrayerIndex);
         // timeout for douaa show
         prayer.adhanDouaa.setTimeout(currentPrayerIndex);
+        $(".top-content .content").addClass("hidden");
+
         var adhanFlashInterval = setInterval(function () {
-            $(".top-content .content").addClass("hidden");
-            $(".top-content .adhan").removeClass("hidden");
-            $(".top-content .adhan").toggleClass("flash");
-            currentPrayerElm.toggleClass("flash");
+            $(".top-content .adhan-flash").toggleClass("hidden");
         }, prayer.oneSecond);
+
         // timeout for stopping time flashing
         setTimeout(function () {
             clearInterval(adhanFlashInterval);
             prayer.adhanIsFlashing = false;
-            currentPrayerElm.removeClass("flash");
             $(".top-content .content").removeClass("hidden");
-            $(".top-content .adhan").addClass("hidden");
+            $(".top-content .adhan-flash").addClass("hidden");
         }, prayer.oneMinute);
     },
     /**
@@ -587,23 +585,23 @@ var prayer = {
         });
     },
     /**
-     * Change prayer order for arabic
+     * Arabic handler
      */
-    changePrayerOrder: function () {
+    translateToArabic: function () {
         if (prayer.confData.lang === "ar") {
-//            var texts = $(".prayer-text").find("div");
-//            var times = $(".prayer-time").find("div");
-//            var waits = $(".prayer-wait").find("div");
-//            $(".prayer-text").find("dev").remove();
-//            $(".prayer-time").find("dev").remove();
-//            $(".prayer-wait").find("dev").remove();
-//            for (var i = 4; i >= 0; i--) {
-//                $(".prayer-text").append(texts[i]);
-//                $(".prayer-time").append(times[i]);
-//                $(".prayer-wait").append(waits[i]);
-//            }
+            var texts = $(".prayer-text").find("div");
+            var times = $(".prayer-time").find("div");
+            var waits = $(".prayer-wait").find("div");
+            for (var i = 4; i >= 0; i--) {
+                $(".prayer-text").append(texts[i]);
+                $(".prayer-time").append(times[i]);
+                $(".prayer-wait").append(waits[i]);
+            }
             $("body").css("font-family", "Amiri");
-            $(".prayer-time").css("font-family", "Arial");
+            $("body").css("font-size", "13px");
+            $(".header").css("font-size", "600%");
+            $(".adhan .fr, .douaa-between-adhan-iqama .fr").remove();
+            $(".adhan .ar, .douaa-between-adhan-iqama .ar").css("font-size", "900%");
         }
     }
 };
@@ -632,8 +630,9 @@ var douaaSlider = {
             $('#slider').css({width: screenWidth});
             $('#slider ul').css({width: sliderUlWidth, marginLeft: -screenWidth});
             $('#slider ul li:last-child').prependTo('#slider ul');
-            $('.douaa-after-prayer').fadeOut(1);
-
+            if (prayer.confData.lang === "ar") {
+                $("#slider .fr").remove();
+            }
             //save html slider
             douaaSlider.sliderHtmlContent = $('#slider').html();
         });

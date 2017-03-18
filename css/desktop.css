@@ -44,8 +44,9 @@ body {
     height:50%;
 }
 
-.top-content .adhan{
-    font-size: 450%;
+.top-content .adhan-flash{
+    font-size: 2100%;
+    line-height: 160%;
 }
 
 .settings
@@ -62,6 +63,7 @@ body {
 .header{
     font-size: 450%;
     color: yellowgreen;
+    padding-top: 10px;
 }
 
 .chourouk, .joumouaa, .aid{
@@ -222,4 +224,8 @@ body {
 
 .fr{
     font-family: 'Arial';
+}
+
+.display-none {
+    display: none;
 }
