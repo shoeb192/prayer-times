@@ -147,20 +147,6 @@ body {
     font-family: 'Amiri';
 }
 
-.adhan {
-    padding: 10px
-}
-    
-.adhan .fr {
-    margin-top: 50px;
-    font-size: 250%;
-}
-
-.adhan .ar {
-    font-size: 300%;
-    line-height: 150%;
-}
-
 .title {
     color: yellowgreen;
     margin-bottom: 20px;
