@@ -360,10 +360,10 @@ var prayer = {
      */
     iqamaCountdown: function (currentPrayerIndex) {
         var time = prayer.getTimeByIndex(currentPrayerIndex);
-        var waiting = $(".prayer-wait .wait").eq(currentPrayerIndex).text();
+        var waiting = $(".prayer-wait ._" + currentPrayerIndex).text();
         var prayerTimeDate = prayer.getCurrentDateForPrayerTime(time);
         var prayerTimePlusWaiting = prayerTimeDate.setMinutes(prayerTimeDate.getMinutes() + prayer.getWaitingByIndex(currentPrayerIndex));
-        var currentElem = $(".prayer-wait .wait").eq(currentPrayerIndex);
+        var currentElem = $(".prayer-wait ._" + currentPrayerIndex);
         $(currentElem).countdown(prayerTimePlusWaiting, function (event) {
             $(this).text(event.strftime('%M:%S'));
         }).on('finish.countdown', function () {
@@ -383,10 +383,10 @@ var prayer = {
         prayer.hilighByIndex(0);
         var times = this.getTimesWithAdjustedIchaa();
         $.each(times, function (index, time) {
-            prayerTimeDate = prayer.getCurrentDateForPrayerTime(time);
+            prayerDateTime = prayer.getCurrentDateForPrayerTime(time);
             // adding 15 minute
-            prayerTimeDate.setMinutes(prayerTimeDate.getMinutes() + 15);
-            if (date > prayerTimeDate) {
+            prayerDateTime.setMinutes(prayerDateTime.getMinutes() + 10);
+            if (date > prayerDateTime) {
                 index++;
                 if (index === 5) {
                     index = 0;
@@ -411,10 +411,9 @@ var prayer = {
             return;
         }
 
-        $(".prayer-text .text").eq(prayerIndex).addClass("text-hilighted");
-        $(".prayer-wait .wait").eq(prayerIndex).addClass("text-hilighted");
-        $(".desktop .prayer:contains(" + time + ")").addClass("prayer-hilighted");
-        $(".mobile .prayer:contains(" + time + ")").addClass("prayer-hilighted");
+        $(".prayer-text ._" + prayerIndex).addClass("text-hilighted");
+        $(".prayer-wait ._" + prayerIndex).addClass("text-hilighted");
+        $(".prayer:contains(" + time + ")").addClass("prayer-hilighted");
     },
     /**
      * 10 minute after current iqama we hilight the next prayer time
