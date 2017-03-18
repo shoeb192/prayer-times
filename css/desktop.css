@@ -31,7 +31,7 @@ body {
     }
 }
 
-.main, .iqama, .adhan{
+.main, .iqama, .adhan, .douaa-between-adhan-iqama{
     height:100vh;
     margin: auto;
 }
@@ -145,13 +145,22 @@ body {
     height: 70%;
 }
 
-.adhan .fr {
-    margin-top: 50px;
-    font-size: 450%;
+.adhan .ar {
+    font-size: 700%;
 }
 
-.adhan .ar {
-    font-size: 600%;
+.adhan .fr {
+    margin-top: 50px;
+    font-size: 550%;
+}
+
+.douaa-between-adhan-iqama .ar {
+    font-size: 700%;
+}
+
+.douaa-between-adhan-iqama .fr {
+    margin-top: 50px;
+    font-size: 550%;
 }
 
 .title {
