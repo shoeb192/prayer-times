@@ -314,9 +314,10 @@ var prayer = {
         prayer.iqamaCountdown(currentPrayerIndex);
         // timeout for douaa show
         prayer.adhanDouaa.setTimeout(currentPrayerIndex);
-        // timeout for douaa between adhan and iqama remember show
-        prayer.adhanDouaa.setTimeout();
         var adhanFlashInterval = setInterval(function () {
+            $(".top-content .content").addClass("hidden");
+            $(".top-content .adhan").removeClass("hidden");
+            $(".top-content .adhan").toggleClass("flash");
             currentPrayerElm.toggleClass("flash");
         }, prayer.oneSecond);
         // timeout for stopping time flashing
@@ -324,6 +325,8 @@ var prayer = {
             clearInterval(adhanFlashInterval);
             prayer.adhanIsFlashing = false;
             currentPrayerElm.removeClass("flash");
+            $(".top-content .content").removeClass("hidden");
+            $(".top-content .adhan").addClass("hidden");
         }, prayer.oneMinute);
     },
     /**
@@ -637,6 +640,7 @@ var douaaSlider = {
     },
     /**
      * If enabled show douaa after prayer for 5 minutes
+     * @param {Number} currentTimeIndex
      */
     show: function (currentTimeIndex) {
         if (prayer.confData.douaaAfterPrayerEnabled === true) {
