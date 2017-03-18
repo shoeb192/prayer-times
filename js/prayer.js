@@ -9,10 +9,10 @@
 var prayer = {
     months: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
     /**
-     * Time to wait before showing douaa after prayer (in minutes)
-     * @type Array
+     * time to wait before hilight next prayer time  (in minutes)
+     * @type Number
      */
-    douaaAfterPrayerWait: [12, 9, 9, 9, 10],
+    nextPrayerHilightWait: 10,
     /**
      * prayer times
      * @type Array
@@ -329,7 +329,10 @@ var prayer = {
      * @param {Number} currentPrayerIndex 
      */
     flashIqama: function (currentPrayerIndex) {
+        // init next hilight timeout
         prayer.setNextTimeHilight(currentPrayerIndex);
+        // init douaa after prayer timeout
+        douaaSlider.show(currentPrayerIndex);
 
         // if joumuaa time we don't flash iqama
         if (!prayer.isJoumouaa(currentPrayerIndex)) {
@@ -422,8 +425,7 @@ var prayer = {
         }
         setTimeout(function () {
             prayer.hilighByIndex(nextTimeIndex);
-            douaaSlider.show();
-        }, prayer.douaaAfterPrayerWait[currentTimeIndex] * prayer.oneMinute);
+        }, prayer.nextPrayerHilightWait * prayer.oneMinute);
     },
     adhanDouaa: {
         show: function () {
@@ -534,7 +536,7 @@ var prayer = {
      */
     setWaitings: function () {
         $(".wait").each(function (i, e) {
-            $(e).text(prayer.getWaitingTimes()[i % 5] + "\"");
+            $(e).text(prayer.getWaitingTimes()[i % 5] + "'");
         });
     },
     /**
@@ -579,6 +581,11 @@ var prayer = {
 var douaaSlider = {
     oneDouaaShowingTime: 20000,
     /**
+     * Time to wait before showing douaa after prayer (in minutes)
+     * @type Array
+     */
+    douaaAfterPrayerWait: [12, 10, 10, 10, 11],
+    /**
      * it saves html (ul,li)
      * @type String
      */
@@ -604,23 +611,26 @@ var douaaSlider = {
     /**
      * If enabled show douaa after prayer for 5 minutes
      */
-    show: function () {
+    show: function (currentTimeIndex) {
         if (prayer.confData.douaaAfterPrayerEnabled === true) {
-            $(".main").fadeOut(2000, function () {
-                $(".douaa-after-prayer").fadeIn(1000);
-            });
-
-            var douaaInterval = setInterval(function () {
-                douaaSlider.moveRight();
-            }, this.oneDouaaShowingTime);
-
             setTimeout(function () {
-                $(".douaa-after-prayer").fadeOut(2000, function () {
-                    $(".main").fadeIn(1000);
+                $(".main").fadeOut(2000, function () {
+                    $(".douaa-after-prayer").fadeIn(1000);
                 });
-                clearInterval(douaaInterval);
-                $('#slider').html(douaaSlider.sliderHtmlContent);
-            }, this.getTimeForShow());
+
+                var douaaInterval = setInterval(function () {
+                    douaaSlider.moveRight();
+                }, douaaSlider.oneDouaaShowingTime);
+
+                setTimeout(function () {
+                    clearInterval(douaaInterval);
+                    $(".douaa-after-prayer").fadeOut(2000, function () {
+                        $(".main").fadeIn(1000);
+                        $('#slider').html(douaaSlider.sliderHtmlContent);
+                    });
+                    
+                }, douaaSlider.getTimeForShow());
+            }, douaaSlider.douaaAfterPrayerWait[currentTimeIndex] * prayer.oneMinute);
         }
     },
     /**

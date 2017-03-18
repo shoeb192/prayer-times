@@ -145,10 +145,17 @@ body {
     height: 70%;
 }
 
-.adhan {
-    background-image: url(/img/douaa-after-athan.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+.adhan .fr {
+    margin-top: 50px;
+    font-size: 450%;
+}
+
+.adhan .ar {
+    font-size: 600%;
+}
+
+.title {
+    color: yellowgreen;
 }
 
 .site{
@@ -193,4 +200,13 @@ body {
     color: #000;
     text-align: left;
     font-size: 14px;
+}
+
+.ar{
+    line-height: 180%;
+    font-family: 'Amiri';
+}
+
+.fr{
+    font-family: 'Arial';
 }

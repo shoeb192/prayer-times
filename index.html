@@ -5,23 +5,38 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/douaa-slider.css" rel="stylesheet">
         <link media="screen and (min-width: 992px)" href="css/desktop.css?<version>" rel="stylesheet">
         <link media="screen and (max-width: 992px)" href="css/mobile.css?<version>" rel="stylesheet">
+        <link href="css/douaa-slider.css" rel="stylesheet">
     </head>
     <body class="text-center">
         <div class="desktop hidden-xs hidden-sm">
             <div class="spinner"></div>
-            
+
             <!-- Douaa after prayer slider -->
             <div class="douaa-after-prayer"></div>
-            
-            <div class="adhan hidden"></div>
+
+            <!-- Adhan screen -->
+            <div class="adhan hidden">
+                <div class="ar">
+                    <div class="title">دعاء ما بعد الأذان</div>
+                    اللّهُـمَّ رَبَّ هَذِهِ الدّعْـوَةِ التّـامَّة وَالصّلاةِ القَـائِمَة آتِ محَـمَّداً الوَسيـلةَ وَالْفَضـيلَة وَابْعَـثْه مَقـامـاً مَحـموداً الَّذي وَعَـدْتَه 
+                </div>
+
+                <div class="fr">
+                    <div class="title">Invocation après adhan</div>
+                    Ô Allah, Maître de cet appel parfait et de la prière que l'on va accomplir, donne à Mohammed le pouvoir d'intercéder 
+                    (le Jour du Jugement) et la place d'honneur [au Paradis], et ressuscite-le dans la position louable que Tu lui as promise.
+                </div>
+            </div>
+
+            <!-- Iqama screen -->
             <div class="iqama hidden">
                 <div class="top" data-text="iqama">El-iqama</div>
                 <div class="image"></div>
             </div>
 
+            <!-- main screen -->
             <div class="main" style="display: none">
                 <div class="header col-lg-offset-1 col-lg-10"></div> 
                 <div class="col-lg-1 text-right" >
@@ -95,7 +110,18 @@
 
         <div class="mobile hidden-lg hidden-md">
             <div class="spinner"></div>
-            <div class="adhan hidden"></div>
+            <div class="adhan hidden">
+                <div class="ar">
+                    <div class="title">دعاء ما بعد الأذان</div>
+                    اللّهُـمَّ رَبَّ هَذِهِ الدّعْـوَةِ التّـامَّة وَالصّلاةِ القَـائِمَة آتِ محَـمَّداً الوَسيـلةَ وَالْفَضـيلَة وَابْعَـثْه مَقـامـاً مَحـموداً الَّذي وَعَـدْتَه 
+                </div>
+
+                <div class="fr">
+                    <div class="title">Invocation après adhan</div>
+                    Ô Allah, Maître de cet appel parfait et de la prière que l'on va accomplir, donne à Mohammed le pouvoir d'intercéder 
+                    (le Jour du Jugement) et la place d'honneur [au Paradis], et ressuscite-le dans la position louable que Tu lui as promise.
+                </div>
+            </div>
             <div class="iqama hidden">
                 <div class="top" data-text="iqama"></div>
                 <div class="image"></div>
@@ -105,8 +131,8 @@
                 <div class="header"></div>
                 <div class="top-content">
                     <div class="time"></div>
+                    <div class="hijriDate ar"></div>
                     <div class="gregorianDate"></div>
-                    <div class="hijriDate"></div>
                 </div>
 
                 <div class="prayer-content">
