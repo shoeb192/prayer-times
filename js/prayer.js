@@ -342,8 +342,8 @@ var prayer = {
         // if joumuaa time we don't flash iqama
         if (!prayer.isJoumouaa(currentPrayerIndex)) {
             var iqamaFlashInterval = setInterval(function () {
-                $(".main").toggleClass("hidden");
-                $(".iqama").toggleClass("hidden");
+                $(".desktop .main").toggleClass("hidden");
+                $(".desktop .iqama").toggleClass("hidden");
             }, prayer.oneSecond);
             // stop iqama flashing after 45 sec
             setTimeout(function () {
@@ -373,8 +373,8 @@ var prayer = {
         });
     },
     hideIqama: function () {
-        $(".main").removeClass("hidden");
-        $(".iqama").addClass("hidden");
+        $(".desktop .main").removeClass("hidden");
+        $(".desktop .iqama").addClass("hidden");
     },
     /**
      * serch and set the next prayer time hilight

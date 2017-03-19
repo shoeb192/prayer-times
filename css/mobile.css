@@ -101,30 +101,6 @@ body {
     visibility: hidden;
 }
 
-.iqama{
-    background-color: gray;
-    height:100vh;
-    padding: 20px;
-}
-.iqama .top{
-    font-size: 200%;
-    height: 15%;
-    color: #000;
-}
-
-.iqama .image{
-    background-image: url(/img/phone.png);
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-size: contain;
-    height: 70%;
-}
-
-.adhan {
-    height: 100vh;
-}
-
-
 .site{
     font-size: 100%;
 }
