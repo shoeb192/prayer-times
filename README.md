@@ -46,12 +46,11 @@
 
 ![alt tag](http://izf.synology.me/photo/webapi/thumb.php?api=SYNO.PhotoStation.Thumb&method=get&version=1&size=large&id=photo_c3896372616e20686f72616972657320707269c3a87265_646f756161322e706e67&rotate_version=0&mtime=1490123948&SynoToken=qod69jke6bcs3f2rgigkigjd62)
 
-### Configuration screen
-![alt tag](http://izf.synology.me/photo/webapi/thumb.php?api=SYNO.PhotoStation.Thumb&method=get&version=1&size=large&id=photo_c3896372616e20686f72616972657320707269c3a87265_636f6e6669677572652e706e67&rotate_version=0&thumb_sig=2f766f6c756d65312f70686f746f2fc3896372616e20686f72616972657320707269c3a872652f636f6e6669677572652e706e67&mtime=1488661663&SynoToken=qod69jke6bcs3f2rgigkigjd62)
-
 ### Responsive view for mobile
 ![alt tag](http://izf.synology.me/photo/webapi/thumb.php?api=SYNO.PhotoStation.Thumb&method=get&version=1&size=large&id=photo_c3896372616e20686f72616972657320707269c3a87265_53637265656e73686f742066726f6d20323031372d30332d32342031392d30352d32322e706e67&rotate_version=0&thumb_sig=2f766f6c756d65312f70686f746f2fc3896372616e20686f72616972657320707269c3a872652f53637265656e73686f742066726f6d20323031372d30332d32342031392d30352d32322e706e67&mtime=1490378829&SynoToken=qod69jke6bcs3f2rgigkigjd62)
 
+### Configuration screen
+![alt tag](http://izf.synology.me/photo/webapi/thumb.php?api=SYNO.PhotoStation.Thumb&method=get&version=1&size=large&id=photo_c3896372616e20686f72616972657320707269c3a87265_636f6e6669677572652e706e67&rotate_version=0&thumb_sig=2f766f6c756d65312f70686f746f2fc3896372616e20686f72616972657320707269c3a872652f636f6e6669677572652e706e67&mtime=1488661663&SynoToken=qod69jke6bcs3f2rgigkigjd62)
 
 ## How it works
 
