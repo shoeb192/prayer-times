@@ -232,7 +232,7 @@ var prayer = {
                 prayer.loadPrayerTimes();
                 prayer.setPrayerTimes();
             }
-        }, prayer.oneSecond);
+        }, prayer.oneMinute);
     },
     /**
      * Check every minute if athan time is ok
