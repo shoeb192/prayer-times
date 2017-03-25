@@ -127,3 +127,7 @@ body {
     color: yellowgreen;
     margin-bottom: 20px;
 }
+
+.display-none {
+    display: none;
+}

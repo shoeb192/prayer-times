@@ -579,8 +579,10 @@ var prayer = {
         }
     },
     hideSpinner: function () {
-        $(".main").fadeIn(1000, function () {
-            $(".spinner").hide();
+        $(document).ready(function () {
+            $(".main").fadeIn(1000, function () {
+                $(".spinner").hide();
+            });
         });
     },
     /**
