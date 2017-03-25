@@ -134,13 +134,19 @@ body {
 }
 
 .iqama{
-    background-color: gray;
+    background-color: #5e5e5e;
+    font-size: 700%;
 }
 
 .iqama .top{
-    font-size: 700%;
     height: 15%;
     color: #000;
+}
+
+.iqama .bottom{
+    height: 25%;
+    color: #000;
+    padding-top: 50px;
 }
 
 .iqama .image{
@@ -148,7 +154,7 @@ body {
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: contain;
-    height: 70%;
+    height: 60%;
 }
 
 .adhan .ar {

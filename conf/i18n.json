@@ -293,5 +293,10 @@
         "ar": "الأذان",
         "fr": "Al'Adhân",
         "en": "Azan"
+    },
+    "power-off-phones": {
+        "ar":"! أطفؤوا الهواتف المحمول من فضلكم",
+        "fr": "Éteignez vos portables SVP !",
+        "en": "Turn off your mobile phones please !"
     }
 }
