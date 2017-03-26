@@ -24,12 +24,12 @@ var prayer = {
      */
     oneMinute: 60000,
     /**
-     * One minute in milliseconds
+     * One second in milliseconds
      * @type Integer
      */
     oneSecond: 1000,
     /**
-     * Conf
+     * Conf from conf.json
      * @type Json
      */
     confData: null,
@@ -49,8 +49,8 @@ var prayer = {
         this.initCronMidNight();
         this.setAidTime();
         this.setCustomContent();
-        douaaSlider.init();
         this.hideSpinner();
+        douaaSlider.init();
     },
     /**
      * load all data
@@ -386,7 +386,7 @@ var prayer = {
         $.each(times, function (index, time) {
             prayerDateTime = prayer.getCurrentDateForPrayerTime(time);
             // adding 15 minute
-            prayerDateTime.setMinutes(prayerDateTime.getMinutes() + 10);
+            prayerDateTime.setMinutes(prayerDateTime.getMinutes() + prayer.getWaitingByIndex(index) + prayer.nextPrayerHilightWait);
             if (date > prayerDateTime) {
                 index++;
                 if (index === 5) {
@@ -624,7 +624,12 @@ var douaaSlider = {
      *  init douaa after prayer slider
      */
     init: function () {
-        $('.douaa-after-prayer').load('douaa-slider.html', function () {
+        var douaaSliderFile = 'douaa-slider.html';
+        if ($(window).width() > 1900) {
+            douaaSliderFile = 'douaa-slider-one-screen.html';
+        }
+
+        $('.douaa-after-prayer').load(douaaSliderFile, function () {
             var screenWidth = $(window).width();
             $('#slider ul li').width(screenWidth);
             var slideCount = $('#slider ul li').length;
