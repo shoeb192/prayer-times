@@ -121,7 +121,7 @@
     },
     "isha-max-no-wait": {
         "ar": "المدة القصوى لصلاة العشاء الإقامة بدون إنتظار ",
-        "fr": "heure maximale du ichaa (attente iqama = 0 min)",
+        "fr": "Heure du `isha (Iqama tout de suite après adhan)",
         "en": "maximum isha time for no waiting"
     },
     "time-waiting": {
