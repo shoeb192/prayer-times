@@ -2,6 +2,7 @@
     "lang": "fr",
     "joumouaaTime": "",
     "aidTime": "",
+    "imsakTime": "",
     "minimumIchaTime": "19:50",
     "maximumIchaTimeForNoWaiting": "22:00",
     "prayersWaitingTimes": [20, 10, 10, 5, 10],

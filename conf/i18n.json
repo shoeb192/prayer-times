@@ -303,5 +303,15 @@
         "ar": "تثبيت أوقاة الصلاة",
         "fr": "Fixation des temps de prière",
         "en": "Prayer times fixing"
+    },
+    "imsak-time": {
+        "ar": "وقت الإمساك",
+        "fr": "Heure du imsak",
+        "en": "Imsak time"
+    },
+    "imsak": {
+        "ar": "الإمساك",
+        "fr": "Imsak",
+        "en": "Imsak"
     }
 }

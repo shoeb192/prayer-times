@@ -27,16 +27,25 @@
                     </div>
                 </div>
 
-                <div class="form-group col-lg-6">
+                <div class="form-group col-lg-4">
                     <label for="joumouaaTime"  data-text="joumoua-time" title="Si vide 12:10 sera affiché en hiver et 13:10 en été">
                     </label> <span class="glyphicon glyphicon-info-sign"></span>
                     <input type="text" class="form-control" id="joumouaaTime" placeholder="ex: 14h / 13h / 13:00">
                 </div>
 
-                <div class="form-group col-lg-6">
+                <div class="form-group col-lg-4">
                     <label for="aidTime"  data-text="aid-time" title="Si renseigné l'heure du aïd sera affichée à la place du chourouk">
                     </label> <span class="glyphicon glyphicon-info-sign"></span>
                     <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 08:00" class="form-control" id="aidTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                setCustomValidity('')
+                            } catch (e) {
+                            }" >
+                </div>
+
+                <div class="form-group col-lg-4">
+                    <label for="imsakTime"  data-text="imsak-time" title="Si renseigné l'heure du imsak sera affichée à la place du chourouk">
+                    </label> <span class="glyphicon glyphicon-info-sign"></span>
+                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 06:00" class="form-control" id="imsakTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
                                 setCustomValidity('')
                             } catch (e) {
                             }" >
@@ -179,10 +188,12 @@
                                             } catch (e) {
                                             }">
                                     <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 13:00" class="form-control inline prayer fixing" id="fixing1" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                                setCustomValidity('')} catch (e) {
+                                                setCustomValidity('')
+                                            } catch (e) {
                                             }">
                                     <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 16:00" class="form-control inline prayer fixing" id="fixing2" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                                setCustomValidity('')} catch (e) {
+                                                setCustomValidity('')
+                                            } catch (e) {
                                             }">
                                     <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 18:00" class="form-control inline prayer fixing" id="fixing3" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
                                                 setCustomValidity('')

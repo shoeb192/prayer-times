@@ -47,7 +47,7 @@ var prayer = {
         this.initAdhanFlash();
         this.initIqamaFlash();
         this.initCronMidNight();
-        this.setAidTime();
+        this.setCustomTime();
         this.setCustomContent();
         this.hideSpinner();
         douaaSlider.init();
@@ -536,15 +536,23 @@ var prayer = {
         return  index;
     },
     /**
-     * show aid time if enabled
+     * handle custom time
+     * aid time if enabled
+     * imsak time if enabled
      */
-    setAidTime: function () {
+    setCustomTime: function () {
+        $(".custom-time").hide();
         $(".chourouk").show();
-        $(".aid").hide();
         if (this.confData.aidTime !== "") {
+            $(".custom-time").hide();
             $(".aid-id").text(this.confData.aidTime);
-            $(".chourouk").hide();
             $(".aid").show();
+            return;
+        }
+        if (this.confData.imsakTime !== "") {
+            $(".custom-time").hide();
+            $(".imsak-id").text(this.confData.imsakTime);
+            $(".imsak").show();
         }
     },
     /**

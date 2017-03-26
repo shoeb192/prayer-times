@@ -66,15 +66,16 @@ body {
     padding-top: 10px;
 }
 
-.chourouk, .joumouaa, .aid{
+.joumouaa, .custom-time{
     padding-top: 40px;
     font-size: 500%;
 }
 
-.chourouk-id, .joumouaa-id, .aid-id{
+.chourouk-id, .joumouaa-id, .aid-id, .imsak-id{
     color: yellowgreen;
     font-size: 150%;
 }
+
 .aid-id {
     color: red;
 }
