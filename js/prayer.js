@@ -88,11 +88,11 @@ var prayer = {
     },
     /**
      * load today prayer times
-     * if calculChoice = csvFile we load from csv file
+     * if calculChoice = csv we load from csv file
      * else we load from PrayTimes() function
      */
     loadTimes: function () {
-        if (this.confData.calculChoice === "csvFile") {
+        if (this.confData.calculChoice === "csv") {
             this.loadTimesFromCsv();
         } else if (this.confData.calculChoice === "custom") {
             this.loadTimesFromApi();
@@ -104,7 +104,7 @@ var prayer = {
     loadTimesFromCsv: function () {
         var times = new Array();
         $.ajax({
-            url: "data/csv/" + prayer.confData.csvFilePath + "/" + dateTime.getCurrentMonth() + ".csv?" + (new Date()).getTime(),
+            url: "data/csv/" + prayer.confData.city + "/" + dateTime.getCurrentMonth() + ".csv?" + (new Date()).getTime(),
             async: false,
             success: function (data) {
                 times = data.split(/\r|\n/);
@@ -189,7 +189,7 @@ var prayer = {
      * @returns {Array}
      */
     dstConvertTime: function (time) {
-        if (prayer.confData.calculChoice === "csvFile" && dateTime.isLastSundayDst()) {
+        if (prayer.confData.calculChoice === "csv" && dateTime.isLastSundayDst()) {
             time = time.split(":");
             var hourPrayerTime = Number(time[0]) + (dateTime.getCurrentMonth() === "03" ? 1 : -1);
             var minutePrayerTime = time[1];

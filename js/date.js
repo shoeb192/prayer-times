@@ -96,23 +96,7 @@ var dateTime = {
      * @returns {Boolean}
      */
     isDst: function () {
-        var date = new Date();
-        var currentMonth = date.getMonth();
-        var currentDay = date.getDate();
-
-        // si mars et jour superieur au dernier dimanche
-        if (currentMonth === 2 && currentDay >= this.getLastSundayOfMonth(2)) {
-            return true;
-        }
-        // entre avril et septembre 
-        if ($.inArray(currentMonth, [3, 4, 5, 6, 7, 8]) !== -1) {
-            return true;
-        }
-        // du premier octobre au dernier dimanche d'octobre
-        if (currentMonth === 9 && currentDay < this.getLastSundayOfMonth(9)) {
-            return true;
-        }
-        return false;
+        return (new Date()).dst();
     },
     /**
      * true if date is last sunday of march or october

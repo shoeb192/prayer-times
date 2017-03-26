@@ -169,10 +169,10 @@
         "fr": "Prédifini (fichier CSV)",
         "en": "Defined (CSV file)"
     },
-    "path-to-csv": {
-        "ar": "CSV المسار إلى ملف",
-        "fr": "Chemin vers le fichier CSV",
-        "en": "Ppath to CSV file"
+    "city": {
+        "ar": "المدينة",
+        "fr": "Ville",
+        "en": "City"
     },
     "calcul-method": {
         "ar": "طريقة الحساب",
