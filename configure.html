@@ -65,18 +65,18 @@
                         <label data-text="time-waiting"></label> <span class="glyphicon glyphicon-asterisk"></span>
                     </div>
                     <div class="text-center">
-                        <label for="wait0" class="prayer-wait-label" data-text="sobh"></label>
-                        <label for="wait1" class="prayer-wait-label" data-text="zuhr"></label>
-                        <label for="wait2" class="prayer-wait-label" data-text="asr"></label>
-                        <label for="wait3" class="prayer-wait-label" data-text="maghrib"></label>
-                        <label for="wait4" class="prayer-wait-label" data-text="isha"></label>
+                        <label for="wait0" class="prayer" data-text="sobh"></label>
+                        <label for="wait1" class="prayer" data-text="zuhr"></label>
+                        <label for="wait2" class="prayer" data-text="asr"></label>
+                        <label for="wait3" class="prayer" data-text="maghrib"></label>
+                        <label for="wait4" class="prayer" data-text="isha"></label>
                     </div>
                     <div>
-                        <input id="wait0" type="number" required="" min="0" class="form-control prayer-wait">
-                        <input id="wait1" type="number" required="" min="0" class="form-control prayer-wait">
-                        <input id="wait2" type="number" required="" min="0" class="form-control prayer-wait">
-                        <input id="wait3" type="number" required="" min="0" class="form-control prayer-wait">
-                        <input id="wait4" type="number" required="" min="0" class="form-control prayer-wait">
+                        <input id="wait0" type="number" required="" min="0" class="form-control inline prayer wait">
+                        <input id="wait1" type="number" required="" min="0" class="form-control inline prayer wait">
+                        <input id="wait2" type="number" required="" min="0" class="form-control inline prayer wait">
+                        <input id="wait3" type="number" required="" min="0" class="form-control inline prayer wait">
+                        <input id="wait4" type="number" required="" min="0" class="form-control inline prayer wait">
                     </div>
                 </div>
 
@@ -161,24 +161,57 @@
                                 <label for="ichaaDegree" data-text="ichaaDegree"></label>
                                 <input type="number" min="0" class="form-control" id="ichaaDegree" placeholder="ex: 15">
                             </div>
-                            
+
+                            <div class="form-group col-lg-12">
+                                <div class="text-center">
+                                    <label data-text="time-fixing"></label>
+                                </div>
+                                <div class="text-center">
+                                    <label for="fixing0" class="prayer" data-text="sobh"></label>
+                                    <label for="fixing1" class="prayer" data-text="zuhr"></label>
+                                    <label for="fixing2" class="prayer" data-text="asr"></label>
+                                    <label for="fixing3" class="prayer" data-text="maghrib"></label>
+                                    <label for="fixing4" class="prayer" data-text="isha"></label>
+                                </div>
+                                <div>
+                                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 06:00" class="form-control inline prayer fixing" id="fixing0" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                                setCustomValidity('')
+                                            } catch (e) {
+                                            }">
+                                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 13:00" class="form-control inline prayer fixing" id="fixing1" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                                setCustomValidity('')} catch (e) {
+                                            }">
+                                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 16:00" class="form-control inline prayer fixing" id="fixing2" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                                setCustomValidity('')} catch (e) {
+                                            }">
+                                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 18:00" class="form-control inline prayer fixing" id="fixing3" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                                setCustomValidity('')
+                                            } catch (e) {
+                                            }">
+                                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 20:00" class="form-control inline prayer fixing" id="fixing4" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                                setCustomValidity('')} catch (e) {
+                                            }">
+                                </div>
+                            </div>
+
+
                             <div class="form-group col-lg-12">
                                 <div class="text-center">
                                     <label data-text="times-adjustment"></label>
                                 </div>
                                 <div class="text-center">
-                                    <label for="sobhAdjust" class="prayer-adjust-label" data-text="sobh"></label>
-                                    <label for="dohrAdjust" class="prayer-adjust-label" data-text="zuhr"></label>
-                                    <label for="asrAdjust" class="prayer-adjust-label" data-text="asr"></label>
-                                    <label for="maghribAdjust" class="prayer-adjust-label" data-text="maghrib"></label>
-                                    <label for="ishaAdjust" class="prayer-adjust-label" data-text="isha"></label>
+                                    <label for="sobhAdjust" class="prayer" data-text="sobh"></label>
+                                    <label for="dohrAdjust" class="prayer" data-text="zuhr"></label>
+                                    <label for="asrAdjust" class="prayer" data-text="asr"></label>
+                                    <label for="maghribAdjust" class="prayer" data-text="maghrib"></label>
+                                    <label for="ishaAdjust" class="prayer" data-text="isha"></label>
                                 </div>
                                 <div>
-                                    <input id="sobhAdjust" type="number" required="" class="form-control prayer-adjust">
-                                    <input id="dohrAdjust" type="number" required="" class="form-control prayer-adjust">
-                                    <input id="asrAdjust" type="number" required="" class="form-control prayer-adjust">
-                                    <input id="maghribAdjust" type="number" required="" class="form-control prayer-adjust">
-                                    <input id="ishaAdjust" type="number" required="" class="form-control prayer-adjust">
+                                    <input id="sobhAdjust" type="number" required="" class="form-control inline prayer">
+                                    <input id="dohrAdjust" type="number" required="" class="form-control inline prayer">
+                                    <input id="asrAdjust" type="number" required="" class="form-control inline prayer">
+                                    <input id="maghribAdjust" type="number" required="" class="form-control inline prayer">
+                                    <input id="ishaAdjust" type="number" required="" class="form-control inline prayer">
                                 </div>
                             </div>
                         </div>
@@ -206,7 +239,7 @@
                                 <label><input type="checkbox" id="androidAppEnabled"> <span data-text="app-qr-code-display"></span></label>
                             </div>
                         </div>
-                        
+
                         <div class="col-lg-2">
                             <button type="button" class="btn btn-danger" id="reset-conf" data-text="resetConf"></button>
                         </div>

@@ -298,5 +298,10 @@
         "ar":"! أطفؤوا الهواتف المحمول من فضلكم",
         "fr": "Éteignez vos portables SVP !",
         "en": "Turn off your mobile phones please !"
+    },
+    "time-fixing": {
+        "ar": "تثبيت أوقاة الصلاة",
+        "fr": "Fixation des temps de prière",
+        "en": "Prayer times fixing"
     }
 }

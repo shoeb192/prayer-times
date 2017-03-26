@@ -20,6 +20,12 @@ $.each(confDataFromLocalStorage, function (key, value) {
         });
         return;
     }
+    if (key === "prayerTimesFixing") {
+        $(value).each(function (i, val) {
+            $("#fixing" + i).val(val);
+        });
+        return;
+    }
 
     input = $("#" + key);
     if (input.attr("type") === "checkbox") {
@@ -66,8 +72,12 @@ function submitConfForm() {
         }
     });
 
-    $(".prayer-wait").each(function (i, elem) {
+    $(".wait").each(function (i, elem) {
         data["prayersWaitingTimes"][i] = parseInt($(elem).val());
+    });
+    
+    $(".fixing").each(function (i, elem) {
+        data["prayerTimesFixing"][i] = $(elem).val();
     });
 
     localStorage.setItem("config", JSON.stringify(data));

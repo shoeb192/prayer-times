@@ -8,10 +8,12 @@ body{
     width: 80%;
     margin: auto;
 }
-.prayer-wait, .prayer-wait-label, .prayer-adjust , .prayer-adjust-label{
+
+.prayer{
     width: 19.68%; 
 }
-.prayer-wait, .prayer-adjust {
+
+.inline {
     display: inline;
 }
 

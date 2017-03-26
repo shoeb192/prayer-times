@@ -155,11 +155,12 @@ var prayer = {
     getTimes: function () {
         var times = this.times;
         times = [times[0], times[2], times[3], times[4], times[5]];
-        if (dateTime.isLastSundayDst()) {
-            $.each(times, function (i, time) {
-                times[i] = prayer.dstConvertTime(time);
-            });
-        }
+        $.each(times, function (i, time) {
+            times[i] = prayer.dstConvertTimeForCsvMode(time);
+            if (prayer.confData.prayerTimesFixing[i] !== "") {
+                times[i] = prayer.confData.prayerTimesFixing[i];
+            }
+        });
         return times;
     },
     /**
@@ -199,7 +200,7 @@ var prayer = {
      * @param {String} time
      * @returns {Array}
      */
-    dstConvertTime: function (time) {
+    dstConvertTimeForCsvMode: function (time) {
         if (prayer.confData.calculChoice === "csv" && dateTime.isLastSundayDst()) {
             time = time.split(":");
             var hourPrayerTime = Number(time[0]) + (dateTime.getCurrentMonth() === "03" ? 1 : -1);
@@ -240,7 +241,7 @@ var prayer = {
     getChouroukTime: function () {
         var chouroukTime = this.times[1];
         if (dateTime.isLastSundayDst()) {
-            chouroukTime = prayer.dstConvertTime(chouroukTime);
+            chouroukTime = prayer.dstConvertTimeForCsvMode(chouroukTime);
         }
         return  chouroukTime;
     },
@@ -510,7 +511,7 @@ var prayer = {
         if (this.confData.joumouaaTime !== "") {
             return this.confData.joumouaaTime;
         }
-        return dateTime.isDst() ? "13:10" : "12:10";
+        return dateTime.isDst() ? "13:15" : "12:15";
     },
     /**
      * if current time is joumouaa
