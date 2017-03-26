@@ -5,24 +5,13 @@
  * @type object
  */
 var dateTime = {
-    /**
-     * add zero to number if < to 10, ex : 1 becomes 01
-     * @param {integer} value
-     * @returns {String}
-     */
-    addZero: function (value) {
-        if (value < 10) {
-            value = '0' + value;
-        }
-        return value;
-    },
     getCurrentMinute: function () {
         var date = new Date();
-        return this.addZero(date.getMinutes());
+        return addZero(date.getMinutes());
     },
     getCurrentHour: function () {
         var date = new Date();
-        return this.addZero(date.getHours());
+        return addZero(date.getHours());
     },
     /**
      * get day of month ex: 0, 1 ... 30
@@ -38,7 +27,7 @@ var dateTime = {
     getCurrentMonth: function () {
         var date = new Date();
         var month = date.getMonth() + 1;
-        return this.addZero(month);
+        return addZero(month);
     },
     /**
      * get full current year ex: 2017
@@ -54,7 +43,7 @@ var dateTime = {
      */
     getCurrentTime: function (withSeconds) {
         var date = new Date();
-        var second = this.addZero(date.getSeconds());
+        var second = addZero(date.getSeconds());
         var time = this.getCurrentHour() + ':' + this.getCurrentMinute();
         if (withSeconds === true) {
             time += ':' + second;
@@ -66,7 +55,7 @@ var dateTime = {
      * @returns {String}
      */
     getCurrentDate: function () {
-        var day = this.addZero(this.getCurrentDay());
+        var day = addZero(this.getCurrentDay());
         var year = this.getCurrentYear();
         var dateText = (getConfFromLocalStorage().lang === "ar" ? "" : this.getCurrentDayText())
                 + ' ' + day

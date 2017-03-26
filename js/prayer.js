@@ -205,7 +205,7 @@ var prayer = {
             time = time.split(":");
             var hourPrayerTime = Number(time[0]) + (dateTime.getCurrentMonth() === "03" ? 1 : -1);
             var minutePrayerTime = time[1];
-            time = dateTime.addZero(hourPrayerTime) + ':' + minutePrayerTime;
+            time = addZero(hourPrayerTime) + ':' + minutePrayerTime;
         }
         return time;
     },
@@ -549,11 +549,23 @@ var prayer = {
             $(".aid").show();
             return;
         }
-        if (this.confData.imsakTime !== "") {
+        if (this.confData.imsakNbMinBeforeSobh != 0) {
             $(".custom-time").hide();
-            $(".imsak-id").text(this.confData.imsakTime);
+            var imsak = this.getImsak();
+            $(".imsak-id").text(imsak);
             $(".imsak").show();
         }
+    },
+    /**
+     * Get the imsak time calculated by soustraction of imsakNbMinBeforeSobh from sobh time
+     * @returns {String}
+     */
+    getImsak: function () {
+        var sobh = this.getTimeByIndex(0);
+        var sobhDateTime = this.getCurrentDateForPrayerTime(sobh);
+        var imsakDateTime = sobhDateTime.setMinutes(sobhDateTime.getMinutes() - this.confData.imsakNbMinBeforeSobh);
+        var imsakDateTime = new Date(imsakDateTime);
+        return addZero(imsakDateTime.getHours()) + ':' + addZero(imsakDateTime.getMinutes());
     },
     /**
      * set all prayer times 

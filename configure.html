@@ -43,12 +43,9 @@
                 </div>
 
                 <div class="form-group col-lg-4">
-                    <label for="imsakTime"  data-text="imsak-time" title="Si renseigné l'heure du imsak sera affichée à la place du chourouk">
+                    <label for="imsakNbMinBeforeSobh"  data-text="imsak-time" title="Si renseigné l'heure du imsak sera affichée à la place du chourouk">
                     </label> <span class="glyphicon glyphicon-info-sign"></span>
-                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 06:00" class="form-control" id="imsakTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                setCustomValidity('')
-                            } catch (e) {
-                            }" >
+                    <input type="number" required="" min="0" class="form-control" id="imsakNbMinBeforeSobh">
                 </div>
 
                 <div class="form-group col-lg-6">

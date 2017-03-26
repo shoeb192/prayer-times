@@ -110,7 +110,7 @@
         "en": "jumuaa time"
     },
     "min-isha": {
-        "ar": "الحد الأدنى لصلاة الغشاء في فصل الشتاء ",
+        "ar": "الحد الأدنى لصلاة العشاء في فصل الشتاء ",
         "fr": "heure minimum du ichaa en hiver",
         "en": "minimum isha time in winter"
     },
@@ -305,9 +305,9 @@
         "en": "Prayer times fixing"
     },
     "imsak-time": {
-        "ar": "وقت الإمساك",
-        "fr": "Heure du imsak",
-        "en": "Imsak time"
+        "ar": "عدد الدقائف قبل الصبح لعرض الأمساك",
+        "fr": "Nombre de minute avant sobh pour l'imsak",
+        "en": "Number of minute before sobh for displaying imsak"
     },
     "imsak": {
         "ar": "الإمساك",
