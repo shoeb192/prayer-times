@@ -33,7 +33,7 @@ var prayer = {
     },
     getTodayPrayerLine: function () {
         var prayerTimes = this.prayerTimes;
-        return prayerTimes[dateTime.getCurrentMonth()][dateTime.getCurrentDay()].split(",");
+        return prayerTimes[dateTime.getCurrentMonth()][dateTime.getCurrentDayOfMonth()].split(",");
     },
     getTodayFivePrayerTimes: function () {
         var prayerTimes = this.getTodayPrayerLine();
@@ -47,6 +47,21 @@ var prayer = {
         date.setSeconds(0);
         return date;
     },
+    getSobhTime: function () {
+        return this.getTodayFivePrayerTimes()[0];
+    },
+    getChouroukTime: function () {
+        return this.getTodayPrayerLine()[2];
+    },
+    getDohrTime: function () {
+        return this.getTodayFivePrayerTimes()[1];
+    },
+    getAsrTime: function () {
+        return this.getTodayFivePrayerTimes()[2];
+    },
+    getMaghribTime: function () {
+        return this.getTodayFivePrayerTimes()[3];
+    },
     getIchaTime: function () {
         var ichaTime = this.getTodayPrayerLine()[6];
         if (ichaTime <= this.minimumIchaTime)
@@ -54,9 +69,6 @@ var prayer = {
             ichaTime = this.minimumIchaTime;
         }
         return ichaTime;
-    },
-    getChouroukTime: function () {
-        return this.getTodayPrayerLine()[2];
     },
     initCronMidNight: function () {
         // toutes les minutes
@@ -132,11 +144,11 @@ var prayer = {
     },
     setPrayerTimes: function () {
         $("#joumouaa").text(this.joumouaaTime);
-        $("#sobh").text(this.getTodayFivePrayerTimes()[0]);
+        $("#sobh").text(this.getSobhTime());
         $("#chourouk").text(this.getChouroukTime());
-        $("#dohr").text(this.getTodayFivePrayerTimes()[1]);
-        $("#asr").text(this.getTodayFivePrayerTimes()[2]);
-        $("#maghrib").text(this.getTodayFivePrayerTimes()[3]);
+        $("#dohr").text(this.getDohrTime());
+        $("#asr").text(this.getAsrTime());
+        $("#maghrib").text(this.getMaghribTime());
         $("#ichaa").text(this.getIchaTime());
     },
     setPrayerWaitings: function () {
@@ -152,6 +164,20 @@ var prayer = {
  * dateTime functions
  */
 var dateTime = {
+    isDstPassing: function () {
+        console.log(this.getCurrentMonth());
+        console.log(this.getCurrentDayOfWeek());
+
+        if (this.getCurrentMonth() === "03" && this.getCurrentDayOfWeek() === 0) {
+            if ((31 - this.getCurrentDayOfMonth()) < 7){
+                return true;
+            }
+        }
+        return false;
+    },
+    isWinterTimePassing: function (value) {
+
+    },
     addZero: function (value) {
         if (value < 10) {
             value = '0' + value;
@@ -166,9 +192,13 @@ var dateTime = {
         var date = new Date();
         return this.addZero(date.getHours());
     },
-    getCurrentDay: function () {
+    getCurrentDayOfMonth: function () {
         var date = new Date();
         return date.getDate();
+    },
+    getCurrentDayOfWeek: function () {
+        var date = new Date();
+        return date.getDay();
     },
     getCurrentMonth: function () {
         var date = new Date();
@@ -190,7 +220,7 @@ var dateTime = {
         return  time;
     },
     getCurrentDate: function () {
-        var day = this.addZero(this.getCurrentDay());
+        var day = this.addZero(this.getCurrentDayOfMonth());
         var year = this.getCurrentYear();
         var dateText = this.getCurrentDayFrenchText() +
                 ' ' + day + '/' + this.getCurrentMonth() + '/' + year
@@ -220,4 +250,5 @@ var dateTime = {
 
 $(document).ready(function () {
     prayer.init();
+    console.log(dateTime.isDstPassing());
 });
