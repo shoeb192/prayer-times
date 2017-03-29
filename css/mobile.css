@@ -63,6 +63,10 @@ body {
     line-height: 40px;
 }
 
+.prayer-content .athan-img {
+    width: 25px;
+}
+
 .prayer-content .text {
     font-size: 150%;
     text-align: left;
@@ -70,10 +74,11 @@ body {
 
 .prayer-content .wait {
     text-align: right;
+    font-size: 150%;
 }
 
-.prayer-content .prayer, .chourouk-id, .joumouaa-id {
-    font-size: 250%;
+.prayer-content .prayer, .chourouk-id, .joumouaa-id, .imsak-id {
+    font-size: 250% !important;
     color: yellowgreen;
 }
 
@@ -88,7 +93,7 @@ body {
     margin-bottom: 20px; 
 }
 
-.chourouk, .joumouaa{
+.custom-time, .joumouaa{
     font-size: 150%;
 }
 

@@ -157,7 +157,7 @@ var prayer = {
         times = [times[0], times[2], times[3], times[4], times[5]];
         $.each(times, function (i, time) {
             times[i] = prayer.dstConvertTimeForCsvMode(time);
-            if (prayer.confData.prayerTimesFixing[i] !== "") {
+            if (prayer.confData.prayerTimesFixing[i] !== "" && prayer.confData.prayerTimesFixing[i] > times[i]) {
                 times[i] = prayer.confData.prayerTimesFixing[i];
             }
         });
@@ -246,6 +246,17 @@ var prayer = {
         return  chouroukTime;
     },
     /**
+     * Get the imsak time calculated by soustraction of imsakNbMinBeforeSobh from sobh time
+     * @returns {String}
+     */
+    getImsak: function () {
+        var sobh = this.getTimeByIndex(0);
+        var sobhDateTime = this.getCurrentDateForPrayerTime(sobh);
+        var imsakDateTime = sobhDateTime.setMinutes(sobhDateTime.getMinutes() - this.confData.imsakNbMinBeforeSobh);
+        var imsakDateTime = new Date(imsakDateTime);
+        return addZero(imsakDateTime.getHours()) + ':' + addZero(imsakDateTime.getMinutes());
+    },
+    /**
      * init the cron that change prayer times by day
      * at midnight we change prayer times for the day
      * we check every minute
@@ -253,14 +264,14 @@ var prayer = {
     initCronHandlingTimes: function () {
         setInterval(function () {
             var date = new Date();
-            if (date.getHours() === 0 && date.getMinutes() === 0 && date.getSeconds() === 0) {
+            if (date.getHours() === 0 && date.getMinutes() === 0) {
                 prayer.setDate();
                 prayer.loadTimes();
                 prayer.setTimes();
             }
 
             prayer.setCustomTime();
-        }, prayer.oneSecond);
+        }, prayer.oneMinute);
     },
     /**
      * Check every minute if athan time is ok
@@ -320,6 +331,8 @@ var prayer = {
 
         var adhanFlashInterval = setInterval(function () {
             $(".top-content .adhan-flash").toggleClass("hidden");
+            $(".mobile .prayer-content .adhan" + currentPrayerIndex).toggleClass("hidden");
+            $(".mobile .prayer-content .prayer" + currentPrayerIndex).toggleClass("hidden");
         }, prayer.oneSecond);
 
         // timeout for stopping time flashing
@@ -563,7 +576,7 @@ var prayer = {
             return;
         }
 
-        // if imsak time enabled we show it
+        // if imsak time enabled we show it between chourouk + 1 hour and sobh
         var imsak = this.getImsak();
         $(".imsak-id").text(imsak);
 
@@ -574,6 +587,7 @@ var prayer = {
             midnight.setMinutes(0);
             midnight.setSeconds(0);
             var sobhDate = prayer.getCurrentDateForPrayerTime(prayer.getTimeByIndex(0));
+            // if time betwwen midnight and sobh => show imsak
             if (date.getTime() < sobhDate.getTime() && date.getTime() > midnight.getTime()) {
                 $(".imsak").show();
                 return;
@@ -581,6 +595,7 @@ var prayer = {
 
             var chouroukDate = prayer.getCurrentDateForPrayerTime(prayer.getChouroukTime());
             chouroukDate = chouroukDate.setHours(chouroukDate.getHours() + 1);
+            // if time > chourouk + 1 hour => show imsak
             if (date.getTime() > chouroukDate) {
                 $(".imsak").show();
                 return;
@@ -589,18 +604,6 @@ var prayer = {
             // default show chourouk
             $(".chourouk").show();
         }
-
-    },
-    /**
-     * Get the imsak time calculated by soustraction of imsakNbMinBeforeSobh from sobh time
-     * @returns {String}
-     */
-    getImsak: function () {
-        var sobh = this.getTimeByIndex(0);
-        var sobhDateTime = this.getCurrentDateForPrayerTime(sobh);
-        var imsakDateTime = sobhDateTime.setMinutes(sobhDateTime.getMinutes() - this.confData.imsakNbMinBeforeSobh);
-        var imsakDateTime = new Date(imsakDateTime);
-        return addZero(imsakDateTime.getHours()) + ':' + addZero(imsakDateTime.getMinutes());
     },
     /**
      * set all prayer times 
@@ -662,6 +665,10 @@ var prayer = {
     }
 };
 
+/**
+ * Douaa slider class
+ * @type {Object}
+ */
 var douaaSlider = {
     oneDouaaShowingTime: 20000,
     /**
