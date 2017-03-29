@@ -46,7 +46,7 @@ var prayer = {
         this.initNextTimeHilight();
         this.initAdhanFlash();
         this.initIqamaFlash();
-        this.initCronMidNight();
+        this.initCronHandlingTimes();
         this.setCustomTime();
         this.setCustomContent();
         this.hideSpinner();
@@ -250,15 +250,17 @@ var prayer = {
      * at midnight we change prayer times for the day
      * we check every minute
      */
-    initCronMidNight: function () {
+    initCronHandlingTimes: function () {
         setInterval(function () {
             var date = new Date();
-            if (date.getHours() === 0 && date.getMinutes() === 0) {
+            if (date.getHours() === 0 && date.getMinutes() === 0 && date.getSeconds() === 0) {
                 prayer.setDate();
                 prayer.loadTimes();
                 prayer.setTimes();
             }
-        }, prayer.oneMinute);
+
+            prayer.setCustomTime();
+        }, prayer.oneSecond);
     },
     /**
      * Check every minute if athan time is ok
@@ -537,24 +539,45 @@ var prayer = {
     },
     /**
      * handle custom time
+     * chourouk time
      * aid time if enabled
      * imsak time if enabled
      */
     setCustomTime: function () {
+        // hide all custom times
         $(".custom-time").hide();
-        $(".chourouk").show();
+
+        // if aid time enabled we set/show it
         if (this.confData.aidTime !== "") {
-            $(".custom-time").hide();
             $(".aid-id").text(this.confData.aidTime);
             $(".aid").show();
             return;
         }
-        if (this.confData.imsakNbMinBeforeSobh != 0) {
-            $(".custom-time").hide();
-            var imsak = this.getImsak();
-            $(".imsak-id").text(imsak);
-            $(".imsak").show();
+
+        // set chourouk time
+        $(".chourouk-id").text(this.getChouroukTime());
+
+        // if imsak time enabled we show it
+        var imsak = this.getImsak();
+        $(".imsak-id").text(imsak);
+
+        var date = new Date();
+        var dohrDate = prayer.getCurrentDateForPrayerTime(prayer.getTimeByIndex(1))
+        var sobhDate = prayer.getCurrentDateForPrayerTime(prayer.getTimeByIndex(0))
+        sobhDate = sobhDate.setDate(sobhDate.getDate() + 1);
+        // if imsak enabled
+        if (parseInt(this.confData.imsakNbMinBeforeSobh) !== 0) {
+            // time is between today dohr and tomorow sobh
+            if (date > dohrDate && date < sobhDate) {
+                // show imsak
+                $(".imsak").show();
+                return;
+            }
         }
+
+        // show chourouk
+        $(".chourouk").show();
+
     },
     /**
      * Get the imsak time calculated by soustraction of imsakNbMinBeforeSobh from sobh time
@@ -571,13 +594,12 @@ var prayer = {
      * set all prayer times 
      */
     setTimes: function () {
-        $(".joumouaa-id").text(this.getJoumouaaTime());
-        $(".chourouk-id").text(this.getChouroukTime());
         $(".sobh").text(this.getTimes()[0]);
         $(".dohr").text(this.getTimes()[1]);
         $(".asr").text(this.getTimes()[2]);
         $(".maghrib").text(this.getTimes()[3]);
         $(".ichaa").text(this.getIchaTime());
+        $(".joumouaa-id").text(this.getJoumouaaTime());
     },
     /**
      * set wating times
