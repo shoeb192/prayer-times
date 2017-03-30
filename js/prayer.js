@@ -557,26 +557,38 @@ var prayer = {
         // set chourouk time
         $(".chourouk-id").text(this.getChouroukTime());
 
+        // if imsak enabled
+        if (parseInt(this.confData.imsakNbMinBeforeSobh) === 0) {
+            $(".chourouk").show();
+            return;
+        }
+
         // if imsak time enabled we show it
         var imsak = this.getImsak();
         $(".imsak-id").text(imsak);
 
-        var date = new Date();
-        var dohrDate = prayer.getCurrentDateForPrayerTime(prayer.getTimeByIndex(1))
-        var sobhDate = prayer.getCurrentDateForPrayerTime(prayer.getTimeByIndex(0))
-        sobhDate = sobhDate.setDate(sobhDate.getDate() + 1);
-        // if imsak enabled
         if (parseInt(this.confData.imsakNbMinBeforeSobh) !== 0) {
-            // time is between today dohr and tomorow sobh
-            if (date > dohrDate && date < sobhDate) {
-                // show imsak
+            var date = new Date();
+            var midnight = new Date();
+            midnight.setHours(0);
+            midnight.setMinutes(0);
+            midnight.setSeconds(0);
+            var sobhDate = prayer.getCurrentDateForPrayerTime(prayer.getTimeByIndex(0));
+            if (date.getTime() < sobhDate.getTime() && date.getTime() > midnight.getTime()) {
                 $(".imsak").show();
                 return;
             }
-        }
 
-        // show chourouk
-        $(".chourouk").show();
+            var chouroukDate = prayer.getCurrentDateForPrayerTime(prayer.getChouroukTime());
+            chouroukDate = chouroukDate.setHours(chouroukDate.getHours() + 1);
+            if (date.getTime() > chouroukDate) {
+                $(".imsak").show();
+                return;
+            }
+
+            // default show chourouk
+            $(".chourouk").show();
+        }
 
     },
     /**
