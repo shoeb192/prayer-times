@@ -341,6 +341,8 @@ var prayer = {
             prayer.adhanIsFlashing = false;
             $(".top-content .content").removeClass("hidden");
             $(".top-content .adhan-flash").addClass("hidden");
+            $(".mobile .prayer-content .adhan" + currentPrayerIndex).addClass("hidden");
+            $(".mobile .prayer-content .prayer" + currentPrayerIndex).removeClass("hidden");
         }, prayer.oneMinute);
     },
     /**
