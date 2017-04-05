@@ -190,7 +190,7 @@ var prayer = {
      */
     getWaitingTimes: function () {
         var waitings = this.confData.prayersWaitingTimes;
-        if (this.confData.maximumIchaTimeForNoWaiting !== "" && this.getIchaTime() > this.confData.maximumIchaTimeForNoWaiting) {
+        if (this.confData.maximumIchaTimeForNoWaiting !== "" && this.getIchaTime() >= this.confData.maximumIchaTimeForNoWaiting) {
             waitings[4] = 0;
         }
         return waitings;
