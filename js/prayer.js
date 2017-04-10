@@ -68,13 +68,7 @@ var prayer = {
             url: "version?" + (new Date()).getTime(),
             async: false,
             success: function (data) {
-                // reset conf if new version
-                if (getVersion() !== data) {
-                    removeConfFromLocalStorage();
-                    setVersion(data);
-                    window.location.reload(true);
-                }
-
+                setVersion(data);
                 $(".version").text("v" + data);
             }
         });
@@ -84,18 +78,14 @@ var prayer = {
      * from localStorage if data exists, from json file otherwise
      */
     loadConfData: function () {
-        if (localStorage.getItem("config") === null) {
-            $.ajax({
-                url: "conf/conf.json?" + (new Date()).getTime(),
-                async: false,
-                success: function (data) {
-                    localStorage.setItem("config", JSON.stringify(data));
-                    prayer.confData = data;
-                }
-            });
-        } else {
-            prayer.confData = JSON.parse(localStorage.getItem("config"));
-        }
+        $.ajax({
+            url: "conf/conf.json?" + (new Date()).getTime(),
+            async: false,
+            success: function (data) {
+                localStorage.setItem("config", JSON.stringify(data));
+                prayer.confData = data;
+            }
+        });
     },
     /**
      * load today prayer times
