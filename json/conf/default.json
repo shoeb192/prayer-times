@@ -3,8 +3,8 @@
     "joumouaaTime": "",
     "aidTime": "",
     "imsakNbMinBeforeSobh": 0,
-    "minimumIchaTime": "",
-    "maximumIchaTimeForNoWaiting": "",
+    "minimumIchaTime": "19:50",
+    "maximumIchaTimeForNoWaiting": "22:00",
     "prayersWaitingTimes": [10, 10, 10, 5, 10],
     "prayerTimesAdjustment": [0, 0, 0, 0, 0],
     "prayerTimesFixing": ["", "", "", "", ""],
@@ -25,5 +25,5 @@
     "headerText": "Mosquée ???",
     "site": "Horaires de prière sur mobile et tablette <span style=\"color: #1b6d85;\">http://???.fr</span>",
     "supportTel": "(+33) 0629111641",
-    "footerText": "Association ??? - Tél. ???"
+    "footerText": "Association ??? - Tél. ??.??.??.??.??"
 }
