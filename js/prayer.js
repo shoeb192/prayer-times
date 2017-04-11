@@ -68,7 +68,12 @@ var prayer = {
             url: "version?" + (new Date()).getTime(),
             async: false,
             success: function (data) {
-                setVersion(data);
+                // reset conf if new version
+                if (getVersion() !== data) {
+                    removeConfFromLocalStorage();
+                    setVersion(data);
+                }
+
                 $(".version").text("v" + data);
             }
         });
@@ -78,14 +83,18 @@ var prayer = {
      * from localStorage if data exists, from json file otherwise
      */
     loadConfData: function () {
-        $.ajax({
-            url: "conf/conf.json?" + (new Date()).getTime(),
-            async: false,
-            success: function (data) {
-                localStorage.setItem("config", JSON.stringify(data));
-                prayer.confData = data;
-            }
-        });
+        if (localStorage.getItem("config") === null) {
+            $.ajax({
+                url: "conf/conf.json?" + (new Date()).getTime(),
+                async: false,
+                success: function (data) {
+                    localStorage.setItem("config", JSON.stringify(data));
+                    prayer.confData = data;
+                }
+            });
+        } else {
+            prayer.confData = JSON.parse(localStorage.getItem("config"));
+        }
     },
     /**
      * load today prayer times
@@ -105,7 +114,7 @@ var prayer = {
     loadTimesFromCsv: function () {
         var times = new Array();
         $.ajax({
-            url: "data/csv/" + prayer.confData.city + "/" + dateTime.getCurrentMonth() + ".csv?" + (new Date()).getTime(),
+            url: "data/csv/" + prayer.confData.city + "/" + dateTime.getCurrentMonth() + ".csv?" + getVersion(),
             async: false,
             success: function (data) {
                 times = data.split(/\r|\n/);
@@ -128,11 +137,11 @@ var prayer = {
 
         // times adjustment
         prayTimes.tune({
-            fajr: prayer.confData.sobhAdjust,
-            dhuhr: prayer.confData.dohrAdjust,
-            asr: prayer.confData.asrAdjust,
-            maghrib: prayer.confData.maghribAdjust,
-            isha: prayer.confData.ishaAdjust
+            fajr: prayer.confData.prayerTimesAdjustment[0],
+            dhuhr: prayer.confData.prayerTimesAdjustment[1],
+            asr: prayer.confData.prayerTimesAdjustment[2],
+            maghrib: prayer.confData.prayerTimesAdjustment[3],
+            isha: prayer.confData.prayerTimesAdjustment[4]
         });
 
         var pt = prayTimes.getTimes(new Date(), [parseFloat(prayer.confData.latitude), parseFloat(prayer.confData.longitude)]);

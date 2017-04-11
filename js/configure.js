@@ -26,6 +26,13 @@ $.each(confDataFromLocalStorage, function (key, value) {
         });
         return;
     }
+    
+    if (key === "prayerTimesAdjustment") {
+        $(value).each(function (i, val) {
+            $("#adjust" + i).val(val);
+        });
+        return;
+    }
 
     input = $("#" + key);
     if (input.attr("type") === "checkbox") {
@@ -78,6 +85,10 @@ function submitConfForm() {
     
     $(".fixing").each(function (i, elem) {
         data["prayerTimesFixing"][i] = $(elem).val();
+    });
+    
+    $(".adjust").each(function (i, elem) {
+        data["prayerTimesAdjustment"][i] = $(elem).val();
     });
 
     localStorage.setItem("config", JSON.stringify(data));
