@@ -633,8 +633,9 @@ var prayer = {
         $(".site").html(this.confData.site);
         $(".assosciation").html(this.confData.footerText);
         $(".supportTel").text(this.confData.supportTel);
-        if (!this.confData.androidAppEnabled) {
-            $(".android-app").addClass("visibilty-hidden");
+        if (this.confData.androidAppEnabled) {
+            $(".app-qr-code").attr("src", "img/app-qr-code.png");
+            $(".android-app").removeClass("visibilty-hidden");
         }
     },
     hideSpinner: function () {
