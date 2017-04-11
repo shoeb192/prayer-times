@@ -687,6 +687,11 @@ var douaaSlider = {
      *  init douaa after prayer slider
      */
     init: function () {
+        // if mobile device ignore douaa slider
+        if ($(window).width() < 1200) {
+            return;
+        }
+        
         var douaaSliderFile = 'douaa-slider.html';
         if ($(window).width() > 1900) {
             douaaSliderFile = 'douaa-slider-one-screen.html';
