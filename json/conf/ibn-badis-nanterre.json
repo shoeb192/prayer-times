@@ -1,11 +1,11 @@
 {
     "lang": "fr",
-    "joumouaaTime": "14:00",
+    "joumouaaTime": "13:30",
     "aidTime": "",
     "imsakNbMinBeforeSobh": 0,
-    "minimumIchaTime": "19:00",
-    "maximumIchaTimeForNoWaiting": "22:00",
-    "prayersWaitingTimes": [10, 10, 10, 5, 10],
+    "minimumIchaTime": "19:30",
+    "maximumIchaTimeForNoWaiting": "",
+    "prayersWaitingTimes": [15, 10, 10, 5, 10],
     "prayerTimesFixing": ["", "", "", "", ""],
     "hijriAdjustment": 0,
     "hijriDateEnabled": true,
@@ -29,5 +29,5 @@
     "headerText": "Mosquée Ibn Badis - Nanterre",
     "site": "Horaires de prière sur mobile et tablette <span style=\"color: #1b6d85;\">http://ibn-badis-nanterre.horaires-de-priere.fr</span>",
     "supportTel": "(+33) 0629111641",
-    "footerText": "Association XXX - Tél. XX.XX.XX.XX.XX | RIB : IBAN FRXX XXXX XXXX XXXX XXXX XXXX XXX / BIC XXXXXXX"
+    "footerText": "Association Irchad - institut Ibn Badis - Tél. 01.84.20.24.80 | RIB : IBAN FR03 3000 2007 5400 0000 5645 U77 / BIC CRLYFRPP"
 }
