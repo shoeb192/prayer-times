@@ -52,5 +52,7 @@ String.prototype.trans = function (lang, noCapitalize) {
     }
 };
 
-i18n.loadJson();
-i18n.parseAndTranslate();
+$(document).ready(function () {
+    i18n.loadJson();
+    i18n.parseAndTranslate();
+});

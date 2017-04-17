@@ -651,6 +651,9 @@ var prayer = {
         $(".site").html(this.confData.site);
         $(".assosciation").html(this.confData.footerText);
         $(".supportTel").text(this.confData.supportTel);
+        $(".supportTel").parent().attr("href", "tel:" + this.confData.supportTel);
+        $(".supportEmail").text(this.confData.supportEmail);
+        $(".supportEmail").parent().attr("href", "mailto:" + this.confData.supportEmail);
         if (this.confData.androidAppEnabled) {
             $(".app-qr-code").attr("src", "img/app-qr-code.png");
             $(".android-app").removeClass("visibilty-hidden");
@@ -774,4 +777,6 @@ var douaaSlider = {
     }
 };
 
-prayer.init();
+$(document).ready(function () {
+    prayer.init();
+});
