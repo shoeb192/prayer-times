@@ -4,10 +4,7 @@
  * @type {object}
  */
 
-prayer.loadVersion();
-prayer.loadConfData();
-
-
+loadConfData();
 /**
  * Init form from localStorage
  */
@@ -61,7 +58,7 @@ $("#lang").bind("change", function (event) {
     window.location.reload();
 });
 
-if (prayer.confData.lang === "ar") {
+if (getConfFromLocalStorage().lang === "ar") {
     $("body").css("font-family", "Amiri");
     $("body").css("font-size", "16px");
 }
@@ -72,7 +69,7 @@ if (prayer.confData.lang === "ar") {
 
 function submitConfForm() {
     var inputs = $('#configure :input');
-    var data = JSON.parse(localStorage.getItem("config"));
+    var data = getConfFromLocalStorage();
     inputs.each(function () {
         if (data.hasOwnProperty(this.id)) {
             data[this.id] = $(this).attr("type") === "checkbox" ? $(this).is(":checked") : $(this).val();
