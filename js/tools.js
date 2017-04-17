@@ -83,3 +83,5 @@ function addZero(value) {
     }
     return value;
 }
+
+loadConfData();

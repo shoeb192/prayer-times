@@ -4,7 +4,6 @@
  * @type {object}
  */
 
-loadConfData();
 /**
  * Init form from localStorage
  */
