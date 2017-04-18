@@ -12,7 +12,7 @@ var prayer = {
      * time to wait before hilight next prayer time  (in minutes)
      * @type Number
      */
-    nextPrayerHilightWait: 10,
+    nextPrayerHilightWait: 5,
     /**
      * prayer times
      * @type Array
@@ -449,7 +449,8 @@ var prayer = {
         setTimeout(function () {
             prayer.hilighByIndex(nextTimeIndex);
             // if ichaa we load tomorrow times
-            if (nextTimeIndex === 0) {
+            var date = new Date();
+            if (nextTimeIndex === 0 && date.getHours() !== 0) {
                 prayer.loadTimes(true);
                 prayer.setTimes();
             }
