@@ -271,6 +271,7 @@ var prayer = {
                 prayer.setDate();
                 prayer.loadTimes();
                 prayer.setTimes();
+                prayer.initNextTimeHilight();
             }
 
             prayer.setCustomTime();
