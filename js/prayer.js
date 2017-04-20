@@ -59,6 +59,16 @@ var prayer = {
         this.loadVersion();
         this.setConfData();
         this.loadTimes();
+
+        // if current time > ichaa time + 5 minutes we load tomorrow times
+        var date = new Date();
+        if (date.getHours() !== 0) {
+            var ichaaDateTime = this.getCurrentDateForPrayerTime(this.getIchaTime());
+            ichaaDateTime.setMinutes(ichaaDateTime.getMinutes() + this.nextPrayerHilightWait);
+            if (date > ichaaDateTime ){
+                this.loadTimes(true);
+            }
+        }
     },
     /**
      * load app version
