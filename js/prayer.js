@@ -417,7 +417,7 @@ var prayer = {
         $.each(times, function (index, time) {
             prayerDateTime = prayer.getCurrentDateForPrayerTime(time);
             // adding 15 minute
-            prayerDateTime.setMinutes(prayerDateTime.getMinutes() + prayer.getWaitingByIndex(index) + prayer.nextPrayerHilightWait);
+            prayerDateTime.setMinutes(prayerDateTime.getMinutes() + prayer.nextPrayerHilightWait);
             if (date > prayerDateTime) {
                 index++;
                 if (index === 5) {
