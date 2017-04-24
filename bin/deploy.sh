@@ -4,11 +4,11 @@ echo "The version is mandatory";
 exit 1
 fi
 
-rm -rf /home/www/prayer-times/$1
-mkdir -p /home/www/prayer-times/$1
+rm -rf ~/www/prayer-times/$1
+mkdir -p ~/www/prayer-times/$1
 
-git archive $1 | (cd /home/www/prayer-times/$1 && tar xf -)
-cd /home/www/prayer-times/$1
+git archive $1 | (cd ~/www/prayer-times/$1 && tar xf -)
+cd ~/www/prayer-times/$1
 rm -rf doc README.md bin/deploy.sh downloads .gitignore
 echo $1 > version
 sed -i "s/<version>/$1/g" *.html
