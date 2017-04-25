@@ -5,7 +5,7 @@
     "imsakNbMinBeforeSobh": 0,
     "minimumIchaTime": "19:30",
     "maximumIchaTimeForNoWaiting": "",
-    "prayersWaitingTimes": [10, 10, 10, 5, 5],
+    "prayersWaitingTimes": [10, 10, 10, 5, 10],
     "prayerTimesAdjustment": [0, 0, 0, 0, 0],
     "prayerTimesFixing": ["", "", "", "", ""],
     "hijriAdjustment": 0,
