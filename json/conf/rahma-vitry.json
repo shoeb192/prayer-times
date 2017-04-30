@@ -6,7 +6,7 @@
     "minimumIchaTime": "19:30",
     "maximumIchaTimeForNoWaiting": "23:00",
     "prayersWaitingTimes": [20, 10, 10, 10, 10],
-    "prayerTimesAdjustment": [0, 0, 0, 0, 0],
+    "prayerTimesAdjustment": [0, 0, 0, 3, 0],
     "prayerTimesFixing": ["", "", "", "", ""],
     "hijriAdjustment": 0,
     "hijriDateEnabled": true,
