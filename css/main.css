@@ -9,8 +9,7 @@ body {
 }
 
 .main .top-content{
-    height:45%;
-    padding-top: 20px;
+    height:50%;
 }
 
 .main .prayer-content{
@@ -18,9 +17,7 @@ body {
 }
 
 .main .footer{
-    height:10%;
-    padding-bottom: 20px;
-    font-size: 150%
+    font-size: 120%
 }
 
 .header{
