@@ -262,8 +262,8 @@ var prayer = {
     setAidPrayerTime: function () {
         $(".chourouk").show();
         $(".aid").hide();
-        $("#aid").text(this.customData.aidTime);
         if (this.customData.aidIsEnabled) {
+            $("#aid").text(this.customData.aidTime);
             $(".chourouk").hide();
             $(".aid").show();
         }
@@ -278,11 +278,9 @@ var prayer = {
         $("#ichaa").text(this.getIchaTime());
     },
     setPrayerWaitings: function () {
-        $("#sobh-waiting").text(this.getPrayersWaitingTimes()[0] + " min");
-        $("#dohr-waiting").text(this.getPrayersWaitingTimes()[1] + " min");
-        $("#asr-waiting").text(this.getPrayersWaitingTimes()[2] + " min");
-        $("#maghrib-waiting").text(this.getPrayersWaitingTimes()[3] + " min");
-        $("#icha-waiting").text(this.getPrayersWaitingTimes()[4] + " min");
+        $(".wait").each(function (i, e) {
+            $(e).text(prayer.getPrayersWaitingTimes()[i] + " min");
+        });
     },
     setCustomContent: function () {
         $(".header").text(this.customData.headerText);
