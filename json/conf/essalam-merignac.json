@@ -8,7 +8,7 @@
     "prayersWaitingTimes": [5, 10, 10, 5, 10],
     "prayerTimesAdjustment": [-5, 5, 0, 2, 3],
     "prayerTimesFixing": ["", "", "", "", ""],
-    "hijriAdjustment": 0,
+    "hijriAdjustment": -1,
     "hijriDateEnabled": true,
     "douaaAfterAdhanEnabled": true,
     "douaaAfterPrayerEnabled": true,
