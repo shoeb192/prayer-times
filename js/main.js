@@ -67,7 +67,7 @@ var prayer = {
     getTodayFivePrayerTimes: function () {
         var prayerTimes = this.getTodayPrayerLine();
         prayerTimes = [prayerTimes[1], prayerTimes[3], prayerTimes[4], prayerTimes[5], prayerTimes[6]];
-        if (dateTime.isDst()) {
+        if (dateTime.isLastSundayDst()) {
             $.each(prayerTimes, function (i, prayerTime) {
                 prayerTimes[i] = prayer.dstConvertPrayerTime(prayerTime);
             });
@@ -75,7 +75,7 @@ var prayer = {
         return prayerTimes;
     },
     dstConvertPrayerTime: function (prayerTime) {
-        if (dateTime.isDst()) {
+        if (dateTime.isLastSundayDst()) {
             prayerTime = prayerTime.split(":");
             var hourPrayerTime = Number(prayerTime[0]) + (dateTime.getCurrentMonth() === "03" ? 1 : -1);
             var minutePrayerTime = prayerTime[1];
@@ -104,7 +104,7 @@ var prayer = {
     },
     getChouroukTime: function () {
         var chouroukTime = this.getTodayPrayerLine()[2];
-        if (dateTime.isDst()) {
+        if (dateTime.isLastSundayDst()) {
             chouroukTime = prayer.dstConvertPrayerTime(chouroukTime);
         }
         return  chouroukTime;
@@ -139,8 +139,8 @@ var prayer = {
                         clearInterval(adhanFlashInterval);
                         prayer.adhanIsFlashing = false;
                         prayerElm.removeClass("flash");
-                        
-                        if(prayer.customData.enableAdhanDouaa === true){
+
+                        if (prayer.customData.enableAdhanDouaa === true) {
                             prayer.adhanDouaa.show();
                             setTimeout(function () {
                                 prayer.adhanDouaa.hide();
@@ -253,6 +253,12 @@ var prayer = {
             }
         });
     },
+    getJoumouaaTime: function () {
+        if (this.customData.joumouaaTime !== "") {
+            return this.customData.joumouaaTime;
+        }
+        return dateTime.isDst() ? "13:10" : "12:10";
+    },
     setAidPrayerTime: function () {
         $(".chourouk").show();
         $(".aid").hide();
@@ -263,7 +269,7 @@ var prayer = {
         }
     },
     setPrayerTimes: function () {
-        $("#joumouaa").text(this.customData.joumouaaTime);
+        $("#joumouaa").text(this.getJoumouaaTime());
         $("#chourouk").text(this.getChouroukTime());
         $("#sobh").text(this.getTodayFivePrayerTimes()[0]);
         $("#dohr").text(this.getTodayFivePrayerTimes()[1]);
@@ -355,6 +361,25 @@ var dateTime = {
         return date.getDate();
     },
     isDst: function () {
+        var date = new Date();
+        var currentMonth = date.getMonth();
+        var currentDay = date.getDate();
+
+        // si mars et jour superieur au dernier dimanche
+        if (currentMonth === 2 && currentDay >= this.getLastSundayOfMonth(2)) {
+            return true;
+        }
+        // entre avril et septembre 
+        if ($.inArray(currentMonth, [3, 4, 5, 6, 7, 8]) !== -1) {
+            return true;
+        }
+        // du premier octobre au dernier dimanche d'octobre
+        if (currentMonth === 9 && currentDay < this.getLastSundayOfMonth(9)) {
+            return true;
+        }
+        return false;
+    },
+    isLastSundayDst: function () {
         var date = new Date();
         var currentMonth = date.getMonth();
         var currentDay = date.getDate();
