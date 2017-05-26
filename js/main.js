@@ -2,7 +2,13 @@ var prayer = {
     customData: null,
     months: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
     prayerTimes: [],
+    /**
+     * hijri api url 
+     */
     hijriDateApiUrl: "http://api.aladhan.com/gToH?date=",
+    /**
+     * init the app
+     */
     init: function () {
         this.loadData();
         this.setCustomContent();
@@ -15,11 +21,17 @@ var prayer = {
         this.initCronMidNight();
         this.setAidPrayerTime();
     },
+    /**
+     * load all data
+     */
     loadData: function () {
         this.loadCustomData();
         this.loadPrayerTimes();
         this.loadVersion();
     },
+    /**
+     * load app version
+     */
     loadVersion: function () {
         $.ajax({
             url: "version",
@@ -30,6 +42,9 @@ var prayer = {
             }
         });
     },
+    /**
+     * load custom data
+     */
     loadCustomData: function () {
         $.ajax({
             url: "data/custom-data.json",
@@ -39,6 +54,9 @@ var prayer = {
             }
         });
     },
+    /**
+     * load prayer times ["monthe" = ["day"=> "line"] ]
+     */
     loadPrayerTimes: function () {
         var prayerTimes = new Array();
         $.each(this.months, function (i, month) {
@@ -60,10 +78,18 @@ var prayer = {
         }
         return waitings;
     },
+    /**
+     * array of csv line data 
+     * @returns {Array}
+     */
     getTodayPrayerLine: function () {
         var prayerTimes = this.prayerTimes;
         return prayerTimes[dateTime.getCurrentMonth()][dateTime.getCurrentDay()].split(",");
     },
+    /**
+     * array of only prayer times
+     * @returns {Array}
+     */
     getTodayFivePrayerTimes: function () {
         var prayerTimes = this.getTodayPrayerLine();
         prayerTimes = [prayerTimes[1], prayerTimes[3], prayerTimes[4], prayerTimes[5], prayerTimes[6]];
@@ -292,6 +318,11 @@ var prayer = {
  * dateTime functions
  */
 var dateTime = {
+    /**
+     * add zero to number if < to 10, ex : 1 becomes 01
+     * @param {integer} value
+     * @returns {String}
+     */
     addZero: function (value) {
         if (value < 10) {
             value = '0' + value;
@@ -306,19 +337,34 @@ var dateTime = {
         var date = new Date();
         return this.addZero(date.getHours());
     },
+    /**
+     * get day of month ex: 0, 1 ... 30
+     * 0 is the first day
+     */
     getCurrentDay: function () {
         var date = new Date();
         return date.getDate();
     },
+    /**
+     * get current month numbre 01, 02 ... 12
+     */
     getCurrentMonth: function () {
         var date = new Date();
         var month = date.getMonth() + 1;
         return this.addZero(month);
     },
+    /**
+     * get full current year ex: 2017
+     */
     getCurrentYear: function () {
         var date = new Date();
         return date.getFullYear();
     },
+    /**
+     * get current time in hh:ii format or hh:ii:ss format depends on withSeconds arg
+     * @param {bool} withSeconds
+     * @returns {String}
+     */
     getCurrentTime: function (withSeconds) {
         var date = new Date();
         var second = this.addZero(date.getSeconds());
@@ -328,6 +374,10 @@ var dateTime = {
         }
         return  time;
     },
+    /**
+     * get current gregorian date ex: Vendredi 26/05/2017
+     * @returns {String}
+     */
     getCurrentDate: function () {
         var day = this.addZero(this.getCurrentDay());
         var year = this.getCurrentYear();
@@ -337,6 +387,10 @@ var dateTime = {
                 + '/' + year;
         return dateText;
     },
+    /**
+     * get current day name ex: Vendredi
+     * @returns {Array}
+     */
     getCurrentDayText: function () {
         var date = new Date();
         var day = new Array();
@@ -358,6 +412,10 @@ var dateTime = {
         date.setDate(date.getDate() - date.getDay());
         return date.getDate();
     },
+    /**
+     * true if date between last sunday of march and last sunday of october
+     * @returns {Boolean}
+     */
     isDst: function () {
         var date = new Date();
         var currentMonth = date.getMonth();
@@ -377,6 +435,10 @@ var dateTime = {
         }
         return false;
     },
+    /**
+     * true if date is last sunday of march or october
+     * @returns {Boolean}
+     */
     isLastSundayDst: function () {
         var date = new Date();
         var currentMonth = date.getMonth();
