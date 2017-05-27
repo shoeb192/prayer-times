@@ -701,7 +701,7 @@ var douaaSlider = {
      * Time to wait before showing douaa after prayer (in minutes)
      * @type Array
      */
-    douaaAfterPrayerWait: [10, 8, 8, 8, 9],
+    douaaAfterPrayerWait: [10, 1, 8, 8, 9],
     /**
      * it saves html (ul,li)
      * @type String
