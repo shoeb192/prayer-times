@@ -41,13 +41,13 @@
     },
     "chourouk": {
         "ar": "الشروق",
-        "fr": "chourouk",
+        "fr": "shuruk",
         "en": "shuruk"
     },
     "joumouaa": {
         "ar": "الجمعة",
-        "fr": "joumouaa",
-        "en": "Jumua"
+        "fr": "Jumu`a",
+        "en": "Jumu`a"
     },
     "aid-prayer": {
         "ar": "صلاة العيد",
@@ -55,19 +55,19 @@
         "en": "aid prayer"
     },
     "sobh": {
-        "ar": "الصبح",
-        "fr": "sobh",
-        "en": "sobh"
+        "ar": "الفجر",
+        "fr": "Fajr",
+        "en": "Fajr"
     },
     "zuhr": {
         "ar": "الظهر",
-        "fr": "dohr",
-        "en": "zuhr"
+        "fr": "Duhr",
+        "en": "Duhr"
     },
     "asr": {
         "ar": "العصر",
-        "fr": "asr",
-        "en": "asr"
+        "fr": "`Asr",
+        "en": "`Asr"
     },
     "maghrib": {
         "ar": "المغرب",
@@ -76,8 +76,8 @@
     },
     "isha": {
         "ar": "العشاء",
-        "fr": "ichaa",
-        "en": "isha"
+        "fr": "`Isha",
+        "en": "`Isha"
     },
     "support": {
         "ar": "Support: Binary consulting company ",
@@ -86,7 +86,7 @@
     },
     "iqama": {
         "ar": "الإقامة",
-        "fr": "el-iqama",
+        "fr": "El iqâma",
         "en": "the iqama"
     },
     "configuration": {

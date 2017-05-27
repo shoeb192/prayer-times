@@ -701,7 +701,7 @@ var douaaSlider = {
      * Time to wait before showing douaa after prayer (in minutes)
      * @type Array
      */
-    douaaAfterPrayerWait: [12, 10, 10, 10, 11],
+    douaaAfterPrayerWait: [10, 8, 8, 8, 9],
     /**
      * it saves html (ul,li)
      * @type String
@@ -717,7 +717,7 @@ var douaaSlider = {
         }
 
         var douaaSliderFile = 'douaa-slider.html';
-        if ($(window).width() > 1900) {
+        if ($(window).width() > 1800) {
             douaaSliderFile = 'douaa-slider-one-screen.html';
         }
 
@@ -737,11 +737,11 @@ var douaaSlider = {
         });
     },
     /**
-     * If enabled show douaa after prayer for 5 minutes
+     * If enabled show douaa after prayer
      * @param {Number} currentTimeIndex
      */
     show: function (currentTimeIndex) {
-        if (prayer.confData.douaaAfterPrayerEnabled === true) {
+        if (prayer.confData.douaaAfterPrayerEnabled === true && !prayer.isJoumouaa(currentTimeIndex) ) {
             setTimeout(function () {
                 $(".desktop .main").fadeOut(2000, function () {
                     $(".douaa-after-prayer").fadeIn(1000);
