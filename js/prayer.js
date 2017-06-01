@@ -82,22 +82,25 @@ var prayer = {
         this.debugConf();
     },
     debugConf: function () {
-        var debugData = "<b>calculChoice : </b>" + prayer.confData.calculChoice + "<br>" +
-                "<b>prayerMethod : </b>" + prayer.confData.prayerMethod + "<br>" +
-                "<b>latitude : </b>" + prayer.confData.latitude + "<br>" +
-                "<b>longitude : </b>" + prayer.confData.longitude + "<br>" +
-                "<b>fajrDegree : </b>" + prayer.confData.fajrDegree + "<br>" +
-                "<b>ichaaDegree : </b>" + prayer.confData.ichaaDegree + "<br>";
-
-        $(".conf").attr("title", debugData);
+        var debugData = "<p><b>Source de calcul : </b>" + prayer.confData.calculChoice + "<br>";
+        if (prayer.confData.calculChoice === "csvFile") {
+            debugData += "<b>Chemin CSV : </b>" + prayer.confData.csvFilePath + "<br>";
+        } else if(prayer.confData.calculChoice === "custom") {
+            debugData += "<b>Méthode de calcul : </b>" + prayer.confData.prayerMethod + "<br>" +
+                    "<b>latitude : </b>" + prayer.confData.latitude + "<br>" +
+                    "<b>longitude : </b>" + prayer.confData.longitude + "<br>" +
+                    "<b>Degré du fajr : </b>" + prayer.confData.fajrDegree + "<br>" +
+                    "<b>Degré du ichaa : </b>" + prayer.confData.ichaaDegree + "<br></p>";
+        }
+        $(".header").attr("title", debugData);
     },
     /**
      * load today prayer times
-     * if calculChoice = defined we load from csv file
+     * if calculChoice = csvFile we load from csv file
      * else we load from PrayTimes() function
      */
     loadPrayerTimes: function () {
-        if (this.confData.calculChoice === "defined") {
+        if (this.confData.calculChoice === "csvFile") {
             this.loadPrayerTimesFromCsv();
         } else if (this.confData.calculChoice === "custom") {
             this.loadPrayerTimesFromApi();
@@ -109,7 +112,7 @@ var prayer = {
     loadPrayerTimesFromCsv: function () {
         var prayerTimes = new Array();
         $.ajax({
-            url: "data/times/" + prayer.confData.timesPath + "/" + dateTime.getCurrentMonth() + ".csv?" + (new Date()).getTime(),
+            url: "data/csv/" + prayer.confData.csvFilePath + "/" + dateTime.getCurrentMonth() + ".csv?" + (new Date()).getTime(),
             async: false,
             success: function (data) {
                 prayerTimes = data.split("\n");
@@ -172,7 +175,7 @@ var prayer = {
      * @returns {Array}
      */
     dstConvertPrayerTime: function (prayerTime) {
-        if (prayer.confData.calculChoice === "defined" && dateTime.isLastSundayDst()) {
+        if (prayer.confData.calculChoice === "csvFile" && dateTime.isLastSundayDst()) {
             prayerTime = prayerTime.split(":");
             var hourPrayerTime = Number(prayerTime[0]) + (dateTime.getCurrentMonth() === "03" ? 1 : -1);
             var minutePrayerTime = prayerTime[1];

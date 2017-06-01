@@ -117,14 +117,14 @@
                             <label for="choiceCalcul">Choix de calcul d'horaire<span class="glyphicon glyphicon-asterisk"></span></label>
                             <select id="calculChoice" class="form-control">
                                 <option value="custom">Personalisé (réglage manuel)</option>
-                                <option value="defined">Prédifini (fichier CSV)</option>
+                                <option value="csvFile">Prédifini (fichier CSV)</option>
                             </select>  
                         </div>
 
-                        <div class="choice-calcul defined" style="display: none">
+                        <div class="choice-calcul csvFile" style="display: none">
                             <div class="form-group col-lg-4">
-                                <label for="timesPath">Chemin vers le fichier CSV<span class="glyphicon glyphicon-asterisk"></span></label>
-                                <input type="text" class="form-control" id="timesPath" required="" placeholder="ex: houilles, 12-deg/paris">
+                                <label for="csvFilePath">Chemin vers le fichier CSV<span class="glyphicon glyphicon-asterisk"></span></label>
+                                <input type="text" class="form-control" id="csvFilePath" required="" placeholder="ex: houilles, 12-deg/paris">
                             </div>
                         </div>
 

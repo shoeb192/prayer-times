@@ -6,7 +6,6 @@
 
 $(document).ready(function () {
     var confDataFromLocalStorage = JSON.parse(localStorage.getItem("config"));
-    console.dir(confDataFromLocalStorage);
     var input;
     $.each(confDataFromLocalStorage, function (key, value) {
         if (key === "prayersWaitingTimes") {

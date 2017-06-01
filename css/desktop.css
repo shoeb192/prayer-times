@@ -169,8 +169,9 @@ body {
 }
 
 .tooltip-arrow,
-.conf + .tooltip > .tooltip-inner {
+.header + .tooltip > .tooltip-inner {
     background-color: #f0ad4e;
     color: #000;
     text-align: left;
+    font-size: 14px;
 }
