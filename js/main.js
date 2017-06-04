@@ -2,6 +2,7 @@ var prayer = {
     prayersWaitingTimesInMinute: [20, 10, 10, 5, 10],
     minimumIchaTime: "19:50",
     joumouaaTime: "12:00",
+    months: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
     prayerTimes: [],
     init: function () {
         this.setTime();
@@ -13,26 +14,29 @@ var prayer = {
         this.initIqamaFlash();
         this.initCronMidNight();
     },
-    getCsvFile: function () {
-        return dateTime.getCurrentMonth() + ".csv";
+    getCsvFile: function (month) {
+        return month + ".csv";
     },
     loadPrayerTimes: function () {
-        var csvFile = this.getCsvFile();
-        var prayerTimes;
-        $.ajax({
-            url: "data/" + csvFile,
-            async: false,
-            dataType: "text",
-            success: function (data) {
-                prayerTimes = data.split("\n");
-            }
+        var prayerTimes = new Array(), csvFile;
+        $.each(this.months, function (i, month) {
+            csvFile = prayer.getCsvFile(month);
+            $.ajax({
+                url: "data/" + csvFile,
+                async: false,
+                success: function (data) {
+                    prayerTimes[month] = data.split("\n");
+                }
+            });
         });
-
         this.prayerTimes = prayerTimes;
     },
-    getCurrentPrayerTimes: function () {
+    getTodayPrayerLine: function () {
         var prayerTimes = this.prayerTimes;
-        prayerTimes = prayerTimes[dateTime.getCurrentDay()].split(",");
+        return prayerTimes[dateTime.getCurrentMonth()][dateTime.getCurrentDay()].split(",");
+    },
+    getTodayFivePrayerTimes: function () {
+        var prayerTimes = this.getTodayPrayerLine();
         return [prayerTimes[1], prayerTimes[3], prayerTimes[4], prayerTimes[5], this.getIchaTime()];
     },
     getCurrentDateForPrayerTime: function (prayerTime) {
@@ -44,8 +48,7 @@ var prayer = {
         return date;
     },
     getIchaTime: function () {
-        var prayerTimes = this.prayerTimes[dateTime.getCurrentDay()].split(",");
-        var ichaTime = prayerTimes[6];
+        var ichaTime = this.getTodayPrayerLine()[6];
         if (ichaTime <= this.minimumIchaTime)
         {
             ichaTime = this.minimumIchaTime;
@@ -53,8 +56,7 @@ var prayer = {
         return ichaTime;
     },
     getChouroukTime: function () {
-        var prayerTimes = this.prayerTimes[dateTime.getCurrentDay()].split(",");
-        return prayerTimes[2];
+        return this.getTodayPrayerLine()[2];
     },
     initCronMidNight: function () {
         // toutes les minutes
@@ -96,7 +98,7 @@ var prayer = {
     iqamaIsFlashing: false,
     initIqamaFlash: function () {
         if (!prayer.iqamaIsFlashing) {
-            $.each(prayer.getCurrentPrayerTimes(), function (i, prayerTime) {
+            $.each(prayer.getTodayFivePrayerTimes(), function (i, prayerTime) {
                 //si date ou chourouk on continue
                 var diffTimeInMiniute = Math.floor((new Date() - prayer.getCurrentDateForPrayerTime(prayerTime)) / 60000);
                 if (diffTimeInMiniute === prayer.prayersWaitingTimesInMinute[i]) {
@@ -130,11 +132,11 @@ var prayer = {
     },
     setPrayerTimes: function () {
         $("#joumouaa").text(this.joumouaaTime);
-        $("#sobh").text(this.getCurrentPrayerTimes()[0]);
+        $("#sobh").text(this.getTodayFivePrayerTimes()[0]);
         $("#chourouk").text(this.getChouroukTime());
-        $("#dohr").text(this.getCurrentPrayerTimes()[1]);
-        $("#asr").text(this.getCurrentPrayerTimes()[2]);
-        $("#maghrib").text(this.getCurrentPrayerTimes()[3]);
+        $("#dohr").text(this.getTodayFivePrayerTimes()[1]);
+        $("#asr").text(this.getTodayFivePrayerTimes()[2]);
+        $("#maghrib").text(this.getTodayFivePrayerTimes()[3]);
         $("#ichaa").text(this.getIchaTime());
     },
     setPrayerWaitings: function () {
