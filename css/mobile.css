@@ -132,3 +132,7 @@ body {
 .display-none {
     display: none;
 }
+
+.support{
+    color: gray;
+}

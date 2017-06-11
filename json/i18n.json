@@ -51,8 +51,8 @@
     },
     "aid-prayer": {
         "ar": "صلاة العيد",
-        "fr": "Prière du aïd",
-        "en": "aid prayer"
+        "fr": "Salat el Aïd",
+        "en": "Aid prayer"
     },
     "sobh": {
         "ar": "الفجر",
@@ -80,9 +80,9 @@
         "en": "`Isha"
     },
     "support": {
-        "ar": "Support: Binary consulting company ",
-        "fr": "Support: Société Binary Consulting ",
-        "en": "Support: Binary consulting company "
+        "ar": "Binary consulting company",
+        "fr": "Développé par Binary Consulting SAS",
+        "en": "Deveoped by Binary consulting SAS"
     },
     "iqama": {
         "ar": "الإقامة",
@@ -136,7 +136,7 @@
     },
     "header-text": {
         "ar": "نص أعلى الصفحة",
-        "fr": " Texte du site internet",
+        "fr": "Nome et ville de la mosquée",
         "en": "header text"
     },
     "site-text": {
@@ -175,9 +175,9 @@
         "en": ""
     },
     "calcul-choice": {
-        "ar": "اختيار مصدر الحساب",
-        "fr": "Choix de la source de calcul (CSV / Personalisé)",
-        "en": "choose calucl source (CSV / Custom)"
+        "ar": "مصدر الحساب",
+        "fr": "Source de calcul (CSV / Personalisé)",
+        "en": "Calucl source (CSV / Custom)"
     },
     "custom": {
         "ar": "يدوي",

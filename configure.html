@@ -30,13 +30,13 @@
                 <div class="form-group col-lg-4">
                     <label for="joumouaaTime"  data-text="joumoua-time" title="Si vide 12:10 sera affiché en hiver et 13:10 en été">
                     </label> <span class="glyphicon glyphicon-info-sign"></span>
-                    <input type="text" class="form-control" id="joumouaaTime" placeholder="ex: 14h / 13h / 13:00">
+                    <input type="text" class="form-control" id="joumouaaTime" placeholder="Ex: 14h / 13h / 13:00">
                 </div>
 
                 <div class="form-group col-lg-4">
                     <label for="aidTime"  data-text="aid-time" title="Si renseigné l'heure du aïd sera affichée à la place du chourouk">
                     </label> <span class="glyphicon glyphicon-info-sign"></span>
-                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 08:00" class="form-control" id="aidTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                    <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 08:00" class="form-control" id="aidTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
                                 setCustomValidity('')
                             } catch (e) {
                             }" >
@@ -51,7 +51,7 @@
                 <div class="form-group col-lg-6">
                     <label for="minimumIchaTime" data-text="min-isha" title="Permet de fixer l'heure du ichaa à une heure minimale">
                     </label> <span class="glyphicon glyphicon-info-sign"></span>
-                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 19:00" class="form-control" id="minimumIchaTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                    <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 19:00" class="form-control" id="minimumIchaTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
                                 setCustomValidity('')
                             } catch (e) {
                             }">
@@ -60,7 +60,7 @@
                 <div class="form-group col-lg-6">
                     <label for="maximumIchaTimeForNoWaiting" data-text="isha-max-no-wait" title="Heure maximale du ichaa à partir de laquelle il n'y aura pas d'attente entre adhan et iqama">
                     </label> <span class="glyphicon glyphicon-info-sign"></span>
-                    <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 22:00" class="form-control" id="maximumIchaTimeForNoWaiting" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                    <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 22:00" class="form-control" id="maximumIchaTimeForNoWaiting" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
                                 setCustomValidity('')
                             } catch (e) {
                             }">
@@ -99,17 +99,17 @@
 
                 <div class="form-group col-lg-6">
                     <label for="headerText" data-text="header-text">Texte de l'entête</label>
-                    <input type="text" class="form-control" id="headerText">
+                    <input type="text" class="form-control" id="headerText" placeholder="Ex: Mosquée Essunna - Paris">
                 </div>
 
                 <div class="form-group col-lg-6">
                     <label for="site"  data-text="site-text" title="Lasser vide si pas besoin"></label> <span class="glyphicon glyphicon-info-sign"></span>
-                    <input type="text" class="form-control" id="site">
+                    <input type="text" class="form-control" id="site" placeholder='Ex: Horaires de prière sur mobile et tablette <span style="color: #1b6d85;">http://horaires-de-priere.fr/mosquee-essunna-houilles/fr</span>'>
                 </div>
 
                 <div class="form-group col-lg-6">
                     <label for="footerText"  data-text="footer-text" title="Laisser vide si vous ne souhaitez pas de texte dans le pieds de page"></label> <span class="glyphicon glyphicon-info-sign"></span>
-                    <input type="text" class="form-control" id="footerText">
+                    <input type="text" class="form-control" id="footerText" placeholder="Ex: Association SFI - Tél. 00.00.00.00.00 | IBAN FRXX XXXX XXXX XXXX XXXX XXXX XXX / BIC XXXXXXXX">
                 </div>
 
                 <div class="form-group col-lg-6">
@@ -133,7 +133,14 @@
                         <div class="choice-calcul csv" style="display: none">
                             <div class="form-group col-lg-4">
                                 <label for="city" data-text="city"></label> <span class="glyphicon glyphicon-asterisk"></span>
-                                <input type="text" class="form-control" id="city" required="" placeholder="ex: houilles, 12-deg/paris">
+                                <select id="city" class="form-control">
+                                    <option value="paris-uoif">Paris UOIF</option>
+                                    <option value="mosquee-de-paris">Mosquée de Paris</option>
+                                    <option value="colombes-MUSC">Colombes - MUSC (Paris UOIF + 1h30 `isha)</option>
+                                    <option value="houilles">Houilles</option>
+                                    <option value="nanterre">Nanterre - Ibn badis</option>
+                                    <option value="orly">Orly - ASCM</option>
+                                </select>  
                             </div>
                         </div>
 
@@ -161,11 +168,11 @@
 
                             <div class="form-group col-lg-3">
                                 <label for="fajrDegree" data-text="fajrDegree"></label>
-                                <input type="number" min="0" class="form-control" id="fajrDegree" placeholder="ex: 18">
+                                <input type="number" min="0" class="form-control" id="fajrDegree" placeholder="Ex: 18">
                             </div>
                             <div class="form-group col-lg-3">
                                 <label for="ichaaDegree" data-text="ichaaDegree"></label>
-                                <input type="number" min="0" class="form-control" id="ichaaDegree" placeholder="ex: 15">
+                                <input type="number" min="0" class="form-control" id="ichaaDegree" placeholder="Ex: 15">
                             </div>
 
                             <div class="form-group col-lg-12">
@@ -201,37 +208,37 @@
                                 <label for="fixing4" class="col-5" data-text="isha"></label>
                             </div>
                             <div>
-                                <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 06:00" class="form-control inline col-5 fixing" id="fixing0" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                                setCustomValidity('')
-                                            } catch (e) {
-                                            }">
-                                <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 13:00" class="form-control inline col-5 fixing" id="fixing1" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                                setCustomValidity('')
-                                            } catch (e) {
-                                            }">
-                                <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 16:00" class="form-control inline col-5 fixing" id="fixing2" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                                setCustomValidity('')
-                                            } catch (e) {
-                                            }">
-                                <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 18:00" class="form-control inline col-5 fixing" id="fixing3" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                                setCustomValidity('')
-                                            } catch (e) {
-                                            }">
-                                <input type="text" pattern="\d{2}:\d{2}" placeholder="ex: 20:00" class="form-control inline col-5 fixing" id="fixing4" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                                setCustomValidity('')
-                                            } catch (e) {
-                                            }">
+                                <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 06:00" class="form-control inline col-5 fixing" id="fixing0" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                            setCustomValidity('')
+                                        } catch (e) {
+                                        }">
+                                <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 13:00" class="form-control inline col-5 fixing" id="fixing1" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                            setCustomValidity('')
+                                        } catch (e) {
+                                        }">
+                                <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 16:00" class="form-control inline col-5 fixing" id="fixing2" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                            setCustomValidity('')
+                                        } catch (e) {
+                                        }">
+                                <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 18:00" class="form-control inline col-5 fixing" id="fixing3" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                            setCustomValidity('')
+                                        } catch (e) {
+                                        }">
+                                <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 20:00" class="form-control inline col-5 fixing" id="fixing4" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                            setCustomValidity('')
+                                        } catch (e) {
+                                        }">
                             </div>
                         </div>
 
                         <div class="row col-lg-12">
                             <div class="form-group col-lg-4">
                                 <label for="iqamaDisplayTime" data-text="iqama-display-time"></label> <span class="glyphicon glyphicon-asterisk"></span>
-                                <input type="number" min="1" class="form-control" id="iqamaDisplayTime" placeholder="ex: 30">
+                                <input type="number" min="1" class="form-control" id="iqamaDisplayTime" placeholder="Ex: 30">
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="adhanDouaaDisplayTime" data-text="adhan-douaa-display-time"></label> <span class="glyphicon glyphicon-asterisk"></span>
-                                <input type="number" min="1" class="form-control" id="adhanDouaaDisplayTime" placeholder="ex: 30">
+                                <input type="number" min="1" class="form-control" id="adhanDouaaDisplayTime" placeholder="Ex: 30">
                             </div>
                         </div>
                         <div class="row col-lg-12">
@@ -242,9 +249,6 @@
                             </div>
                             <div class="form-group col-lg-4">
                                 <label><input type="checkbox" id="douaaAfterPrayerEnabled"> <span data-text="enable-douaa-after-prayer"></span></label>
-                            </div>
-                            <div class="form-group col-lg-4">
-                                <label><input type="checkbox" id="androidAppEnabled"> <span data-text="app-qr-code-display"></span></label>
                             </div>
                         </div>
 
