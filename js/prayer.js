@@ -97,7 +97,7 @@ var prayer = {
      */
     getPrayersWaitingTimes: function () {
         var waitings = this.customData.prayersWaitingTimes;
-        if (this.getIchaTime() > this.customData.maximumIchaTimeForNoWaiting) {
+        if (this.customData.maximumIchaTimeForNoWaitingEnabled && this.getIchaTime() > this.customData.maximumIchaTimeForNoWaiting) {
             waitings[4] = 0;
         }
         return waitings;
@@ -157,7 +157,7 @@ var prayer = {
      */
     getIchaTime: function () {
         var ichaTime = this.getTodayFivePrayerTimes()[4];
-        if (ichaTime <= this.customData.minimumIchaTime)
+        if (this.customData.minimumIchaTimeEnabled &&  ichaTime <= this.customData.minimumIchaTime)
         {
             ichaTime = this.customData.minimumIchaTime;
         }

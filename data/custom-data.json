@@ -5,7 +5,9 @@
     "aidTime": "08:00",
     
     "enableAdhanDouaa": true,
+    "minimumIchaTimeEnabled": true,
     "minimumIchaTime": "19:50",
+    "maximumIchaTimeForNoWaitingEnabled": true,
     "maximumIchaTimeForNoWaiting": "22:00",
     "site": "http://priere.mosquee-houilles.fr",
     "headerText": "Mosquée ES-sounna - Houilles",
