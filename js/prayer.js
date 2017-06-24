@@ -49,6 +49,7 @@ var prayer = {
         this.initCronHandlingTimes();
         this.setCustomTime();
         this.setCustomContent();
+        this.setQRCode();
         this.hideSpinner();
         douaaSlider.init();
     },
@@ -65,7 +66,7 @@ var prayer = {
         if (date.getHours() !== 0) {
             var ichaaDateTime = this.getCurrentDateForPrayerTime(this.getIchaTime());
             ichaaDateTime.setMinutes(ichaaDateTime.getMinutes() + this.nextPrayerHilightWait);
-            if (date > ichaaDateTime ){
+            if (date > ichaaDateTime) {
                 this.loadTimes(true);
             }
         }
@@ -688,6 +689,16 @@ var prayer = {
             $(".adhan .fr, .douaa-between-adhan-iqama .fr").remove();
             $(".adhan .ar, .douaa-between-adhan-iqama .ar").css("font-size", "900%");
         }
+    },
+    /**
+     * Set QR code
+     */
+    setQRCode: function () {
+        new QRCode("qrcode", {
+            text: prayer.confData.site,
+            width: 120,
+            height: 120
+        });
     }
 };
 
@@ -736,7 +747,7 @@ var douaaSlider = {
      * @param {Number} currentTimeIndex
      */
     show: function (currentTimeIndex) {
-        if (prayer.confData.douaaAfterPrayerEnabled === true && !prayer.isJoumouaa(currentTimeIndex) ) {
+        if (prayer.confData.douaaAfterPrayerEnabled === true && !prayer.isJoumouaa(currentTimeIndex)) {
             setTimeout(function () {
                 $(".desktop .main").fadeOut(2000, function () {
                     $(".douaa-after-prayer").fadeIn(1000);

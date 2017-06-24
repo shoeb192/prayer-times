@@ -5,6 +5,7 @@ body {
     color: #fff;
     font-weight: bold;
     font-size: 12px;
+    position: relative;
 }
 
 .spinner{
@@ -181,30 +182,17 @@ body {
 }
 
 .site{
-    font-size: 200%;
-}
-
-.assosciation{
-    font-size: 200%;
+    color: #1b6d85;
 }
 
 .support{
-    font-size: 150%;
+    font-size: 80%;
     color: gray;
 }
 
 .footer{
     height: 100px;
-}
-
-.app-qr-code{
-    height: 70px; 
-    width: 70px;
-}
-
-.version-parent{
-    position: relative;
-    height: inherit;
+    font-size: 200%;
 }
 
 .version{
@@ -213,8 +201,8 @@ body {
     text-align: right;
     padding-right: 20px;
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 5px;
+    right: 5px;
 }
 
 .tooltip-arrow,
@@ -236,4 +224,12 @@ body {
 
 .display-none {
     display: none;
+}
+
+.qrcode{
+    position: absolute;
+    background-color: #fff;
+    padding: 2px;
+    bottom: 15px;
+    left: 15px;
 }

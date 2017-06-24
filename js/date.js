@@ -71,23 +71,19 @@ var dateTime = {
      * @returns {String}
      */
     getCurrentDate: function () {
-        var day = addZero(this.getCurrentDay());
-        var year = this.getCurrentYear();
-        var dateText = (getConfFromLocalStorage().lang === "ar" ? "" : this.getCurrentDayText())
-                + ' ' + day
-                + '/' + this.getCurrentMonth()
-                + '/' + year;
-        return dateText;
-    },
-    /**
-     * get current day name ex: Vendredi
-     * @returns {Array}
-     */
-    getCurrentDayText: function () {
+        var lang = getConfFromLocalStorage().lang;
+        if (lang === 'ar') {
+            return;
+        }
         var date = new Date();
-        var dayIndex = date.getDay();
-        days = ["sunday","monday","tuesday","wednesday","thursday","friday","saturday"];
-        return days[dayIndex].trans(getConfFromLocalStorage().lang);
+        var options = {weekday: "long", year: "numeric", month: "long", day: "numeric"}
+        try {
+            return date.toLocaleString(lang, options).firstCapitalize();
+        } catch (e) {
+            options.timeZone = "Europe/Paris";
+            return date.toLocaleString(lang, options).firstCapitalize();
+        }
+
     },
     getLastSundayOfMonth: function (month) {
         var date = new Date();

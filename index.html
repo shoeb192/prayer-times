@@ -123,12 +123,8 @@
                 </div>
 
                 <div class="footer">
-                    <div class="col-lg-1 text-center android-app visibilty-hidden">
-                        <span>App Android</span>
-                        <img class="app-qr-code" src="" />
-                    </div>
-                    <div class="col-lg-10">
-                        <div class="site"></div>
+                    <div class="">
+                        <div>Horaires de prière sur mobile et tablette <span class="site"></span></div>
                         <div class="assosciation"></div>
                         <div class="support">
                             <span data-text="support"></span>&nbsp;&nbsp;
@@ -136,10 +132,12 @@
                             <i class="glyphicon glyphicon-envelope"></i> <span class="supportEmail"></span>
                         </div>
                     </div>
-                    <div class="col-lg-1 version-parent">
-                        <span class="version fr"></span>
-                    </div>
                 </div>
+
+                <div class="qrcode">
+                    <div id="qrcode"></div>
+                </div>
+                <div class="version fr"></div>
             </div>
         </div>
 
@@ -227,6 +225,7 @@
         </div>
 
         <script src="js/vendor/jquery.min.js"></script>
+        <script src="js/vendor/qrcode.js"></script>
         <script src="js/vendor/jquery.countdown.min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/vendor/hijriDate.js"></script>
