@@ -698,11 +698,6 @@ var prayer = {
 var douaaSlider = {
     oneDouaaShowingTime: 20000,
     /**
-     * Time to wait before showing douaa after prayer (in minutes)
-     * @type Array
-     */
-    douaaAfterPrayerWait: [10, 8, 8, 8, 9],
-    /**
      * it saves html (ul,li)
      * @type String
      */
@@ -759,7 +754,7 @@ var douaaSlider = {
                     });
 
                 }, douaaSlider.getTimeForShow());
-            }, douaaSlider.douaaAfterPrayerWait[currentTimeIndex] * prayer.oneMinute);
+            }, prayer.confData.douaaAfterPrayerWait[currentTimeIndex] * prayer.oneMinute);
         }
     },
     /**

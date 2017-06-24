@@ -23,6 +23,14 @@ $.each(confDataFromLocalStorage, function (key, value) {
         return;
     }
     
+    if (key === "douaaAfterPrayerWait") {
+        $(value).each(function (i, val) {
+            console.log(val);
+            $("#douaaWait" + i).val(val);
+        });
+        return;
+    }
+    
     if (key === "prayerTimesAdjustment") {
         $(value).each(function (i, val) {
             $("#adjust" + i).val(val);
@@ -85,6 +93,10 @@ function submitConfForm() {
     
     $(".adjust").each(function (i, elem) {
         data["prayerTimesAdjustment"][i] = $(elem).val();
+    });
+    
+    $(".douaaWait").each(function (i, elem) {
+        data["douaaAfterPrayerWait"][i] = $(elem).val();
     });
 
     localStorage.setItem("config", JSON.stringify(data));
