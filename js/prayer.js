@@ -427,9 +427,9 @@ var prayer = {
      * set static custom content, header, footer ...
      */
     setCustomContent: function () {
-        $(".header").text(this.customData.headerText);
+        $(".header").html(this.customData.headerText);
+        $(".site").html(this.customData.site);
         $(".assosciation").html(this.customData.footerText);
-        $(".site>span").text(this.customData.site);
         if (!this.customData.androidAppEnabled) {
             $(".android-app").addClass("visibilty-hidden");
         }
