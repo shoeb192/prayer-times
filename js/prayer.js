@@ -87,36 +87,46 @@ var prayer = {
         prayer.confData = JSON.parse(localStorage.getItem("config"));
     },
     /**
-     * load today prayer times
+     * load prayer times
      * if calculChoice = csv we load from csv file
      * else we load from PrayTimes() function
+     * @param {boolean} tomorrow if true we load tomorrow time, otherxise we load today times
      */
-    loadTimes: function () {
+    loadTimes: function (tomorrow) {
         if (this.confData.calculChoice === "csv") {
-            this.loadTimesFromCsv();
+            this.loadTimesFromCsv(tomorrow);
         } else if (this.confData.calculChoice === "custom") {
-            this.loadTimesFromApi();
+            this.loadTimesFromApi(tomorrow);
         }
     },
     /**
+     * @param {boolean} tomorrow 
      * @returns {Array}
      */
-    loadTimesFromCsv: function () {
+    loadTimesFromCsv: function (tomorrow) {
+
+        var month = dateTime.getCurrentMonth();
+        var day = dateTime.getCurrentDay();
+        if (typeof tomorrow === 'boolean' && tomorrow === true) {
+            month = dateTime.getTomorrowMonth();
+            day = dateTime.getTomorrowDay();
+        }
         var times = new Array();
         $.ajax({
-            url: "data/csv/" + prayer.confData.city + "/" + dateTime.getCurrentMonth() + ".csv?" + getVersion(),
+            url: "data/csv/" + prayer.confData.city + "/" + month + ".csv?" + getVersion(),
             async: false,
             success: function (data) {
                 times = data.split(/\r|\n/);
-                times = times[dateTime.getCurrentDay()].split(",");
+                times = times[day].split(",");
                 prayer.times = times.slice(1, times.length);
             }
         });
     },
     /**
-     * @returns {Array}
+     * @param {boolean} tomorrow 
+     * Load times from PrayTimes API
      */
-    loadTimesFromApi: function () {
+    loadTimesFromApi: function (tomorrow) {
         var prayTimes = new PrayTimes(prayer.confData.prayerMethod);
         if (prayer.confData.fajrDegree !== "") {
             prayTimes.adjust({"fajr": parseFloat(prayer.confData.fajrDegree)});
@@ -134,7 +144,11 @@ var prayer = {
             isha: prayer.confData.prayerTimesAdjustment[4]
         });
 
-        var pt = prayTimes.getTimes(new Date(), [parseFloat(prayer.confData.latitude), parseFloat(prayer.confData.longitude)]);
+        var date = new Date();
+        if (typeof tomorrow === 'boolean' && tomorrow === true) {
+            date = dateTime.tomorrow();
+        }
+        var pt = prayTimes.getTimes(date, [parseFloat(prayer.confData.latitude), parseFloat(prayer.confData.longitude)]);
         this.times = [pt.fajr, pt.sunrise, pt.dhuhr, pt.asr, pt.maghrib, pt.isha];
     },
     /**
@@ -434,6 +448,11 @@ var prayer = {
         }
         setTimeout(function () {
             prayer.hilighByIndex(nextTimeIndex);
+            // if ichaa we load tomorrow times
+            if (nextTimeIndex === 0) {
+                prayer.loadTimes(true);
+                prayer.setTimes();
+            }
         }, prayer.nextPrayerHilightWait * prayer.oneMinute);
     },
     adhanDouaa: {

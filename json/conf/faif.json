@@ -5,7 +5,7 @@
     "imsakNbMinBeforeSobh": 20,
     "minimumIchaTime": "19:00",
     "maximumIchaTimeForNoWaiting": "",
-    "prayersWaitingTimes": [5, 10, 10, 0, 10],
+    "prayersWaitingTimes": [10, 10, 10, 0, 10],
     "prayerTimesAdjustment": [0, 0, 0, 0, 0],
     "prayerTimesFixing": ["", "", "", "", ""],
     "hijriAdjustment": 0,
@@ -24,6 +24,7 @@
     "adhanDouaaDisplayTime": 30,
     "headerText": "ASSOCIATION FAIF <br> Paris 11ème",
     "site": "Horaires de prière sur mobile et tablette <span style=\"color: #1b6d85;\">http://faif.horaires-de-priere.fr</span>",
-    "supportTel": "(+33) 0629111641",
+    "supportTel": "+33629111641",
+    "supportEmail": "horaires-priere@binary-consulting.fr",
     "footerText": "Association FAIF - Tél. 01.43.72.01.53"
 }

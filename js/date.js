@@ -22,10 +22,26 @@ var dateTime = {
         return date.getDate();
     },
     /**
+     * get tomorrow day ex: 0, 1 ... 30
+     * 0 is the first day
+     */
+    getTomorrowDay: function () {
+        var date = this.tomorrow();
+        return date.getDate();
+    },
+    /**
      * get current month numbre 01, 02 ... 12
      */
     getCurrentMonth: function () {
         var date = new Date();
+        var month = date.getMonth() + 1;
+        return addZero(month);
+    },
+    /**
+     * get tomorrow month 01, 02 ... 12
+     */
+    getTomorrowMonth: function () {
+        var date = this.tomorrow();
         var month = date.getMonth() + 1;
         return addZero(month);
     },
@@ -101,5 +117,13 @@ var dateTime = {
             }
         }
         return false;
+    },
+    /**
+     * @returns {Date}
+     */
+    tomorrow: function () {
+        var date = new Date();
+        date.setDate(date.getDate() + 1);
+        return date;
     }
 };
