@@ -137,6 +137,7 @@ body {
 .iqama{
     background-color: #000;
     color: #fff;
+    font-size: 900%;
 }
 
 .iqama .top{
@@ -158,6 +159,7 @@ body {
 
 .adhan .ar {
     font-size: 700%;
+    font-family: 'Amiri';
 }
 
 .adhan .fr {
@@ -167,6 +169,7 @@ body {
 
 .douaa-between-adhan-iqama .ar {
     font-size: 700%;
+    font-family: 'Amiri';
 }
 
 .douaa-between-adhan-iqama .fr {
@@ -208,10 +211,6 @@ body {
     color: #000;
     text-align: left;
     font-size: 14px;
-}
-
-.ar{
-    font-family: 'Amiri';
 }
 
 .fr{

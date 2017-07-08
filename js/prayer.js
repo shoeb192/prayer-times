@@ -42,7 +42,6 @@ var prayer = {
         this.setDate();
         this.setTimes();
         this.setWaitings();
-        this.translateToArabic();
         this.initNextTimeHilight();
         this.initAdhanFlash();
         this.initIqamaFlash();
@@ -52,6 +51,7 @@ var prayer = {
         this.setQRCode();
         this.hideSpinner();
         douaaSlider.init();
+        this.translateToArabic();
     },
     /**
      * load all data
@@ -684,10 +684,9 @@ var prayer = {
                 $(".prayer-wait").append(waits[i]);
             }
             $(".adhan .fr, .douaa-between-adhan-iqama .fr").remove();
-            $(".ar").css({"font-size": "140%"});
+            $(".ar").css({"font-size": "100%", 'font-family': 'Amiri'});
             $(".adhan .ar, .douaa-between-adhan-iqama .ar").css("font-size", "900%");
             $(".adhan .title, .douaa-between-adhan-iqama .title").css("margin-bottom", "80px");
-            $(".iqama .ar").css("font-size", "1000%");
             $(".header").css("font-size", "800%");
         }
     },
@@ -732,6 +731,7 @@ var douaaSlider = {
             $('#slider').css({width: screenWidth});
             $('#slider ul').css({width: sliderUlWidth, marginLeft: -screenWidth});
             $('#slider ul li:last-child').prependTo('#slider ul');
+            $("#slider .ar").css({'font-family': 'Amiri'});
             if (prayer.confData.lang === "ar") {
                 $("#slider .fr").remove();
                 $("#slider .title").css({'margin-bottom': '50px'});
