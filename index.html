@@ -5,9 +5,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link media="screen and (min-width: 1200px)" href="css/desktop.css?<version>" rel="stylesheet">
-        <link media="screen and (max-width: 1200px)" href="css/mobile.css?<version>" rel="stylesheet">
-        <link media="screen and (min-width: 1200px)" href="css/douaa-slider.css?<version>" rel="stylesheet">
+        <link href="css/desktop.css?<version>" rel="stylesheet">
+        <link href="css/douaa-slider.css?<version>" rel="stylesheet">
         <link rel="icon" href="favicon.ico" />
     </head>
     <body class="text-center">
@@ -16,9 +15,9 @@
 
             <!-- Iqama screen -->
             <div class="iqama hidden">
-                <div class="top" data-text="iqama">El-iqama</div>
+                <div class="top ar" data-text="iqama">El-iqama</div>
                 <div class="image"></div>
-                <div class="bottom" data-text="power-off-phones"></div>
+                <div class="bottom ar" data-text="power-off-phones"></div>
             </div>
 
             <!-- Douaa after prayer slider -->
@@ -52,7 +51,7 @@
 
             <!-- main screen -->
             <div class="main display-none">
-                <div class="header col-lg-offset-1 col-lg-10"></div> 
+                <div class="header col-lg-offset-1 col-lg-10 ar"></div> 
                 <div class="col-lg-1 text-right" >
                     <a href="configure.html">
                         <span class="glyphicon glyphicon-cog settings"></span> 
@@ -65,7 +64,7 @@
                             <img src="img/loudspeaker.png">
                         </div>
                         <div class="col-lg-8">
-                            <span data-text="adhan"></span>
+                            <span class="ar" data-text="adhan"></span>
                         </div>
                         <div class="col-lg-2">
                             <img src="img/loudspeaker.png" style="transform: scaleX(-1);">
@@ -73,15 +72,15 @@
                     </div>
                     <div class="content">
                         <div class="col-lg-3 aid custom-time">
-                            <div data-text="aid-prayer"></div>
+                            <div class="ar" data-text="aid-prayer"></div>
                             <div class="aid-id"></div>
                         </div>
                         <div class="col-lg-3 chourouk custom-time">
-                            <div data-text="chourouk"></div>
+                            <div class="ar" data-text="chourouk"></div>
                             <div class="chourouk-id"></div>
                         </div>
                         <div class="col-lg-3 imsak custom-time">
-                            <div data-text="imsak"></div>
+                            <div class="ar" data-text="imsak"></div>
                             <div class="imsak-id"></div>
                         </div>
                         <div class="col-lg-6">
@@ -90,7 +89,7 @@
                             <div class="gregorianDate"></div>
                         </div>
                         <div class=" col-lg-3 joumouaa">
-                            <div data-text="joumouaa"></div>
+                            <div class="ar" data-text="joumouaa"></div>
                             <div class="prayer joumouaa-id"></div>
                         </div>
                     </div>
@@ -98,11 +97,11 @@
 
                 <div class="prayer-content">
                     <div class="prayer-text">
-                        <div class="text _0" data-text="sobh"></div>
-                        <div class="text _1" data-text="zuhr"></div>
-                        <div class="text _2" data-text="asr"></div>
-                        <div class="text _3" data-text="maghrib"></div>
-                        <div class="text _4" data-text="isha"></div>
+                        <div class="text _0 ar" data-text="sobh"></div>
+                        <div class="text _1 ar" data-text="zuhr"></div>
+                        <div class="text _2 ar" data-text="asr"></div>
+                        <div class="text _3 ar" data-text="maghrib"></div>
+                        <div class="text _4 ar" data-text="isha"></div>
                     </div>
 
                     <div class="prayer-time">
@@ -140,90 +139,7 @@
                 <div class="version fr"></div>
             </div>
         </div>
-
-        <div class="mobile hidden-lg">
-            <div class="spinner"></div>
-
-            <div class="main display-none">
-                <div class="header"></div>
-                <div class="top-content">
-                    <div class="time"></div>
-                    <div class="hijriDate ar"></div>
-                    <div class="gregorianDate"></div>
-                </div>
-
-                <div class="prayer-content">
-                    <div class="row">
-                        <div class="col-xs-4 text">Sobh</div>
-                        <div class="col-xs-4 prayer prayer0 sobh"></div> 
-                        <div class="col-xs-4 adhan0 hidden">
-                            <img src="img/loudspeaker.png" class="athan-img">
-                        </div>
-                        <div class="col-xs-4 wait"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-4 text">Dohr</div>
-                        <div class="col-xs-4 prayer prayer1 dohr"></div>
-                        <div class="col-xs-4 adhan1 hidden">
-                            <img src="img/loudspeaker.png" class="athan-img">
-                        </div>
-                        <div class="col-xs-4 wait"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-4 text">Asr</div>
-                        <div class="col-xs-4 prayer prayer2 asr"></div>
-                        <div class="col-xs-4 adhan2 hidden">
-                            <img src="img/loudspeaker.png" class="athan-img">
-                        </div>
-                        <div class="col-xs-4 wait"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-4 text">Maghrib</div>
-                        <div class="col-xs-4 prayer prayer3 maghrib"></div>
-                        <div class="col-xs-4 adhan3 hidden">
-                            <img src="img/loudspeaker.png" class="athan-img">
-                        </div>
-                        <div class="col-xs-4 wait"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-4 text">Icha</div>
-                        <div class="col-xs-4 prayer prayer4 ichaa"></div>
-                        <div class="col-xs-4 adhan4 hidden">
-                            <img src="img/loudspeaker.png" class="athan-img">
-                        </div>
-                        <div class="col-xs-4 wait"></div>
-                    </div>
-                </div>
-
-                <div class="chourouk-joumouaa">
-                    <div class="row">
-                        <div class="col-xs-4 col-xs-offset-1 imsak custom-time">Imsak</div> 
-                        <div class="col-xs-4 col-xs-offset-1 chourouk custom-time">Chourouk</div> 
-                        <div class="col-xs-2"></div>
-                        <div class="col-xs-4 joumouaa">Joumouaa</div>
-                        <div class="col-xs-1"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-4 col-xs-offset-1 imsak custom-time imsak-id"></div>
-                        <div class="col-xs-4 col-xs-offset-1 chourouk custom-time chourouk-id "></div>
-                        <div class="col-xs-2"></div>
-                        <div class="col-xs-4 prayer joumouaa-id"></div>
-                        <div class="col-xs-1"></div>
-                    </div>
-                </div>
-
-                <div class="footer">
-                    <div class="assosciation text-center"></div><br>
-                    <div class="support">
-                        <span data-text="support"></span> <br>
-                        <i class="glyphicon glyphicon-envelope"></i> <a href=""><span class="supportEmail"></span></a>
-                    </div>
-                    <div class="version text-right"></div>
-
-                </div>
-            </div>
-        </div>
-
+        
         <script src="js/vendor/jquery.min.js"></script>
         <script src="js/vendor/qrcode.js"></script>
         <script src="js/vendor/jquery.countdown.min.js"></script>

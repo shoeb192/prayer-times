@@ -46,8 +46,7 @@ body {
 }
 
 .top-content .adhan-flash{
-    font-size: 1700%;
-    line-height: 160%;
+    font-size: 1600%;
 }
 
 .settings
@@ -141,14 +140,12 @@ body {
 }
 
 .iqama .top{
-    height: 25%;
-    font-size: 1000%;
+    height: 20%;
 }
 
 .iqama .bottom{
     height: 15%;
     padding-top: 50px;
-    font-size: 800%;
 }
 
 .iqama .image{
@@ -213,10 +210,10 @@ body {
     font-size: 14px;
 }
 
-.ar{
+/*.ar{
     line-height: 180%;
     font-family: 'Amiri';
-}
+}*/
 
 .fr{
     font-family: 'Arial';

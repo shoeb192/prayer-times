@@ -73,7 +73,7 @@ var dateTime = {
     getCurrentDate: function () {
         var lang = getConfFromLocalStorage().lang;
         if (lang === 'ar') {
-            return;
+            lang = 'fr';
         }
         var date = new Date();
         var options = {weekday: "long", year: "numeric", month: "long", day: "numeric"}

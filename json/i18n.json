@@ -295,7 +295,7 @@
         "en": "Azan"
     },
     "power-off-phones": {
-        "ar":"! أطفؤوا الهواتف المحمول من فضلكم",
+        "ar":"! أطفؤوا الهاتف المحمول من فضلكم",
         "fr": "Éteignez vos portables SVP !",
         "en": "Turn off your mobile phones please !"
     },
@@ -313,5 +313,10 @@
         "ar": "الإمساك",
         "fr": "Imsak",
         "en": "Imsak"
+    },
+    "douaa-after-prayer-wait": {
+        "ar": "وقت الإنتظار قبل عرض الأذكار بعد الصلاة",
+        "fr": "Tempas d'attente avant affichage des du'as post prière",
+        "en": "Waiting time before display du'a after adhan" 
     }
 }

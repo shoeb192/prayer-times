@@ -417,7 +417,7 @@ var prayer = {
         var times = this.getTimesWithAdjustedIchaa();
         $.each(times, function (index, time) {
             prayerDateTime = prayer.getCurrentDateForPrayerTime(time);
-            // adding 15 minute
+            // adding 5 minute
             prayerDateTime.setMinutes(prayerDateTime.getMinutes() + prayer.nextPrayerHilightWait);
             if (date > prayerDateTime) {
                 index++;
@@ -449,7 +449,7 @@ var prayer = {
         $(".prayer:contains(" + time + ")").addClass("prayer-hilighted");
     },
     /**
-     * 10 minute after current iqama we hilight the next prayer time
+     * 5 minute after current iqama we hilight the next prayer time
      * @param {int} currentTimeIndex 
      */
     setNextTimeHilight: function (currentTimeIndex) {
@@ -683,11 +683,11 @@ var prayer = {
                 $(".prayer-time").append(times[i]);
                 $(".prayer-wait").append(waits[i]);
             }
-            $("body").css("font-family", "Amiri");
-            $("body").css("font-size", "13px");
-            $(".header").css("font-size", "600%");
             $(".adhan .fr, .douaa-between-adhan-iqama .fr").remove();
+            $(".ar").css({"font-size": "140%", "font-family": "Amiri"});
             $(".adhan .ar, .douaa-between-adhan-iqama .ar").css("font-size", "900%");
+            $(".iqama .ar").css("font-size", "1000%");
+            $(".header").css("font-size", "800%");
         }
     },
     /**
@@ -717,10 +717,6 @@ var douaaSlider = {
      *  init douaa after prayer slider
      */
     init: function () {
-        // if mobile device ignore douaa slider
-        if ($(window).width() < 1200) {
-            return;
-        }
 
         var douaaSliderFile = 'douaa-slider.html';
         if ($(window).width() > 1800) {
@@ -737,6 +733,9 @@ var douaaSlider = {
             $('#slider ul li:last-child').prependTo('#slider ul');
             if (prayer.confData.lang === "ar") {
                 $("#slider .fr").remove();
+                $("#slider .title").css({'margin-bottom': '50px'});
+                $("#slider").css({'font-size': '100%'});
+                
             }
             //save html slider
             douaaSlider.sliderHtmlContent = $('#slider').html();
