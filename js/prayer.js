@@ -684,8 +684,9 @@ var prayer = {
                 $(".prayer-wait").append(waits[i]);
             }
             $(".adhan .fr, .douaa-between-adhan-iqama .fr").remove();
-            $(".ar").css({"font-size": "140%", "font-family": "Amiri"});
+            $(".ar").css({"font-size": "140%"});
             $(".adhan .ar, .douaa-between-adhan-iqama .ar").css("font-size", "900%");
+            $(".adhan .title, .douaa-between-adhan-iqama .title").css("margin-bottom", "80px");
             $(".iqama .ar").css("font-size", "1000%");
             $(".header").css("font-size", "800%");
         }
