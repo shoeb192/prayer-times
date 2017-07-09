@@ -80,7 +80,7 @@
         "en": "`Isha"
     },
     "support": {
-        "ar": "Binary consulting company",
+        "ar": "Développé par Binary Consulting SAS",
         "fr": "Développé par Binary Consulting SAS",
         "en": "Deveoped by Binary consulting SAS"
     },
@@ -254,10 +254,10 @@
         "fr": "Restorer les paramètres par défaut",
         "en": "Reset conf"
     },
-    "app-qr-code-display": {
-        "ar": "Qr code عرض تطبيف أنرويد" ,
-        "fr": "Afficher le Qr code de l'appli mobile (Ne pas modifer)",
-        "en": "Display Qr code for android app"
+    "qr-code-display": {
+        "ar": " Qr code عرض  " ,
+        "fr": "Afficher Qr code pour le site internet",
+        "en": "Display the Qr code for internet site"
     },
     "advanced-param": {
         "ar": "الإعدادات المتقدمة",

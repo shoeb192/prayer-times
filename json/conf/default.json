@@ -13,7 +13,7 @@
     "hijriDateEnabled": true,
     "douaaAfterAdhanEnabled": true,
     "douaaAfterPrayerEnabled": true,
-    "androidAppEnabled": false,
+    "qrcodeEnabled": true,
     "calculChoice": "custom",
     "city": "mosquee-de-paris",
     "prayerMethod": "ISNA",

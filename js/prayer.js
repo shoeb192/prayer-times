@@ -654,10 +654,6 @@ var prayer = {
         $(".supportTel").parent().attr("href", "tel:" + this.confData.supportTel);
         $(".supportEmail").text(this.confData.supportEmail);
         $(".supportEmail").parent().attr("href", "mailto:" + this.confData.supportEmail);
-        if (this.confData.androidAppEnabled) {
-            $(".app-qr-code").attr("src", "img/app-qr-code.png");
-            $(".android-app").removeClass("visibilty-hidden");
-        }
     },
     hideSpinner: function () {
         $(document).ready(function () {
@@ -690,11 +686,13 @@ var prayer = {
      * Set QR code
      */
     setQRCode: function () {
-        new QRCode("qrcode", {
-            text: prayer.confData.site,
-            width: 120,
-            height: 120
-        });
+        if (prayer.confData.qrcodeEnabled === true) {
+            new QRCode("qrcode", {
+                text: prayer.confData.site,
+                width: 120,
+                height: 120
+            });
+        }
     }
 };
 
@@ -732,7 +730,7 @@ var douaaSlider = {
                 $("#slider .fr").remove();
                 $("#slider .title").css({'margin-bottom': '50px'});
                 $("#slider").css({'font-size': '100%'});
-                
+
             }
             //save html slider
             douaaSlider.sliderHtmlContent = $('#slider').html();
