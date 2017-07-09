@@ -679,7 +679,7 @@ var prayer = {
             $(".ar").css({"font-size": "100%", 'font-family': 'Amiri'});
             $(".adhan .ar, .douaa-between-adhan-iqama .ar").css("font-size", "900%");
             $(".adhan .title, .douaa-between-adhan-iqama .title").css("margin-bottom", "80px");
-            $(".header").css("font-size", "800%");
+            $(".header").css("font-size", "750%");
         }
     },
     /**
