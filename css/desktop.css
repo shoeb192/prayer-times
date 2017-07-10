@@ -167,6 +167,10 @@ body {
     font-size: 550%;
 }
 
+.douaa-between-adhan-iqama .title {
+    margin-bottom: 20px;
+}
+
 .douaa-between-adhan-iqama .ar {
     font-size: 700%;
     font-family: 'Amiri';
