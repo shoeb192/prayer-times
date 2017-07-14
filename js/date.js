@@ -72,10 +72,10 @@ var dateTime = {
      */
     getCurrentDate: function () {
         var lang = getConfFromLocalStorage().lang;
-        if (lang === 'ar') {
-            lang = 'fr';
-        }
         var date = new Date();
+        if (lang === 'ar') {
+            return addZero(this.getCurrentDay()) + "/" + this.getCurrentMonth() + "/" + date.getFullYear();
+        }
         var options = {weekday: "long", year: "numeric", month: "long", day: "numeric"}
         try {
             return date.toLocaleString(lang, options).firstCapitalize();

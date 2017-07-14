@@ -18,6 +18,7 @@ Date.prototype.dst = function () {
 
 /* ##### conf ##### */
 function getConfFromLocalStorage() {
+    loadConfData();
     return JSON.parse(localStorage.getItem("config"));
 }
 
