@@ -25,7 +25,6 @@ $.each(confDataFromLocalStorage, function (key, value) {
     
     if (key === "douaaAfterPrayerWait") {
         $(value).each(function (i, val) {
-            console.log(val);
             $("#douaaWait" + i).val(val);
         });
         return;

@@ -323,5 +323,15 @@
         "ar": "الفارق الزمني",
         "fr": "Le décalage horaire",
         "en": "Timezone offset" 
+    },
+    "enable-bip-azan": {
+        "ar": "إصدار صوت حين وقت الأذان",
+        "fr": "Bip quand c'est l'heure du adhân",
+        "en": "Bip when azan time" 
+    },
+    "enable-bip-iqama": {
+        "ar": "إصدار صوت حين وقت الإقامة",
+        "fr": "Bip quand c'est l'heure de la iqâma",
+        "en": "Bip when iqama time" 
     }
 }
