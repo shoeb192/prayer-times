@@ -49,9 +49,10 @@ var prayer = {
         this.setCustomTime();
         this.setCustomContent();
         this.setQRCode();
-        this.hideSpinner();
-        douaaSlider.init();
         this.translateToArabic();
+        this.hideSpinner();
+
+        douaaSlider.init();
     },
     /**
      * load all data
@@ -664,10 +665,8 @@ var prayer = {
         $(".supportEmail").parent().attr("href", "mailto:" + this.confData.supportEmail);
     },
     hideSpinner: function () {
-        $(document).ready(function () {
-            $(".main").fadeIn(1000, function () {
-                $(".spinner").hide();
-            });
+        $(".main").fadeIn(1000, function () {
+            $(".spinner").hide();
         });
     },
     /**
@@ -726,30 +725,25 @@ var douaaSlider = {
      *  init douaa after prayer slider
      */
     init: function () {
-
-        var douaaSliderFile = 'douaa-slider.html';
-        if ($(window).width() > 1800) {
-            douaaSliderFile = 'douaa-slider-one-screen.html';
-        }
-
-        $('.douaa-after-prayer').load(douaaSliderFile, function () {
-            var screenWidth = $(window).width();
-            $('#slider ul li').width(screenWidth);
-            var slideCount = $('#slider ul li').length;
-            var sliderUlWidth = slideCount * screenWidth;
-            $('#slider').css({width: screenWidth});
-            $('#slider ul').css({width: sliderUlWidth, marginLeft: -screenWidth});
-            $('#slider ul li:last-child').prependTo('#slider ul');
-            $("#slider .ar").css({'font-family': 'Amiri'});
-            if (prayer.confData.lang === "ar") {
-                $("#slider .fr").remove();
-                $("#slider .title").css({'margin-bottom': '50px'});
-                $("#slider").css({'font-size': '100%'});
-
-            }
-            //save html slider
-            douaaSlider.sliderHtmlContent = $('#slider').html();
-        });
+        setTimeout(function () {
+            $('.douaa-after-prayer').load('douaa-slider-one-screen.html', function () {
+                var screenWidth = $(window).width();
+                $('#slider ul li').width(screenWidth);
+                var slideCount = $('#slider ul li').length;
+                var sliderUlWidth = slideCount * screenWidth;
+                $('#slider').css({width: screenWidth});
+                $('#slider ul').css({width: sliderUlWidth, marginLeft: -screenWidth});
+                $('#slider ul li:last-child').prependTo('#slider ul');
+                $("#slider .ar").css({'font-family': 'Amiri'});
+                if (prayer.confData.lang === "ar") {
+                    $("#slider .fr").remove();
+                    $("#slider .title").css({'margin-bottom': '50px'});
+                    $("#slider").css({'font-size': '100%'});
+                }
+                //save html slider
+                douaaSlider.sliderHtmlContent = $('#slider').html();
+            });
+        }, 5 * prayer.oneSecond);
     },
     /**
      * If enabled show douaa after prayer

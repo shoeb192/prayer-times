@@ -1,7 +1,11 @@
 .douaa-after-prayer .title{
-    font-size: 900%;   
+    font-size: 1000%;   
     color: yellowgreen;
     padding: 15px 0 20px 0;
+}
+
+.douaa-after-prayer .fr .title{
+    font-size: 800%;   
 }
 
 .douaa-after-prayer #slider {
