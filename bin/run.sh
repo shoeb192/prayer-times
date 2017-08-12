@@ -1,5 +1,6 @@
 #!/bin/bash
 
-chromium-browser --app=http://localhost --start-maximized --incognito &
+url=`cat ~/Desktop/site.txt`
+chromium-browser --app=$url --start-maximized &
 sleep 30
 xdotool key F11

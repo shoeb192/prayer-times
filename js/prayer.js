@@ -739,6 +739,7 @@ var douaaSlider = {
                     $("#slider .fr").remove();
                     $("#slider .title").css({'margin-bottom': '50px'});
                     $("#slider").css({'font-size': '100%'});
+                    $("#slider .elkoursi").attr("style", "font-size : 750%");
                 }
                 //save html slider
                 douaaSlider.sliderHtmlContent = $('#slider').html();
