@@ -1,6 +1,6 @@
 # Prayer times for mosques ###
 
-## Featurs
+## Features
 
 * Shows prayer times on LCD screen
 * Shows current time, gregorian and hijri date
@@ -53,10 +53,7 @@
 1. nginx  
 `sudo apt-get install nginx`
 
-2. iceweasel (Firefox on linux)  
-`sudo apt-get install iceweasel`
-
-3. xdotool  
+2. xdotool  
 `sudo apt-get install xdotool`
 
 ### Install on Raspberry PI
