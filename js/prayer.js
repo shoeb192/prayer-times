@@ -747,7 +747,7 @@ var prayer = {
                 }, 5000);
             }, 5000);
         }, douaaSlider.getTimeForShow() + 3000);
-    },
+    }
 };
 
 /**
