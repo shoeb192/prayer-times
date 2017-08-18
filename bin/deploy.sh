@@ -19,4 +19,7 @@ rm -f current
 ln -s $1 current
 
 cd current/
-rsync -va --port 222 --delete --force ./ izehhaf@izf.synology.me:~/web/prayer
+
+tar -czf prayer.tar.gz *
+
+scp -P 222 prayer.tar.gz izehhaf@izf.synology.me:/volume1/web/prayer

@@ -4,7 +4,13 @@ mkdir -p /tmp/prayer
 
 rm -rf /tmp/prayer/*
 
-scp -r -P 222 izehhaf@izf.synology.me:~/web/prayer/* /tmp/prayer/
+cd /tmp/prayer/
+
+wget izf.synology.me/prayer/prayer.tar.gz
+
+tar -xf prayer.tar.gz 
+
+rm prayer.tar.gz 
 
 lasteVersion=`cat /tmp/prayer/version`
 
@@ -16,3 +22,4 @@ rm /home/pi/prayer/current
 
 ln -s /home/pi/prayer/$lasteVersion /home/pi/prayer/current
     
+echo Version $lasteVersion installed successfully !
