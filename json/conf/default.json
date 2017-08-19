@@ -1,6 +1,7 @@
 {
     "lang": "fr",
     "joumouaaTime": "",
+    "joumouaaAsDuhr": true,
     "aidTime": "",
     "imsakNbMinBeforeSobh": 0,
     "minimumIchaTime": "",
@@ -24,7 +25,7 @@
     "iqamaDisplayTime": 45,
     "adhanDouaaDisplayTime": 30,
     "azanBip": true,
-    "iqamaBip": false,
+    "iqamaBip": true,
     "headerText": "Mosquée NOM - VILLE",
     "site": "http://horaires-de-priere.fr/mosquee-nom-ville/fr",
     "supportTel": "+33629111641",

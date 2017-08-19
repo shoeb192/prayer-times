@@ -559,6 +559,11 @@ var prayer = {
      * @returns {String}
      */
     getJoumouaaTime: function () {
+        if (typeof this.confData.joumouaaAsDuhr !== "undefined" && this.confData.joumouaaAsDuhr === true) {
+            // return duhr
+            return this.getTimeByIndex(1);
+        }
+        
         if (this.confData.joumouaaTime !== "") {
             return this.confData.joumouaaTime;
         }

@@ -22,14 +22,14 @@ $.each(confDataFromLocalStorage, function (key, value) {
         });
         return;
     }
-    
+
     if (key === "douaaAfterPrayerWait") {
         $(value).each(function (i, val) {
             $("#douaaWait" + i).val(val);
         });
         return;
     }
-    
+
     if (key === "prayerTimesAdjustment") {
         $(value).each(function (i, val) {
             $("#adjust" + i).val(val);
@@ -69,6 +69,14 @@ if (getConfFromLocalStorage().lang === "ar") {
     $("body").css("font-size", "18px");
 }
 
+$("#joumouaaAsDuhr").bind("change", function (event) {
+    if ($(this).is(":checked")) {
+        $(".jumua-bloc").hide();
+    } else {
+        $(".jumua-bloc").show();
+    }
+});
+
 /**
  * Handling submit configure form
  */
@@ -85,15 +93,15 @@ function submitConfForm() {
     $(".wait").each(function (i, elem) {
         data["prayersWaitingTimes"][i] = parseInt($(elem).val());
     });
-    
+
     $(".fixing").each(function (i, elem) {
         data["prayerTimesFixing"][i] = $(elem).val();
     });
-    
+
     $(".adjust").each(function (i, elem) {
         data["prayerTimesAdjustment"][i] = $(elem).val();
     });
-    
+
     $(".douaaWait").each(function (i, elem) {
         data["douaaAfterPrayerWait"][i] = $(elem).val();
     });
@@ -105,4 +113,8 @@ $("#configure").submit(function (event) {
     submitConfForm();
     window.location.href = "index.html";
     event.preventDefault();
+});
+
+$(document).ready(function () {
+    $("#joumouaaAsDuhr").trigger("change");
 });
