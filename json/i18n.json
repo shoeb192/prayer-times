@@ -316,7 +316,7 @@
     },
     "douaa-after-prayer-wait": {
         "ar": "وقت الإنتظار قبل عرض الأذكار بعد الصلاة",
-        "fr": "Tempas d'attente avant affichage des du'as post prière",
+        "fr": "Temps d'attente avant affichage des du'as post prière",
         "en": "Waiting time before display du'a after adhan" 
     },
     "timezone": {
@@ -338,5 +338,15 @@
         "ar": "وقت الجمعة موافق لوفت الظهر",
         "fr": "L'heure du jumu'a pareil que duhr",
         "en": "Jumu`a time like zuhr"
+    },
+    "dst": {
+        "ar": "الوقت الصيفي",
+        "fr": "Heure d'été",
+        "en": "Summer time"
+    },
+    "timezone": {
+        "ar": "الوحدة الزمنية",
+        "fr": "Fuseau horaire",
+        "en": "Timezone"
     }
 }

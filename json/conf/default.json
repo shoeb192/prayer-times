@@ -26,6 +26,8 @@
     "adhanDouaaDisplayTime": 30,
     "azanBip": true,
     "iqamaBip": true,
+    "dst": true,
+    "timezone": "auto",
     "headerText": "Mosquée NOM - VILLE",
     "site": "http://horaires-de-priere.fr/mosquee-nom-ville/fr",
     "supportTel": "+33629111641",
