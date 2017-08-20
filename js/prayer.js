@@ -165,10 +165,10 @@ var prayer = {
         if (typeof tomorrow === 'boolean' && tomorrow === true) {
             date = dateTime.tomorrow();
         }
-        var timezone = typeof prayer.confData.timezone !== "undefined"  ? prayer.confData.timezone : 'auto';
-        var dst = typeof prayer.confData.dst !== "undefined" && prayer.confData.dst === true ? 1 : 0;
+        var timezone = prayer.confData.timezone == parseInt(prayer.confData.timezone) ? parseInt(prayer.confData.timezone) : 'auto';
+        var dst = prayer.confData.dst === true ? 1 : 0;
         
-        var pt = prayTimes.getTimes(date, [parseFloat(prayer.confData.latitude), parseFloat(prayer.confData.longitude)], parseInt(timezone), dst);
+        var pt = prayTimes.getTimes(date, [parseFloat(prayer.confData.latitude), parseFloat(prayer.confData.longitude)], timezone, dst);
         this.times = [pt.fajr, pt.sunrise, pt.dhuhr, pt.asr, pt.maghrib, pt.isha];
     },
     /**

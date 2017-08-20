@@ -1,7 +1,7 @@
 {
     "lang": "fr",
-    "joumouaaTime": "",
-    "joumouaaAsDuhr": true,
+    "joumouaaTime": "13:00",
+    "joumouaaAsDuhr": false,
     "aidTime": "",
     "imsakNbMinBeforeSobh": 0,
     "minimumIchaTime": "",
