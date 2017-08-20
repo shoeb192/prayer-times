@@ -22,4 +22,4 @@ rm /home/pi/prayer/current
 
 ln -s /home/pi/prayer/$lasteVersion /home/pi/prayer/current
     
-echo Version $lasteVersion has been successfully installed ;)
+echo "Version $lasteVersion has been successfully installed ;)"
