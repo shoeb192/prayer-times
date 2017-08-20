@@ -185,7 +185,7 @@
         "en": ""
     },
     "defined": {
-        "ar": "CSV ملف",
+        "ar": "CSV",
         "fr": "Prédifini (fichier CSV)",
         "en": "Defined (CSV file)"
     },
@@ -363,5 +363,10 @@
         "ar": "مفعل",
         "fr": "Activé",
         "en": "enabled"
+    },
+    "directory": {
+        "ar": "ملف CSV",
+        "fr": "Répertoire CSV",
+        "en": "CSV directory"
     }
 }
