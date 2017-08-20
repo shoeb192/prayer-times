@@ -348,5 +348,20 @@
         "ar": "الوحدة الزمنية",
         "fr": "Fuseau horaire",
         "en": "Timezone"
+    },
+    "auto": {
+        "ar": "Auto (Géré par le raspberry)",
+        "fr": "Auto (Géré par le raspberry)",
+        "en": "Auto (Handled by the raspberry)"
+    },
+    "disabled": {
+        "ar": "معطل",
+        "fr": "Désactivé",
+        "en": "disabled"
+    },
+    "enabled": {
+        "ar": "مفعل",
+        "fr": "Activé",
+        "en": "enabled"
     }
 }

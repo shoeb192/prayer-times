@@ -166,7 +166,7 @@ var prayer = {
             date = dateTime.tomorrow();
         }
         var timezone = prayer.confData.timezone == parseInt(prayer.confData.timezone) ? parseInt(prayer.confData.timezone) : 'auto';
-        var dst = prayer.confData.dst === true ? 1 : 0;
+        var dst = prayer.confData.dst == parseInt(prayer.confData.dst) ? parseInt(prayer.confData.dst) : 'auto';
         
         var pt = prayTimes.getTimes(date, [parseFloat(prayer.confData.latitude), parseFloat(prayer.confData.longitude)], timezone, dst);
         this.times = [pt.fajr, pt.sunrise, pt.dhuhr, pt.asr, pt.maghrib, pt.isha];
@@ -562,7 +562,7 @@ var prayer = {
      * @returns {String}
      */
     getJoumouaaTime: function () {
-        if (typeof this.confData.joumouaaAsDuhr !== "undefined" && this.confData.joumouaaAsDuhr === true) {
+        if (this.confData.joumouaaAsDuhr === true) {
             // return duhr
             return this.getTimeByIndex(1);
         }

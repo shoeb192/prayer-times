@@ -185,7 +185,7 @@
                                 <div class="form-group col-lg-4">
                                     <label for="timezone" data-text="timezone"></label>
                                     <select id="timezone" class="form-control">
-                                        <option value="auto">Auto (Raspberry timezone)</option>
+                                        <option value="auto" data-text="auto"></option>
                                         <option value="-12">(GMT-12:00) International Date Line West</option>
                                         <option value="-11">(GMT-11:00) Midway Island, Samoa</option>
                                         <option value="-10">(GMT-10:00) Hawaii</option>
@@ -270,10 +270,13 @@
                                         <option value="13">(GMT+13:00) Nuku'alofa</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-lg-4" style="padding-top: 30px">
-                                    <label title="">
-                                        <input type="checkbox" id="dst"> <span data-text="dst"></span>
-                                    </label>
+                                <div class="form-group col-lg-4">
+                                    <label title="" data-text="dst"></label>
+                                    <select id="dst" class="form-control"> 
+                                        <option value="auto" data-text="auto"></option>
+                                        <option value="0" data-text="disabled"></option>
+                                        <option value="1" data-text="enabled"></option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -311,25 +314,25 @@
                             </div>
                             <div>
                                 <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 06:00" class="form-control inline col-5 fixing" id="fixing0" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                        setCustomValidity('')
-                                    } catch (e) {
-                                    }">
+                                            setCustomValidity('')
+                                        } catch (e) {
+                                        }">
                                 <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 13:00" class="form-control inline col-5 fixing" id="fixing1" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                        setCustomValidity('')
-                                    } catch (e) {
-                                    }">
+                                            setCustomValidity('')
+                                        } catch (e) {
+                                        }">
                                 <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 16:00" class="form-control inline col-5 fixing" id="fixing2" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                        setCustomValidity('')
-                                    } catch (e) {
-                                    }">
+                                            setCustomValidity('')
+                                        } catch (e) {
+                                        }">
                                 <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 18:00" class="form-control inline col-5 fixing" id="fixing3" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                        setCustomValidity('')
-                                    } catch (e) {
-                                    }">
+                                            setCustomValidity('')
+                                        } catch (e) {
+                                        }">
                                 <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 20:00" class="form-control inline col-5 fixing" id="fixing4" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                        setCustomValidity('')
-                                    } catch (e) {
-                                    }">
+                                            setCustomValidity('')
+                                        } catch (e) {
+                                        }">
                             </div>
                         </div>
 

@@ -26,7 +26,7 @@
     "adhanDouaaDisplayTime": 30,
     "azanBip": true,
     "iqamaBip": true,
-    "dst": true,
+    "dst": "auto",
     "timezone": "auto",
     "headerText": "Mosquée NOM - VILLE",
     "site": "http://horaires-de-priere.fr/mosquee-nom-ville/fr",
