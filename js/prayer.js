@@ -167,7 +167,7 @@ var prayer = {
         }
         var timezone = prayer.confData.timezone == parseInt(prayer.confData.timezone) ? parseInt(prayer.confData.timezone) : 'auto';
         var dst = prayer.confData.dst == parseInt(prayer.confData.dst) ? parseInt(prayer.confData.dst) : 'auto';
-        
+
         var pt = prayTimes.getTimes(date, [parseFloat(prayer.confData.latitude), parseFloat(prayer.confData.longitude)], timezone, dst);
         this.times = [pt.fajr, pt.sunrise, pt.dhuhr, pt.asr, pt.maghrib, pt.isha];
     },
@@ -347,8 +347,10 @@ var prayer = {
      * @param {Number} currentPrayerIndex
      */
     flashAdhan: function (currentPrayerIndex) {
-        if ("azanBip" in prayer.confData && prayer.confData.azanBip === true) {
-            this.playBip();
+        if (prayer.confData.azanVoiceEnabled === true) {
+            this.playSound("adhan-maquah.mp3");
+        } else if (prayer.confData.azanBip === true) {
+            this.playSound();
         }
 
         // iqama countdown
@@ -371,8 +373,8 @@ var prayer = {
      * @param {Number} currentPrayerIndex 
      */
     flashIqama: function (currentPrayerIndex) {
-        if ("iqamaBip" in prayer.confData && prayer.confData.iqamaBip === true) {
-            this.playBip();
+        if (prayer.confData.iqamaBip === true) {
+            this.playSound();
         }
 
         // init next hilight timeout
@@ -566,7 +568,7 @@ var prayer = {
             // return duhr
             return this.getTimeByIndex(1);
         }
-        
+
         if (this.confData.joumouaaTime !== "") {
             return this.confData.joumouaaTime;
         }
@@ -718,10 +720,15 @@ var prayer = {
         }
     },
     /**
-     * Play a bip
+     * Play a sound
      */
-    playBip: function () {
-        var audio = new Audio('/static/bip.mp3');
+    playSound: function (file) {
+        if (typeof file === "undefined")
+        {
+            file = "bip.mp3";
+        }
+
+        var audio = new Audio('/static/mp3/' + file);
         audio.play();
     },
     /**

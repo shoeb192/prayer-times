@@ -329,6 +329,11 @@
         "fr": "Bip quand c'est l'heure du adhân",
         "en": "Bip when azan time" 
     },
+    "enable-azan-voice": {
+        "ar": "إصدار صوت أذان الحرم المكي",
+        "fr": "Activer l'adhan du haram",
+        "en": "Adhan of Haram" 
+    },
     "enable-bip-iqama": {
         "ar": "إصدار صوت حين وقت الإقامة",
         "fr": "Bip quand c'est l'heure de la iqâma",
