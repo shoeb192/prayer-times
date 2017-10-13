@@ -38,24 +38,14 @@ function loadConfData() {
         var data;
         var url = window.location.href;
         url = url.split(".");
-        var confFile = url[0].replace(/https?:\/\//, "") + ".json";
         $.ajax({
-            url: "json/conf/" + confFile + "?" + (new Date()).getTime(),
+            url: "json/conf/default.json" + "?" + (new Date()).getTime(),
             async: false,
             success: function (resp) {
                 data = resp;
             },
             error: function () {
-                $.ajax({
-                    url: "json/conf/default.json?" + (new Date()).getTime(),
-                    async: false,
-                    success: function (resp) {
-                        data = resp;
-                    },
-                    error: function (data) {
-                        alert("No conf file found");
-                    }
-                });
+                alert("Error loading conf file");
             }
         });
 

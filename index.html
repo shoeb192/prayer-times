@@ -10,9 +10,9 @@
         <link rel="icon" href="favicon.png" />
     </head>
     <body class="text-center">
-        
+
         <div class="spinner"></div>
-        
+
         <div class="desktop hidden-xs hidden-sm hidden-md">
 
             <!-- Iqama screen -->
@@ -32,8 +32,8 @@
                 <div class="fr">
                     <div class="title">Invocation après l'adhân</div>
                     <p style="font-size: 90%">
-                    Ô Allah, Maître de cet appel parfait et de la prière que l'on va accomplir, donne à Mohammed le pouvoir d'intercéder 
-                    (le Jour du Jugement) et la place d'honneur [au Paradis], et ressuscite-le dans la position louable que Tu lui as promise
+                        Ô Allah, Maître de cet appel parfait et de la prière que l'on va accomplir, donne à Mohammed le pouvoir d'intercéder 
+                        (le Jour du Jugement) et la place d'honneur [au Paradis], et ressuscite-le dans la position louable que Tu lui as promise
                     </p>
                 </div>
             </div>
@@ -50,9 +50,20 @@
                 </div>
             </div>
 
+            <div class="jumua-dhikr-reminder display-none">
+                <div class="ar">
+                    <div class="title">حان وقت صلاة الجمعة</div>
+                    عَنْ أَبِي هُرَيْرَةَ قَالَ قَالَ رَسُولُ اللَّهِ صَلَّى اللَّهم عَلَيْهِ وَسَلَّمَ مَنْ تَوَضَّأَ فَأَحْسَنَ الْوُضُوءَ ثُمَّ أَتَى الْجُمُعَةَ فَاسْتَمَعَ وَأَنْصَتَ غُفِرَ لَهُ مَا بَيْنَهُ وَبَيْنَ الْجُمُعَةِ وَزِيَادَةُ ثَلاثَةِ أَيَّامٍ وَمَنْ مَسَّ الْحَصَى فَقَدْ لَغَا
+                </div>
+
+                <div class="fr">
+                    Le Prophète (que la prière d'Allah et son salut soient sur lui) a dit « Celui qui fait les ablutions parfaitement puis se rend au jumu'a puis écoute et se tait, il lui est pardonné ce qu'il y a entre ce moment et le vendredi suivant et trois jours en plus et celui qui touche des cailloux a certes fait une futilité
+                </div>
+            </div>
+
             <!-- Douaa after prayer slider -->
             <div class="douaa-after-prayer display-none"></div>
-            
+
             <!-- main screen -->
             <div class="main display-none">
                 <div class="header col-lg-offset-1 col-lg-10 ar"></div> 
@@ -86,7 +97,7 @@
                             <img src="img/loudspeaker.png" style="transform: scaleX(-1);">
                         </div>
                     </div>
-                    
+
                     <div class="content">
                         <div class="col-lg-3 aid custom-time">
                             <div class="ar" data-text="aid-prayer"></div>
@@ -139,24 +150,21 @@
                 </div>
 
                 <div class="footer">
-                    <div class="">
-                        <div>Horaires de prière sur mobile et tablette <span class="site"></span></div>
-                        <div class="assosciation"></div>
-                        <div class="support">
-                            <span data-text="support"></span>&nbsp;&nbsp;
-                            <i class="glyphicon glyphicon-phone"></i> <span class="supportTel"></span>&nbsp;&nbsp;
-                            <i class="glyphicon glyphicon-envelope"></i> <span class="supportEmail"></span>
-                        </div>
+                    <div><span class="ar" data-text="prayer-times-on-mobile"></span> <span class="site"></span></div>
+                    <div class="assosciation"></div>
+                    <div class="support">
+                        <span data-text="support"></span>&nbsp;&nbsp;
+                        <i class="glyphicon glyphicon-phone"></i> <span class="supportTel"></span>&nbsp;&nbsp;
+                        <i class="glyphicon glyphicon-envelope"></i> <span class="supportEmail"></span>
                     </div>
+                    <div class="qrcode">
+                        <div id="qrcode"></div>
+                    </div>
+                    <div class="version"></div>
                 </div>
-
-                <div class="qrcode">
-                    <div id="qrcode"></div>
-                </div>
-                <div class="version fr"></div>
             </div>
         </div>
-        
+
         <script src="js/vendor/jquery.min.js"></script>
         <script src="js/vendor/qrcode.js"></script>
         <script src="js/vendor/jquery.countdown.min.js"></script>

@@ -1,5 +1,10 @@
 {
     "lang": "fr",
+    "headerText": "Mosquée ES-sounna - Houilles",
+    "site": "http://priere.mosquee-houilles.fr",
+    "supportTel": "+33629111641",
+    "supportEmail": "horaires-priere@binary-consulting.fr",
+    "footerText": "Association SFI - Tél. 06.61.49.91.70 | IBAN FR76 3000 3018 6200 0504 6187 693 / BIC SOGEFRPP",
     "joumouaaTime": "13:00",
     "joumouaaAsDuhr": false,
     "aidTime": "",
@@ -22,16 +27,14 @@
     "fajrDegree": "",
     "ichaaDegree": "",
     "iqamaDisplayTime": 45,
-    "adhanDouaaDisplayTime": 30,
     "azanVoiceEnabled": false,
     "azanBip": true,
     "iqamaBip": true,
     "dst": "auto",
     "timezone": "auto",
     "wakeForFajrTime": 0,
-    "headerText": "Mosquée ES-sounna - Houilles",
-    "site": "Horaires de prière sur mobile et tablette <span style=\"color: #1b6d85;\">http://priere.mosquee-houilles.fr</span>",
-    "supportTel": "+33629111641",
-    "supportEmail": "horaires-priere@binary-consulting.fr",
-    "footerText": "Association SFI - Tél. 06.61.49.91.70 | IBAN FR76 3000 3018 6200 0504 6187 693 / BIC SOGEFRPP"
+    "blackScreenWhenPraying": true,
+    "jumuaBlackScreenEnabled": false,
+    "jumuaDhikrReminderEnabled": true,
+    "jumuaTimeout": 40
 }

@@ -34,7 +34,7 @@ body {
     }
 }
 
-.main, .iqama, .adhan, .douaa-between-adhan-iqama{
+.main, .iqama, .adhan, .douaa-between-adhan-iqama, .jumua-dhikr-reminder{
     height:100vh;
     margin: auto;
 }
@@ -44,7 +44,7 @@ body {
 }
 
 .top-content{
-    height:50%;
+    height:52%;
 }
 
 .top-content .adhan-flash,
@@ -60,7 +60,7 @@ body {
 }
 
 .prayer-content{
-    height:38%;
+    height:34%;
 }
 
 .header{
@@ -88,7 +88,7 @@ body {
 }
 
 .gregorianDate, .hijriDate{
-    font-size: 450%;
+    font-size: 500%;
 }
 
 .hijriDate{
@@ -96,7 +96,7 @@ body {
 }
 
 .prayer-text {
-    font-size: 550%;
+    font-size: 580%;
     border-top: 1px #fff solid;
 } 
 
@@ -108,17 +108,16 @@ body {
 }
 
 .prayer-time {
-    height: 150px;
-    line-height: 150px;
+    line-height: 120px;
 }
 
 .prayer-time .prayer{
     color: yellowgreen;
-    font-size: 780%;
+    font-size: 800%;
 }
 
 .prayer-wait .wait{
-    font-size: 500%;
+    font-size: 580%;
     border-bottom: 1px #fff solid;
 }
 
@@ -149,9 +148,9 @@ body {
 }
 
 .iqama .bottom{
-    height: 15%;
+    height: 20%;
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     left:0;
     right: 0;
 }
@@ -161,7 +160,7 @@ body {
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: contain;
-    height: 60%;
+    height: 55%;
 }
 
 .adhan .ar {
@@ -188,6 +187,21 @@ body {
     font-size: 550%;
 }
 
+.jumua-dhikr-reminder .title {
+    margin-bottom: 10px;
+}
+
+.jumua-dhikr-reminder .ar {
+    font-size: 650%;
+    font-family: 'Amiri';
+    line-height: 160%;
+}
+
+.jumua-dhikr-reminder .fr {
+    margin-top: 50px;
+    font-size: 450%;
+}
+
 .title {
     color: yellowgreen;
 }
@@ -202,8 +216,11 @@ body {
 }
 
 .footer{
-    height: 100px;
     font-size: 200%;
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right:0;
 }
 
 .version{
@@ -236,6 +253,6 @@ body {
     position: absolute;
     background-color: #fff;
     padding: 2px;
-    bottom: 15px;
-    left: 15px;
+    bottom: 10px;
+    left: 10px;
 }

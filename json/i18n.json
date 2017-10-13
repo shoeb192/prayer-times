@@ -47,7 +47,7 @@
     "joumouaa": {
         "ar": "الجمعة",
         "fr": "Jumu`a",
-        "en": "Jumua"
+        "en": "Jumu`a"
     },
     "aid-prayer": {
         "ar": "صلاة العيد",
@@ -107,7 +107,7 @@
     "joumoua-time": {
         "ar": "وقت الجمعة",
         "fr": "heure du jumu`a",
-        "en": "jumuaa time"
+        "en": "jumu`a time"
     },
     "min-isha": {
         "ar": "الحد الأدنى لصلاة العشاء في فصل الشتاء ",
@@ -157,22 +157,12 @@
     "enable-douaa-after-prayer": {
         "ar": "عرض  شاشة الدعاء بعد الصلاة",
         "fr": "Afficher douaa après la prière",
-        "en": ""
-    },
-    "enable-douaa-screen": {
-        "ar": "وقت عرض  شاشة الدعاء بعد الأذان",
-        "fr": "Afficher douaa après adhan",
-        "en": ""
+        "en": "Du`a after prayer"
     },
     "iqama-display-time": {
         "ar": "وقت عرض  شاشة الإقامة",
         "fr": "Temps du signal de la iqama (sec)",
-        "en": ""
-    },
-    "adhan-douaa-display-time": {
-        "ar": "عرض  شاشة الدعاء بعد الأذان",
-        "fr": "Temps d'affichage du douaa après adhan (sec)",
-        "en": ""
+        "en": "Iqamâh display time"
     },
     "calcul-choice": {
         "ar": "مصدر الحساب",
@@ -317,7 +307,7 @@
     "douaa-after-prayer-wait": {
         "ar": "وقت الإنتظار قبل عرض الأذكار بعد الصلاة",
         "fr": "Temps d'attente avant affichage des du'as post prière",
-        "en": "Waiting time before display du'a after adhan" 
+        "en": "Waiting times before display du'a after adhan" 
     },
     "timezone": {
         "ar": "الفارق الزمني",
@@ -340,7 +330,7 @@
         "en": "Bip when iqama time" 
     },
     "joumouaa-as-duhr": {
-        "ar": "وقت الجمعة موافق لوفت الظهر",
+        "ar": "وقت الجمعة موافق لوقت الظهر",
         "fr": "L'heure du jumu'a pareil que dhuhr",
         "en": "Jumu`a time like zuhr"
     },
@@ -404,8 +394,18 @@
         "en": "Power off screen during jumu`a"
     },
     "jumuaTimeout": {
-        "ar": "إطفاء الشاشة أثناء الجمعة",
+        "ar": "المدة التقريبية للجمعة",
         "fr": "Durée approximatif du jumu`a (prêche + prière)",
         "en": "Approximate duration of the Jumu`a"
+    },
+    "jumuaDhikrReminderEnabled": {
+        "ar": "إظهار حديث أثناء الجمعة",
+        "fr": "Afficher un rappel pendant jumu`a ",
+        "en": "Show reminder during jumu`a"
+    },
+    "prayer-times-on-mobile": {
+        "ar": "أوقات الصلاة على الهاتف المحمول",
+        "fr": "Horaires de prière sur mobile et tablette ",
+        "en": "Prayer times on mobile and tablet"
     }
 }
