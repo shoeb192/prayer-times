@@ -251,12 +251,7 @@ var prayer = {
      * @returns {String}
      */
     getIchaTime: function () {
-        var ichaTime = this.getTimes()[4];
-        if (this.confData.minimumIchaTime !== "" && ichaTime <= this.confData.minimumIchaTime)
-        {
-            ichaTime = this.confData.minimumIchaTime;
-        }
-        return ichaTime;
+        return this.getTimes()[4];
     },
     /**
      * get chourouk time

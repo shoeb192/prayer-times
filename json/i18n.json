@@ -251,7 +251,7 @@
     },
     "resetConf": {
         "ar": "إستعادة الإعدادات الأولية",
-        "fr": "Restorer les paramètres par défaut",
+        "fr": "Restaurer les paramètres par défaut",
         "en": "Reset conf"
     },
     "qr-code-display": {
@@ -383,5 +383,14 @@
         "ar": "إستيقظ",
         "fr": "Réveil",
         "en": "Wake up"
+    },
+    "other-settings": {
+        "ar": "تعديلات أخرى",
+        "fr": "Autres réglages",
+        "en": "Other settings"
+    },
+    "texts": {
+        "ar": "نصىوص",
+        "fr": "textes"
     }
 }

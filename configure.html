@@ -9,16 +9,13 @@
     </head>
     <body>
         <div class="main">
-            <div class="col-lg-12">
-                <h1 class="text-success"> <strong data-text="configuration"></strong></h1>
-                <p data-text="help"></p>
-                <span class="glyphicon glyphicon-asterisk"></span><span data-text="mandatory"></span> <br><br>
-            </div>
-
+            <h1 class="text-success"> <strong data-text="configuration"></strong></h1>
+            <p data-text="help"></p>
+            <span class="glyphicon glyphicon-asterisk"></span><span data-text="mandatory"></span> <br><br>
 
             <form id="configure">
-                <div class="row col-lg-12">
-                    <div class="form-group col-lg-3">
+                <div class="row">
+                    <div class="form-group col-md-3">
                         <label for="lang" data-text="lang"></label>
                         <select id="lang" class="form-control">
                             <option value="fr">Français</option>
@@ -28,155 +25,64 @@
                     </div>
                 </div>
 
-                <div class="form-group col-lg-3" style="padding-top: 25px">
-                    <label title="Si activé l'heure du Jumu`a sera la même que celle du duhr">
-                        <input type="checkbox" id="joumouaaAsDuhr"> <span data-text="joumouaa-as-duhr"></span> <span class="glyphicon glyphicon-info-sign"></span>
-                    </label>
-                </div>
+                <div class="panel-group" id="accordion">
 
-                <div class="form-group col-lg-3 jumua-bloc">
-                    <label for="joumouaaTime"  data-text="joumoua-time" title="Si vide 12:10 sera affiché en hiver et 13:10 en été">
-                    </label> <span class="glyphicon glyphicon-info-sign"></span>
-                    <input type="text" class="form-control" id="joumouaaTime" placeholder="Ex: 14h / 13h / 13:00">
-                </div>
-
-                <div class="form-group col-lg-3">
-                    <label for="aidTime"  data-text="aid-time" title="Si renseigné l'heure du aïd sera affichée à la place du chourouk">
-                    </label> <span class="glyphicon glyphicon-info-sign"></span>
-                    <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 08:00" class="form-control" id="aidTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                setCustomValidity('')
-                            } catch (e) {
-                            }" >
-                </div>
-
-                <div class="form-group col-lg-3">
-                    <label for="imsakNbMinBeforeSobh"  data-text="imsak-time" title="Si renseigné l'heure du imsak sera affichée à la place du chourouk">
-                    </label> <span class="glyphicon glyphicon-info-sign"></span>
-                    <input type="number" required="" min="0" class="form-control" id="imsakNbMinBeforeSobh">
-                </div>
-
-                <div class="form-group col-lg-6">
-                    <label for="minimumIchaTime" data-text="min-isha" title="Permet de fixer l'heure du ichaa à une heure minimale">
-                    </label> <span class="glyphicon glyphicon-info-sign"></span>
-                    <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 19:00" class="form-control" id="minimumIchaTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                setCustomValidity('')
-                            } catch (e) {
-                            }">
-                </div>
-
-                <div class="form-group col-lg-6">
-                    <label for="maximumIchaTimeForNoWaiting" data-text="isha-max-no-wait" title="Heure maximale du ichaa à partir de laquelle il n'y aura pas d'attente entre adhan et iqama">
-                    </label> <span class="glyphicon glyphicon-info-sign"></span>
-                    <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 22:00" class="form-control" id="maximumIchaTimeForNoWaiting" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                setCustomValidity('')
-                            } catch (e) {
-                            }">
-                </div>
-
-                <div class="form-group col-lg-12">
-                    <div class="text-center">
-                        <label data-text="time-waiting"></label> <span class="glyphicon glyphicon-asterisk"></span>
-                    </div>
-                    <div class="text-center">
-                        <label for="wait0" class="col-5" data-text="sobh"></label>
-                        <label for="wait1" class="col-5" data-text="zuhr"></label>
-                        <label for="wait2" class="col-5" data-text="asr"></label>
-                        <label for="wait3" class="col-5" data-text="maghrib"></label>
-                        <label for="wait4" class="col-5" data-text="isha"></label>
-                    </div>
-                    <div>
-                        <input id="wait0" type="number" required="" min="0" class="form-control inline col-5 wait">
-                        <input id="wait1" type="number" required="" min="0" class="form-control inline col-5 wait">
-                        <input id="wait2" type="number" required="" min="0" class="form-control inline col-5 wait">
-                        <input id="wait3" type="number" required="" min="0" class="form-control inline col-5 wait">
-                        <input id="wait4" type="number" required="" min="0" class="form-control inline col-5 wait">
-                    </div>
-                </div>
-
-                <div class="form-group col-lg-6">
-                    <label for="hijriAdjustment" data-text="hijri-adjustment"></label>
-                    <select class="form-control" id="hijriAdjustment">
-                        <option value="2">&nbsp;2</option>
-                        <option value="1">&nbsp;1</option>
-                        <option value="0" selected="selected">&nbsp;0</option>
-                        <option value="-1">-1</option>
-                        <option value="-2">-2</option>
-                    </select>
-                </div>
-
-                <div class="form-group col-lg-6">
-                    <label for="headerText" data-text="header-text">Texte de l'entête</label>
-                    <input type="text" class="form-control" id="headerText" placeholder="Ex: Mosquée Essunna - Paris">
-                </div>
-
-                <div class="form-group col-lg-6">
-                    <label for="site"  data-text="site-text" title="Lasser vide si pas besoin"></label> <span class="glyphicon glyphicon-info-sign"></span>
-                    <input type="text" class="form-control" id="site" placeholder='Ex: Horaires de prière sur mobile et tablette <span style="color: #1b6d85;">http://horaires-de-priere.fr/mosquee-essunna-houilles/fr</span>'>
-                </div>
-
-                <div class="form-group col-lg-6">
-                    <label for="footerText"  data-text="footer-text" title="Laisser vide si vous ne souhaitez pas de texte dans le pieds de page"></label> <span class="glyphicon glyphicon-info-sign"></span>
-                    <input type="text" class="form-control" id="footerText" placeholder="Ex: Association SFI - Tél. 00.00.00.00.00 | IBAN FRXX XXXX XXXX XXXX XXXX XXXX XXX / BIC XXXXXXXX">
-                </div>
-
-                <div class="form-group col-lg-6">
-                    <label title="">
-                        <input type="checkbox" id="hijriDateEnabled"> <span data-text="enable-hijri-date"></span> <span class="glyphicon glyphicon-info-sign"></span>
-                    </label>
-                </div>
-
-                <div class="col-lg-12">
-                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#advanced" data-text="advanced-param"></button>
-                    <div id="advanced" class="collapse row">
-                        <br>
-                        <div class="form-group col-lg-4">
-                            <label for="choiceCalcul" data-text="calcul-choice"></label> <span class="glyphicon glyphicon-asterisk"></span>
-                            <select id="calculChoice" class="form-control">
-                                <option value="custom" data-text="custom">Personalisé (réglage manuel)</option>
-                                <option value="csv" data-text="defined">Prédifini (fichier CSV)</option>
-                            </select>  
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse0" data-text="calcul-method"></a>
+                            </h4>
                         </div>
+                        <div id="collapse0" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="form-group col-md-4">
+                                    <label for="choiceCalcul" data-text="calcul-choice"></label> <span class="glyphicon glyphicon-asterisk"></span>
+                                    <select id="calculChoice" class="form-control">
+                                        <option value="custom" data-text="custom">Personalisé (réglage manuel)</option>
+                                        <option value="csv" data-text="defined">Prédifini (fichier CSV)</option>
+                                    </select>  
+                                </div>
 
-                        <div class="choice-calcul csv" style="display: none">
-                            <div class="form-group col-lg-4">
-                                <label for="city" data-text="directory"></label> <span class="glyphicon glyphicon-asterisk"></span>
-                                <input id="city" type="text" class="form-control" required="">
-                            </div>
-                        </div>
+                                <div class="choice-calcul csv" style="display: none">
+                                    <div class="form-group col-md-4">
+                                        <label for="city" data-text="directory"></label> <span class="glyphicon glyphicon-asterisk"></span>
+                                        <input id="city" type="text" class="form-control" required="">
+                                    </div>
+                                </div>
 
-                        <div class="choice-calcul custom" style="display: none">
-                            <div class="form-group col-lg-8">
-                                <label for="prayerMethod" data-text="calcul-method"></label> <span class="glyphicon glyphicon-asterisk"></span>
-                                <select id="prayerMethod" class="form-control">
-                                    <option value="ISNA" data-text="ISNA"></option>
-                                    <option value="UOIF" data-text="UOIF"></option>
-                                    <option value="Karachi" data-text="Karachi"></option>
-                                    <option value="MWL" data-text="MWL"></option>
-                                    <option value="Makkah" data-text="Makkah"></option>
-                                    <option value="Egypt" data-text="Egypt"></option>
-                                </select>  
-                            </div>
+                                <div class="choice-calcul custom" style="display: none">
+                                    <div class="form-group col-md-8">
+                                        <label for="prayerMethod" data-text="calcul-method"></label> <span class="glyphicon glyphicon-asterisk"></span>
+                                        <select id="prayerMethod" class="form-control">
+                                            <option value="ISNA" data-text="ISNA"></option>
+                                            <option value="UOIF" data-text="UOIF"></option>
+                                            <option value="Karachi" data-text="Karachi"></option>
+                                            <option value="MWL" data-text="MWL"></option>
+                                            <option value="Makkah" data-text="Makkah"></option>
+                                            <option value="Egypt" data-text="Egypt"></option>
+                                        </select>  
+                                    </div>
 
-                            <div class="form-group col-lg-3">
-                                <label for="latitude" data-text="latitude"></label>
-                                <input type="number" step="0.01" class="form-control" id="latitude">
-                            </div>
-                            <div class="form-group col-lg-3">
-                                <label for="longitude" data-text="longitude"></label>
-                                <input type="number" step="0.01" class="form-control" id="longitude">
-                            </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="latitude" data-text="latitude"></label>
+                                        <input type="number" step="0.01" class="form-control" id="latitude">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="longitude" data-text="longitude"></label>
+                                        <input type="number" step="0.01" class="form-control" id="longitude">
+                                    </div>
 
-                            <div class="form-group col-lg-3">
-                                <label for="fajrDegree" data-text="fajrDegree"></label>
-                                <input type="number" min="0" class="form-control" id="fajrDegree" placeholder="Ex: 18">
-                            </div>
-                            <div class="form-group col-lg-3">
-                                <label for="ichaaDegree" data-text="ichaaDegree"></label>
-                                <input type="number" min="0" class="form-control" id="ichaaDegree" placeholder="Ex: 15">
-                            </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="fajrDegree" data-text="fajrDegree"></label>
+                                        <input type="number" min="0" class="form-control" id="fajrDegree" placeholder="Ex: 18">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="ichaaDegree" data-text="ichaaDegree"></label>
+                                        <input type="number" min="0" class="form-control" id="ichaaDegree" placeholder="Ex: 15">
+                                    </div>
+                                </div>
 
-                            <div class="">
-                                <div class="form-group col-lg-4">
+                                <div class="form-group col-md-3">
                                     <label for="timezone" data-text="timezone"></label>
                                     <select id="timezone" class="form-control">
                                         <option value="auto" data-text="auto"></option>
@@ -264,7 +170,7 @@
                                         <option value="13">(GMT+13:00) Nuku'alofa</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-lg-4">
+                                <div class="form-group col-md-3">
                                     <label title="" data-text="dst"></label>
                                     <select id="dst" class="form-control"> 
                                         <option value="auto" data-text="auto"></option>
@@ -273,139 +179,280 @@
                                     </select>
                                 </div>
                             </div>
-
-                            <div class="form-group col-lg-12">
-                                <div class="text-center">
-                                    <label data-text="times-adjustment"></label>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" data-text="joumouaa"></a>
+                            </h4>
+                        </div>
+                        <div id="collapse1" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="form-group col-md-3" style="padding-top: 25px">
+                                    <label title="Si activé l'heure du Jumu`a sera la même que celle du duhr">
+                                        <input type="checkbox" id="joumouaaAsDuhr"> <span data-text="joumouaa-as-duhr"></span> <span class="glyphicon glyphicon-info-sign"></span>
+                                    </label>
                                 </div>
-                                <div class="text-center">
-                                    <label for="adjust0" class="col-5" data-text="sobh"></label>
-                                    <label for="adjust1" class="col-5" data-text="zuhr"></label>
-                                    <label for="adjust2" class="col-5" data-text="asr"></label>
-                                    <label for="adjust3" class="col-5" data-text="maghrib"></label>
-                                    <label for="adjust4" class="col-5" data-text="isha"></label>
+
+                                <div class="form-group col-md-3 jumua-bloc">
+                                    <label for="joumouaaTime"  data-text="joumoua-time" title="Si vide 12:10 sera affiché en hiver et 13:10 en été">
+                                    </label> <span class="glyphicon glyphicon-info-sign"></span>
+                                    <input type="text" class="form-control" id="joumouaaTime" placeholder="Ex: 14h / 13h / 13:00">
                                 </div>
-                                <div>
-                                    <input id="adjust0" type="number" required="" class="form-control inline col-5 adjust">
-                                    <input id="adjust1" type="number" required="" class="form-control inline col-5 adjust">
-                                    <input id="adjust2" type="number" required="" class="form-control inline col-5 adjust">
-                                    <input id="adjust3" type="number" required="" class="form-control inline col-5 adjust">
-                                    <input id="adjust4" type="number" required="" class="form-control inline col-5 adjust">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" data-text="times-adjustment"></a>
+                            </h4>
+                        </div>
+                        <div id="collapse2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="form-group col-md-12">
+                                    <div class="text-center">
+                                        <label for="adjust0" class="col-5" data-text="sobh"></label>
+                                        <label for="adjust1" class="col-5" data-text="zuhr"></label>
+                                        <label for="adjust2" class="col-5" data-text="asr"></label>
+                                        <label for="adjust3" class="col-5" data-text="maghrib"></label>
+                                        <label for="adjust4" class="col-5" data-text="isha"></label>
+                                    </div>
+                                    <div>
+                                        <input id="adjust0" type="number" required="" class="form-control inline col-5 adjust">
+                                        <input id="adjust1" type="number" required="" class="form-control inline col-5 adjust">
+                                        <input id="adjust2" type="number" required="" class="form-control inline col-5 adjust">
+                                        <input id="adjust3" type="number" required="" class="form-control inline col-5 adjust">
+                                        <input id="adjust4" type="number" required="" class="form-control inline col-5 adjust">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group col-lg-12">
-                            <div class="text-center">
-                                <label data-text="time-fixing"></label>
-                            </div>
-                            <div class="text-center">
-                                <label for="fixing0" class="col-5" data-text="sobh"></label>
-                                <label for="fixing1" class="col-5" data-text="zuhr"></label>
-                                <label for="fixing2" class="col-5" data-text="asr"></label>
-                                <label for="fixing3" class="col-5" data-text="maghrib"></label>
-                                <label for="fixing4" class="col-5" data-text="isha"></label>
-                            </div>
-                            <div>
-                                <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 06:00" class="form-control inline col-5 fixing" id="fixing0" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                            setCustomValidity('')
-                                        } catch (e) {
-                                        }">
-                                <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 13:00" class="form-control inline col-5 fixing" id="fixing1" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                            setCustomValidity('')
-                                        } catch (e) {
-                                        }">
-                                <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 16:00" class="form-control inline col-5 fixing" id="fixing2" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                            setCustomValidity('')
-                                        } catch (e) {
-                                        }">
-                                <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 18:00" class="form-control inline col-5 fixing" id="fixing3" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                            setCustomValidity('')
-                                        } catch (e) {
-                                        }">
-                                <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 20:00" class="form-control inline col-5 fixing" id="fixing4" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
-                                            setCustomValidity('')
-                                        } catch (e) {
-                                        }">
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" data-text="time-fixing"></a>
+                            </h4>
+                        </div>
+                        <div id="collapse3" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div class="text-center">
+                                        <label for="fixing0" class="col-5" data-text="sobh"></label>
+                                        <label for="fixing1" class="col-5" data-text="zuhr"></label>
+                                        <label for="fixing2" class="col-5" data-text="asr"></label>
+                                        <label for="fixing3" class="col-5" data-text="maghrib"></label>
+                                        <label for="fixing4" class="col-5" data-text="isha"></label>
+                                    </div>
+                                    <div>
+                                        <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 06:00" class="form-control inline col-5 fixing" id="fixing0" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                                    setCustomValidity('')
+                                                } catch (e) {
+                                                }">
+                                        <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 13:00" class="form-control inline col-5 fixing" id="fixing1" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                                    setCustomValidity('')
+                                                } catch (e) {
+                                                }">
+                                        <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 16:00" class="form-control inline col-5 fixing" id="fixing2" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                                    setCustomValidity('')
+                                                } catch (e) {
+                                                }">
+                                        <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 18:00" class="form-control inline col-5 fixing" id="fixing3" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                                    setCustomValidity('')
+                                                } catch (e) {
+                                                }">
+                                        <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 20:00" class="form-control inline col-5 fixing" id="fixing4" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                                    setCustomValidity('')
+                                                } catch (e) {
+                                                }">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="form-group col-lg-12">
-                            <div class="text-center">
-                                <label data-text="douaa-after-prayer-wait"></label>
-                            </div>
-                            <div class="text-center">
-                                <label for="douaaWait0" class="col-5" data-text="sobh"></label>
-                                <label for="douaaWait1" class="col-5" data-text="zuhr"></label>
-                                <label for="douaaWait2" class="col-5" data-text="asr"></label>
-                                <label for="douaaWait3" class="col-5" data-text="maghrib"></label>
-                                <label for="douaaWait4" class="col-5" data-text="isha"></label>
-                            </div>
-                            <div>
-                                <input id="douaaWait0" type="number" min="5" required="" class="form-control inline col-5 douaaWait">
-                                <input id="douaaWait1" type="number" min="5" required="" class="form-control inline col-5 douaaWait">
-                                <input id="douaaWait2" type="number" min="5" required="" class="form-control inline col-5 douaaWait">
-                                <input id="douaaWait3" type="number" min="5" required="" class="form-control inline col-5 douaaWait">
-                                <input id="douaaWait4" type="number" min="5" required="" class="form-control inline col-5 douaaWait">
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" data-text="time-waiting"></a>
+                            </h4>
+                        </div>
+                        <div id="collapse4" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div class="text-center">
+                                        <label for="wait0" class="col-5" data-text="sobh"></label>
+                                        <label for="wait1" class="col-5" data-text="zuhr"></label>
+                                        <label for="wait2" class="col-5" data-text="asr"></label>
+                                        <label for="wait3" class="col-5" data-text="maghrib"></label>
+                                        <label for="wait4" class="col-5" data-text="isha"></label>
+                                    </div>
+                                    <div>
+                                        <input id="wait0" type="number" required="" min="0" class="form-control inline col-5 wait">
+                                        <input id="wait1" type="number" required="" min="0" class="form-control inline col-5 wait">
+                                        <input id="wait2" type="number" required="" min="0" class="form-control inline col-5 wait">
+                                        <input id="wait3" type="number" required="" min="0" class="form-control inline col-5 wait">
+                                        <input id="wait4" type="number" required="" min="0" class="form-control inline col-5 wait">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="row col-lg-12">
-                            <div class="form-group col-lg-4">
-                                <label for="iqamaDisplayTime" data-text="iqama-display-time"></label> <span class="glyphicon glyphicon-asterisk"></span>
-                                <input type="number" min="1" class="form-control" id="iqamaDisplayTime" placeholder="Ex: 30">
-                            </div>
-                            <div class="form-group col-lg-4">
-                                <label for="adhanDouaaDisplayTime" data-text="adhan-douaa-display-time"></label> <span class="glyphicon glyphicon-asterisk"></span>
-                                <input type="number" min="1" class="form-control" id="adhanDouaaDisplayTime" placeholder="Ex: 30">
-                            </div>
-                            <div class="form-group col-lg-4">
-                                <label for="wakeForFajrTime" data-text="wakeForFajrTime"></label> <span class="glyphicon glyphicon-asterisk"></span>
-                                <input type="number" min="0" class="form-control" id="wakeForFajrTime" placeholder="Ex: 10">
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse5" data-text="douaa-after-prayer-wait"></a>
+                            </h4>
+                        </div>
+                        <div id="collapse5" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div class="text-center">
+                                        <label for="douaaWait0" class="col-5" data-text="sobh"></label>
+                                        <label for="douaaWait1" class="col-5" data-text="zuhr"></label>
+                                        <label for="douaaWait2" class="col-5" data-text="asr"></label>
+                                        <label for="douaaWait3" class="col-5" data-text="maghrib"></label>
+                                        <label for="douaaWait4" class="col-5" data-text="isha"></label>
+                                    </div>
+                                    <div>
+                                        <input id="douaaWait0" type="number" min="5" required="" class="form-control inline col-5 douaaWait">
+                                        <input id="douaaWait1" type="number" min="5" required="" class="form-control inline col-5 douaaWait">
+                                        <input id="douaaWait2" type="number" min="5" required="" class="form-control inline col-5 douaaWait">
+                                        <input id="douaaWait3" type="number" min="5" required="" class="form-control inline col-5 douaaWait">
+                                        <input id="douaaWait4" type="number" min="5" required="" class="form-control inline col-5 douaaWait">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="row col-lg-12">
-                            <div class="form-group col-lg-4">
-                                <label title="Si activé un écran affichant le douaa après adhan sera affiché">
-                                    <input type="checkbox" id="douaaAfterAdhanEnabled"> <span data-text="enable-douaa-screen"></span> <span class="glyphicon glyphicon-info-sign"></span>
-                                </label>
-                            </div>
-                            <div class="form-group col-lg-4">
-                                <label><input type="checkbox" id="douaaAfterPrayerEnabled"> <span data-text="enable-douaa-after-prayer"></span></label>
-                            </div>
-                            <div class="form-group col-lg-4">
-                                <label><input type="checkbox" id="qrcodeEnabled"> <span data-text="qr-code-display"></span></label>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse6" data-text="texts"></a>
+                            </h4>
+                        </div>
+                        <div id="collapse6" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="form-group col-md-6">
+                                    <label for="headerText" data-text="header-text">Texte de l'entête</label>
+                                    <input type="text" class="form-control" id="headerText" placeholder="Ex: Mosquée Essunna - Paris">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="site"  data-text="site-text" title="Lasser vide si pas besoin"></label> <span class="glyphicon glyphicon-info-sign"></span>
+                                    <input type="text" class="form-control" id="site" placeholder='Ex: Horaires de prière sur mobile et tablette <span style="color: #1b6d85;">http://horaires-de-priere.fr/mosquee-essunna-houilles/fr</span>'>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="footerText"  data-text="footer-text" title="Laisser vide si vous ne souhaitez pas de texte dans le pieds de page"></label> <span class="glyphicon glyphicon-info-sign"></span>
+                                    <input type="text" class="form-control" id="footerText" placeholder="Ex: Association SFI - Tél. 00.00.00.00.00 | IBAN FRXX XXXX XXXX XXXX XXXX XXXX XXX / BIC XXXXXXXX">
+                                </div>
+
                             </div>
                         </div>
-                        <div class="row col-lg-12">
-                            <div class="form-group col-lg-4">
-                                <label title="Si activé un bip retentira lors du adhan">
-                                    <input type="checkbox" id="azanBip"> <span data-text="enable-bip-azan"></span> <span class="glyphicon glyphicon-info-sign"></span>
-                                </label>
-                            </div>
-                            <div class="form-group col-lg-4">
-                                <label title="Si activé il est remplacera le bip">
-                                    <input type="checkbox" id="azanVoiceEnabled"> <span data-text="enable-azan-voice"></span> <span class="glyphicon glyphicon-info-sign"></span>
-                                </label>
-                            </div>
-                            <div class="form-group col-lg-4">
-                                <label title="Si activé un bip se retentira lors de la iqama">
-                                    <input type="checkbox" id="iqamaBip"> <span data-text="enable-bip-iqama"></span> <span class="glyphicon glyphicon-info-sign"></span>
-                                </label>
-                            </div>
-
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse7" data-text="other-settings"></a>
+                            </h4>
                         </div>
+                        <div id="collapse7" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="form-group col-md-3">
+                                    <label for="aidTime"  data-text="aid-time" title="Si renseigné l'heure du aïd sera affichée à la place du chourouk">
+                                    </label> <span class="glyphicon glyphicon-info-sign"></span>
+                                    <input type="text" pattern="\d{2}:\d{2}" placeholder="Ex: 08:00" class="form-control" id="aidTime" maxlength="5" oninvalid="setCustomValidity('La valeur renseignée n\'est pas correcte' )" onchange="try {
+                                                setCustomValidity('')
+                                            } catch (e) {
+                                            }" >
+                                </div>
 
-                        <div class="col-lg-2">
-                            <button type="button" class="btn btn-danger" id="reset-conf" data-text="resetConf"></button>
+                                <div class="form-group col-md-3">
+                                    <label for="imsakNbMinBeforeSobh"  data-text="imsak-time" title="Si renseigné l'heure du imsak sera affichée à la place du chourouk">
+                                    </label> <span class="glyphicon glyphicon-info-sign"></span>
+                                    <input type="number" required="" min="0" class="form-control" id="imsakNbMinBeforeSobh">
+                                </div>
+
+
+                                <div class="form-group col-md-3">
+                                    <label for="hijriAdjustment" data-text="hijri-adjustment"></label>
+                                    <select class="form-control" id="hijriAdjustment">
+                                        <option value="2">&nbsp;2</option>
+                                        <option value="1">&nbsp;1</option>
+                                        <option value="0" selected="selected">&nbsp;0</option>
+                                        <option value="-1">-1</option>
+                                        <option value="-2">-2</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <label for="iqamaDisplayTime" data-text="iqama-display-time"></label> <span class="glyphicon glyphicon-asterisk"></span>
+                                    <input type="number" min="1" class="form-control" id="iqamaDisplayTime" placeholder="Ex: 30">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="adhanDouaaDisplayTime" data-text="adhan-douaa-display-time"></label> <span class="glyphicon glyphicon-asterisk"></span>
+                                    <input type="number" min="1" class="form-control" id="adhanDouaaDisplayTime" placeholder="Ex: 30">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="wakeForFajrTime" data-text="wakeForFajrTime"></label> <span class="glyphicon glyphicon-asterisk"></span>
+                                    <input type="number" min="0" class="form-control" id="wakeForFajrTime" placeholder="Ex: 10">
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                            <label title="">
+                                                <input type="checkbox" id="hijriDateEnabled"> <span data-text="enable-hijri-date"></span> <span class="glyphicon glyphicon-info-sign"></span>
+                                            </label>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label title="Si activé un écran affichant le douaa après adhan sera affiché">
+                                                <input type="checkbox" id="douaaAfterAdhanEnabled"> <span data-text="enable-douaa-screen"></span> <span class="glyphicon glyphicon-info-sign"></span>
+                                            </label>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label><input type="checkbox" id="douaaAfterPrayerEnabled"> <span data-text="enable-douaa-after-prayer"></span></label>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label><input type="checkbox" id="qrcodeEnabled"> <span data-text="qr-code-display"></span></label>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label title="Si activé un bip retentira lors du adhan">
+                                                <input type="checkbox" id="azanBip"> <span data-text="enable-bip-azan"></span> <span class="glyphicon glyphicon-info-sign"></span>
+                                            </label>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label title="Si activé il est remplacera le bip">
+                                                <input type="checkbox" id="azanVoiceEnabled"> <span data-text="enable-azan-voice"></span> <span class="glyphicon glyphicon-info-sign"></span>
+                                            </label>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label title="Si activé un bip se retentira lors de la iqama">
+                                                <input type="checkbox" id="iqamaBip"> <span data-text="enable-bip-iqama"></span> <span class="glyphicon glyphicon-info-sign"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-12 text-right" style="margin-bottom: 20px">
-                    <br>
-                    <button type="submit" id="submit" class="btn btn-success" data-text="save">Enregistrer</button>
-                    <a href="index.html" class="btn btn-danger" data-text="cancel">Annuler</a>
+                <div class="col-md-8">
+                    <div class="row">
+                        <button type="submit" id="submit" class="btn btn-success" data-text="save">Enregistrer</button>
+                        <a href="index.html" class="btn btn-danger" data-text="cancel">Annuler</a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 text-right">
+                    <div class="row">
+                        <button type="button" class="btn btn-danger" id="reset-conf" data-text="resetConf"></button>
+                    </div>
                 </div>
             </form>
         </div>

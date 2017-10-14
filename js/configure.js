@@ -55,8 +55,11 @@ $("#calculChoice").bind("change keyup", function (event) {
 });
 
 $("#reset-conf").click(function (event) {
-    removeConfFromLocalStorage();
-    window.location.reload();
+    if (confirm('Êtes vous sur de vouloir restaurer les réglages par défaut ? cela annulera tout vos changements.')) {
+        removeConfFromLocalStorage();
+        window.location.reload();
+    } else {
+    }
 });
 
 $("#lang").bind("change", function (event) {
