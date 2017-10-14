@@ -4,6 +4,10 @@ echo "The version is mandatory";
 exit 1
 fi
 
+git push
+git tag $1 -m "new release v$1"
+git push --tags
+
 rm -rf ~/www/prayer-times/$1
 mkdir -p ~/www/prayer-times/$1
 
