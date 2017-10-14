@@ -1,5 +1,10 @@
 {
     "lang": "fr",
+    "headerText": "Mosquée NOM - VILLE",
+    "site": "http://horaires-de-priere.fr/mosquee-nom-ville/fr",
+    "supportTel": "+33629111641",
+    "supportEmail": "contact@horaires-de-priere.fr",
+    "footerText": "Association NOM - Tél. 00.00.00.00.00 | IBAN FRXX XXXX XXXX XXXX XXXX XXXX XXX / BIC XXXXXXXX",
     "joumouaaTime": "13:00",
     "joumouaaAsDuhr": false,
     "aidTime": "",
@@ -30,9 +35,7 @@
     "dst": "auto",
     "timezone": "auto",
     "wakeForFajrTime": 0,
-    "headerText": "Mosquée NOM - VILLE",
-    "site": "http://horaires-de-priere.fr/mosquee-nom-ville/fr",
-    "supportTel": "+33629111641",
-    "supportEmail": "contact@horaires-de-priere.fr",
-    "footerText": "Association NOM - Tél. 00.00.00.00.00 | IBAN FRXX XXXX XXXX XXXX XXXX XXXX XXX / BIC XXXXXXXX"
+    "blackScreenWhenPraying": false,
+    "jumuaBlackScreenEnabled": false,
+    "jumuaTimeout": 30
 }

@@ -388,8 +388,9 @@ var prayer = {
 
         // if joumuaa time we don't flash iqama
         if (!prayer.isJoumouaa(currentPrayerIndex)) {
-            $(".main").addClass("hidden");
-            $(".iqama").removeClass("hidden");
+            $(".main").fadeOut(1000, function () {
+                $(".iqama").removeClass("hidden");
+            });
             var iqamaFlashInterval = setInterval(function () {
                 $(".iqama .image").toggleClass("hidden");
             }, prayer.oneSecond);
@@ -428,7 +429,9 @@ var prayer = {
     stopIqamaFlashing: function (iqamaFlashInterval) {
         clearInterval(iqamaFlashInterval);
         $(".iqama").addClass("hidden");
-        $(".main").removeClass("hidden");
+        if (prayer.confData.blackScreenWhenPraying === false) {
+            $(".main").fadeIn(1000);
+        }
     },
     /**
      * serch and set the next prayer time hilight
@@ -797,10 +800,10 @@ var prayer = {
                 prayer.douaa.showHadith();
                 setTimeout(function () {
                     prayer.douaa.hideHadith();
-                        // flash adhan
-                        prayer.adhanFlashingTime = 10000;
-                        prayer.flashAdhan(4);
-                        setTimeout(function () {
+                    // flash adhan
+                    prayer.adhanFlashingTime = 10000;
+                    prayer.flashAdhan(4);
+                    setTimeout(function () {
                         // flash iqama
                         prayer.flashIqama(4);
                         setTimeout(function () {
@@ -854,12 +857,11 @@ var douaaSlider = {
      * @param {Number} currentTimeIndex
      */
     show: function (currentTimeIndex) {
-        if (prayer.confData.douaaAfterPrayerEnabled === true && !prayer.isJoumouaa(currentTimeIndex)) {
-            setTimeout(function () {
+        setTimeout(function () {
+            if (prayer.confData.douaaAfterPrayerEnabled === true && !prayer.isJoumouaa(currentTimeIndex)) {
                 $(".main").fadeOut(2000, function () {
                     $(".douaa-after-prayer").fadeIn(1000);
                 });
-
                 var douaaInterval = setInterval(function () {
                     douaaSlider.moveRight();
                 }, douaaSlider.oneDouaaShowingTime);
@@ -872,8 +874,10 @@ var douaaSlider = {
                     });
 
                 }, douaaSlider.getTimeForShow());
-            }, prayer.confData.douaaAfterPrayerWait[currentTimeIndex] * prayer.oneMinute);
-        }
+            } else {
+                $(".main").fadeIn(1000);
+            }
+        }, prayer.confData.douaaAfterPrayerWait[currentTimeIndex] * prayer.oneMinute);
     },
     /**
      * Number of seconds to show all douaa
@@ -893,6 +897,4 @@ var douaaSlider = {
     }
 };
 
-$(document).ready(function () {
-    prayer.init();
-});
+prayer.init();

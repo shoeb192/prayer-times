@@ -189,18 +189,27 @@
                         </div>
                         <div id="collapse1" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <div class="form-group col-md-3" style="padding-top: 25px">
+                                <div class="form-group col-md-3">
                                     <label title="Si activé l'heure du Jumu`a sera la même que celle du duhr">
                                         <input type="checkbox" id="joumouaaAsDuhr"> <span data-text="joumouaa-as-duhr"></span> <span class="glyphicon glyphicon-info-sign"></span>
                                     </label>
                                 </div>
-
-                                <div class="form-group col-md-3 jumua-bloc">
+                                <div class="form-group col-md-3">
+                                    <label title="Si activé un écran noir sera affiché pendant jumu`a">
+                                        <input type="checkbox" id="jumuaBlackScreenEnabled"> <span data-text="jumuaBlackScreenEnabled"></span> <span class="glyphicon glyphicon-info-sign"></span>
+                                    </label>
+                                </div>
+                                <div class="form-group jumua-bloc col-md-3">
                                     <label for="joumouaaTime"  data-text="joumoua-time" title="Si vide 12:10 sera affiché en hiver et 13:10 en été">
                                     </label> <span class="glyphicon glyphicon-info-sign"></span>
                                     <input type="text" class="form-control" id="joumouaaTime" placeholder="Ex: 14h / 13h / 13:00">
                                 </div>
 
+                                <div class="form-group col-md-3">
+                                    <label for="jumuaTimeout"  data-text="jumuaTimeout" title="Si vide 12:10 sera affiché en hiver et 13:10 en été">
+                                    </label> <span class="glyphicon glyphicon-info-sign"></span>
+                                    <input type="text" class="form-control" id="jumuaTimeout" placeholder="Ex: 30">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -432,6 +441,11 @@
                                         <div class="form-group col-md-4">
                                             <label title="Si activé un bip se retentira lors de la iqama">
                                                 <input type="checkbox" id="iqamaBip"> <span data-text="enable-bip-iqama"></span> <span class="glyphicon glyphicon-info-sign"></span>
+                                            </label>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label title="Si activé un écran noir sera affiché pendant la prière">
+                                                <input type="checkbox" id="blackScreenWhenPraying"> <span data-text="blackScreenWhenPraying"></span> <span class="glyphicon glyphicon-info-sign"></span>
                                             </label>
                                         </div>
                                     </div>

@@ -341,7 +341,7 @@
     },
     "joumouaa-as-duhr": {
         "ar": "وقت الجمعة موافق لوفت الظهر",
-        "fr": "L'heure du jumu'a pareil que duhr",
+        "fr": "L'heure du jumu'a pareil que dhuhr",
         "en": "Jumu`a time like zuhr"
     },
     "dst": {
@@ -392,5 +392,20 @@
     "texts": {
         "ar": "نصىوص",
         "fr": "textes"
+    },
+    "blackScreenWhenPraying": {
+        "ar": "إطفاء الشاشة أثناء الصلاة",
+        "fr": "Éteindre l'écran pendant la prière",
+        "en": "Power off screen during praying"
+    },
+    "jumuaBlackScreenEnabled": {
+        "ar": "إطفاء الشاشة أثناء الجمعة",
+        "fr": "Éteindre l'écran pendant jumu`a",
+        "en": "Power off screen during jumu`a"
+    },
+    "jumuaTimeout": {
+        "ar": "إطفاء الشاشة أثناء الجمعة",
+        "fr": "Durée approximatif du jumu`a (prêche + prière)",
+        "en": "Approximate duration of the Jumu`a"
     }
 }
