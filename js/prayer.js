@@ -32,7 +32,7 @@ var prayer = {
      * in milliseconds
      * @type Number 
      */
-    adhanFlashingTime: 90000,
+    adhanFlashingTime: 120000,
     /**
      * Conf from conf.json
      * @type Json
@@ -55,8 +55,9 @@ var prayer = {
         this.setCustomContent();
         this.setQRCode();
         this.translateToArabic();
+        this.initEvents();
         this.hideSpinner();
-
+        prayer.initWakupFajr();
         douaaSlider.init();
     },
     /**
@@ -348,7 +349,11 @@ var prayer = {
      */
     flashAdhan: function (currentPrayerIndex) {
         if (prayer.confData.azanVoiceEnabled === true) {
-            this.playSound("adhan-maquah.mp3");
+            var file = "adhan-maquah.mp3";
+            if (currentPrayerIndex === 0) {
+                var file = "adhan-maquah-fajr.mp3";
+            }
+            this.playSound(file);
         } else if (prayer.confData.azanBip === true) {
             this.playSound();
         }
@@ -363,6 +368,10 @@ var prayer = {
             $(".top-content .adhan-flash").toggleClass("hidden");
         }, prayer.oneSecond);
 
+        // if adhan we increase adhan flash time
+        if (prayer.confData.azanVoiceEnabled === true) {
+            prayer.adhanFlashingTime = prayer.oneSecond * 200;
+        }
         // timeout for stopping time flashing
         setTimeout(function () {
             prayer.stopAdhanFlashing(adhanFlashInterval);
@@ -384,9 +393,10 @@ var prayer = {
 
         // if joumuaa time we don't flash iqama
         if (!prayer.isJoumouaa(currentPrayerIndex)) {
-            $(".desktop .main").addClass("hidden");
+            $(".main").addClass("hidden");
+            $(".iqama").removeClass("hidden");
             var iqamaFlashInterval = setInterval(function () {
-                $(".desktop .iqama").toggleClass("hidden");
+                $(".iqama .image").toggleClass("hidden");
             }, prayer.oneSecond);
             // stop iqama flashing after 45 sec
             setTimeout(function () {
@@ -422,8 +432,8 @@ var prayer = {
     },
     stopIqamaFlashing: function (iqamaFlashInterval) {
         clearInterval(iqamaFlashInterval);
-        $(".desktop .main").removeClass("hidden");
-        $(".desktop .iqama").addClass("hidden");
+        $(".iqama").addClass("hidden");
+        $(".main").removeClass("hidden");
     },
     /**
      * serch and set the next prayer time hilight
@@ -488,23 +498,23 @@ var prayer = {
     },
     douaa: {
         showAdhanDouaa: function () {
-            $(".desktop .main").fadeOut(1000, function () {
-                $(".desktop .adhan").fadeIn(1000);
+            $(".main").fadeOut(1000, function () {
+                $(".adhan").fadeIn(1000);
             });
         },
         hideAdhanDouaa: function () {
-            $(".desktop .adhan").fadeOut(1000, function () {
-                $(".desktop .main").fadeIn(1000);
+            $(".adhan").fadeOut(1000, function () {
+                $(".main").fadeIn(1000);
             });
         },
         showHadith: function () {
-            $(".desktop .main").fadeOut(1000, function () {
-                $(".desktop .douaa-between-adhan-iqama").fadeIn(1000);
+            $(".main").fadeOut(1000, function () {
+                $(".douaa-between-adhan-iqama").fadeIn(1000);
             });
         },
         hideHadith: function () {
-            $(".desktop .douaa-between-adhan-iqama").fadeOut(1000, function () {
-                $(".desktop .main").fadeIn(1000);
+            $(".douaa-between-adhan-iqama").fadeOut(1000, function () {
+                $(".main").fadeIn(1000);
             });
         },
         /**
@@ -714,8 +724,8 @@ var prayer = {
         if (prayer.confData.qrcodeEnabled === true) {
             new QRCode("qrcode", {
                 text: prayer.confData.site,
-                width: 120,
-                height: 120
+                width: 100,
+                height: 100
             });
         }
     },
@@ -730,6 +740,49 @@ var prayer = {
 
         var audio = new Audio('/static/mp3/' + file);
         audio.play();
+    }, /**
+     * cron for fajr waking up
+     * @returns {undefined}
+     */
+    fajrWakeAdhanIsPlaying: false,
+    initWakupFajr: function () {
+        setInterval(function () {
+            if (prayer.fajrWakeAdhanIsPlaying === false && parseInt(prayer.confData.wakeForFajrTime) > 0) {
+                var date = new Date();
+                var fajrTime = prayer.getTimeByIndex(0);
+                var diffTimeInMiniute = Math.floor((date - prayer.getCurrentDateForPrayerTime(fajrTime)) / prayer.oneMinute);
+                if (diffTimeInMiniute === -parseInt(prayer.confData.wakeForFajrTime)) {
+                    var $contentEl = $(".top-content .content");
+                    var $alarmFlashEl = $(".top-content .alarm-flash");
+
+                    prayer.fajrWakeAdhanIsPlaying = true;
+                    // play adhan sound
+                    prayer.playSound("adhan-maquah.mp3");
+                    $contentEl.addClass("hidden");
+
+                    // flash every one seconde
+                    var interval = setInterval(function () {
+                        $alarmFlashEl.toggleClass("hidden");
+                    }, prayer.oneSecond);
+
+                    // timeout to stop flashing
+                    setTimeout(function () {
+                        prayer.fajrWakeAdhanIsPlaying = false;
+                        $contentEl.removeClass("hidden");
+                        $alarmFlashEl.addClass("hidden");
+                        clearInterval(interval);
+                    }, 200 * prayer.oneSecond);
+                }
+            }
+        }, prayer.oneMinute);
+    },
+    /**
+     * Init events
+     */
+    initEvents: function () {
+        $(".version").click(function () {
+            prayer.test();
+        });
     },
     /**
      * Test main app features 
@@ -749,15 +802,15 @@ var prayer = {
                 prayer.douaa.showHadith();
                 setTimeout(function () {
                     prayer.douaa.hideHadith();
-                    // flash adhan
-                    prayer.adhanFlashingTime = 10000;
-                    prayer.flashAdhan(4);
-                    setTimeout(function () {
+                        // flash adhan
+                        prayer.adhanFlashingTime = 10000;
+                        prayer.flashAdhan(4);
+                        setTimeout(function () {
                         // flash iqama
                         prayer.flashIqama(4);
                         setTimeout(function () {
                             location.reload();
-                        }, 10000);
+                        }, 5000);
                     }, prayer.adhanFlashingTime);
                 }, 5000);
             }, 5000);
@@ -808,7 +861,7 @@ var douaaSlider = {
     show: function (currentTimeIndex) {
         if (prayer.confData.douaaAfterPrayerEnabled === true && !prayer.isJoumouaa(currentTimeIndex)) {
             setTimeout(function () {
-                $(".desktop .main").fadeOut(2000, function () {
+                $(".main").fadeOut(2000, function () {
                     $(".douaa-after-prayer").fadeIn(1000);
                 });
 
@@ -819,7 +872,7 @@ var douaaSlider = {
                 setTimeout(function () {
                     clearInterval(douaaInterval);
                     $(".douaa-after-prayer").fadeOut(2000, function () {
-                        $(".desktop .main").fadeIn(1000);
+                        $(".main").fadeIn(1000);
                         $('#slider').html(douaaSlider.sliderHtmlContent);
                     });
 

@@ -47,7 +47,8 @@ body {
     height:50%;
 }
 
-.top-content .adhan-flash{
+.top-content .adhan-flash,
+.top-content .alarm-flash{
     font-size: 1650%;
 }
 
@@ -140,6 +141,7 @@ body {
     background-color: #000;
     color: #fff;
     font-size: 700%;
+    position: relative;
 }
 
 .iqama .top{
@@ -148,7 +150,10 @@ body {
 
 .iqama .bottom{
     height: 15%;
-    padding-top: 50px;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    right: 0;
 }
 
 .iqama .image{
@@ -156,7 +161,7 @@ body {
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: contain;
-    height: 55%;
+    height: 60%;
 }
 
 .adhan .ar {

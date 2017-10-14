@@ -41,18 +41,18 @@
     },
     "chourouk": {
         "ar": "الشروق",
-        "fr": "shuruk",
+        "fr": "Shurûq",
         "en": "shuruk"
     },
     "joumouaa": {
         "ar": "الجمعة",
         "fr": "Jumu`a",
-        "en": "Jumu`a"
+        "en": "Jumua"
     },
     "aid-prayer": {
         "ar": "صلاة العيد",
-        "fr": "Salât Al `Aid",
-        "en": "Aid prayer"
+        "fr": "Salât al-Aïd",
+        "en": "aid prayer"
     },
     "sobh": {
         "ar": "الفجر",
@@ -61,8 +61,8 @@
     },
     "zuhr": {
         "ar": "الظهر",
-        "fr": "Duhr",
-        "en": "Duhr"
+        "fr": "Dhuhr",
+        "en": "zuhr"
     },
     "asr": {
         "ar": "العصر",
@@ -86,7 +86,7 @@
     },
     "iqama": {
         "ar": "الإقامة",
-        "fr": "El iqâma",
+        "fr": "al-Iqâmah",
         "en": "the iqama"
     },
     "configuration": {
@@ -120,14 +120,14 @@
         "en": "aid time"
     },
     "isha-max-no-wait": {
-        "ar": "المدة القصوى لصلاة العشاء الإقامة بدون إنتظار ",
-        "fr": "Heure du `isha (Iqama tout de suite après adhan)",
+        "ar": "المدة القصوى لصلاة العشاء الإقامة بدون إنتظار",
+        "fr": "heure maximale du ichaa (attente iqâmah = 0 min)",
         "en": "maximum isha time for no waiting"
     },
     "time-waiting": {
         "ar": "وقت الانتظار بين الأذان والإقامة",
-        "fr": "temps d'attente entre adhan et iqama en minutes",
-        "en": "waiting times between iqama and athan"
+        "fr": "temps d'attente entre adhân et iqâmah en minutes",
+        "en": "waiting times between iqâmah and athan"
     },
     "hijri-adjustment": {
         "ar": "تعديل التاريخ الهجري",
@@ -255,7 +255,7 @@
         "en": "Reset conf"
     },
     "qr-code-display": {
-        "ar": " Qr code عرض  " ,
+        "ar": " Qr code عرض  ",
         "fr": "Afficher Qr code pour le site internet",
         "en": "Display the Qr code for internet site"
     },
@@ -291,11 +291,11 @@
     },
     "adhan": {
         "ar": "الأذان",
-        "fr": "Al'Adhân",
+        "fr": "Al-Adhân",
         "en": "Azan"
     },
     "power-off-phones": {
-        "ar":"! أطفؤوا الهاتف المحمول من فضلكم",
+        "ar": "! أطفؤوا الهاتف المحمول من فضلكم",
         "fr": "Éteignez vos portables SVP !",
         "en": "Turn off your mobile phones please !"
     },
@@ -373,5 +373,15 @@
         "ar": "ملف CSV",
         "fr": "Répertoire CSV",
         "en": "CSV directory"
+    },
+    "wakeForFajrTime": {
+        "ar": "إستيقاظ قبل الفجر دقائق",
+        "fr": "Réveil avant fajr (minute)",
+        "en": "Wake before fajr (minute)"
+    },
+    "alarm": {
+        "ar": "إستيقظ",
+        "fr": "Réveil",
+        "en": "Wake up"
     }
 }

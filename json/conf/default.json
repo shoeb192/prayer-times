@@ -29,6 +29,7 @@
     "iqamaBip": true,
     "dst": "auto",
     "timezone": "auto",
+    "wakeForFajrTime": 0,
     "headerText": "Mosquée NOM - VILLE",
     "site": "http://horaires-de-priere.fr/mosquee-nom-ville/fr",
     "supportTel": "+33629111641",
