@@ -218,7 +218,7 @@ var prayer = {
      */
     dstConvertTimeForCsvMode: function (time) {
         var applyConvertion = prayer.confData.calculChoice === "csv" &&
-                parsInt(prayer.confData.dst) !== 0 &&
+                parseInt(prayer.confData.dst) !== 0 &&
                 dateTime.isLastSundayDst();
 
         if (applyConvertion) {
