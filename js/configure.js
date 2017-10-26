@@ -67,7 +67,7 @@ $("#lang").bind("change", function (event) {
 
 if (getConfFromLocalStorage().lang === "ar") {
     $("body").css("font-family", "Amiri");
-    $("body").css("font-size", "16px");
+    $("body").css("font-size", "18px");
 }
 
 /**

@@ -346,8 +346,6 @@ var prayer = {
 
         var adhanFlashInterval = setInterval(function () {
             $(".top-content .adhan-flash").toggleClass("hidden");
-            $(".mobile .prayer-content .adhan" + currentPrayerIndex).toggleClass("hidden");
-            $(".mobile .prayer-content .prayer" + currentPrayerIndex).toggleClass("hidden");
         }, prayer.oneSecond);
 
         // timeout for stopping time flashing
@@ -356,9 +354,7 @@ var prayer = {
             prayer.adhanIsFlashing = false;
             $(".top-content .content").removeClass("hidden");
             $(".top-content .adhan-flash").addClass("hidden");
-            $(".mobile .prayer-content .adhan" + currentPrayerIndex).addClass("hidden");
-            $(".mobile .prayer-content .prayer" + currentPrayerIndex).removeClass("hidden");
-        }, prayer.oneMinute);
+        }, 90 * prayer.oneSecond);
     },
     /**
      * flash iqama for 30 sec

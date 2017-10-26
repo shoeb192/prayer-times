@@ -318,5 +318,10 @@
         "ar": "وقت الإنتظار قبل عرض الأذكار بعد الصلاة",
         "fr": "Tempas d'attente avant affichage des du'as post prière",
         "en": "Waiting time before display du'a after adhan" 
+    },
+    "timezone": {
+        "ar": "الفارق الزمني",
+        "fr": "Le décalage horaire",
+        "en": "Timezone offset" 
     }
 }
