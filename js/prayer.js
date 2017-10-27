@@ -188,17 +188,8 @@ var prayer = {
         });
         return times;
     },
-    /**
-     * array of only five prayer times
-     * @returns {Array}
-     */
-    getTimesWithAdjustedIchaa: function () {
-        var times = this.getTimes().slice(0, 4);
-        times.push(this.getIchaTime());
-        return times;
-    },
     getTimeByIndex: function (index) {
-        return this.getTimesWithAdjustedIchaa()[index];
+        return this.getTimes()[index];
     },
     getWaitingByIndex: function (index) {
         var waiting = this.getWaitingTimes()[index];
@@ -303,16 +294,13 @@ var prayer = {
     initAdhanFlash: function () {
         setInterval(function () {
             if (!prayer.adhanIsFlashing) {
-                var currentTime = dateTime.getCurrentTime(false);
-                $(prayer.getTimesWithAdjustedIchaa()).each(function (currentPrayerIndex, time) {
-                    if (time === dateTime.getCurrentTime()) {
-                        var prayerElm = $(".prayer:contains(" + currentTime + ")");
-                        if (prayerElm.length) {
-                            // if joumouaa time we don't flash adhan
-                            if (!prayer.isJoumouaa(currentPrayerIndex)) {
-                                prayer.adhanIsFlashing = true;
-                                prayer.flashAdhan(currentPrayerIndex);
-                            }
+                var currentTime  = dateTime.getCurrentTime()
+                $(prayer.getTimes()).each(function (currentPrayerIndex, time) {
+                    if (time === currentTime) {
+                        // if jumua time we don't flash adhan
+                        if (!prayer.isJumua(currentPrayerIndex)) {
+                            prayer.adhanIsFlashing = true;
+                            prayer.flashAdhan(currentPrayerIndex);
                         }
                     }
                 });
@@ -327,13 +315,15 @@ var prayer = {
     initIqamaFlash: function () {
         setInterval(function () {
             if (!prayer.iqamaIsFlashing) {
-                $(prayer.getTimesWithAdjustedIchaa()).each(function (currentPrayerIndex, time) {
-                    var diffTimeInMiniute = Math.floor((new Date() - prayer.getCurrentDateForPrayerTime(time)) / prayer.oneMinute);
-                    var currentPrayerWaitingTime = prayer.getWaitingByIndex(currentPrayerIndex);
-                    if (diffTimeInMiniute === currentPrayerWaitingTime) {
-                        prayer.iqamaIsFlashing = true;
-                        // iqama flashing
-                        prayer.flashIqama(currentPrayerIndex);
+                $(prayer.getTimes()).each(function (currentPrayerIndex, time) {
+                    if (!prayer.isJumua(currentPrayerIndex)) {
+                        var diffTimeInMiniute = Math.floor((new Date() - prayer.getCurrentDateForPrayerTime(time)) / prayer.oneMinute);
+                        var currentPrayerWaitingTime = prayer.getWaitingByIndex(currentPrayerIndex);
+                        if (diffTimeInMiniute === currentPrayerWaitingTime) {
+                            prayer.iqamaIsFlashing = true;
+                            // iqama flashing
+                            prayer.flashIqama(currentPrayerIndex);
+                        }
                     }
                 });
             }
@@ -388,7 +378,7 @@ var prayer = {
         douaaSlider.show(currentPrayerIndex);
 
         // if joumuaa time we don't flash iqama
-        if (!prayer.isJoumouaa(currentPrayerIndex)) {
+        if (!prayer.isJumua(currentPrayerIndex)) {
             $(".main").fadeOut(1000, function () {
                 $(".iqama").removeClass("hidden");
             });
@@ -441,7 +431,7 @@ var prayer = {
         var date = new Date();
         // sobh is default
         prayer.hilighByIndex(0);
-        var times = this.getTimesWithAdjustedIchaa();
+        var times = this.getTimes();
         $.each(times, function (index, time) {
             prayerDateTime = prayer.getCurrentDateForPrayerTime(time);
             // adding 5 minute
@@ -466,7 +456,7 @@ var prayer = {
         $(".prayer-wait .wait").removeClass("text-hilighted");
 
         // if joumouaa we hilight joumouaa time
-        if (prayer.isJoumouaa(prayerIndex)) {
+        if (prayer.isJumua(prayerIndex)) {
             $(".joumouaa-id").addClass("prayer-hilighted");
             return;
         }
@@ -592,7 +582,7 @@ var prayer = {
      * @param {int} currentPrayerIndex 
      * @returns {boolean}
      */
-    isJoumouaa: function (currentPrayerIndex) {
+    isJumua: function (currentPrayerIndex) {
         var date = new Date();
         return date.getDay() === 5 && currentPrayerIndex === 1;
     },
@@ -602,7 +592,7 @@ var prayer = {
      */
     getPrayerIndexByTime: function (time) {
         var index = null;
-        $.each(prayer.getTimesWithAdjustedIchaa(), function (i, t) {
+        $.each(prayer.getTimes(), function (i, t) {
             if (t === time) {
                 index = i;
             }
@@ -916,7 +906,7 @@ var douaaSlider = {
      */
     show: function (currentTimeIndex) {
         setTimeout(function () {
-            if (prayer.confData.douaaAfterPrayerEnabled === true && !prayer.isJoumouaa(currentTimeIndex)) {
+            if (prayer.confData.douaaAfterPrayerEnabled === true && !prayer.isJumua(currentTimeIndex)) {
                 $(".main").fadeOut(2000, function () {
                     $(".douaa-after-prayer").fadeIn(1000);
                 });
