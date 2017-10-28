@@ -91,7 +91,7 @@ function kuwaiticalendar(adjust) {
 
 function writeIslamicDate(adjustment) {
     var wdNames = new Array("الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت");
-    var iMonthNames = new Array("محرم", "سفر", "ربيع الأول", "ربيع الثاني", "جمادى الأولى", "جمادى الثانية", "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة");
+    var iMonthNames = new Array("محرم", "صفر", "ربيع الأول", "ربيع الثاني", "جمادى الأولى", "جمادى الثانية", "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة");
     var iDate = kuwaiticalendar(adjustment);
     return iDate[7] + " " + wdNames[iDate[4]] + " " + addZero(iDate[5]) + " " + iMonthNames[iDate[6]];
 }
