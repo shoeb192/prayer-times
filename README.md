@@ -49,6 +49,8 @@
 
 ## How it works
 
+Plase visite my website [http://horaires-de-priere.fr]((http://horaires-de-priere.fr)) for more information, I have an online version witch is best un more complete.
+
 ### Requirements
 1. nginx  
 `sudo apt-get install nginx`
