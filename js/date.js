@@ -88,7 +88,7 @@ var dateTime = {
     getLastSundayOfMonth: function (month) {
         var date = new Date();
         date.setMonth(month);
-        date.setDate(30);
+        date.setDate(31);
         date.setDate(date.getDate() - date.getDay());
         return date.getDate();
     },
@@ -120,6 +120,7 @@ var dateTime = {
     tomorrow: function () {
         var date = new Date();
         date.setDate(date.getDate() + 1);
+        date.setHours(3);
         return date;
     }
 };

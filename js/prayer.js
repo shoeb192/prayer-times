@@ -135,7 +135,7 @@ var prayer = {
             url: "data/csv/" + prayer.confData.city + "/" + month + ".csv?" + getVersion(),
             async: false,
             success: function (data) {
-                times = data.split(/\r|\n/);
+                times = data.split(/(?:\r?\n)/g);
                 times = times[day].split(",");
                 prayer.times = times.slice(1, times.length);
             }
@@ -217,7 +217,11 @@ var prayer = {
      * @returns {Array}
      */
     dstConvertTimeForCsvMode: function (time) {
-        if (prayer.confData.calculChoice === "csv" && dateTime.isLastSundayDst()) {
+        var applyConvertion = prayer.confData.calculChoice === "csv" &&
+                parsInt(prayer.confData.dst) !== 0 &&
+                dateTime.isLastSundayDst();
+
+        if (applyConvertion) {
             time = time.split(":");
             var hourPrayerTime = Number(time[0]) + (dateTime.getCurrentMonth() === "03" ? 1 : -1);
             var minutePrayerTime = time[1];
@@ -294,7 +298,7 @@ var prayer = {
     initAdhanFlash: function () {
         setInterval(function () {
             if (!prayer.adhanIsFlashing) {
-                var currentTime  = dateTime.getCurrentTime()
+                var currentTime = dateTime.getCurrentTime()
                 $(prayer.getTimes()).each(function (currentPrayerIndex, time) {
                     if (time === currentTime) {
                         // if jumua time we don't flash adhan

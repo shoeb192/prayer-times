@@ -15,7 +15,7 @@ body {
     width: 50px;
     height: 50px;
     animation: spin 2s linear infinite;
-    position: absolute;
+    position: fixed;
     margin-left: -25px;
     margin-top: -25px;
     top: 50%;
@@ -37,6 +37,7 @@ body {
 .main, .iqama, .adhan, .douaa-between-adhan-iqama, .jumua-dhikr-reminder{
     height:100vh;
     margin: auto;
+    overflow: hidden;
 }
 
 .main{
