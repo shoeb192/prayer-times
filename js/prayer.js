@@ -132,7 +132,7 @@ var prayer = {
         }
         var times = new Array();
         $.ajax({
-            url: "data/csv/" + prayer.confData.city + "/" + month + ".csv?" + getVersion(),
+            url: "data/csv/" + prayer.confData.city + "/" + month + ".csv?" + (new Date()).getTime(),
             async: false,
             success: function (data) {
                 times = data.split(/(?:\r?\n)/g);
