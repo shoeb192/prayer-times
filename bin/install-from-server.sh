@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 # stop chromium
 killall chromium-browser || true
 
