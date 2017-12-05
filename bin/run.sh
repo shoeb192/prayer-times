@@ -1,6 +1,7 @@
 #!/bin/bash
 
 localUrl=http://localhost
+onlineUrl=$localUrl
 
 if [ -f ~/Desktop/site.txt ]; then
     localUrl=`cat ~/Desktop/site.txt`
