@@ -9,24 +9,19 @@ rm -rf /tmp/prayer/*
 
 cd /tmp/prayer/
 
-wget izf.synology.me/prayer/prayer.tar.gz
+wget --no-check-certificate  izf.synology.me/prayer/prayer.tar.gz
 
-tar -xf prayer.tar.gz 
+if [ $? -eq 0 ]; then
+    tar -xf prayer.tar.gz
+    rm prayer.tar.gz
+    lasteVersion=`cat /tmp/prayer/version`
+    rm -rf /home/pi/prayer/$lasteVersion
+    mkdir -p /home/pi/prayer/$lasteVersion
+    mv /tmp/prayer/* /home/pi/prayer/$lasteVersion/
+    rm /home/pi/prayer/current
+    ln -s /home/pi/prayer/$lasteVersion /home/pi/prayer/current
+    /home/pi/prayer/current/bin/run.sh
+    echo "Version $lasteVersion has been successfully installed ;)"
+fi
 
-rm prayer.tar.gz 
 
-lasteVersion=`cat /tmp/prayer/version`
-
-rm -rf /home/pi/prayer/$lasteVersion
-
-mkdir -p /home/pi/prayer/$lasteVersion
-
-mv /tmp/prayer/* /home/pi/prayer/$lasteVersion/
-
-rm /home/pi/prayer/current
-
-ln -s /home/pi/prayer/$lasteVersion /home/pi/prayer/current
-
-/home/pi/prayer/current/bin/run.sh
-    
-echo "Version $lasteVersion has been successfully installed ;)"

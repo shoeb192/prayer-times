@@ -26,4 +26,4 @@ cd current/
 
 tar -czf prayer.tar.gz *
 
-scp -P 222 prayer.tar.gz admin@izf.synology.me:/volume1/web/prayer
+scp -P 1983 prayer.tar.gz mawaqit@mawaqit.net:/var/www/mawaqit/shared/static
