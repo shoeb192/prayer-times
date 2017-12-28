@@ -1,7 +1,7 @@
 /* global dateTime */
 
 /**
- * Class handling prayers 
+ * Class handling prayers
  * @author ibrahim.zehhaf@gmail.com
  * @type {object}
  */
@@ -28,11 +28,6 @@ var prayer = {
      * @type Integer
      */
     oneSecond: 1000,
-    /**
-     * in milliseconds
-     * @type Number 
-     */
-    adhanFlashingTime: 120000,
     /**
      * Conf from conf.json
      * @type Json
@@ -119,7 +114,7 @@ var prayer = {
         }
     },
     /**
-     * @param {boolean} tomorrow 
+     * @param {boolean} tomorrow
      * @returns {Array}
      */
     loadTimesFromCsv: function (tomorrow) {
@@ -142,7 +137,7 @@ var prayer = {
         });
     },
     /**
-     * @param {boolean} tomorrow 
+     * @param {boolean} tomorrow
      * Load times from PrayTimes API
      */
     loadTimesFromApi: function (tomorrow) {
@@ -194,8 +189,7 @@ var prayer = {
     getWaitingByIndex: function (index) {
         var waiting = this.getWaitingTimes()[index];
         // if waiting fixed to 0 we adjust wating to 3 min for adhan and douaa
-        if (waiting === 0)
-        {
+        if (waiting === 0) {
             waiting = 3;
         }
         return waiting;
@@ -218,8 +212,8 @@ var prayer = {
      */
     dstConvertTimeForCsvMode: function (time) {
         var applyConvertion = prayer.confData.calculChoice === "csv" &&
-                parseInt(prayer.confData.dst) !== 0 &&
-                dateTime.isLastSundayDst();
+            parseInt(prayer.confData.dst) !== 0 &&
+            dateTime.isLastSundayDst();
 
         if (applyConvertion) {
             time = time.split(":");
@@ -230,7 +224,7 @@ var prayer = {
         return time;
     },
     /**
-     * get current date object for given prayer time 
+     * get current date object for given prayer time
      * @param {String} time
      * @returns {Date}
      */
@@ -243,7 +237,7 @@ var prayer = {
         return date;
     },
     /**
-     * get Ichaa time, if ichaa is <= then 19:50 then return 19:50 
+     * get Ichaa time, if ichaa is <= then 19:50 then return 19:50
      * @returns {String}
      */
     getIchaTime: function () {
@@ -258,7 +252,7 @@ var prayer = {
         if (dateTime.isLastSundayDst()) {
             chouroukTime = prayer.dstConvertTimeForCsvMode(chouroukTime);
         }
-        return  chouroukTime;
+        return chouroukTime;
     },
     /**
      * Get the imsak time calculated by soustraction of imsakNbMinBeforeSobh from sobh time
@@ -358,18 +352,39 @@ var prayer = {
             $(".top-content .adhan-flash").toggleClass("hidden");
         }, prayer.oneSecond);
 
-        // if adhan we increase adhan flash time
-        if (prayer.confData.azanVoiceEnabled === true) {
-            prayer.adhanFlashingTime = prayer.oneSecond * 200;
-        }
+
         // timeout for stopping time flashing
         setTimeout(function () {
             prayer.stopAdhanFlashing(adhanFlashInterval);
-        }, prayer.adhanFlashingTime);
+        }, prayer.getAdhanFlashingTime(currentPrayerIndex));
     },
     /**
+     *  timeout for stopping time flashing
+     *  @param {integer} currentPrayerIndex
+     */
+    getAdhanFlashingTime: function (currentPrayerIndex) {
+
+        // if short waiting
+        if (prayer.getWaitingByIndex(currentPrayerIndex) === 3) {
+            return prayer.oneSecond * 100;
+        }
+
+        // if azan enablded
+        if (prayer.confData.azanVoiceEnabled === true) {
+            // if fajr
+            if (currentPrayerIndex === 0) {
+                return prayer.oneSecond * 250;
+            }
+            return prayer.oneSecond * 200;
+        }
+
+        // otherwise
+        return prayer.oneSecond * 150;
+    },
+
+    /**
      * flash iqama for 30 sec
-     * @param {Number} currentPrayerIndex 
+     * @param {Number} currentPrayerIndex
      */
     flashIqama: function (currentPrayerIndex) {
         if (prayer.confData.iqamaBip === true) {
@@ -471,7 +486,7 @@ var prayer = {
     },
     /**
      * 5 minute after current iqama we hilight the next prayer time
-     * @param {int} currentTimeIndex 
+     * @param {int} currentTimeIndex
      */
     setNextTimeHilight: function (currentTimeIndex) {
         nextTimeIndex = currentTimeIndex + 1;
@@ -518,27 +533,19 @@ var prayer = {
          */
         setTimeout: function (currentPrayerIndex) {
             if (prayer.confData.douaaAfterAdhanEnabled === true) {
-                var duaTimeout = 150 * prayer.oneSecond;
-                if (prayer.confData.azanVoiceEnabled === true) {
-                    duaTimeout = 200 * prayer.oneSecond;
-                }
                 setTimeout(function () {
                     prayer.douaa.showAdhanDouaa();
                     setTimeout(function () {
                         prayer.douaa.hideAdhanDouaa();
-
                         // show hadith between adhan and iqama
-                        if (prayer.getWaitingTimes()[currentPrayerIndex] !== 0) {
+                        setTimeout(function () {
+                            prayer.douaa.showHadith();
                             setTimeout(function () {
-                                prayer.douaa.showHadith();
-                                setTimeout(function () {
-                                    prayer.douaa.hideHadith();
-                                }, 30 * prayer.oneSecond);
-                            }, 10 * prayer.oneSecond);
-                        }
-
+                                prayer.douaa.hideHadith();
+                            }, 30 * prayer.oneSecond);
+                        }, 10 * prayer.oneSecond);
                     }, 30 * prayer.oneSecond);
-                }, duaTimeout);
+                }, prayer.getAdhanFlashingTime(currentPrayerIndex));
             }
         }
     },
@@ -583,7 +590,7 @@ var prayer = {
     },
     /**
      * if current time is joumouaa
-     * @param {int} currentPrayerIndex 
+     * @param {int} currentPrayerIndex
      * @returns {boolean}
      */
     isJumua: function (currentPrayerIndex) {
@@ -591,7 +598,7 @@ var prayer = {
         return date.getDay() === 5 && currentPrayerIndex === 1;
     },
     /**
-     * @param {string} time 
+     * @param {string} time
      * @returns {Number}
      */
     getPrayerIndexByTime: function (time) {
@@ -601,7 +608,7 @@ var prayer = {
                 index = i;
             }
         });
-        return  index;
+        return index;
     },
     /**
      * handle custom time
@@ -659,7 +666,7 @@ var prayer = {
         }
     },
     /**
-     * set all prayer times 
+     * set all prayer times
      */
     setTimes: function () {
         $(".sobh").text(this.getTimes()[0]);
@@ -730,8 +737,7 @@ var prayer = {
      * Play a sound
      */
     playSound: function (file) {
-        if (typeof file === "undefined")
-        {
+        if (typeof file === "undefined") {
             file = "bip.mp3";
         }
 
@@ -828,7 +834,7 @@ var prayer = {
         });
     },
     /**
-     * Test main app features 
+     * Test main app features
      */
     test: function () {
         // show douaa after prayer
