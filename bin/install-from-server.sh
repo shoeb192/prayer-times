@@ -9,7 +9,7 @@ rm -rf /tmp/prayer/*
 
 cd /tmp/prayer/
 
-wget --no-check-certificate  izf.synology.me/prayer/prayer.tar.gz
+wget  http://izf.synology.me/prayer/prayer.tar.gz
 
 if [ $? -eq 0 ]; then
     tar -xf prayer.tar.gz
