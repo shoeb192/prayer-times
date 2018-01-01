@@ -64,4 +64,4 @@ Plase visite my website [http://mawaqit.net]((http://mawaqit.net)) for more info
 3. Add this line `@sh /home/pi/prayer/bin/run.sh` at the bottom of autostart file `/home/pi/.config/lxsession/LXDE-pi/autostart`, this lets app running automatically after boot
 4. Plug the Rasberry pi on LCD screen with hdmi cable and enjoy.
 
-See [setup file]((https://github.com/binary010100/prayer-times/blob/LTS/bin/setup.sh))
+See setup file here `/bin/setup.sh`
