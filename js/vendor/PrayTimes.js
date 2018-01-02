@@ -121,7 +121,7 @@ function PrayTimes(method) {
 	
 	// Asr Juristic Methods
 	asrJuristics = [ 
-		'Standard',    // Shafi`i, Maliki, Ja`fari, Hanbali
+		'Standard',    // Shafiʿi, Maliki, Jaʿfari, Hanbali
 		'Hanafi'       // Hanafi
 	],
 

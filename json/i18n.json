@@ -46,8 +46,8 @@
     },
     "joumouaa": {
         "ar": "الجمعة",
-        "fr": "Jumu`a",
-        "en": "Jumu`a"
+        "fr": "Jumuʿa",
+        "en": "Jumuʿa"
     },
     "aid-prayer": {
         "ar": "صلاة العيد",
@@ -66,8 +66,8 @@
     },
     "asr": {
         "ar": "العصر",
-        "fr": "`Asr",
-        "en": "`Asr"
+        "fr": "ʿAsr",
+        "en": "ʿAsr"
     },
     "maghrib": {
         "ar": "المغرب",
@@ -76,8 +76,8 @@
     },
     "isha": {
         "ar": "العشاء",
-        "fr": "`Isha",
-        "en": "`Isha"
+        "fr": "ʿIsha",
+        "en": "ʿIsha"
     },
     "support": {
         "ar": "Développé par Binary Consulting SAS",
@@ -106,8 +106,8 @@
     },
     "joumoua-time": {
         "ar": "وقت الجمعة",
-        "fr": "heure du jumu`a",
-        "en": "jumu`a time"
+        "fr": "heure du jumuʿa",
+        "en": "jumuʿa time"
     },
     "min-isha": {
         "ar": "الحد الأدنى لصلاة العشاء في فصل الشتاء ",
@@ -157,7 +157,7 @@
     "enable-douaa-after-prayer": {
         "ar": "عرض  شاشة الدعاء بعد الصلاة",
         "fr": "Afficher douaa après la prière",
-        "en": "Du`a after prayer"
+        "en": "Duʿa after prayer"
     },
     "iqama-display-time": {
         "ar": "وقت عرض  شاشة الإقامة",
@@ -332,7 +332,7 @@
     "joumouaa-as-duhr": {
         "ar": "وقت الجمعة موافق لوقت الظهر",
         "fr": "L'heure du jumu'a pareil que dhuhr",
-        "en": "Jumu`a time like zuhr"
+        "en": "Jumuʿa time like zuhr"
     },
     "dst": {
         "ar": "الوقت الصيفي",
@@ -390,18 +390,18 @@
     },
     "jumuaBlackScreenEnabled": {
         "ar": "إطفاء الشاشة أثناء الجمعة",
-        "fr": "Éteindre l'écran pendant jumu`a",
-        "en": "Power off screen during jumu`a"
+        "fr": "Éteindre l'écran pendant jumuʿa",
+        "en": "Power off screen during jumuʿa"
     },
     "jumuaTimeout": {
         "ar": "المدة التقريبية للجمعة",
-        "fr": "Durée approximatif du jumu`a (prêche + prière)",
-        "en": "Approximate duration of the Jumu`a"
+        "fr": "Durée approximatif du jumuʿa (prêche + prière)",
+        "en": "Approximate duration of the Jumuʿa"
     },
     "jumuaDhikrReminderEnabled": {
         "ar": "إظهار حديث أثناء الجمعة",
-        "fr": "Afficher un rappel pendant jumu`a ",
-        "en": "Show reminder during jumu`a"
+        "fr": "Afficher un rappel pendant jumuʿa ",
+        "en": "Show reminder during jumuʿa"
     },
     "prayer-times-on-mobile": {
         "ar": "أوقات الصلاة على الهاتف المحمول",
