@@ -1,0 +1,8 @@
+{
+    "joumouaaTime": "12:00",
+    "minimumIchaTime": "19:50",
+    "maximumIchaTimeForNoWaiting": "22:00",
+    "aidIsEnabled": false,
+    "aidTime": "09:00",
+    "prayersWaitingTimes": [20, 10, 10, 5, 10]
+}

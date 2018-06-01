@@ -1,41 +1,37 @@
 var prayer = {
-    /**
-     * Temps d'attente entre adhan et iqama [sobh, dohr, asr, maghrib, icha]
-     */
-    prayersWaitingTimes: [20, 10, 10, 5, 10],
-    /**
-     * Heure de fixation du icha en hiver
-     */
-    minimumIchaTime: "19:50",
-    /**
-     * Heure du joumouaa
-     */
-    joumouaaTime: "12:00",
-    /**
-     * Heure max à partir de la quelle le on attend plus entre adhan du icha et la iqama
-     */
-    maximumIchaTimeForZeroWaiting: "22:00",
+    customData: null,
     months: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
     prayerTimes: [],
     init: function () {
         this.setTime();
         this.setDate();
-        this.loadPrayerTimes();
+        this.loadData();
         this.setPrayerTimes();
         this.setPrayerWaitings();
         this.initAdhanFlash();
         this.initIqamaFlash();
         this.initCronMidNight();
+        this.setAidPrayerTime();
     },
-    getCsvFile: function (month) {
-        return month + ".csv";
+    loadData: function () {
+        this.loadCustomData();
+        this.loadPrayerTimes();
+    },
+    loadCustomData: function () {
+        $.ajax({
+            url: "data/custom-data.json",
+            async: false,
+            success: function (data) {
+                prayer.customData = data;
+            }
+        });
     },
     loadPrayerTimes: function () {
-        var prayerTimes = new Array(), csvFile;
+        var prayerTimes = new Array();
         $.each(this.months, function (i, month) {
-            csvFile = prayer.getCsvFile(month);
+            csvFile = month + ".csv";
             $.ajax({
-                url: "data/" + csvFile,
+                url: "data/months/" + month + ".csv",
                 async: false,
                 success: function (data) {
                     prayerTimes[month] = data.split("\n");
@@ -45,8 +41,8 @@ var prayer = {
         this.prayerTimes = prayerTimes;
     },
     getPrayersWaitingTimes: function () {
-        var waitings = this.prayersWaitingTimes;
-        if (this.getIchaTime() > this.maximumIchaTimeForZeroWaiting) {
+        var waitings = this.customData.prayersWaitingTimes;
+        if (this.getIchaTime() > this.customData.maximumIchaTimeForNoWaiting) {
             waitings[4] = 0;
         }
         return waitings;
@@ -69,9 +65,9 @@ var prayer = {
     },
     getIchaTime: function () {
         var ichaTime = this.getTodayPrayerLine()[6];
-        if (ichaTime <= this.minimumIchaTime)
+        if (ichaTime <= this.customData.minimumIchaTime)
         {
-            ichaTime = this.minimumIchaTime;
+            ichaTime = this.customData.minimumIchaTime;
         }
         return ichaTime;
     },
@@ -152,8 +148,17 @@ var prayer = {
     setDate: function () {
         $("#date").text(dateTime.getCurrentDate());
     },
+    setAidPrayerTime: function () {
+        $(".chourouk").show();
+        $(".aid").hide();
+        $("#aid").text(this.customData.aidTime);
+        if (this.customData.aidIsEnabled) {
+            $(".chourouk").hide();
+            $(".aid").show();
+        }
+    },
     setPrayerTimes: function () {
-        $("#joumouaa").text(this.joumouaaTime);
+        $("#joumouaa").text(this.customData.joumouaaTime);
         $("#sobh").text(this.getTodayFivePrayerTimes()[0]);
         $("#chourouk").text(this.getChouroukTime());
         $("#dohr").text(this.getTodayFivePrayerTimes()[1]);

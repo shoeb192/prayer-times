@@ -17,7 +17,7 @@ body {
 }
 
 .main .footer{
-    font-size: 120%
+    font-size: 200%
 }
 
 .header{
@@ -69,10 +69,15 @@ body {
     visibility: hidden;
 }
 
-.chourouk,.joumouaa {
-    font-size: 400%;
+.chourouk,.joumouaa, .aid {
+    font-size: 500%;
     padding-top: 5%;
 }
+
+#aid{
+   color: red;
+}
+
 #chourouk, #joumouaa{
     color: yellowgreen;
 }
